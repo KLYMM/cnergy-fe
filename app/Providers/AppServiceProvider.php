@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,8 +23,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(env('APP_ENV') !== 'local') {
-            URL::forceScheme('https');
+        $scheme = 'http';
+        
+        if( config('app.env') != 'local' )
+        {
+            //get attributes data from domain setting
+            $attrSite = json_decode(config('site.attributes.reldomain.additional_data') ?? '[]', TRUE);
+            
+            $allowHttp = ($attrSite['allow_http'] ?? null) ?  true : false;
+            
+            if(!$allowHttp) 
+            {
+                $scheme = 'https';
+            }
+            else
+            {
+                \Config::set('app.env', 'development');
+            }
         }
+
+        \URL::forceScheme($scheme);
     }
 }

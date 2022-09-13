@@ -10,9 +10,14 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
+        "axios": "^0.25",
+        "laravel-mix": "^6.0.43",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+    },
+    "dependencies": {
+        "laravel-mix-make-file-hash": "^2.2.0",
+        "postcss-discard-comments": "^5.1.1",
+        "turbolinks": "^5.2.0"
     }
 }
