@@ -5,4 +5,4 @@
   </a>
 </div>
 
-@include('components.form-report')
+@include('ui.components.form-report')

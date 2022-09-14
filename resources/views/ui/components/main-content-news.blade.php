@@ -38,7 +38,7 @@
 
       Hayden sudah dua kali datang ke Jakarta, yakni pada 2013 dan 2014. Dalam dua kunjungannya itu, juara dunia MotoGP 2006 tersebut memiliki kenangan tersendiri dengan jalanan ibu kota.
 
-      @include('components.read-too')
+      @include('ui.components.read-too')
 
       Hayden pertama kali datang ke Jakarta pada April 2013 sebagai pebalap Ducati. Pebalap asal AS itu datang ke ibu kota untuk memenuhi undangan salah satu produsen pelumas top dunia.
 

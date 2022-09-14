@@ -5,39 +5,39 @@
 @section('content-field')
 {{-- LAYOUT HOMEPAGE --}}
 <header>
-    @include('components.navbar')
-    @include('components.breaking-news')
+    @include('ui.components.navbar')
+    @include('ui.components.breaking-news')
 </header>
 
-@include('components.tab-news')
+@include('ui.components.tab-news')
 
 <div class="mt-4">
     <div class="row gx-5">
         <div class="col-4">
 
             {{-- MORE INFO --}}
-            @include('components.more-info')
+            @include('ui.components.more-info')
 
             {{-- PHOTO COLLECTION --}}
-            @include('components.photo-collection')
+            @include('ui.components.photo-collection')
 
             {{-- VIDEO COLLECTION --}}
-            @include('components.video-collection')
+            @include('ui.components.video-collection')
 
         </div>
         <div class="col-8">
 
             {{-- LIST NEWS --}}
-            @include('components.list-main-news')
-            @include('components.list-main-news')
+            @include('ui.components.list-main-news')
+            @include('ui.components.list-main-news')
 
             {{-- VIDEO NEWS --}}
-            @include('components.video-news')
+            @include('ui.components.video-news')
 
         </div>
     </div>
 </div>
 
 {{-- FOOTER --}}
-@include('components.footer')
+@include('ui.components.footer')
 @endsection
