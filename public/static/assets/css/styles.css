@@ -252,6 +252,7 @@ nav {
 .custom-slider .slider-card {
     flex: 0 0 (100%/3);
     margin: 0 8px;
+    color: black;
 }
 
 .custom-slider .slider-image {
