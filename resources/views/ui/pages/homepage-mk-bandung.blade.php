@@ -13,14 +13,8 @@
     <div class="row gx-5">
         <div class="col-8">
 
-            {{-- BERITA UTAMA --}}
+            {{-- BERITA UTAMA & BERITA UTAMA LAINNYA --}}
             @include('ui.components.main-news')
-
-            {{-- BERITA UTAMA LAINNYA --}}
-            <div class="mt-4">
-                <h4 class="special-font-prompt text-uppercase fst-italic fw-bold" style="font-size: 16px; margin-left: 20px">Berita Utama Lainnya</h4>
-                @include('ui.components.slider-news')
-            </div>
 
             {{-- BERITA SPOTLIGHT --}}
             <div class="mt-4">

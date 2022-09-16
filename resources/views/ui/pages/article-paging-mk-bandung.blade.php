@@ -29,7 +29,7 @@
                 @include('components.report-article')
 
                 {{-- BERITA TERKAIT --}}
-                @include('components.slider-news')
+                @include('ui.components.slider-news')
 
             </div>
             <div class="col-4">
