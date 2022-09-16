@@ -3,7 +3,7 @@
 return [
     [
         'domains'=> ['demo.hyperlocal.kl-youniverse.com', 'demo.local.newshub.id', 'cnergy-fe.test', 'localhost'],
-        'token'=> 'c36df1565fc2898abba68f209bf4820f',
+        'token'=> env('NEWSHUB_TOKEN', ''),
         'namespace'=> 'DefaultSite'
     ]
 ];

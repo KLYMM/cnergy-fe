@@ -59,7 +59,7 @@ class NewsController extends Controller
             limit: 32
          );
 
-        return Site::view('pages.photo', compact('headline', 'feed','latest','recommendation','popular'));
+        return Site::view('components.main-news', compact('headline', 'feed','latest','recommendation','popular'));
     }
     //list video
     function video()

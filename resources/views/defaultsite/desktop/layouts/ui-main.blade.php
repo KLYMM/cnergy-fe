@@ -85,7 +85,7 @@
 <body>
 
     <div class="container w-kly">
-        @yield('content-field')
+        @yield('content')
     </div>
 
 </body>
