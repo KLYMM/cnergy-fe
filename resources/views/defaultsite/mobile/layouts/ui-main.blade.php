@@ -129,7 +129,7 @@
     };
 </script>
 
-<script>
+{{-- <script>
     const slider = document.querySelector('.slider-content');
     const counter = document.querySelector('#sliderCounter');
     const widthSlider = slider.offsetWidth;
@@ -154,7 +154,7 @@
             counter.innerHTML = count;
         }
     }
-</script>
+</script> --}}
 
 <script>
     var btn = $('#btn-back-toTop');

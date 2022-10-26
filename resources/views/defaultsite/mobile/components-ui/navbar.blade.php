@@ -2,9 +2,9 @@
     {!! Util::getAds('billboardmasthead') !!}
 </div> 
 <nav>
-  <img class="nav-open" src="{{ URL::asset('assets/icons/hamburger.svg') }}" alt="bar-icon" onclick="show()">
+  <img class="nav-open" src="{{ URL::asset('assets/icons/hamburger.svg') }}" width="18px" height="18px"  alt="bar-icon" onclick="show()">
   <a href="/"><img src="{{ URL::asset('assets/images/logo.png') }}" alt="logo" width="142px" height="29px"></a>
-  <img class="search-icon" src="{{ URL::asset('assets/icons/search-icon.svg') }}" alt="search-icon">
+  <img class="search-icon" src="{{ URL::asset('assets/icons/search-icon.svg') }}" width="18px" height="18px" alt="search-icon">
 </div>
 
   <div class="nav-main">
