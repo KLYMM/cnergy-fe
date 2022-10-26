@@ -399,7 +399,7 @@ class NewsController extends Controller
         // dd($row);
         if( ($row['news_type']??null) == 'photonews' )
         {
-            config()->set('site.use_footer', 'no');
+            config()->set('site.use_footer', 'yes');
 
             return Site::view('pages.photo_detail',compact('row'));
         }
