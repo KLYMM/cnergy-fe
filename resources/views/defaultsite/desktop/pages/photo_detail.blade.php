@@ -1,225 +1,161 @@
 @extends('defaultsite.desktop.layouts.ui-main')
 
-<style>
-    .description {
-        line-height: 18px;
-        max-height: calc(18px * 1);
-        overflow: hidden;
-    }
-
-    .check-input {
-        display: none;
-    }
-
-    .button-readmore::after {
-        content: 'Read More';
-        display: inline-block;
-    }
-
-    .button-readmore {
-        display: inline-block;
-        font-size: 12px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .button-readmore:hover {
-        color: #dc3545;
-    }
-
-    .check-input:checked~.button-readmore::after {
-        content: 'Read Less';
-
-    }
-
-    .check-input:checked~.description {
-        max-height: 100vh;
-    }
-
-    /* Hide input checkbox */
-    /* #check-readmore {
-        position: absolute;
-        left: -100px;
-    } */
-</style>
-
-
-
 @section('title', $row['news_title'])
 
-{{-- Exlude Header --}}
-@section('header')
-@endsection
+@section('content')
+    <div class="mt-4">
+        <div class="row gx-5">
+            <div class="col-8">
+                <div class="main-content-news-container">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <span class="text-dark mx-1"> ></span>
+                        @foreach ($row['news_category'] as $r)
+                            @if ($loop->iteration == 1)
+                                <li class="top-bar-item {{ $loop->count == 1 ? 'active' : '' }}"><a
+                                        href="{{ url($row['news_category'][0]['url'] ?? '') }}">{{ $r['name'] ?? null }}</a>
+                                </li>
+                            @elseif($loop->iteration == 2)
+                                <li class="top-bar-item {{ $loop->count == 2 ? 'active' : '' }}"><a
+                                        href="{{ url(($row['news_category'][0]['url'] ?? '') . '/' . ($row['news_category'][1]['url'] ?? '')) }}">{{ $r['name'] ?? null }}</a>
+                                </li>
+                            @elseif($loop->iteration == 3)
+                                <li class="top-bar-item {{ $loop->count == 3 ? 'active' : '' }}"><a
+                                        href="{{ url(($row['news_category'][0]['url'] ?? '') . '/' . ($row['news_category'][1]['url'] ?? '') . '/' . ($row['news_category'][2]['url'] ?? '')) }}">{{ $r['name'] ?? null }}</a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
 
-{{-- Exclude Breaking News --}}
-@section('breaking')
-@endsection
-
-@section('khusus-photo-detail')
-    {{-- @dump($row) --}}
-    <div class="photo-detail-section">
-        <div class="container w-kly">
-            {{-- Header --}}
-            @include('defaultsite.desktop.components-ui.ui-header')
-
-            {{-- Breaking News --}}
-            @include('defaultsite.desktop.components-ui.ui-breaking-news')
-        </div>
-        <div class="content-photo-detail d-flex mt-5">
-            <div class="col-8 photo-scroll">
-
-                <div class="black-bg-photo" id="photo-screen">
-                    <div class="photo-tools">
-                        <a href="/photo" style="color: white"> <i class="fa-solid fa-chevron-left"></i> Kembali</a>
-                        <div class="share-links">
-                            <a target="_blank"
-                                href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Desktop&utm_medium=facebook&utm_campaign=Share_Top') }}"><i
-                                    class="fa-brands fa-facebook-f"></i></a>
-                            <a target="_blank"
-                                href="https://twitter.com/intent/tweet?text={{ urlencode(url()->current() . '?utm_source=Desktop&utm_medium=twitter&utm_campaign=Share_Top') }}"><i
-                                    class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-solid fa-link"></i></a>
-                        </div>
-                        <button onclick="openFullscreen();">
-                            <i class="fa-solid fa-expand"></i>
-                        </button>
-                    </div>
-                    @if (count($row['photonews']) > 0 ?? null)
-                        <div class="photo-detail-container">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                                <div class="carousel-indicators d-flex align-items-center list-photo-detail">
-                                    @foreach ($row['photonews'] as $photo)
-                                        <button type="button" data-bs-target="#carouselExampleIndicators"
-                                            data-bs-slide-to="{{ $loop->index }}"
-                                            class="{{ $loop->first ? 'active' : '' }}" aria-current="false"
-                                            aria-label="Slide {{ $loop->index + 1 }}">
-                                            <img src="{{ $photo['image']['real'] }}" class="d-block w-100">
-                                        </button>
-                                    @endforeach
-                                </div>
-                                <div class="carousel-inner">
-                                    @foreach ($row['photonews'] as $photo)
-                                        {{-- @dump($row) --}}
-                                        <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
-                                            <div class="carousel-image-desc">
-                                                <img src="{{ $photo['image']['real'] }}" class="d-block w-100">
-                                                <div
-                                                    class="d-flex justify-content-between text-desc-photo gap-2 align-items-center">
-                                                    <p class="description">{{ $photo['description'] }} </p>
-                                                    <input class="check-input" type="checkbox" id="{{ $photo['id'] }}">
-                                                    <label style="width: 120px; text-align: center; font-style: italic"
-                                                        for="{{ $photo['id'] }}" class="button-readmore"></label>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <button class="carousel-control-prev" type="button"
-                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                    <h4 class="my-3">{{ $row['news_title'] ?? null }}</h4>
+                    <div class="account-shared-content my-4">
+                        <div class="account">
+                            <a href="{{ Src::author($row) }}">
+                                <img class="aspect-square"
+                                    src="{{ $row['news_editor'][0]['image'] ??'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AgJCiccVLvelQAABVVJREFUeNrtnG1v0zwUhm87WdqsCUm00nWgMgZMQrSbxJ/nZ6xSpexTAakbhdFutDSN17yZD6jTxsN49mKnHviW8jknl2/7HMcnIaenpxxadxbVCDTAlcpUKRhCyJXrsjjnVy4N8BdxzvHt2zdMJhPMZjMwxpBl2c8gTRO2bcN1Xfi+D9/3/wN4ZYO+qiRiGAYYYxiPxzg9PcV0OkWe5zdyoGEY8DwPGxsbqNfrsG0beZ7/OwA553j//j1OTk7uPR0JIdjc3MTLly9X4srSAY7HY3z48AHn5+egVEwOK4oC1WoVL168QL1e/zsBGoaBMAwxHo+l3qder6Pdbpc2pUsBmGUZer0eoigS5ro/udFxHOzv78M05edI6XUg5xy9Xg9xHEuHBwCUUsRxjF6vV0q5I/2Jut0u5vN56Yv7fD5Ht9t92AD7/T7m8/lqsiMhmM/n6Pf7Dw8gIQRRFGE4HK604CWEYDgcIooiaXFIAVgUBcIwLGXNu8maGIYhiqJ4GAAJIRgMBkiSRJn9apIkGAwGUlwoHGCaphiNRsrsVZeDOhqNkKap+gAZY2CMQTXJiksoQEopjo+PoaqOj4+Fr8vCHTgej5WavpensYxtJBUZ4GQykZbtRFUHk8lE6AALdeBsNlPSfZcHeTabqevAVe06VhmjUAcuFgvlAS4WC3WTyPIMQ2WJjpGKHmHVJTpGoQDX1taUByg6RqEAK5WKUme2v4pzjkqloiZAzjlqtZryAEXHKNSBrusqD9B1XXUd6Hme8mWM53nqOpBzjo2NDSVdKCs24QCbzaayAGXEJhyg4ziwLEs5gJZlwXEctQEuA63VasoBrNVqUgZWOEBKKba2tpSaxpxzbG1tSTnkojKCbTQaqFarSkDknKNaraLRaEiJh8oK+vXr18oAlBmLNICO4yAIgpUDDIJASvKQCnBZtG5vb6/0FX9RFNje3pZa3FPZo99qtVYCsSgKtFot6bNAKsA8z/H8+fOVTOUgCLCzsyO90VJ68wohBLu7uzAMozR4hmFgd3e3lHuV0v2zvr6Ovb290hos9/b2sL6+/vcAXLbddjodqRAppeh0OnAcp7R1t9T+M9/30W63YVmW0LKCcw7LstBut+H7fqlrbWkACSHgnCMIAnQ6HaH7Usuy0Ol0EAQBOOelvpOU0qW//NIoSRIwxnB+fo7v378jiiJEUYQ0TYV30GdZhrW1NTiOA8dx8OjRI1SrVdi2feF4GcW0UICUUhRFga9fv+LLly9gjCHPcxRFUaozlveilMIwDNi2jWaziUajcRGjEgCXQBaLBeI4xufPnzEaja64UJW3MUv3PX78GM1mE7Va7eKE7j7OvDNA0zQxmUxwdHSE2Wx20TKh+uH6ElalUoHrumi1WvB9/84dC7cGWBQFGGPo9/uYTqdKNJLft8TyPA+vXr2Cbdu3fp4bAzRNEycnJ/j06ROm0+mDcNttXel5Hp4+fYrNzc0bO/JGAJMkweHhofL9f6Jguq6LN2/e3KjUuhYgIQRZlmEwGGA4HKIoir8e3mWIlFI8efIEz549g2ma1yaa3wJcNiL2er0H0bImU6ZpYn9//9qWkN8CPDo6wsePHx98ghCZaHZ2dtBqtf4MkHOObreLOI41tWveKr19+/bKUkaXU5YxhoODAw3vD4rjGAcHB2CMXUAkZ2dnfDqdIgxDZFn2zySK+yQY0zTRbrfheR5oFEUIw/DilyNa/799zfMcYRj+/Iz23bt3PEkSDe8OTrQsCzRNUw3vjk5M01T/fOy+0gA1QA1QA9QAtTRADVAD1AC1NEANUAPUALU0QA1QA/x39AMzx8A5MRN2GAAAAABJRU5ErkJggg==' }}"
+                                    width="40" height="40" alt="user">
+                            </a>
+                            <div class="account-detail">
+                                <p href="{{ Src::author($row) }}">
+                                    <a href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a>
+                                </p>
+                                <span>{{ Util::date($row['news_date_publish'] ?? null, 'ago') }}</span>
                             </div>
+                        </div>
+
+                        <div class="shared">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Desktop&utm_medium=facebook&utm_campaign=Share_Top') }}"
+                                target="_blank"><i class="icon icons--share icon--share-fb"></i></a>
+                            <a href="https://twitter.com/intent/tweet?text={{ urlencode(url()->current() . '?utm_source=Desktop&utm_medium=twitter&utm_campaign=Share_Top') }}"
+                                target="_blank"><i class="icon icons--share icon--share-tweet"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="content-news mt-3">
+                        <figure>
+                            @include('image', [
+                                'source' => $row,
+                                'size' => '640x360',
+                                $row['news_title'] ?? null,
+                            ])
+                        </figure>
+                        <figcaption>{{ $row['news_imageinfo'] ?? null }}</figcaption>
+
+                        <div class="dt-paragraph mt-3 ">
+                            {!! str_replace(
+                                ['mce-mce-mce-mce-no/type', 'mce-no/type'],
+                                '',
+                                htmlspecialchars_decode($row['news_content'] ?? null),
+                            ) !!}
+
+                            @push('script')
+                                <script>
+                                    if (document.getElementsByClassName('dt-paragraph')) {
+                                        //change tag br to tag p
+                                        if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('br')[0] != null) {
+                                            document.getElementsByClassName('dt-paragraph')[0].innerHTML = document.getElementsByClassName(
+                                                'dt-paragraph')[0].innerHTML.replace(/<br>\\*/g, '</p><p>')
+                                        }
+                                        //add ads
+                                        if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[0] != null) {
+                                            //get 2 paragraf before add ads
+                                            var lis = document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')
+                                            var counter = 0
+
+                                            for (var i = 0; i < lis.length - 1; i++) {
+                                                if (lis[i].innerHTML !== "") {
+                                                    counter++
+                                                    if (counter == 2) {
+                                                        document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[i]
+                                                            .insertAdjacentHTML('afterend',
+                                                                '<div class="channel-ad channel-ad_ad-exposer">  {!! Util::getAds('exposer') !!} </div>');
+                                                        break
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                </script>
+                            @endpush
+                        </div>
+                    </div>
+
+                    {{-- !! PRELOAD !! --}}
+
+                    @if (count($row['photonews']) > 0 ?? null)
+                        <div class="photo-detail-container mt-5">
+                            @foreach ($row['photonews'] as $photo)
+                                <div class="my-5">
+                                    <figure>
+                                        @include('image', [
+                                            'source' => $photo,
+                                            'size' => '640x360',
+                                            $photo['news_title'] ?? null,
+                                        ])
+                                    </figure>
+                                    <figcaption>{{ $photo['description'] }}</figcaption>
+                                </div>
+                            @endforeach
                         </div>
                     @endif
                 </div>
+                {{-- RELATED TAG --}}
+                @include('defaultsite.desktop.components-ui.ui-related-tag')
 
-            </div>
-            <div class="col-4 vertical-scroll">
-                <div class="all-news-info">
-                    <h2 class="special-font-lato fw-bold" style="font-size: 30px;">{{ $row['news_title'] }}</h2>
+                {{-- credit --}}
+                @include('defaultsite.desktop.components-ui.ui-credit')
 
-                    <div class="info-author">
-                        <a class="" href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a>
-                        <span class="">{{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
-                    </div>
+                {{-- SHARE NEWS --}}
+                @include('defaultsite.desktop.components-ui.ui-share-news')
 
-                    <div class="synopsis">
-                        <p>{{ $row['news_synopsis'] ?? null }}</p>
-                    </div>
+                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
+                        class="fa-solid fa-triangle-exclamation" style="color: #ca0000"></i> Report Article </button>
 
-                    <div class="editor-photo">
-                        <span><b>Editor:</b> {{ $row['news_editor'][0]['name'] ?? null }} </span>
-                        <span><b>Photographer:</b> {{ $row['news_photographer'][0]['name'] ?? null }}</span>
-                    </div>
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
 
-                    <div class="tag-related-detail">
-                        @include('defaultsite.desktop.components-ui.ui-related-tag')
-                    </div>
-
-                    <button type="button" data-toggle="modal" data-target="#myModal"
-                        class="btn btn-light report-btn mt-5"><i class="fa-solid fa-triangle-exclamation"
-                            style="color: #ca0000"></i> Report Article </button>
-
-                    <div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    {{-- FORM REPORT --}}
-                                    @include('defaultsite.desktop.components-ui.ui-form-report')
-                                </div>
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                {{-- FORM REPORT --}}
+                                @include('defaultsite.desktop.components-ui.ui-form-report')
                             </div>
-
                         </div>
-                    </div>
 
-                    {{-- Berita terkini --}}
-                    @include('defaultsite.desktop.components-ui.ui-latestphoto', [
-                        'latest' => $row['latest'],
-                    ])
-                </div>
-                <div style="background: #333333; padding: 30px 10px; text-align:center"
-                    class="d-flex flex-column align-items-center gap-5">
-                    <a href="/">
-                        <img src="{{ URL::asset('assets/images/logo-footer.png') }}" alt="logo footer" width="170px">
-                    </a>
-                    <div class="link-footer">
-                        {{-- menu --}}
                     </div>
-                    <p style="color: #FFFFFF">{!! nl2br(config('site.attributes.address')) !!}</p>
-                    <div class="social-media mx-3">
-                        @if ($socmed->fb ?? null)
-                            <a href="{{ $socmed->fb }}" aria-label="facebook">fb</a>
-                        @endif
-                        @if ($socmed->twitter ?? null)
-                            <a href="{{ $socmed->twitter }}" aria-label="twitter"><i class="fa-brands fa-twitter fa-2xl"
-                                    style="color: #1DADEB"></i></a>
-                        @endif
-                        @if ($socmed->youtube ?? null)
-                            <a href="{{ $socmed->youtube }}" aria-label="youtube"><i
-                                    class="fa-brands fa-youtube"></i></a>
-                        @endif
-                        @if ($socmed->ig ?? null)
-                            <a href="{{ $socmed->ig }}" aria-label="instagram"><i
-                                    class="fa-brands fa-square-instagram"></i></a>
-                        @endif
-                    </div>
-                    <span style="color: #FFFFFF">Copyright &copy; {{ date('Y') }}
-                        {{ config('site.attributes.title') }} KLY KapanLagi Youniverse All Rights Reserved </span>
                 </div>
+
+                @include('defaultsite.desktop.components-ui.ui-related-news', [
+                    'latest' => $row['latest'],
+                    'title' => 'Latest Photo',
+                ])
+            </div>
+
+            <div class="col-4">
+                @include('defaultsite.desktop.components-ui.ui-aside', [
+                    'reference' => $row ?? null,
+                ])
             </div>
         </div>
-    </div>
-@endsection
 
-<script>
-    function openFullscreen() {
-        if (document.getElementById("photo-screen").requestFullscreen) {
-            document.getElementById("photo-screen").requestFullscreen();
-        } else if (document.getElementById("photo-screen").webkitRequestFullscreen) {
-            /* Safari */
-            document.getElementById("photo-screen").webkitRequestFullscreen();
-        } else if (document.getElementById("photo-screen").msRequestFullscreen) {
-            /* IE11 */
-            document.getElementById("photo-screen").msRequestFullscreen();
-        }
-    }
-</script>
+    @endsection
