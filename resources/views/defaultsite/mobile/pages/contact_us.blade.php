@@ -1,4 +1,4 @@
-@extends('defaultsite.mobile.layouts.main')
+{{-- @extends('defaultsite.mobile.layouts.main')
 @push('styles')
 <style>
     .body-container{
@@ -69,4 +69,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
