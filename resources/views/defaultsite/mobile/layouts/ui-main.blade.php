@@ -33,13 +33,14 @@
     <meta name="adx:keywords" content="{{ config('site.attributes.meta.article_keyword') ?? null }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" async></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600&display=swap);" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" async></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script> -->
     <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-mobile.css') }}">
     {{-- font awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script> -->
     <title>@yield('title')</title>
 </head>
 
@@ -90,22 +91,26 @@
     closeSearch.addEventListener('click', closeSearchHeader);
 
     function openSearchHeader() {
+        cseSearch();
+
         openSearch.style['z-index'] = 10;
         openSearch.style['opacity'] = 1;
-        openSearch.style['-webkit-transition'] = 'opacity 0.5s';
-        openSearch.style['-moz-transition'] = 'opacity 0.5s';
-        openSearch.style['transition'] = 'opacity 0.5s';
+        openSearch.style['-webkit-transition'] = 'opacity 1s';
+        openSearch.style['-moz-transition'] = 'opacity 1s';
+        openSearch.style['transition'] = 'opacity 1s';
 
     }
 
     function closeSearchHeader() {
         openSearch.style['z-index'] = -1;
         openSearch.style['opacity'] = 0;
+        var s = document.getElementsByTagName('script')[0];
+        s.remove();
     }
 </script>
 
 <script>
-    (function() {
+    function cseSearch(){
         var cx = "{{ config('site.attributes.reldomain.cse_id') ?? null }}";
         var gcse = document.createElement('script');
         gcse.type = 'text/javascript';
@@ -113,10 +118,10 @@
         gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
-    })();
+    }
 
     window.__gcse = {
-        callback: function() {
+        callback: function cseSearch() {
             document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
                 "Search news, keywords, and more...");
 
@@ -125,58 +130,33 @@
             }
         }
     };
-</script>
 
-<script>
-    const slider = document.querySelector('.image-news');
-    const counter = document.querySelector('#sliderCounter');
-    const widthSlider = slider.offsetWidth;
-    var count = 1;
-    var after = widthSlider;
-    var before = 0;
-
-    counter.innerHTML = count;
-    slider.addEventListener('scroll', countNumber);
-
-    function countNumber() {
-        if (slider.scrollLeft > after) {
-            count = count + 1;
-            before = after;
-            after = widthSlider * count;
-            counter.innerHTML = count;
-        }
-        if (slider.scrollLeft + 250 < before && count != 0) {
-            count = count - 1;
-            after = before;
-            before = widthSlider * (count - 1);
-            counter.innerHTML = count;
-        }
+    if(window.location.pathname == "/search"){
+        cseSearch()
     }
 </script>
 
 <script>
-    var btn = $('#btn-back-toTop');
+    var btn = document.querySelector('#btn-back-toTop');
 
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
-        } else {
-            btn.removeClass('show');
+    document.addEventListener('scroll', (e) =>{
+        if(document.documentElement.scrollTop > 300){
+            btn.classList.add('show');
         }
-    });
+        else{
+            btn.classList.remove('show');
+        }
+    })
 
-    btn.on('click', function(e) {
+    btn.addEventListener('click', (e) => {
         e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, '300');
-    });
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    })
 </script>
+
 <script>
-    
     function copyToClipboard() {
-        // document.getElementById("copy-link").select();
-        // document.execCommand('copy');
         var dummy = document.createElement('input'),
         text = window.location.href;
         document.body.appendChild(dummy);
@@ -193,71 +173,73 @@
 
 <script>
      // infinite delay scroll
-     var scrolling
-            buttons = document.getElementsByClassName('pages-button')
-            pagination = 0
+    var scrolling
+    buttons = document.getElementsByClassName('pages-button')
+    var elementPositionButton = buttons[0]
+    pagination = 0
 
-            function callback() {
-                for (i = 0; i < buttons.length; i++) {
-                    if (i == pagination) {
-                        var attr = buttons[i].getAttribute('data-target')
-                        selected = document.querySelector('#' + attr)
-                        selectedCount = buttons[i].getElementsByClassName('pages-button-countdown')[0]
-                        parentButton = selectedCount.parentNode
-                        maxParentTry = 20
-                        while (!parentButton.classList.contains('pages-button') && maxParentTry-- > 0) {
-                            parentButton = parentButton.parentNode;
-                        };
-                        counter = selectedCount.getAttribute('data-delay')
-                        number = selectedCount.querySelector('.pages-button-countdown-html')
-                        circle = selectedCount.querySelector('.pages-button-countdown-svg circle')
-                        radius = circle.getAttribute('r')
-                        circumference = 2 * Math.PI * radius
+    function callback() {
+        for (i = 0; i < buttons.length; i++) {
+            if (i == pagination) {
+                var attr = buttons[i].getAttribute('data-target')
+                selected = document.querySelector('#data-' + attr)
+                selectedCount = buttons[i].getElementsByClassName('pages-button-countdown')[0]
+                parentButton = selectedCount.parentNode
+                maxParentTry = 3
+                while (!parentButton.classList.contains('pages-button') && maxParentTry-- > 0) {
+                    parentButton = parentButton.parentNode;
+                };
 
-                        circle.style.strokeDasharray = circumference
-                        circle.style.strokeDashoffset = 0
-
-                        
-
-                        var timer = window.setInterval(function () {
-                            counter--;
-                            if (counter >= 0) {
-                                number.innerHTML = counter;
-                                circle.style.strokeDashoffset = circumference / counter
-                            }
-                            if (counter === 0) {
-                                selected.classList.remove('pages-item-hidden');
-                                parentButton.classList.add('pages-button-hidden')
-
-                                var headerOffset = 20;
-                                elementPosition = selected.getBoundingClientRect().top;
-                                offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                                window.scrollTo({
-                                    top: offsetPosition,
-                                    behavior: 'smooth'
-                                })
-
-
-                                var selectedBanner = selected.getElementsByClassName('banner')[0]
-                                if (typeof (selectedBanner) != 'undefined' && selectedBanner != null) {
-
-                                    adsName = selectedBanner.getAttribute('name')
-                                    adsSize = selectedBanner.getAttribute('size')
-                                    adsUnit = selectedBanner.getAttribute('adunit')
-
-                                    showAds(adsName, adsSize, adsUnit)
-                                }
-
-                                window.clearInterval(timer);
-                                scrolling = false;
-                            }
-                        }, 1000);
-
-                    }
+                if(i+1 != buttons.length){
+                    elementPositionButton=buttons[i+1]
                 }
-                pagination++;
+
+                counter = selectedCount.getAttribute('data-delay')
+                number = selectedCount.querySelector('.pages-button-countdown-html')
+                circle = selectedCount.querySelector('.pages-button-countdown-svg circle')
+                radius = circle.getAttribute('r')
+                circumference = 2 * Math.PI * radius
+
+                circle.style.strokeDasharray = circumference
+                circle.style.strokeDashoffset = 0
+
+                var timer = window.setInterval(function () {
+                    counter--;
+                    if (counter >= 0) {
+                        number.innerHTML = counter;
+                        circle.style.strokeDashoffset = circumference / counter
+                    }
+                    if (counter === 0) {
+                        selected.classList.remove('pages-item-hidden');
+                        parentButton.classList.add('pages-button-hidden')
+
+                        var headerOffset = 20;
+                        elementPosition = selected.getBoundingClientRect().top;
+                        offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        })
+
+                        window.clearInterval(timer);
+                        scrolling = false;
+                    }
+                }, 1000);
             }
+        }
+        pagination++;
+    }
+
+    window.addEventListener("scroll", (e) => {
+        if ( elementPositionButton.getBoundingClientRect().bottom   <= window.innerHeight) {
+            if (!scrolling) {
+                scrolling = true;
+                callback();
+            }
+                scrolling = true;
+        }
+    });
 </script>
 
 </html>
