@@ -47,9 +47,7 @@
 <body>
     <div class="container w-kly">
         {{-- Header --}}
-        @section('header')
-            @include('defaultsite.desktop.components-ui.ui-header')
-        @show
+        @include('defaultsite.desktop.components-ui.ui-header')
 
         {{-- Breaking news --}}
         {{-- @section('breaking')
@@ -64,8 +62,6 @@
             @include('defaultsite.desktop.components-ui.ui-footer')
         @endif
     </div>
-
-    @yield('khusus-photo-detail')
 
     <a id="btn-back-toTop"></a>
 

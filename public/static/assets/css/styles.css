@@ -1905,8 +1905,19 @@ nav {
     justify-content: center;
 }
 
-.photo-detail-container {
-    margin: 20px;
+.photo-detail-container img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.photo-detail-container figcaption {
+    font-family: var(--lato-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #000000;
 }
 
 .carousel-image-desc {
