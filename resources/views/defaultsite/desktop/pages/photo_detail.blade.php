@@ -3,7 +3,7 @@
 @section('title', $row['news_title'])
 
 @section('content')
-    <div class="mt-4">
+    <div class=" mt-4">
         <div class="row gx-5">
             <div class="col-8">
                 <div class="main-content-news-container">
@@ -104,16 +104,62 @@
 
                     @if (count($row['photonews']) > 0 ?? null)
                         <div class="photo-detail-container mt-5">
-                            @foreach ($row['photonews'] as $photo)
-                                <div class="my-5">
-                                    <figure>
-                                        @include('image', [
-                                            'source' => $photo,
-                                            'size' => '640x360',
-                                            $photo['news_title'] ?? null,
-                                        ])
-                                    </figure>
-                                    <figcaption>{{ $photo['description'] }}</figcaption>
+                            @foreach ($row['photonews'] as $s)
+                                <div id="data-{{ $loop->index }}" data-target="{{ $loop->index }}"
+                                    class="@if ($loop->index != 0) pages-item-hidden @endif">
+                                    <div class="slider-counter mb-5">Photo {{ $loop->iteration }}<span
+                                            id="sliderCounter"></span> of {{ count($row['photonews']) }}</div>
+                                    <div class="dt-share-container">
+                                        <figure>
+                                            <div class="image-news">
+                                                @include('image', [
+                                                    'source' => $s,
+                                                    'size' => '640x360',
+                                                    $s['news_title'] ?? null,
+                                                ])
+                                            </div>
+                                            <p class="photo-content mt-4">{{ $row['news_imageinfo'] ?? null }}</p>
+                                        </figure>
+                                        @if ($loop->iteration != $loop->last)
+                                            <div style="text-align: center">
+                                                <button class="pages-button pages-button--img mt-6"
+                                                    data-target="{{ $loop->iteration }}">
+                                                    <figure class="item item--text d-flex "
+                                                        style="align-items: center;justify-content: space-between; margin:0; ">
+                                                        <span class="item--text-img">
+                                                            <div class="image-news" alt="image">
+                                                                @include('image', [
+                                                                    'source' =>
+                                                                        $row['photonews'][$loop->iteration],
+                                                                    'size' => '93x53',
+                                                                    $row['photonews'][$loop->iteration][
+                                                                        'news_title'
+                                                                    ] ?? null,
+                                                                ])
+                                                            </div>
+                                                        </span>
+                                                        <figcaption class="item-desc d-flex px-4 gap-2"
+                                                            style="justify-content: space-between; align-items: center; flex: 1 1 0%; ">
+                                                            <span class="pages-button--img-text">
+                                                                <span class="pages-button-text">There are
+                                                                    {{ count($row['photonews']) - $loop->iteration }} more
+                                                                    photos</span>
+                                                            </span>
+                                                            <span class="pages-button-countdown ml-2" data-delay="5"
+                                                                style="color: white">
+                                                                <span class="pages-button-countdown-html">5</span>
+                                                                <svg class="pages-button-countdown-svg">
+                                                                    <circle r="14" cx="16" cy="16"
+                                                                        stroke-linecap="round" stroke-width="3"
+                                                                        fill="none" stroke="currentColor"></circle>
+                                                                </svg>
+                                                            </span>
+                                                        </figcaption>
+                                                    </figure>
+                                                </button>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -157,5 +203,6 @@
                 ])
             </div>
         </div>
+    </div>
 
-    @endsection
+@endsection
