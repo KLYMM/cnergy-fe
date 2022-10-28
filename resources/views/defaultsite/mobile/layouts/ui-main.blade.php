@@ -34,12 +34,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" async></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script>
     <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-mobile.css') }}">
     {{-- font awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script>
     <title>@yield('title')</title>
 </head>
 
@@ -103,9 +103,7 @@
         openSearch.style['opacity'] = 0;
     }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
+
 <script>
     (function() {
         var cx = "{{ config('site.attributes.reldomain.cse_id') ?? null }}";
@@ -130,7 +128,7 @@
 </script>
 
 <script>
-    const slider = document.querySelector('.slider-content');
+    const slider = document.querySelector('.image-news');
     const counter = document.querySelector('#sliderCounter');
     const widthSlider = slider.offsetWidth;
     var count = 1;
@@ -191,6 +189,75 @@
     }
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+
+<script>
+     // infinite delay scroll
+     var scrolling
+            buttons = document.getElementsByClassName('pages-button')
+            pagination = 0
+
+            function callback() {
+                for (i = 0; i < buttons.length; i++) {
+                    if (i == pagination) {
+                        var attr = buttons[i].getAttribute('data-target')
+                        selected = document.querySelector('#' + attr)
+                        selectedCount = buttons[i].getElementsByClassName('pages-button-countdown')[0]
+                        parentButton = selectedCount.parentNode
+                        maxParentTry = 20
+                        while (!parentButton.classList.contains('pages-button') && maxParentTry-- > 0) {
+                            parentButton = parentButton.parentNode;
+                        };
+                        counter = selectedCount.getAttribute('data-delay')
+                        number = selectedCount.querySelector('.pages-button-countdown-html')
+                        circle = selectedCount.querySelector('.pages-button-countdown-svg circle')
+                        radius = circle.getAttribute('r')
+                        circumference = 2 * Math.PI * radius
+
+                        circle.style.strokeDasharray = circumference
+                        circle.style.strokeDashoffset = 0
+
+                        
+
+                        var timer = window.setInterval(function () {
+                            counter--;
+                            if (counter >= 0) {
+                                number.innerHTML = counter;
+                                circle.style.strokeDashoffset = circumference / counter
+                            }
+                            if (counter === 0) {
+                                selected.classList.remove('pages-item-hidden');
+                                parentButton.classList.add('pages-button-hidden')
+
+                                var headerOffset = 20;
+                                elementPosition = selected.getBoundingClientRect().top;
+                                offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                                window.scrollTo({
+                                    top: offsetPosition,
+                                    behavior: 'smooth'
+                                })
+
+
+                                var selectedBanner = selected.getElementsByClassName('banner')[0]
+                                if (typeof (selectedBanner) != 'undefined' && selectedBanner != null) {
+
+                                    adsName = selectedBanner.getAttribute('name')
+                                    adsSize = selectedBanner.getAttribute('size')
+                                    adsUnit = selectedBanner.getAttribute('adunit')
+
+                                    showAds(adsName, adsSize, adsUnit)
+                                }
+
+                                window.clearInterval(timer);
+                                scrolling = false;
+                            }
+                        }, 1000);
+
+                    }
+                }
+                pagination++;
+            }
+</script>
 
 </html>

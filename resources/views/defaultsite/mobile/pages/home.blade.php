@@ -32,14 +32,14 @@
 </div>
 
 {{-- Adds-1 --}} 
-<div class="-mx-4">
+
   <div class="channel-ad channel-ad_ad-headline text-center">
       {!! Util::getAds('headline') !!}
   </div>
-</div>   
-@if ($headline[2]['news_id'] ?? null) 
- @include('defaultsite.mobile.components-ui.ads-on')
- @endif 
+ 
+
+ {{-- @include('defaultsite.mobile.components-ui.ads-on') --}}
+
 
 {{-- trending tag --}}
 @include('defaultsite.mobile.components-ui.trending-tag')
@@ -57,13 +57,13 @@
  <div class="channel-ad channel-ad_ad-sc text-center">
             {!! Util::getAds('showcase-1') !!}
         </div> 
-@include('defaultsite.mobile.components-ui.ads-main')
+{{-- @include('defaultsite.mobile.components-ui.ads-main') --}}
 
 {{-- list main news --}}
 @if ($headline[0]['news_id'] ?? null)
     @include('defaultsite.mobile.components-ui.list-main-news', ['listnews' => $headline])
 @endif
-<div class="channel-ad channel-ad_ad-exposer text-center text-center">
+<div class="channel-ad channel-ad_ad-exposer  text-center">
   {!! Util::getAds('exposer') !!}
 </div>
 
@@ -73,8 +73,8 @@
 @endif
 
  <div class="channel-ad channel-ad_ad-sc-2 text-center">
-            {!! Util::getAds('showcase-2') !!}
-        </div>
+     {!! Util::getAds('showcase-2') !!}
+ </div>
 
 {{-- list main news --}}
 @if ($headline[0]['news_id'] ?? null)
