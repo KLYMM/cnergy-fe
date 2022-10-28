@@ -106,25 +106,26 @@ window.addEventListener('load', function(){
 
                     <p class="photo-content">{{ $row['news_imageinfo'] ?? null }}</p>
                     
-                          @foreach ($row['photonews'] as $s)
-                          <div class="slider-counter">Foto  <span id="sliderCounter"></span> dari {{ count($row['photonews']) }}</div>
-                          <div class="dt-share-container">
-                            <div class="icons mt-2 " style="display: flex; ">
-                                <div>
-                                    <a class="icons-share-a" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() .'?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom' )}}" target="_blank"><i class="icon icons--share icon--share-fb"><i class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
-                                </div>
-                                <div>
-                                    <a class="icons-share-a" href="https://wa.me/?text={{ urlencode(url()->current() .'?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom' )}}" target="_blank"><i class="icon icons--share icon--share-fb"><i class="fa-brands fa-wa fa-whatsapp" style="margin-left: 10px"></i></i></a>
-                                </div>
-                                <div>
-                                    <a class="icons-share-a" href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() .'?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom' )}}" target="_blank"><i class="icon icons--share icon--share-fb"><i class="fa-brands fa-twitter fa-twitter" style="margin-left: 10px"></i></i></a>
-                                </div>  
-                                <div class="ms-3">
-                                    {{-- <input type="text" id="copy-link" value={{ url()->current() }}> --}}
-                                    <button class="icons-share-link px-2" value="copy" onclick="copyToClipboard()">  <i class="fa-solid fa-link mx-1"></i> Copy Link</button>
+                    @foreach ($row['photonews'] as $s)
+                        <div id="data-{{$loop->index}}" data-target="{{$loop->index}}" class="@if($loop->index!=0) pages-item-hidden @endif">
+                            <div class="slider-counter">Photo {{$loop->iteration}}<span id="sliderCounter"></span> of {{ count($row['photonews']) }}</div>
+                            <div class="dt-share-container">
+                                <div class="icons mt-2 " style="display: flex; ">
+                                    <div>
+                                        <a class="icons-share-a" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() .'?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom' )}}" target="_blank"><i class="icon icons--share icon--share-fb"><i class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
+                                    </div>
+                                    <div>
+                                        <a class="icons-share-a" href="https://wa.me/?text={{ urlencode(url()->current() .'?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom' )}}" target="_blank"><i class="icon icons--share icon--share-fb"><i class="fa-brands fa-wa fa-whatsapp" style="margin-left: 10px"></i></i></a>
+                                    </div>
+                                    <div>
+                                        <a class="icons-share-a" href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() .'?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom' )}}" target="_blank"><i class="icon icons--share icon--share-fb"><i class="fa-brands fa-twitter fa-twitter" style="margin-left: 10px"></i></i></a>
+                                    </div>  
+                                    <div class="ms-3">
+                                        {{-- <input type="text" id="copy-link" value={{ url()->current() }}> --}}
+                                        <button class="icons-share-link px-2" value="copy" onclick="copyToClipboard()">  <i class="fa-solid fa-link mx-1"></i> Copy Link</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
                             <a href="{{ Src::detail($s) }}" aria-label="{{ $s[0]['news_title'] ?? null }}"> 
                                 <figure>
@@ -135,40 +136,38 @@ window.addEventListener('load', function(){
                                             $s['news_title'] ?? null,
                                         ])
                                     </div>
-                                
-
                                     <p class="photo-content">{{ $row['news_imageinfo'] ?? null }}</p>
-                                   
                                 </figure>
                             </a>
-
-                            <button class="pages-button pages-button--img mt-6" data-target="pages-2-1">
-                                <figure class="item item--text d-flex " style="align-items: center;ustify-content: space-between; ">
-                                    <span class="item--text-img"><div class="image-news" alt="image">
-                                        @include('image', [
-                                            'source' => $s,
-                                            'size' => '93x53',
-                                            $s['news_title'] ?? null,
-                                        ])
-                                    </div></span>
-                                    <figcaption class="item-desc d-flex  px-4" style="justify-content: space-between; align-items: center; flex: 1 1 0%;">
-                                        <span class="pages-button--img-text">
-                                            <span class="pages-button-text">There are 
-                                                3 more photos</span>
+                            
+                            @if($loop->iteration!=$loop->last)
+                                <button class="pages-button pages-button--img mt-6" data-target="{{$loop->iteration}}" >
+                                    <figure class="item item--text d-flex " style="align-items: center;justify-content: space-between; margin:0; ">
+                                        <span class="item--text-img">
+                                            <div class="image-news" alt="image">
+                                                @include('image', [
+                                                    'source' => $s,
+                                                    'size' => '93x53',
+                                                    $s['news_title'] ?? null,
+                                                ])
+                                            </div>
                                         </span>
-                                        <span class="pages-button-countdown ml-2" data-delay="5" >
-                                            <span class="pages-button-countdown-html">3</span>
-                                            <svg class="pages-button-countdown-svg"><circle r="14" cx="16" cy="16" stroke-linecap="round" stroke-width="3" fill="none" stroke="currentColor"></circle></svg>
-                                        </span>
-                                    </figcaption>
-                                </figure>
-                            </button>
-                       
-                         @endforeach
-                       
-                       
-                      @endif
-                  </div>
+                                        <figcaption class="item-desc d-flex  px-4" style="justify-content: space-between; align-items: center; flex: 1 1 0%;">
+                                            <span class="pages-button--img-text">
+                                                <span class="pages-button-text">There are {{count($row['photonews'])-$loop->iteration}} more photos</span>
+                                            </span>
+                                            <span class="pages-button-countdown ml-2" data-delay="5" >
+                                                <span class="pages-button-countdown-html">5</span>
+                                                <svg class="pages-button-countdown-svg"><circle r="14" cx="16" cy="16" stroke-linecap="round" stroke-width="3" fill="none" stroke="currentColor"></circle></svg>
+                                            </span>
+                                        </figcaption>
+                                    </figure>
+                                </button>
+                            @endif
+                        </div>
+                    @endforeach
+                @endif
+            </div>
 
             {{-- st-share --}}
             {{-- <div class="pt-5"> 
