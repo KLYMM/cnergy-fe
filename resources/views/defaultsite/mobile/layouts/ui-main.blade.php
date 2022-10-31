@@ -33,7 +33,8 @@
     <meta name="adx:keywords" content="{{ config('site.attributes.meta.article_keyword') ?? null }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600&display=swap);" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600&display=swap);" />
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" async></script> -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script> -->
@@ -56,9 +57,9 @@
         @yield('content')
 
         {{-- Footer --}}
-        {{-- @if (config('site.use_footer', 'yes') == 'yes') --}}
-        @include('defaultsite.mobile.components-ui.footer')
-        {{-- @endif --}}
+        @if (config('site.use_footer', 'yes') == 'yes')
+            @include('defaultsite.mobile.components-ui.footer')
+        @endif
     </div>
     {{-- @yield('m-photo-detail') --}}
 
@@ -110,7 +111,7 @@
 </script>
 
 <script>
-    function cseSearch(){
+    function cseSearch() {
         var cx = "{{ config('site.attributes.reldomain.cse_id') ?? null }}";
         var gcse = document.createElement('script');
         gcse.type = 'text/javascript';
@@ -131,7 +132,7 @@
         }
     };
 
-    if(window.location.pathname == "/search"){
+    if (window.location.pathname == "/search") {
         cseSearch()
     }
 </script>
@@ -139,11 +140,10 @@
 <script>
     var btn = document.querySelector('#btn-back-toTop');
 
-    document.addEventListener('scroll', (e) =>{
-        if(document.documentElement.scrollTop > 300){
+    document.addEventListener('scroll', (e) => {
+        if (document.documentElement.scrollTop > 300) {
             btn.classList.add('show');
-        }
-        else{
+        } else {
             btn.classList.remove('show');
         }
     })
@@ -158,7 +158,7 @@
 <script>
     function copyToClipboard() {
         var dummy = document.createElement('input'),
-        text = window.location.href;
+            text = window.location.href;
         document.body.appendChild(dummy);
         dummy.value = text;
         dummy.select();
@@ -172,7 +172,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
 
 <script>
-     // infinite delay scroll
+    // infinite delay scroll
     var scrolling
     buttons = document.getElementsByClassName('pages-button')
     var elementPositionButton = buttons[0]
@@ -190,8 +190,8 @@
                     parentButton = parentButton.parentNode;
                 };
 
-                if(i+1 != buttons.length){
-                    elementPositionButton=buttons[i+1]
+                if (i + 1 != buttons.length) {
+                    elementPositionButton = buttons[i + 1]
                 }
 
                 counter = selectedCount.getAttribute('data-delay')
@@ -203,7 +203,7 @@
                 circle.style.strokeDasharray = circumference
                 circle.style.strokeDashoffset = 0
 
-                var timer = window.setInterval(function () {
+                var timer = window.setInterval(function() {
                     counter--;
                     if (counter >= 0) {
                         number.innerHTML = counter;
@@ -227,17 +227,21 @@
                     }
                 }, 1000);
             }
+            if (pagination == buttons.length) {
+                var hiddenComponent = document.getElementById("div-hidden");
+                hiddenComponent.classList.remove("hidden-component");
+            }
         }
         pagination++;
     }
 
     window.addEventListener("scroll", (e) => {
-        if ( elementPositionButton.getBoundingClientRect().bottom   <= window.innerHeight) {
+        if (elementPositionButton.getBoundingClientRect().bottom <= window.innerHeight) {
             if (!scrolling) {
                 scrolling = true;
                 callback();
             }
-                scrolling = true;
+            scrolling = true;
         }
     });
 </script>
