@@ -52,7 +52,7 @@ class SiteAgentServiceProvider extends ServiceProvider
             $agent = new Agent();
 
             //define device mobile / desktop
-            config()->set('site.device', $agent->isMobile() ? 'mobile' : 'desktop');
+            config()->set('site.device', $agent->isMobile() ? 'mobile-v2' : 'desktop');
         }
 
 

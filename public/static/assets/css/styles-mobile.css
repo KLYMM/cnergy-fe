@@ -1673,3 +1673,27 @@ nav img {
 .hidden-component {
     display: none;
 }
+
+/* ?? VIEW BARU ?? */
+
+.container-section {
+    max-height: 100vh;
+    overflow: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.container-section .item-section {
+    border-bottom: 10px solid white;
+    color: black;
+    background-origin: #f107ba;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 6vw;
+    scroll-snap-align: start;
+}
+
+.container-section .item-section:last-child {
+    border: none;
+}

@@ -12,8 +12,8 @@ class Site {
     static function view( $path, $params=[] )
     {
          // dd(config('site'));
-        $path = config('site.path', 'defaultsite')
-          .'.'. config('site.device', 'mobile')
+        $path = config('site.path', 'defaultsite', )
+          .'.'. config('site.device', 'mobile-v2')
           .'.'. $path;
         return view($path, $params);
     }
@@ -166,6 +166,6 @@ class Site {
 
     static function isMobile()
     {
-        return config('site.device') == 'mobile' ? true : false;
+        return config('site.device') == 'mobile-v2' ? true : false;
     }
 }
