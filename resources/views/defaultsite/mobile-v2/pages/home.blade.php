@@ -26,9 +26,6 @@
                         <div class="item-section px-4 d-flex flex-column justify-content-between" data-columns="3">
                             @include('defaultsite.mobile-v2.components.thirdTheme', ['newsItem' => $item])
                         </div>
-                        <script>
-                            document.getElementById('logo-mobile').style.filter = "invert(1) grayscale(2) brightness(100)"
-                        </script>
                     @elseif($loop->iteration == 4 || $loop->iteration % 5 == 4)
                         <div class="item-section px-4 d-flex flex-column justify-content-between" data-columns="4">
                             @include('defaultsite.mobile-v2.components.fourthTheme', ['newsItem' => $item])
