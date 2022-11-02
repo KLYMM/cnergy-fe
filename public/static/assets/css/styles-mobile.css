@@ -1691,14 +1691,6 @@ nav img {
     padding-top: 60px;
 }
 
-/* .container-section:nth-child(odd) > .item-section {
-    justify-content: center;
-}
-
-.container-section:nth-child(even) > .item-section {
-    justify-content: flex-start;
-} */
-
 .section-tag {
     position: absolute;
     display: flex;
@@ -1710,6 +1702,8 @@ nav img {
 }
 
 .container-section .item-section article {
+    display: flex;
+    flex-direction: column;
     padding: 0 20px;
 }
 
@@ -1717,14 +1711,14 @@ nav img {
     font-size: 1.4vh;
     color: #8b02fd;
     display: inline-block;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
 }
 
 .container-section .item-section h1 {
     font-size: 2.6vh;
     font-family: var(--prompt-font);
     font-weight: 700;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .container-section .item-section h2 {
@@ -1734,6 +1728,90 @@ nav img {
     color: #8b02fd;
     padding: 4px;
     border-top: 1px solid #8b02fd;
+}
+
+[data-section="2"].item-section .content-title h1 {
+    font-size: 3.8vh;
+    font-family: var(--prompt-font);
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+[data-section="2"].item-section h2 {
+    font-size: 11px;
+    font-family: var(--prompt-font);
+    font-weight: 700;
+    color: #8b02fd;
+    padding: 4px;
+    border: 1px solid #8b02fd;
+    width: fit-content;
+    border-radius: 6px;
+}
+
+[data-section="2"].item-section .content-image {
+    display: none;
+}
+
+[data-section="3"].item-section {
+    background-color: #ffa952;
+}
+
+[data-section="3"].item-section .content-title span {
+    color: #310057;
+}
+
+[data-section="3"].item-section .content-image {
+    order: 1;
+}
+
+[data-section="3"].item-section .content-title {
+    order: 2;
+}
+
+[data-section="3"].item-section .content-desc {
+    order: 3;
+}
+
+[data-section="3"].item-section .content-desc p {
+    color: #310057;
+}
+
+[data-section="3"].item-section h2 {
+    order: 4;
+    border-top: 1px solid #310057;
+    color: #310057;
+}
+
+[data-section="4"].item-section .content-title {
+    order: 1;
+}
+
+[data-section="4"].item-section .content-desc {
+    order: 2;
+}
+
+[data-section="4"].item-section h2 {
+    order: 3;
+}
+
+[data-section="4"].item-section .content-image {
+    order: 4;
+}
+
+[data-section="5"].item-section .content-image {
+    order: 1;
+}
+
+[data-section="5"].item-section .content-title {
+    order: 2;
+}
+
+[data-section="5"].item-section h2 {
+    order: 4;
+}
+
+[data-section="5"].item-section .content-desc {
+    order: 3;
 }
 
 .container-section .item-section p {
