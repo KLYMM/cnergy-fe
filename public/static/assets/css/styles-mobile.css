@@ -1897,3 +1897,39 @@ nav img {
 .switchTheme-icon-dark {
     opacity: 0;
 }
+/* :root {
+    --bs-body-bg: #ffffff;
+} */
+.dark {
+    --bs-body-bg: #000000;
+}
+.dark [data-section="3"].item-section {
+    background-color: black;
+}
+.dark .item-section .content-title {
+    color: white;
+}
+.dark .container-section .item-section p {
+    color: white;
+}
+.dark .section-tag {
+    background-color: black;
+}
+.dark svg {
+    background-color: white;
+}
+.dark .container-section .item-section h2 {
+    color: white;
+    border-top: 1px solid white;
+}
+.dark .container-section .item-section article span {
+    color: white;
+}
+.dark .button-section .read-more {
+    color: white;
+    background-color: #2e2d2e;
+}
+.dark .button-section .like-button,
+.dark .share-button {
+    color: white;
+}

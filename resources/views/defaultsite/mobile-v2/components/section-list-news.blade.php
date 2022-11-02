@@ -48,7 +48,7 @@
                 <h2 class="pt-2 pb-0 my-1">#FerdySambo</h2>
                 <div class="content-title my-1">
                     <h1>Ibunda Brigadir J pada Ferdy Sambo: Hancur Hatiku Pak, Segeralah Sadar dan Bertobat</h1>
-                    <span>5 menit yang lalu</span>
+                    <span class="content-date">5 menit yang lalu</span>
                 </div>
                 <div class="content-image my-1">
                     <figure>
