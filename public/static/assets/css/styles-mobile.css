@@ -1683,17 +1683,113 @@ nav img {
 }
 
 .container-section .item-section {
-    border-bottom: 10px solid white;
-    color: black;
-    background-origin: #f107ba;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    font-size: 6vw;
     scroll-snap-align: start;
+    overflow-x: hidden;
 }
 
 .container-section .item-section:last-child {
     border: none;
+}
+
+/* New Styling for Mobile version 2 */
+.new-header {
+    position: fixed;
+    width: 100%;
+}
+
+.new-header div {
+    border-bottom: 1px solid #8B02FD;
+}
+
+.section-theme {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: var(--lato-font);
+    margin-top: 80px;
+}
+
+.section-theme h4 {
+    font-size: 10px;
+    font-weight: 700;
+    color: #8B02FD;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.section-theme h4 span::before {
+    content: '#';
+}
+
+.section-theme h1 {
+    font-size: 15px;
+    color: #000;
+    font-weight: bold;
+}
+
+.section-theme span {
+    display: inline-block;
+    font-size: 8px;
+    color: #8B02FD;
+}
+
+.section-theme p {
+    font-size: 11px;
+    color: #514F4F;
+}
+
+.section-theme figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu-selengkapnya {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 24px 0;
+}
+
+.menu-selengkapnya a {
+    background-color: #F7ECFF;
+    font-size: 12px;
+    color: #8B02FD;
+    width: 100%;
+    height: 6.4vh;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    gap: 10px;
+}
+
+.menu-selengkapnya button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #8B02FD;
+}
+
+[data-columns="3"] {
+    background-color: #FFA952;
+}
+
+[data-columns="3"] span,
+[data-columns="3"] h4 {
+    color: #310057 !important;
+}
+
+[data-columns="3"] a {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+}
+
+[data-columns="3"] button {
+    color: #000;
 }
