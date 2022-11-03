@@ -1954,6 +1954,26 @@ nav img {
 .dark .dark-img-white {
     filter: invert(1) grayscale(2) brightness(100);
 }
+.dark [data-section="1"].item-section .content-tag {
+    border-top: 1px solid white;
+}
+.dark [data-section="2"].item-section .content-tag h2 {
+    border: 1px solid white;
+    width: fit-content;
+    border-radius: 6px;
+}
+.dark [data-section="4"].item-section .content-tag {
+    order: 3;
+    border-top: 1px solid white;
+}
+.dark [data-section="3"].item-section .content-tag {
+    order: 4;
+    border-top: 1px solid white;
+}
+.dark [data-section="5"].item-section .content-tag {
+    order: 4;
+    border-top: 1px solid white;
+}
 
 .item_img {
     background-image: url("../../../static/assets/images/mask_title.png");

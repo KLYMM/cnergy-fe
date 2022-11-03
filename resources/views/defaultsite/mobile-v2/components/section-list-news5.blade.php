@@ -14,7 +14,7 @@
                 <img src="{{ $newsItem['news_image']['real'] }}" alt="images" width="375" height="225">
             </figure>
         </div>
-        <div class="content-desc my-1">
+        <div class="content-desc my-1 pb-2">
             <p>{{ $newsItem['news_synopsis'] }}</p>
         </div>
     </article>
