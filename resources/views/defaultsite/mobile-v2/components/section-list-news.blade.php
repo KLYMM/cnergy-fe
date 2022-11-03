@@ -42,7 +42,7 @@
             </svg>
         </label>
     </div>
-    <div class="container-section">
+    {{-- <div class="container-section"> --}}
         <div data-section="1" class="item-section">
             <article>
                 <h2 class="pt-2 pb-0 my-1">#FerdySambo</h2>
@@ -69,10 +69,10 @@
                 <a class="share-button" href="#"><i class="fa-sharp fa-solid fa-share-nodes fs-2"></i></a>
             </div>
         </div>
-        @include('defaultsite.mobile-v2.components.section-list-news2')
+        {{-- @include('defaultsite.mobile-v2.components.section-list-news2')
         @include('defaultsite.mobile-v2.components.section-list-news3')
         @include('defaultsite.mobile-v2.components.section-list-news4')
-        @include('defaultsite.mobile-v2.components.section-list-news5')
+        @include('defaultsite.mobile-v2.components.section-list-news5') --}}
 
         {{-- <div data-section="tai" class="item-section">
             <article>
@@ -112,6 +112,6 @@
                 <a class="share-button" href="#"><i class="fa-sharp fa-solid fa-share-nodes"></i></a>
             </div>
         </div> --}}
-    </div>
+    {{-- </div> --}}
 
 </section>
