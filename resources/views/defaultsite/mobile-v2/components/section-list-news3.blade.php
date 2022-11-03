@@ -1,25 +1,26 @@
 <div data-section="3" class="item-section">
     <article>
-        <h2 class="py-1 mt-2">#FerdySambo</h2>
+        <div class="content-tag d-flex flex-wrap  align-items-center">
+            @foreach ($newsItem['news_tag'] as $items)
+                <h2 class="pt-1">{{ $items['tag_name'] }}</h2>
+            @endforeach
+        </div>
         <div class="content-title mb-1">
-            <h1>Ibunda Brigadir J pada Ferdy Sambo: Hancur Hatiku Pak, Segeralah Sadar dan Bertobat</h1>
-            <span>5 menit yang lalu</span>
+            <h1>{{ $newsItem['news_title'] }}</h1>
+            <span>{{ $newsItem['news_date_publish'] }}</span>
         </div>
         <div class="content-image">
             <figure>
-                <img src="https://cdns.klimg.com/merdeka.com/i/w/news/2022/10/26/1485887/670x335/sekuriti-komplek-ferdy-sambo-ceritakan-detik-detik-dvr-cctv-diganti-polisi.jpg"
-                    alt="images" width="375" height="225">
+                <img src="{{ $newsItem['news_image']['real'] }}" alt="images" width="375" height="225">
             </figure>
         </div>
         <div class="content-desc my-1">
-            <p>Amsal Sampetondok, menghadiri sidang lanjutan keponakannya yakni Ferdy Sambo di Pengadilan Negeri
-                Jakarta Selatan, Rabu (26/10). Sidang beragendakan putusan sela dibacakan majelis hakim atas
-                eksepsi
-                diajukan tim kuasa hukum Ferdy Sambo.</p>
+            <p>{{ $newsItem['news_synopsis'] }}</p>
         </div>
     </article>
     <div class="button-section p-3">
-        <a class="read-more" href="#">Selengkapnya<i class="fa-solid fa-arrow-right ms-1"></i></a>
+        <a class="read-more" href="{{ Src::detail($newsItem) }}">Selengkapnya<i
+                class="fa-solid fa-arrow-right ms-1"></i></a>
         <a class="like-button" href="#"><i class="fa-regular fa-heart fs-2"></i></a>
         <a class="share-button" href="#"><i class="fa-sharp fa-solid fa-share-nodes fs-2"></i></a>
     </div>

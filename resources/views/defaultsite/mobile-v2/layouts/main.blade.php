@@ -42,6 +42,13 @@
     {{-- font awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script> -->
+
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script> --}}
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+
     <title>@yield('title')</title>
 </head>
 
@@ -66,6 +73,44 @@
     <a id="btn-back-toTop" class="hover"></a>
 
 </body>
+
+<script>
+    let options = {
+        rootMargin: "0px",
+        threshold: 0.75,
+    };
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const section = entry.target.dataset.section;
+            const theme = entry.target.dataset.theme;
+
+            if (entry.intersectionRatio > 0.75) {
+                document.body.setAttribute("data-theme", theme);
+                entry.target.classList.add("is-visible");
+
+                currentIndex = elementIndices[section];
+                setIndicator();
+                setScrollDirection();
+
+                if (document.getElementById(section)) {
+                    const iframe = document.getElementById(section).contentWindow;
+                    iframe.postMessage("vidio.playback.play", "*");
+                    iframe.postMessage("enamplus.playback.play", "*");
+                }
+            } else {
+                entry.target.classList.remove("is-visible");
+
+                if (document.getElementById(section)) {
+                    const iframe = document.getElementById(section).contentWindow;
+                    iframe.postMessage("vidio.playback.pause", "*");
+                    iframe.postMessage("enamplus.playback.pause", "*");
+                }
+            }
+        });
+    }, options);
+</script>
+
 
 <script>
     const mainNav = document.querySelector('.nav-main');
@@ -172,16 +217,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
 
 <script>
-     const darkmode = document.querySelector('.switchTheme-control');
-        const hour = (new Date).getHours();
-        darkmode.addEventListener("change", (e) => {
-            document.documentElement.classList.toggle('dark')
-        });
+    const darkmode = document.querySelector('.switchTheme-control');
+    const hour = (new Date).getHours();
+    darkmode.addEventListener("change", (e) => {
+        document.documentElement.classList.toggle('dark')
+    });
 
-        if (hour >= 18) {
-            darkmode.click();
-        }
-
+    if (hour >= 18) {
+        darkmode.click();
+    }
 </script>
 
 <script>
