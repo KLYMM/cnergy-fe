@@ -1972,6 +1972,6 @@ nav img {
     border-radius: 40px 40px 40px 40px;
 }
 
-[data-section="3"] .section-tag .logo-img .dark-img-white {
+[data-theme="yellow"] .header .dark-img-whitee {
     filter: invert(1) grayscale(2) brightness(100);
 }

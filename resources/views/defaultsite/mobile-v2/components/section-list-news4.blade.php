@@ -1,4 +1,4 @@
-<div data-section="4" class="item-section">
+<div data-section="4" class="item-section" >
     <article>
         <h2 class="py-2 my-1">#FerdySambo</h2>
         <div class="content-title my-1">
