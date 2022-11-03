@@ -1878,8 +1878,6 @@ nav img {
     appearance: none;
     position: absolute;
     opacity: 0;
-    width: 100%;
-    height: 100%;
     z-index: 1;
     cursor: pointer;
 }
@@ -1943,11 +1941,6 @@ nav img {
     filter: invert(1) grayscale(2) brightness(100);
 }
 
-.item_img {
-    background-image: url("../../../static/assets/images/mask_title.png");
-    height: 50px;
-}
-
 .item_p {
     color: white;
     font-size: 22px;
@@ -1977,4 +1970,8 @@ nav img {
     background-color: white;
     border: 2px solid #551575;
     border-radius: 40px 40px 40px 40px;
+}
+
+[data-section="3"] .section-tag .logo-img .dark-img-white {
+    filter: invert(1) grayscale(2) brightness(100);
 }
