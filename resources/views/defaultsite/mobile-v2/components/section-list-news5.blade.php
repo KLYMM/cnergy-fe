@@ -2,7 +2,7 @@
     class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
     data-theme="default">
     <div class="section-body flex-1 container max-w-full">
-        <article class="article flex flex-col h-full px-6">
+        <article class="article flex flex-col h-full px-6 mt-5">
             <div class="article-main relative flex-1">
                 <div class="article-asset mb-4">
                     <figure class="article-asset w-full vh-h-landscape aspect-375 overflow-hidden">
