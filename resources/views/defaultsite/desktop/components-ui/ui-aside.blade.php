@@ -18,4 +18,6 @@
     @include('defaultsite.desktop.components-ui.ui-sidebar-news', ['reference' => $reference])
 @endif
 
-@include('defaultsite.desktop.components-ui.ui-populer-news')
+@if (config('site.use_footer', 'yes') == 'yes')
+    @include('defaultsite.desktop.components-ui.ui-populer-news')
+@endif

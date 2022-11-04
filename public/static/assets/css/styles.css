@@ -2533,3 +2533,7 @@ p as {
     padding: 10px 0 0;
     font-size: 16px;
 }
+
+.hidden-component {
+    display: none;
+}

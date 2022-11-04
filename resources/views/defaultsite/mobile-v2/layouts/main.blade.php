@@ -2,19 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>{{ config('site.attributes.meta.title') }}</title>
-    <meta name="description" content="{{ config('meta.description', config('site.attributes.title')) }}" />
-    <meta name="keywords"
-        content="{{ config('meta.keywords', Site::keywords(config('meta.description', config('site.attributes.title')))) }}" />
     <meta http-equiv="cache-control" content="public, no-transform" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=1056, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="{{ config('site.attributes.meta.rel_to_amp') ?? 'canonical' }}"
         href="{{ config('site.attributes.meta.ampUrl') ?? request()->url() }}" />
-    <link rel="preconnect" href="{{ env('ASSET_URL', request()->root()) }}" crossorigin="anonymous" />
     <link rel="icon" type="image/png" href="{{ config('site.attributes.favicon') }}">
+
     <meta name="title" content="{{ config('site.attributes.meta.title') ?? null }}">
     <meta name="description" content="{{ config('site.attributes.meta.site_description') ?? null }}">
     <meta name="keywords" content="{{ config('site.attributes.meta.article_keyword') ?? null }}">
@@ -30,82 +28,135 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="{{ config('site.attributes.twitter_username') ?? null }}">
     <meta name="twitter:creator" content="{{ config('site.attributes.twitter_username') ?? null }}">
+
     <meta name="adx:sections" content="{{ config('site.attributes.meta.type') ?? null }}">
     <meta name="adx:keywords" content="{{ config('site.attributes.meta.article_keyword') ?? null }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/styles.css') }}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600&display=swap);" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" async></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script> -->
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-mobile.css') }}">
+    {{-- font awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script> -->
+
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script> --}}
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+
     <title>@yield('title')</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
 </head>
 
 <body>
-    <div class="container w-kly">
+
+    <div class=" max-w-full">
         {{-- Header --}}
-        @include('defaultsite.desktop.components-ui.ui-header')
+        {{-- @include('defaultsite.mobile.components-ui.navbar') --}}
 
         {{-- Breaking news --}}
-        {{-- @section('breaking')
-            @include('defaultsite.desktop.components-ui.ui-breaking-news')
-        @show --}}
+        {{-- @include('defaultsite.mobile.components-ui.breaking-news') --}}
 
-        {{-- Content --}}
         @yield('content')
 
         {{-- Footer --}}
-        @if (config('site.use_footer', 'yes') == 'yes')
-            @include('defaultsite.desktop.components-ui.ui-footer')
-        @endif
+        {{-- @if (config('site.use_footer', 'yes') == 'yes')
+            @include('defaultsite.mobile.components-ui.footer')
+        @endif --}}
     </div>
+    {{-- @yield('m-photo-detail') --}}
 
-    <a id="btn-back-toTop"></a>
+    <a id="btn-back-toTop" class="hover"></a>
 
 </body>
+
 <script>
-    const sliderContainers = [...document.querySelectorAll('.slider-container')];
-    const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
-    const preBtn = [...document.querySelectorAll('.pre-btn')];
+    let options = {
+        rootMargin: "0px",
+        threshold: 0.75,
+    };
 
-    sliderContainers.forEach((item, i) => {
-        let containerDimensions = item.getBoundingClientRect();
-        let containerWidth = containerDimensions.width;
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const section = entry.target.dataset.section;
+            const theme = entry.target.dataset.theme;
 
-        nxtBtn[i].addEventListener('click', () => {
-            item.scrollLeft += containerWidth;
-        })
+            if (entry.intersectionRatio > 0.75) {
+                document.body.setAttribute("data-theme", theme);
+                entry.target.classList.add("is-visible");
 
-        preBtn[i].addEventListener('click', () => {
-            item.scrollLeft -= containerWidth;
-        })
-    })
+                currentIndex = elementIndices[section];
+                setIndicator();
+                setScrollDirection();
+
+                if (document.getElementById(section)) {
+                    const iframe = document.getElementById(section).contentWindow;
+                    iframe.postMessage("vidio.playback.play", "*");
+                    iframe.postMessage("enamplus.playback.play", "*");
+                }
+            } else {
+                entry.target.classList.remove("is-visible");
+
+                if (document.getElementById(section)) {
+                    const iframe = document.getElementById(section).contentWindow;
+                    iframe.postMessage("vidio.playback.pause", "*");
+                    iframe.postMessage("enamplus.playback.pause", "*");
+                }
+            }
+        });
+    }, options);
+</script>
+
+
+<script>
+    const mainNav = document.querySelector('.nav-main');
+    const closeNav = document.querySelector('.nav-close');
+    const openNav = document.querySelector('.nav-open');
+
+    openNav.addEventListener('click', show);
+    closeNav.addEventListener('click', close);
+
+    function show() {
+        mainNav.style.transition = 'transform 0.5s ease';
+        mainNav.style.transform = 'translateX(0)';
+    }
+
+    function close() {
+        mainNav.style.transform = 'translateX(-100%)';
+    }
+
+    const openSearch = document.querySelector('.search-container');
+    const closeSearch = document.querySelector('.search-background');
+    const iconSearch = document.querySelector('.search-icon');
+
+    iconSearch.addEventListener('click', openSearchHeader);
+    closeSearch.addEventListener('click', closeSearchHeader);
+
+    function openSearchHeader() {
+        cseSearch();
+
+        openSearch.style['z-index'] = 10;
+        openSearch.style['opacity'] = 1;
+        openSearch.style['-webkit-transition'] = 'opacity 1s';
+        openSearch.style['-moz-transition'] = 'opacity 1s';
+        openSearch.style['transition'] = 'opacity 1s';
+
+    }
+
+    function closeSearchHeader() {
+        openSearch.style['z-index'] = -1;
+        openSearch.style['opacity'] = 0;
+        var s = document.getElementsByTagName('script')[0];
+        s.remove();
+    }
 </script>
 
 <script>
-    document.querySelectorAll('img').forEach((img) => {
-        img.onerror = function(e) {
-            let default_img = "{{ Src::mix('img/320x180_no_image.jpg') }}";
-
-            e.target.onerror = null;
-            e.currentTarget.parentNode.children[0].setAttribute('srcset', default_img)
-            e.currentTarget.parentNode.children[0].setAttribute('data-srcset', default_img)
-
-            e.currentTarget.parentNode.children[1].setAttribute('srcset', default_img)
-            e.currentTarget.parentNode.children[1].setAttribute('data-srcset', default_img)
-
-            e.currentTarget.parentNode.children[2].setAttribute('src', default_img)
-            e.currentTarget.parentNode.children[2].setAttribute('data-src', default_img)
-        }
-    });
-</script>
-
-
-<script>
-    (function() {
+    function cseSearch() {
         var cx = "{{ config('site.attributes.reldomain.cse_id') ?? null }}";
         var gcse = document.createElement('script');
         gcse.type = 'text/javascript';
@@ -113,10 +164,10 @@
         gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
-    })();
+    }
 
     window.__gcse = {
-        callback: function() {
+        callback: function cseSearch() {
             document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
                 "Search news, keywords, and more...");
 
@@ -125,25 +176,56 @@
             }
         }
     };
+
+    if (window.location.pathname == "/search") {
+        cseSearch()
+    }
 </script>
 
 <script>
-    var btn = $('#btn-back-toTop');
+    var btn = document.querySelector('#btn-back-toTop');
 
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
+    document.addEventListener('scroll', (e) => {
+        if (document.documentElement.scrollTop > 300) {
+            btn.classList.add('show');
         } else {
-            btn.removeClass('show');
+            btn.classList.remove('show');
         }
+    })
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    })
+</script>
+
+<script>
+    function copyToClipboard() {
+        var dummy = document.createElement('input'),
+            text = window.location.href;
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        var button = document.querySelector(".icons-share-link")
+        button.innerHTML = "Copied !"
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+
+<script>
+    const darkmode = document.querySelector('.switchTheme-control');
+    const hour = (new Date).getHours();
+    darkmode.addEventListener("change", (e) => {
+        document.documentElement.classList.toggle('dark')
     });
 
-    btn.on('click', function(e) {
-        e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, '300');
-    });
+    if (hour >= 18) {
+        darkmode.click();
+    }
 </script>
 
 <script>
@@ -220,9 +302,5 @@
         }
     });
 </script>
-
-
-@stack('script')
-
 
 </html>
