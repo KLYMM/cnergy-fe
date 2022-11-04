@@ -202,6 +202,10 @@
                     }
                 }, 1000);
             }
+            if (pagination == buttons.length) {
+                var hiddenComponent = document.getElementById("div-hidden");
+                hiddenComponent.classList.remove("hidden-component");
+            }
         }
         pagination++;
     }
