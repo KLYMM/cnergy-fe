@@ -1,9 +1,12 @@
 :root {
-    --color-primary: #8b02fd;
+    --color-primary: #ff3903;
     --color-primary-60: #310057;
-    --color-primary-40: #f7ecff;
+    --color-primary-40: #fff0ec;
+    --color-primary-41: #751900;
+    --color-primary-42: #333333;
     --color-yellow: #ffa952;
     --color-yellow-40: #ffc485;
+    --color-pink: #fcad97;
     --color-black: #000;
     --color-black-60: #171717;
     --color-black-40: #2e2d2e;
@@ -13,6 +16,7 @@
     --font-inter: "Inter", sans-serif;
     --font-nunito: "Nunito Sans", sans-serif;
     --font-redhat: "Red Hat Display", sans-serif;
+    --font-outfit: "Outfit", sans-serif;
 }
 @-ms-viewport {
     width: device-width;
@@ -85,6 +89,7 @@ article {
     opacity: 1;
     transform: scale(1, 1) translate3d(0, 0, 0);
 }
+
 [data-theme="yellow"] .header .dark\:img-white {
     filter: invert(1) grayscale(2) brightness(100);
 }
@@ -109,7 +114,8 @@ article {
     fill: var(--color-black);
 }
 [data-theme="yellow"] .indicator .indicator-bullet {
-    border-color: var(--color-black);
+    border-color: var(--color-primary-40);
+    background-color: var(--color-primary-40);
 }
 [data-theme="yellow"] .indicator .indicator-bullet-active {
     background-color: var(--color-black);
@@ -131,6 +137,9 @@ article {
 }
 .dark .dark\:bg-primary {
     background-color: var(--color-primary);
+}
+.dark .dark\:bg-primary-41 {
+    background-color: var(--color-primary-41);
 }
 .dark .dark\:bg-primary-60 {
     background-color: var(--color-primary-60);
@@ -164,6 +173,9 @@ article {
 }
 .dark .dark\:border-primary {
     border-color: var(--color-primary);
+}
+.dark .dark\:border-primary-41 {
+    border-color: var(--color-primary-41);
 }
 .dark .dark\:border-primary-60 {
     border-color: var(--color-primary-40);
@@ -234,7 +246,8 @@ article {
     fill: var(--color-black);
 }
 .dark .dark\:indicator-white .indicator-bullet {
-    border-color: var(--color-white);
+    border-color: var(--color-primary-42);
+    background-color: var(--color-primary-42);
 }
 .dark .dark\:indicator-white .indicator-bullet-active {
     background-color: var(--color-white);
@@ -243,7 +256,7 @@ article {
     border-color: var(--color-black);
 }
 .dark .dark\:indicator-black .indicator-bullet-active {
-    background-color: var(--color-black);
+    background-color: var(--color-white);
 }
 .dark .nav-open {
     filter: invert(1) grayscale(2) brightness(100);
@@ -255,6 +268,10 @@ article {
 .dark .nav-menus {
     color: white;
 }
+.dark .border-tag {
+    border-top: 2px solid white;
+}
+
 .vh-h-landscape {
     height: 28vh;
 }
@@ -294,6 +311,9 @@ article {
 .font-nunito {
     font-family: var(--font-nunito);
 }
+.font-outfit {
+    font-family: var(--font-outfit);
+}
 .bg-black {
     background-color: var(--color-black);
 }
@@ -318,8 +338,14 @@ article {
 .bg-primary-40 {
     background-color: var(--color-primary-40);
 }
+.bg-primary-41 {
+    background-color: var(--color-primary);
+}
 .bg-yellow {
     background-color: var(--color-yellow);
+}
+.bg-pink {
+    background-color: var(--color-pink);
 }
 .bg-yellow-40 {
     background-color: var(--color-yellow-40);
@@ -347,6 +373,9 @@ article {
 }
 .border-primary-60 {
     border-color: var(--color-primary-60);
+}
+.border-primary-41 {
+    border-color: var(--color-primary-41);
 }
 .border-primary-40 {
     border-color: var(--color-primary-40);
@@ -384,6 +413,15 @@ article {
 .text-primary-40 {
     color: var(--color-primary-40);
 }
+.color-primary {
+    color: var(--color-primary);
+}
+.color-primary-41 {
+    color: var(--color-primary-41);
+}
+.color-primary-42 {
+    color: var(--color-primary-42);
+}
 .text-yellow {
     color: var(--color-yellow);
 }
@@ -391,7 +429,7 @@ article {
     color: var(--color-yellow-40);
 }
 .text-gray {
-    color: var(--color-gray);
+    color: var(--color-primary-42);
 }
 .scroll-smooth {
     scroll-behavior: smooth;
@@ -465,10 +503,26 @@ article {
     z-index: 1;
     cursor: pointer;
 }
+.switchTheme-control-2 {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+}
 .switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-light {
     opacity: 0;
 }
+.switchTheme-control-2:checked ~ .switchTheme-icon .switchTheme-icon-light {
+    opacity: 0;
+}
 .switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-dark {
+    opacity: 1;
+}
+.switchTheme-control-2:checked ~ .switchTheme-icon .switchTheme-icon-dark {
     opacity: 1;
 }
 .switchTheme-icon {
@@ -497,20 +551,20 @@ article {
 .indicator-bullet {
     width: 0.5rem;
     height: 0.5rem;
-    border: 1px solid var(--color-yellow);
+    border: 1px solid var(--color-pink);
     border-radius: 100%;
     transition: transform 800ms ease;
     margin-bottom: 0.5rem;
 }
 .indicator-bullet-active {
-    background-color: var(--color-yellow);
+    background-color: var(--color-primary);
     transform: scale(1);
 }
 .indicator-white .indicator-bullet {
-    border-color: var(--color-white-20);
+    border-color: var(--color-primary-40);
 }
 .indicator-white .indicator-bullet-active {
-    background-color: var(--color-white-20);
+    background-color: var(--color-primary-40);
 }
 .indicator-black .indicator-bullet {
     border-color: var(--color-black);
@@ -584,6 +638,36 @@ article {
     color: #000000;
 }
 
-.serch-img {
-    /* float: right; */
+.tag_main {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 130%;
+    /* border-top: 2px solid #ff3903; */
+    /* identical to box height, or 21px */
+}
+.article-date {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    /* or 18px */
+}
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap");
+.article-footer-left {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    /* identical to box height, or 16px */
+
+    text-transform: uppercase;
+
+    color: #ff3903;
+}
+.border-tag {
+    border-top: 2px solid #ff3903;
 }

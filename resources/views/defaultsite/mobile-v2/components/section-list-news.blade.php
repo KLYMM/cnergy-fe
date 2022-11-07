@@ -1,20 +1,20 @@
-<section data-section="section1"
-    class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
-    data-theme="default">
+
     <div class="section-body flex-1 container max-w-full">
         <article class="article flex flex-col h-full px-6 mt-6">
             <div class="article-main relative flex-1">
-                <div class="article-background mb-4">
+                <div class="article-background border-tag mb-4">
                     @if (count($newsItem['news_tag']) > 0 ?? null)
                         <span
-                            class="article-tag block font-nunito font-bold text-primary border-t border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white-20 dark:border-white-20"
+                            class="article-tag block capitalize font-inter font-bold text-primary  border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white-20 dark:border-white-20"
                             style="--delay: 0ms">{{ $newsItem['news_tag'][0]['tag_name'] }}
                         </span>
                     @endif
-                    <h1 class="article-title vh-text-lg font-redhat font-bold mb-2 animate animate--fadeInRight"
+                        
+                    <h1 class="article-title mt-1 vh-text-lg font-outfit font-bold mb-2 animate animate--fadeInRight mt-6"
                         style="--delay: 100ms">
                         {{ $newsItem['news_title'] }}
                     </h1>
+                    
                     <span
                         class="article-date vh-text-xs text-primary dark:text-white-20 inline-block animate animate--fadeInLeft"
                         style="--delay: 200ms">{{ $newsItem['news_date_publish'] }}
@@ -22,25 +22,25 @@
                 </div>
                 <div class="article-asset mb-4">
                     <figure class="article-asset w-full vh-h-landscape aspect-375 overflow-hidden">
-                        <img class="object-cover w-full h-full animate animate--fadeIn rounded-xl"
+                        <img class="object-cover w-full h-full animate animate--fadeIn "
                             style="--delay: 300ms" src="{{ $newsItem['news_image']['real'] }}"
                             alt="{{ $newsItem['news_title'] }}" width="375" height="225" />
                     </figure>
                 </div>
-                <div class="article-paragraph line-clamp-5 text-gray dark:text-white-20 animate animate--fadeInUp"
+                <div class="article-paragraph line-clamp-5 text-gray font-inter dark:text-white-20 animate animate--fadeInUp"
                     style="--delay: 400ms">
                     <p>
                         {{ $newsItem['news_synopsis'] }}
                     </p>
                 </div>
             </div>
-            <div class="article-footer flex justify-between items-center animate animate--fadeInUp"
+            <div class="article-footer flex justify-between items-center animate animate--fadeInUp mb-6 "
                 style="--delay: 500ms">
-                <div class="article-footer-left flex-1">
-                    <a class="btn btn--outline flex items-center justify-center vh-h-btn rounded-full font-nunito font-medium bg-primary-40 text-primary dark:bg-black-40 dark:text-white-20"
+                <div class="article-footer-left flex-1 ">
+                    <a class="btn btn--outline rounded-lg flex items-center justify-center vh-h-btn  font-outfit font-medium bg-primary-40  dark:bg-primary-41 dark:text-white"
                         href="{{ Src::detail($newsItem) }}">
-                        <span>Selengkapnya</span>
-                        <svg class="dark:svg-stroke-white ml-2" width="24" height="24" viewBox="0 0 24 24"
+                        <span>READ MORE</span>
+                        <svg class="dark:svg-stroke-white ml-3" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 12H22" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
@@ -49,7 +49,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="article-footer-right">
+                {{-- <div class="article-footer-right">
                     <div class="article-footer-group flex items-center">
                         <div class="article-footer-group-item ml-4">
                             <a class="article-footer-group-item-btn flex flex-col items-center vh-text-xs"
@@ -75,8 +75,8 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </article>
     </div>
-</section>
+
