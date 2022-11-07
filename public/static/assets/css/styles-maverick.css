@@ -245,6 +245,16 @@ article {
 .dark .dark\:indicator-black .indicator-bullet-active {
     background-color: var(--color-black);
 }
+.dark .nav-open {
+    filter: invert(1) grayscale(2) brightness(100);
+}
+
+.dark .nav-main {
+    background-color: var(--color-black);
+}
+.dark .nav-menus {
+    color: white;
+}
 .vh-h-landscape {
     height: 28vh;
 }
@@ -523,4 +533,57 @@ article {
     height: 100%;
     outline: none;
     border: 0;
+}
+
+/* navbar */
+.nav-main {
+    height: 100vh;
+    position: fixed;
+    z-index: 10;
+    background: #fff0ec;
+    overflow-y: auto;
+    bottom: 0;
+    transform: translateX(-100%);
+    width: 100%;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-main.active {
+    left: 0;
+}
+
+.nav-main .nav-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 38px 20px;
+    /* border-bottom: 0.2px solid #dcdcdc; */
+}
+.nav-menus {
+    margin: 0 43px;
+}
+
+.nav-menus li {
+    list-style: none;
+    font-size: 16px;
+}
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap");
+.nav-menus {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 50px;
+    /* or 227% */
+
+    color: #000000;
+}
+
+.serch-img {
+    /* float: right; */
 }

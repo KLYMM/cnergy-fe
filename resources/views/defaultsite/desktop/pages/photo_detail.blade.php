@@ -165,36 +165,7 @@
                         </div>
                     @endif
                 </div>
-                {{-- RELATED TAG --}}
-                @include('defaultsite.desktop.components-ui.ui-related-tag')
 
-                {{-- credit --}}
-                @include('defaultsite.desktop.components-ui.ui-credit')
-
-                {{-- SHARE NEWS --}}
-                @include('defaultsite.desktop.components-ui.ui-share-news')
-
-                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
-                        class="fa-solid fa-triangle-exclamation" style="color: #ca0000"></i> Report Article </button>
-
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                {{-- FORM REPORT --}}
-                                @include('defaultsite.desktop.components-ui.ui-form-report')
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                @include('defaultsite.desktop.components-ui.ui-related-news', [
-                    'latest' => $row['latest'],
-                    'title' => 'Latest Photo',
-                ])
             </div>
 
             <div class="col-4">
@@ -202,6 +173,49 @@
                     'reference' => $row ?? null,
                 ])
             </div>
+        </div>
+
+        <div class="row gx-5">
+            <div id="div-hidden" class="hidden-component">
+                <div class="col-8">
+                    {{-- RELATED TAG --}}
+                    @include('defaultsite.desktop.components-ui.ui-related-tag')
+
+                    {{-- credit --}}
+                    @include('defaultsite.desktop.components-ui.ui-credit')
+
+                    {{-- SHARE NEWS --}}
+                    @include('defaultsite.desktop.components-ui.ui-share-news')
+
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
+                            class="fa-solid fa-triangle-exclamation" style="color: #ca0000"></i> Report Article </button>
+
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    {{-- FORM REPORT --}}
+                                    @include('defaultsite.desktop.components-ui.ui-form-report')
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    @include('defaultsite.desktop.components-ui.ui-related-news', [
+                        'latest' => $row['latest'],
+                        'title' => 'Latest Photo',
+                    ])
+                </div>
+                <div class="col-16">
+                    @include('defaultsite.desktop.components-ui.ui-footer')
+
+                </div>
+
+            </div>
+
         </div>
     </div>
 
