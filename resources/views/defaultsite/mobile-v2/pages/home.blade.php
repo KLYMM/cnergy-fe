@@ -68,31 +68,51 @@
             data-scroller>
             @if (count($headline) > 0 ?? null)
                 @foreach ($headline as $item)
-                    @if ($loop->iteration == 1 || $loop->iteration % 5 == 1)
+                    @if ($loop->iteration % 5 == 1)
                         <!-- theme.1 -->
-                        @include('defaultsite.mobile-v2.components.section-list-news', [
-                            'newsItem' => $item,
-                        ])
-                    @elseif($loop->iteration == 2 || $loop->iteration % 5 == 2)
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
+                            data-theme="default">
+                            @include('defaultsite.mobile-v2.components.section-list-news', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
+                    @elseif($loop->iteration % 5 == 2)
                         <!-- theme.2 -->
-                        @include('defaultsite.mobile-v2.components.section-list-news2', [
-                            'newsItem' => $item,
-                        ])
-                    @elseif($loop->iteration == 3 || $loop->iteration % 5 == 3)
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
+                            data-theme="default">
+                            @include('defaultsite.mobile-v2.components.section-list-news2', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
+                    @elseif($loop->iteration % 5 == 3)
                         <!-- theme3 -->
-                        @include('defaultsite.mobile-v2.components.section-list-news3', [
-                            'newsItem' => $item,
-                        ])
-                    @elseif($loop->iteration == 4 || $loop->iteration % 5 == 4)
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-yellow dark:bg-black dark:text-white-20"
+                            data-theme="yellow">
+                            @include('defaultsite.mobile-v2.components.section-list-news3', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
+                    @elseif($loop->iteration % 5 == 4)
                         <!-- theme.4 -->
-                        @include('defaultsite.mobile-v2.components.section-list-news4', [
-                            'newsItem' => $item,
-                        ])
-                    @elseif($loop->iteration == 5 || $loop->iteration % 5 == 0)
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
+                            data-theme="default">
+                            @include('defaultsite.mobile-v2.components.section-list-news4', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
+                    @elseif($loop->iteration % 5 == 0)
                         <!--theme.5-->
-                        @include('defaultsite.mobile-v2.components.section-list-news5', [
-                            'newsItem' => $item,
-                        ])
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
+                            data-theme="default">
+                            @include('defaultsite.mobile-v2.components.section-list-news5', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
                     @endif
                 @endforeach
             @endif
@@ -111,14 +131,15 @@
         const header = document.querySelector("[data-header]");
         const sections = document.querySelectorAll("[data-section]");
         const indicators = document.querySelector("[data-indicator]");
-        const scrollRoot = document.querySelector("[data-scroller]");
+        const scrollRoot = document.querySelector('[data-scroller]')
 
         let currentIndex = 0;
         let prevYPosition = 0;
 
         let options = {
+            root: scrollRoot,
             rootMargin: "0px",
-            threshold: 0.75,
+            threshold: 0.5,
         };
 
         const setScrollDirection = () => {
@@ -126,28 +147,28 @@
                 if (currentIndex % 5 === 0) {
                     indicators.scrollBy({
                         top: indicators.clientHeight,
-                        behavior: "smooth",
+                        behavior: 'smooth'
                     });
                 }
             } else {
                 if ((currentIndex + 1) % 5 === 0) {
                     indicators.scrollBy({
                         top: -indicators.clientHeight,
-                        behavior: "smooth",
+                        behavior: 'smooth'
                     });
                 }
             }
-            prevYPosition = scrollRoot.scrollTop;
-        };
+            prevYPosition = scrollRoot.scrollTop
+        }
 
         const setIndicator = () => {
-            indicators.innerHTML = "";
+            indicators.innerHTML = '';
             for (var i = 0; i < sections.length; i++) {
-                var button = document.createElement("span");
+                var button = document.createElement('span');
 
-                button.classList.add("snap-always", "shrink-0", "indicator-bullet");
+                button.classList.add('snap-always', 'shrink-0', 'indicator-bullet');
                 if (i === currentIndex) {
-                    button.classList.add("indicator-bullet-active");
+                    button.classList.add('indicator-bullet-active')
                 }
 
                 // (function(i) {
@@ -158,15 +179,16 @@
 
                 indicators.appendChild(button);
             }
-        };
+        }
+
 
         const io = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
+            entries.forEach(entry => {
                 const section = entry.target.dataset.section;
                 const theme = entry.target.dataset.theme;
 
-                if (entry.intersectionRatio > 0.75) {
-                    document.body.setAttribute("data-theme", theme);
+                if (entry.intersectionRatio > 0.5) {
+                    document.body.setAttribute('data-theme', theme)
                     entry.target.classList.add("is-visible");
 
                     currentIndex = elementIndices[section];
@@ -174,36 +196,37 @@
                     setScrollDirection();
 
                     if (document.getElementById(section)) {
-                        const iframe = document.getElementById(section).contentWindow;
-                        iframe.postMessage("vidio.playback.play", "*");
-                        iframe.postMessage("enamplus.playback.play", "*");
+                        const iframe = document.getElementById(section).contentWindow
+                        iframe.postMessage('vidio.playback.play', '*');
+                        iframe.postMessage('enamplus.playback.play', '*');
                     }
+
                 } else {
                     entry.target.classList.remove("is-visible");
 
                     if (document.getElementById(section)) {
-                        const iframe = document.getElementById(section).contentWindow;
-                        iframe.postMessage("vidio.playback.pause", "*");
-                        iframe.postMessage("enamplus.playback.pause", "*");
+                        const iframe = document.getElementById(section).contentWindow
+                        iframe.postMessage('vidio.playback.pause', '*');
+                        iframe.postMessage('enamplus.playback.pause', '*');
                     }
                 }
             });
         }, options);
 
-        var elementIndices = {};
-        for (var i = 0; i < sections.length; i++) {
-            elementIndices[sections[i].dataset.section] = i;
-            io.observe(sections[i]);
-        }
 
+        var elementIndices = {};
+        for (var j = 0; j < sections.length; j++) {
+            elementIndices[sections[j].dataset.section] = j;
+            io.observe(sections[j]);
+        }
         //switchtheme
-        const checkbox = document.querySelector(".switchTheme-control");
-        const hour = new Date().getHours();
+        const checkbox = document.querySelector('.switchTheme-control');
+        const hour = (new Date).getHours();
         checkbox.addEventListener("change", (e) => {
-            document.documentElement.classList.toggle("dark");
+            document.documentElement.classList.toggle('dark')
         });
 
-        if (hour >= 18) {
+        if (hour >= 20) {
             checkbox.click();
         }
     </script>
