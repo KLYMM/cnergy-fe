@@ -39,6 +39,7 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" async></script> -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script> -->
     <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-mobile.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}">
     {{-- font awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script> -->
@@ -56,7 +57,8 @@
 
     <div class=" max-w-full">
         {{-- Header --}}
-        {{-- @include('defaultsite.mobile.components-ui.navbar') --}}
+
+        @include('defaultsite.mobile-v2.components.navbar')
 
         {{-- Breaking news --}}
         {{-- @include('defaultsite.mobile.components-ui.breaking-news') --}}
@@ -75,232 +77,204 @@
 </body>
 
 <script>
-    let options = {
-        rootMargin: "0px",
-        threshold: 0.75,
-    };
+        //snapscroll
+        const header = document.querySelector("[data-header]");
+        const sections = document.querySelectorAll("[data-section]");
+        const indicators = document.querySelector("[data-indicator]");
+        const scrollRoot = document.querySelector("[data-scroller]");
 
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            const section = entry.target.dataset.section;
-            const theme = entry.target.dataset.theme;
+        let currentIndex = 0;
+        let prevYPosition = 0;
 
-            if (entry.intersectionRatio > 0.75) {
-                document.body.setAttribute("data-theme", theme);
-                entry.target.classList.add("is-visible");
+        let options = {
+            rootMargin: "0px",
+            threshold: 0.75,
+        };
 
-                currentIndex = elementIndices[section];
-                setIndicator();
-                setScrollDirection();
-
-                if (document.getElementById(section)) {
-                    const iframe = document.getElementById(section).contentWindow;
-                    iframe.postMessage("vidio.playback.play", "*");
-                    iframe.postMessage("enamplus.playback.play", "*");
+        const setScrollDirection = () => {
+            if (scrollRoot.scrollTop > prevYPosition) {
+                if (currentIndex % 5 === 0) {
+                    indicators.scrollBy({
+                        top: indicators.clientHeight,
+                        behavior: "smooth",
+                    });
                 }
             } else {
-                entry.target.classList.remove("is-visible");
-
-                if (document.getElementById(section)) {
-                    const iframe = document.getElementById(section).contentWindow;
-                    iframe.postMessage("vidio.playback.pause", "*");
-                    iframe.postMessage("enamplus.playback.pause", "*");
+                if ((currentIndex + 1) % 5 === 0) {
+                    indicators.scrollBy({
+                        top: -indicators.clientHeight,
+                        behavior: "smooth",
+                    });
                 }
             }
+            prevYPosition = scrollRoot.scrollTop;
+        };
+
+        const setIndicator = () => {
+            indicators.innerHTML = "";
+            for (var i = 0; i < sections.length; i++) {
+                var button = document.createElement("span");
+
+                button.classList.add("snap-always", "shrink-0", "indicator-bullet");
+                if (i === currentIndex) {
+                    button.classList.add("indicator-bullet-active");
+                }
+
+                // (function(i) {
+                //     button.onclick = function() {
+                //         sections[i].scrollIntoView();
+                //     }
+                // })(i);
+
+                indicators.appendChild(button);
+            }
+        };
+
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const section = entry.target.dataset.section;
+                const theme = entry.target.dataset.theme;
+
+                if (entry.intersectionRatio > 0.75) {
+                    document.body.setAttribute("data-theme", theme);
+                    entry.target.classList.add("is-visible");
+
+                    currentIndex = elementIndices[section];
+                    setIndicator();
+                    setScrollDirection();
+
+                    if (document.getElementById(section)) {
+                        const iframe = document.getElementById(section).contentWindow;
+                        iframe.postMessage("vidio.playback.play", "*");
+                        iframe.postMessage("enamplus.playback.play", "*");
+                    }
+                } else {
+                    entry.target.classList.remove("is-visible");
+
+                    if (document.getElementById(section)) {
+                        const iframe = document.getElementById(section).contentWindow;
+                        iframe.postMessage("vidio.playback.pause", "*");
+                        iframe.postMessage("enamplus.playback.pause", "*");
+                    }
+                }
+            });
+        }, options);
+
+        var elementIndices = {};
+        for (var i = 0; i < sections.length; i++) {
+            elementIndices[sections[i].dataset.section] = i;
+            io.observe(sections[i]);
+        }
+
+        //switchtheme
+        const checkbox = document.querySelector(".switchTheme-control");
+        const hour = new Date().getHours();
+        checkbox.addEventListener("change", (e) => {
+            document.documentElement.classList.toggle("dark");
         });
-    }, options);
-</script>
 
-
-<script>
-    const mainNav = document.querySelector('.nav-main');
-    const closeNav = document.querySelector('.nav-close');
-    const openNav = document.querySelector('.nav-open');
-
-    openNav.addEventListener('click', show);
-    closeNav.addEventListener('click', close);
-
-    function show() {
-        mainNav.style.transition = 'transform 0.5s ease';
-        mainNav.style.transform = 'translateX(0)';
-    }
-
-    function close() {
-        mainNav.style.transform = 'translateX(-100%)';
-    }
-
-    const openSearch = document.querySelector('.search-container');
-    const closeSearch = document.querySelector('.search-background');
-    const iconSearch = document.querySelector('.search-icon');
-
-    iconSearch.addEventListener('click', openSearchHeader);
-    closeSearch.addEventListener('click', closeSearchHeader);
-
-    function openSearchHeader() {
-        cseSearch();
-
-        openSearch.style['z-index'] = 10;
-        openSearch.style['opacity'] = 1;
-        openSearch.style['-webkit-transition'] = 'opacity 1s';
-        openSearch.style['-moz-transition'] = 'opacity 1s';
-        openSearch.style['transition'] = 'opacity 1s';
-
-    }
-
-    function closeSearchHeader() {
-        openSearch.style['z-index'] = -1;
-        openSearch.style['opacity'] = 0;
-        var s = document.getElementsByTagName('script')[0];
-        s.remove();
-    }
-</script>
-
-<script>
-    function cseSearch() {
-        var cx = "{{ config('site.attributes.reldomain.cse_id') ?? null }}";
-        var gcse = document.createElement('script');
-        gcse.type = 'text/javascript';
-        gcse.async = true;
-        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(gcse, s);
-    }
-
-    window.__gcse = {
-        callback: function cseSearch() {
-            document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
-                "Search news, keywords, and more...");
-
-            if (focus) {
-                document.getElementsByClassName("gsc-input")[2].focus()
-            }
+        if (hour >= 18) {
+            checkbox.click();
         }
-    };
+    </script>
 
-    if (window.location.pathname == "/search") {
-        cseSearch()
-    }
-</script>
+    <script>
+        let darkmode = document.querySelector(".switchTheme-control-2");
+        // const hour = new Date().getHours();
+        darkmode.addEventListener("change", (e) => {
+            document.documentElement.classList.toggle("dark");
+        });
 
-<script>
-    var btn = document.querySelector('#btn-back-toTop');
-
-    document.addEventListener('scroll', (e) => {
-        if (document.documentElement.scrollTop > 300) {
-            btn.classList.add('show');
-        } else {
-            btn.classList.remove('show');
+        if (hour >= 18) {
+            checkbox.click();
         }
-    })
+    </script>
 
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    })
-</script>
+    <script>
+        const mainNav = document.querySelector('.nav-main');
+        const closeNav = document.querySelector('.nav-close');
+        const openNav = document.querySelector('.nav-open');
 
-<script>
-    function copyToClipboard() {
-        var dummy = document.createElement('input'),
-            text = window.location.href;
-        document.body.appendChild(dummy);
-        dummy.value = text;
-        dummy.select();
-        document.execCommand('copy');
-        document.body.removeChild(dummy);
-        var button = document.querySelector(".icons-share-link")
-        button.innerHTML = "Copied !"
-    }
-</script>
+        openNav.addEventListener('click', show);
+        closeNav.addEventListener('click', close);
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
-
-<script>
-    const darkmode = document.querySelector('.switchTheme-control');
-    const hour = (new Date).getHours();
-    darkmode.addEventListener("change", (e) => {
-        document.documentElement.classList.toggle('dark')
-    });
-
-    if (hour >= 18) {
-        darkmode.click();
-    }
-</script>
-
-<script>
-    // infinite delay scroll
-    var scrolling
-    buttons = document.getElementsByClassName('pages-button')
-    var elementPositionButton = buttons[0]
-    pagination = 0
-
-    function callback() {
-        for (i = 0; i < buttons.length; i++) {
-            if (i == pagination) {
-                var attr = buttons[i].getAttribute('data-target')
-                selected = document.querySelector('#data-' + attr)
-                selectedCount = buttons[i].getElementsByClassName('pages-button-countdown')[0]
-                parentButton = selectedCount.parentNode
-                maxParentTry = 3
-                while (!parentButton.classList.contains('pages-button') && maxParentTry-- > 0) {
-                    parentButton = parentButton.parentNode;
-                };
-
-                if (i + 1 != buttons.length) {
-                    elementPositionButton = buttons[i + 1]
-                }
-
-                counter = selectedCount.getAttribute('data-delay')
-                number = selectedCount.querySelector('.pages-button-countdown-html')
-                circle = selectedCount.querySelector('.pages-button-countdown-svg circle')
-                radius = circle.getAttribute('r')
-                circumference = 2 * Math.PI * radius
-
-                circle.style.strokeDasharray = circumference
-                circle.style.strokeDashoffset = 0
-
-                var timer = window.setInterval(function() {
-                    counter--;
-                    if (counter >= 0) {
-                        number.innerHTML = counter;
-                        circle.style.strokeDashoffset = circumference / counter
-                    }
-                    if (counter === 0) {
-                        selected.classList.remove('pages-item-hidden');
-                        parentButton.classList.add('pages-button-hidden')
-
-                        var headerOffset = 20;
-                        elementPosition = selected.getBoundingClientRect().top;
-                        offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        })
-
-                        window.clearInterval(timer);
-                        scrolling = false;
-                    }
-                }, 1000);
-            }
-            if (pagination == buttons.length) {
-                var hiddenComponent = document.getElementById("div-hidden");
-                hiddenComponent.classList.remove("hidden-component");
-            }
+        function show() {
+            cseSearch();
+            mainNav.style.transition = 'transform 0.5s ease';
+            mainNav.style.transform = 'translateX(0)';
         }
-        pagination++;
-    }
 
-    window.addEventListener("scroll", (e) => {
-        if (elementPositionButton.getBoundingClientRect().bottom <= window.innerHeight) {
-            if (!scrolling) {
-                scrolling = true;
-                callback();
-            }
-            scrolling = true;
+        function close() {
+            mainNav.style.transform = 'translateX(-150%)';
+            var s = document.getElementsByTagName('script')[0];
+            s.remove();
         }
-    });
-</script>
 
+        // const openSearch = document.querySelector('.search-container');
+        // const closeSearch = document.querySelector('.search-background');
+        // const iconSearch = document.querySelector('.search-icon');
+
+        // iconSearch.addEventListener('click', openSearchHeader);
+        // closeSearch.addEventListener('click', closeSearchHeader);
+
+        // function openSearchHeader() {
+           
+
+        //     openSearch.style['z-index'] = 10;
+        //     openSearch.style['opacity'] = 1;
+        //     openSearch.style['-webkit-transition'] = 'opacity 1s';
+        //     openSearch.style['-moz-transition'] = 'opacity 1s';
+        //     openSearch.style['transition'] = 'opacity 1s';
+
+        // }
+
+        // function closeSearchHeader() {
+        //     openSearch.style['z-index'] = -1;
+        //     openSearch.style['opacity'] = 0;
+        //     var s = document.getElementsByTagName('script')[0];
+        //     s.remove();
+        // }
+
+    </script>
+
+    <script>
+        function cseSearch() {
+            var cx = "{{ config('site.attributes.reldomain.cse_id') ?? null }}";
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        }
+
+        window.__gcse = {
+            callback: function cseSearch() {
+                document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
+                    "Search news, keywords, and more...");
+            }
+        };
+
+        if (window.location.pathname == "/search") {
+            cseSearch()
+        }
+    </script>
+
+    <script>
+        var btn = document.querySelector('#btn-back-toTop');
+
+        document.addEventListener('scroll', (e) => {
+            if (document.documentElement.scrollTop > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        })
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        })
+    </script>
 </html>
