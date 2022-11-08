@@ -1,81 +1,68 @@
-@extends('defaultsite.mobile.layouts.ui-main')
+@extends('defaultsite.mobile-v2.layouts.main-maverick')
 
 @section('content')
+    <main class="main relative max-w-screen-md mx-auto h-full bg-white text-black dark:bg-black dark:text-white">
+        <!-- snap -->
+        <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth"
+            data-scroller>
+            @if (count($rows) > 0 ?? null)
+                @foreach ($rows as $item)
+                    @if ($loop->iteration % 5 == 1)
+                        <!-- theme.1 -->
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
+                            data-theme="default">
+                            @include('defaultsite.mobile-v2.components.section-list-news', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
+                    @elseif($loop->iteration % 5 == 2)
+                        <!-- theme.2 -->
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
+                            data-theme="default">
+                            @include('defaultsite.mobile-v2.components.section-list-news2', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
+                    @elseif($loop->iteration % 5 == 3)
+                        <!-- theme3 -->
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-yellow dark:bg-black dark:text-white-20"
+                            data-theme="yellow">
+                            @include('defaultsite.mobile-v2.components.section-list-news3', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
+                    @elseif($loop->iteration % 5 == 4)
+                        <!-- theme.4 -->
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
+                            data-theme="default">
+                            @include('defaultsite.mobile-v2.components.section-list-news4', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
+                    @elseif($loop->iteration % 5 == 0)
+                        <!--theme.5-->
+                        <section data-section="section{{ $loop->iteration }}"
+                            class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
+                            data-theme="default">
+                            @include('defaultsite.mobile-v2.components.section-list-news5', [
+                                'newsItem' => $item,
+                            ])
+                        </section>
+                    @endif
+                @endforeach
+            @endif
+            {{-- ?? END OF SECTION !! --}}
+        </div>
+        <!-- end.snap -->
 
-<div class="more-info-container-index">
-    <h1 class="index-h1"> {{ $headline['news_title'] ?? null }}</h1>
-    {{$tag['name']??null}}
-    <div class="desc-index">
-            <p class="index-p">
-                {{$tag['description']??null}}
-                <span class="index-span">Read more</span>
-        </p>
-    <p class="index-tentang">About: {{ $headline['news_synopsis'] ?? null }}</p>
-    <p class="index-lokasi">Location: {{ $headline['news_city'] ?? null }}</p>
-    <p class="index-date">News Date Publish: {{ Util::date($headline['news_entry'], 'ago') }}</p>
-    </div>
-</div>
-
-
-{{-- Slider kumpulan foto --}}
-{{-- @dump($feed) --}}
-{{-- @if ($latest = \Data::latest() ?? null) --}}
-    @include('defaultsite.mobile.components-ui.photo-collection', [ 'title' => 'Photo ' ])
-{{-- @endif --}}
-
-{{-- Kumpulan video --}}
-@include('defaultsite.mobile.components-ui.video-collection', [ 'title' => 'Video ' ])
-
-{{-- adds-on --}}
-<div class="channel-ad channel-ad_ad-headline text-center">
-    {!! Util::getAds('headline') !!}
-</div>
- @include('defaultsite.mobile.components-ui.ads-on')
- 
-
-
-{{-- list main news --}}
-
-{{-- @dump($headline) --}}
-@if ($popular = \Data::popular() ?? null)
-    @include('defaultsite.mobile.components-ui.list-main-news', ['listnews' => $popular])
-@endif
-<div class="channel-ad channel-ad_ad-exposer text-center">
-    {!! Util::getAds('exposer') !!}
-</div>
-
-{{-- highlight --}} 
-{{-- @dump($headline) --}}
-@include('defaultsite.mobile.components-ui.highlight-article')
-
-
-{{-- list main news --}}
-{{-- @dump($headline) --}}
-@if ($headline = \Data::headline() ?? null)
-    @include('defaultsite.mobile.components-ui.list-main-news', ['listnews' => $headline])
-@endif
-
-<div class="channel-ad channel-ad_ad-sc text-center">
-    {!! Util::getAds('showcase-1') !!}
-</div> 
-
-{{-- slider trending tapi data belum ada --}}
-@if ($popular = \Data::popular() ?? null)
-    @include('defaultsite.mobile.components-ui.slider', ['hl' => $popular, 'title' => 'Popular News'])
-@endif
-
-{{--list populer news--}}
-@if ($popular = \Data::popular() ?? null)
-    @include('defaultsite.mobile.components-ui.populer-news', ['hl' => $popular])
-@endif
-
-<div class="channel-ad channel-ad_ad-sc-2 text-center">
-    {!! Util::getAds('showcase-2') !!}
-</div>
-
-{{-- slider latest news --}}
-@if ($latest = \Data::latest() ?? null)
-    @include('defaultsite.mobile.components-ui.slider', ['hl' => $latest, 'title' => 'Latest News'])
-@endif
+        <!-- snap.indicator -->
+        <div class="indicator absolute right-2 bottom-24 flex flex-col snap-y snap-mandatory scroll-smooth overflow-hidden dark:indicator-white"
+            data-indicator>
+        </div>
+    </main>
 
 @endsection

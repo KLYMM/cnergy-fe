@@ -17,12 +17,12 @@
                     </p>
                 </div>
                 @if (count($newsItem['news_tag']) > 0 ?? null)
-                    <div class="border-tag  animate animate--fadeInLeft " style="--delay: 400ms">
-                        <span
-                            class="article-tag blocker capitalize   font-bold text-primary dark:text-white-20 dark:border-white-20  border-primary pt-2 animate animate--fadeInLeft"
-                            style="--delay: 300ms">#{{ $newsItem['news_tag'][0]['tag_name'] }}
-                        </span>
-                    </div>
+                    <span
+                        class="article-tag block capitalize font-inter font-bold text-primary  border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white-20 dark:border-white-20"
+                        style="--delay: 0ms">
+                        <a
+                            href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">{{ $newsItem['news_tag'][0]['tag_name'] }}</a>
+                    </span>
                 @endif
             </div>
             <div class="article-asset mb-4">

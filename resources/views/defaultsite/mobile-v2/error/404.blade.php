@@ -1,4 +1,4 @@
-@extends('defaultsite.mobile.layouts.ui-main')
+@extends('defaultsite.mobile-v2.layouts.main')
 
 @section('content')
     @include('defaultsite.mobile.components-ui.not-found')
@@ -8,7 +8,7 @@
         @include('defaultsite.mobile.components-ui.slider', ['hl' => $popular, 'title' => 'Popular News'])
     @endif
 
-    {{--list populer news--}}
+    {{-- list populer news --}}
     @if ($popular = \Data::popular() ?? null)
         @include('defaultsite.mobile.components-ui.populer-news', ['hl' => $popular])
     @endif

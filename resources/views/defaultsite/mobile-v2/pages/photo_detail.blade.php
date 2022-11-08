@@ -1,4 +1,4 @@
-@extends('defaultsite.mobile.layouts.ui-main')
+@extends('defaultsite.mobile-v2.layouts.main')
 
 {{-- @push('preload')
 <link rel="preload" as="image" href="{{ Src::imgNewsCdn($row, '375x208', 'webp') }}" />

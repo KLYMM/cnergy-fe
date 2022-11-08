@@ -1,4 +1,4 @@
-@extends('defaultsite.mobile.layouts.main')
+@extends('defaultsite.mobile-v2.layouts.main')
 
 @push('styles')
 

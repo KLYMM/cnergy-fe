@@ -20,19 +20,19 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}">
 
 </head>
 
 <body class="vh-text-sm font-inter leading-normal bg-stone-100" style="padding-bottom: env(safe-area-inset-bottom)">
-    @include('defaultsite.mobile-v2.components.navbar')
+    @include('defaultsite.mobile-v2.components.navbar-maverick')
     @yield('content')
 
 </body>
 
-<script>
+    <script>
         //snapscroll
         const header = document.querySelector("[data-header]");
         const sections = document.querySelectorAll("[data-section]");
@@ -150,52 +150,27 @@
         const mainNav = document.querySelector('.nav-main');
         const closeNav = document.querySelector('.nav-close');
         const openNav = document.querySelector('.nav-open');
-        const header = document.querySelector('header');
+        const headerNavbar = document.querySelector('header');
 
         openNav.addEventListener('click', show);
         closeNav.addEventListener('click', close);
 
         function show() {
+            cseSearch();
             mainNav.style.transition = 'transform 0.5s ease';
             mainNav.style.transform = 'translateX(0)';
         }
 
         function close() {
             mainNav.style.transform = 'translateX(-150%)';
-        }
-
-        const openSearch = document.querySelector('.search-container');
-        const closeSearch = document.querySelector('.search-background');
-        const iconSearch = document.querySelector('.search-icon');
-
-        iconSearch.addEventListener('click', openSearchHeader);
-        closeSearch.addEventListener('click', closeSearchHeader);
-
-        function openSearchHeader() {
-            cseSearch();
-
-            openSearch.style['z-index'] = 10;
-            openSearch.style['opacity'] = 1;
-            openSearch.style['-webkit-transition'] = 'opacity 1s';
-            openSearch.style['-moz-transition'] = 'opacity 1s';
-            openSearch.style['transition'] = 'opacity 1s';
-
-        }
-
-        function closeSearchHeader() {
-            openSearch.style['z-index'] = -1;
-            openSearch.style['opacity'] = 0;
             var s = document.getElementsByTagName('script')[0];
             s.remove();
         }
 
-        if (window.location.pathname != "/" || window.location.pathname != "/category" || window.location.pathname != "/tag") {
-            openSearch.style['background-image'] = 'white';
-        }
     </script>
 
     <script>
-        (function() {
+       function cseSearch() {
             var cx = "{{ config('site.attributes.reldomain.cse_id') ?? null }}";
             var gcse = document.createElement('script');
             gcse.type = 'text/javascript';
@@ -203,14 +178,16 @@
             gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(gcse, s);
-        })();
+        }
+
         window.__gcse = {
-            callback: function() {
+            callback: function cseSearch() {
                 document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
-                    "Search...");
-                if (focus) {
-                    document.getElementsByClassName("gsc-input")[2].focus()
-                }
+                    "Search news, keywords, and more...");
+
+                // if (focus) {
+                //     document.getElementsByClassName("gsc-input")[2].focus()
+                // }
             }
         };
 

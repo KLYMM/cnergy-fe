@@ -1,4 +1,4 @@
-@extends('defaultsite.mobile.layouts.ui-main')
+@extends('defaultsite.mobile-v2.layouts.main')
 
 @section('content')
 

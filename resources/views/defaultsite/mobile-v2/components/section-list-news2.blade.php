@@ -4,8 +4,10 @@
             <div class="article-background mb-4">
                 @if (count($newsItem['news_tag']) > 0 ?? null)
                     <span
-                        class="article-tag capitalize inline-block font-inter font-bold text-white border bg-primary dark:bg-primary-41 border-primary dark:border-primary-41 rounded-md py-0.5 px-2 dark:text-white mb-2 animate animate--fadeInLeft"
-                        style="--delay: 0ms">#{{ $newsItem['news_tag'][0]['tag_name'] }}
+                        class="article-tag block capitalize font-inter font-bold text-primary  border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white-20 dark:border-white-20"
+                        style="--delay: 0ms">
+                        <a
+                            href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">{{ $newsItem['news_tag'][0]['tag_name'] }}</a>
                     </span>
                 @endif
                 <h1 class="article-title vh-text-3xl font-outfit font-bold mb-2 animate animate--fadeInRight"

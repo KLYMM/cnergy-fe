@@ -593,7 +593,7 @@ article {
 .nav-main {
     height: 100vh;
     position: relative;
-    z-index: 10;
+    z-index: 30;
     background: #fff0ec;
     overflow-y: auto;
     bottom: 55px;
@@ -618,7 +618,7 @@ article {
     /* border-bottom: 0.2px solid #dcdcdc; */
 }
 .nav-menus {
-    margin: 0 43px;
+    padding: 0 43px;
 }
 
 .nav-menus li {
@@ -632,9 +632,9 @@ article {
     font-weight: 700;
     font-size: 22px;
     line-height: 50px;
-    /* or 227% */
-
     color: #000000;
+    max-height: 75vh;
+    overflow-y: scroll;
 }
 
 .tag_main {
