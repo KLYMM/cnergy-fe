@@ -56,6 +56,7 @@
 
     <div class=" max-w-full">
         {{-- Header --}}
+
         @include('defaultsite.mobile-v2.components.navbar')
 
         {{-- Breaking news --}}

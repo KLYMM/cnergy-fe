@@ -9,9 +9,6 @@
                     <img class="icon-lg object-contain dark:img-white"
                         src="{{ URL::asset('assets/images/trstdly.png') }}" alt="logo" width="140"
                         height="48" />
-                    <img class="icon-sm object-contain dark:img-white"
-                        src="{{ URL::asset('assets/images/logo-sm.png') }}" alt="logo" width="60"
-                        height="40" />
                 </span>
             </a>
         </h1>
