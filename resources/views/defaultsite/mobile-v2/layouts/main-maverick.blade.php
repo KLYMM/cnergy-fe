@@ -150,6 +150,7 @@
         const mainNav = document.querySelector('.nav-main');
         const closeNav = document.querySelector('.nav-close');
         const openNav = document.querySelector('.nav-open');
+        const header = document.querySelector('header');
 
         openNav.addEventListener('click', show);
         closeNav.addEventListener('click', close);
@@ -187,6 +188,10 @@
             var s = document.getElementsByTagName('script')[0];
             s.remove();
         }
+
+        if (window.location.pathname != "/" || window.location.pathname != "/category" || window.location.pathname != "/tag") {
+            openSearch.style['background-image'] = 'white';
+        }
     </script>
 
     <script>
@@ -208,5 +213,9 @@
                 }
             }
         };
+
+        if (window.location.pathname == "/search") {
+            cseSearch()
+        }
     </script>
 </html>
