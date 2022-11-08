@@ -4,8 +4,8 @@
             <div class="article-asset mb-4">
                 <figure class="article-asset w-full vh-h-landscape aspect-375 overflow-hidden">
                     <img class="object-cover w-full h-full animate animate--fadeIn " style="--delay: 0ms"
-                        src="{{ $newsItem['news_image']['real'] }}" alt="{{ $newsItem['news_title'] }}"
-                        width="375" height="225" />
+                        src="{{ $newsItem['news_image']['real'] }}" alt="{{ $newsItem['news_title'] }}" width="375"
+                        height="225" />
                 </figure>
             </div>
             <div class="article-background">
@@ -15,7 +15,8 @@
                 </h1>
                 <span
                     class="article-date vh-text-xs color-primary-41 dark:text-white-20 mb-4 inline-block animate animate--fadeInLeft"
-                    style="--delay: 200ms">{{ $newsItem['news_date_publish'] }}</span>
+                    style="--delay: 200ms">{{ Util::date($newsItem['news_date_publish'], 'ago') }}
+                </span>
                 <div class="article-paragraph line-clamp-5 text-primary-42 dark:text-white-20 mb-4 animate animate--fadeInUp"
                     style="--delay: 300ms">
                     <p>
@@ -31,21 +32,21 @@
             </div>
         </div>
         <div class="article-footer flex justify-between items-center mb-6 animate animate--fadeInUp "
-        style="--delay: 500ms">
-        <div class="article-footer-left flex-1 ">
-            <a class="btn btn--outline  flex items-center justify-center vh-h-btn rounded-lg  font-outfit font-medium bg-primary-41 dark:bg-primary-41 dark:text-white"
-                href="{{ Src::detail($newsItem) }}">
-                <span class="text-white ">READ MORE</span>
-                <svg class="dark:svg-stroke-white ml-3" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 12H22" stroke="var(--color-white)" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                    <path d="M15 5L22 12L15 19" stroke="var(--color-white)" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </a>
-        </div>
-        {{-- <div class="article-footer-right">
+            style="--delay: 500ms">
+            <div class="article-footer-left flex-1 ">
+                <a class="btn btn--outline  flex items-center justify-center vh-h-btn rounded-lg  font-outfit font-medium bg-primary-41 dark:bg-primary-41 dark:text-white"
+                    href="{{ Src::detail($newsItem) }}">
+                    <span class="text-white ">READ MORE</span>
+                    <svg class="dark:svg-stroke-white ml-3" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 12H22" stroke="var(--color-white)" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M15 5L22 12L15 19" stroke="var(--color-white)" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+            {{-- <div class="article-footer-right">
             <div class="article-footer-group flex items-center">
                 <div class="article-footer-group-item ml-4">
                     <a class="article-footer-group-item-btn flex flex-col items-center vh-text-xs"
@@ -72,7 +73,7 @@
                 </div>
             </div>
         </div> --}}
-    </div>
+        </div>
         {{-- <div class="article-footer flex justify-between items-center animate animate--fadeInUp"
             style="--delay: 500ms">
             <div class="article-footer-left flex-1">
@@ -118,4 +119,3 @@
         </div> --}}
     </article>
 </div>
-

@@ -592,12 +592,11 @@ article {
 /* navbar */
 .nav-main {
     height: 100vh;
-    position: fixed;
+    position: relative;
     z-index: 10;
     background: #fff0ec;
     overflow-y: auto;
-    bottom: 0;
-    transform: translateX(-100%);
+    bottom: 55px;
     width: 100%;
 }
 

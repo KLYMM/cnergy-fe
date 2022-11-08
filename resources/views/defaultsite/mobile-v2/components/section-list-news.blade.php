@@ -8,22 +8,22 @@
                         style="--delay: 0ms">{{ $newsItem['news_tag'][0]['tag_name'] }}
                     </span>
                 @endif
-                    
+
                 <h1 class="article-title mt-1 vh-text-lg font-outfit font-bold mb-2 animate animate--fadeInRight mt-6"
                     style="--delay: 100ms">
                     {{ $newsItem['news_title'] }}
                 </h1>
-                
+
                 <span
                     class="article-date vh-text-xs text-primary dark:text-white-20 inline-block animate animate--fadeInLeft"
-                    style="--delay: 200ms">{{ $newsItem['news_date_publish'] }}
+                    style="--delay: 200ms">{{ Util::date($newsItem['news_date_publish'], 'ago') }}
                 </span>
             </div>
             <div class="article-asset mb-4">
                 <figure class="article-asset w-full vh-h-landscape aspect-375 overflow-hidden">
-                    <img class="object-cover w-full h-full animate animate--fadeIn "
-                        style="--delay: 300ms" src="{{ $newsItem['news_image']['real'] }}"
-                        alt="{{ $newsItem['news_title'] }}" width="375" height="225" />
+                    <img class="object-cover w-full h-full animate animate--fadeIn " style="--delay: 300ms"
+                        src="{{ $newsItem['news_image']['real'] }}" alt="{{ $newsItem['news_title'] }}" width="375"
+                        height="225" />
                 </figure>
             </div>
             <div class="article-paragraph line-clamp-5 text-gray font-inter dark:text-white-20 animate animate--fadeInUp"
