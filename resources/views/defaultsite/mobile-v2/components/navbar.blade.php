@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <div class="nav-main">
+    <div class="nav-main" style="transform: translateX(-150%);">
         <div class="nav-content">
             <div class="nav-header">
 
@@ -405,84 +405,3 @@
         </div>
     </div>
 </header>
-
-
-
-
-<script>
-    const mainNav = document.querySelector('.nav-main');
-    const closeNav = document.querySelector('.nav-close');
-    const openNav = document.querySelector('.nav-open');
-
-    openNav.addEventListener('click', show);
-    closeNav.addEventListener('click', close);
-
-    function show() {
-        mainNav.style.transition = 'transform 0.5s ease';
-        mainNav.style.transform = 'translateX(0)';
-    }
-
-    function close() {
-        mainNav.style.transform = 'translateX(-100%)';
-    }
-
-    const openSearch = document.querySelector('.search-container');
-    const closeSearch = document.querySelector('.search-background');
-    const iconSearch = document.querySelector('.search-icon');
-
-    iconSearch.addEventListener('click', openSearchHeader);
-    closeSearch.addEventListener('click', closeSearchHeader);
-
-    function openSearchHeader() {
-        cseSearch();
-
-        openSearch.style['z-index'] = 10;
-        openSearch.style['opacity'] = 1;
-        openSearch.style['-webkit-transition'] = 'opacity 1s';
-        openSearch.style['-moz-transition'] = 'opacity 1s';
-        openSearch.style['transition'] = 'opacity 1s';
-
-    }
-
-    function closeSearchHeader() {
-        openSearch.style['z-index'] = -1;
-        openSearch.style['opacity'] = 0;
-        var s = document.getElementsByTagName('script')[0];
-        s.remove();
-    }
-</script>
-
-<script>
-    (function() {
-        var cx = "{{ config('site.attributes.reldomain.cse_id') ?? null }}";
-        var gcse = document.createElement('script');
-        gcse.type = 'text/javascript';
-        gcse.async = true;
-        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(gcse, s);
-    })();
-    window.__gcse = {
-        callback: function() {
-            document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
-                "Search...");
-            if (focus) {
-                document.getElementsByClassName("gsc-input")[2].focus()
-            }
-        }
-    };
-</script>
-
-<script>
-    //switchtheme
-    const checkbox = document.querySelector(".switchTheme-control");
-    console.log(checkbox);
-    const hour = new Date().getHours();
-    checkbox.addEventListener("change", (e) => {
-        document.documentElement.classList.toggle("dark");
-    });
-
-    if (hour >= 18) {
-        checkbox.click();
-    }
-</script>
