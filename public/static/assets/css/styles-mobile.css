@@ -1,3 +1,35 @@
+:root {
+    --color-primary: #ff3903;
+    --color-primary-60: #310057;
+    --color-primary-40: #fff0ec;
+    --color-primary-41: #751900;
+    --color-primary-42: #333333;
+    --color-yellow: #ffa952;
+    --color-yellow-40: #ffc485;
+    --color-pink: #fcad97;
+    --color-black: #000;
+    --color-black-60: #171717;
+    --color-black-40: #2e2d2e;
+    --color-white: #fff;
+    --color-white-20: #dcdcdc;
+    --color-gray: #514f4f;
+    --font-inter: "Inter", sans-serif;
+    --font-nunito: "Nunito Sans", sans-serif;
+    --font-redhat: "Red Hat Display", sans-serif;
+    --font-outfit: "Outfit", sans-serif;
+}
+.font-inter {
+    font-family: var(--font-inter);
+}
+.font-redhat {
+    font-family: var(--font-redhat);
+}
+.font-nunito {
+    font-family: var(--font-nunito);
+}
+.font-outfit {
+    font-family: var(--font-outfit);
+}
 .nav-main,
 .search-container {
     bottom: 0;
@@ -539,10 +571,23 @@ nav img {
 }
 
 .footer-container {
-    background-color: #000;
-    border-top: 4px solid #ca0000;
-    padding: 35px 20px 15px;
+    background-color: #ff3903;
+    padding: 35px 42px 15px;
     text-align: center;
+}
+.footer-container img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-follow {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 19px;
+    color: #ffffff;
+    margin-top: 40px;
 }
 
 .footer-container .link-footer {
@@ -569,7 +614,7 @@ nav img {
 }
 
 .footer-container .social-media {
-    margin: 20px 0 30px;
+    margin: 14px 0 30px;
     display: flex;
     justify-content: center;
 }

@@ -30,6 +30,10 @@
     @include('defaultsite.mobile-v2.components.navbar-maverick')
     @yield('content')
 
+    {{-- @include('defaultsite.mobile-v2.components.footer-maverick') --}}
+
+
+
 </body>
 
     <script>

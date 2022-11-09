@@ -35,18 +35,15 @@
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600&display=swap);" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" async></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script> -->
+    
     <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-mobile.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}">
     {{-- font awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script> -->
-
-
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script> --}}
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
 
@@ -66,11 +63,11 @@
         @yield('content')
 
         {{-- Footer --}}
-        {{-- @if (config('site.use_footer', 'yes') == 'yes')
-            @include('defaultsite.mobile.components-ui.footer')
-        @endif --}}
+         @if (config('site.use_footer', 'yes') == 'yes')
+         @include('defaultsite.mobile-v2.components.footer-maverick')
+        @endif
     </div>
-    {{-- @yield('m-photo-detail') --}}
+   
 
     <a id="btn-back-toTop" class="hover"></a>
 
