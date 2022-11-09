@@ -66,7 +66,8 @@
                                 class="@if ($loop->index != 0) pages-item-hidden @endif">
                                 <div style="display:flex; align-items: center; margin: 20px;">
                                     <hr style="width:50%;text-align:left;margin-left:0">
-                                    <div class="slider-counter">{{ $loop->iteration }}<span id="sliderCounter"></span> of {{ count($row['photonews']) }} photos</div>
+                                    <div class="slider-counter">{{ $loop->iteration }}<span id="sliderCounter"></span> of
+                                        {{ count($row['photonews']) }} photos</div>
                                     <hr style="width:50%;text-align:left;margin-left:0">
                                 </div>
 
@@ -124,15 +125,16 @@
 
             <div id="div-hidden" class="hidden-component">
                 @if ($popular = \Data::popular() ?? null)
-                    @include('defaultsite.mobile-v2.components-ui.read-too-list' , ['news' => $popular])
+                    @include('defaultsite.mobile-v2.components-ui.read-too-list', ['news' => $popular])
                 @endif
 
                 @include('defaultsite.mobile-v2.components-ui.related-tag', ['title' => ''])
-                
+
                 <div style="margin:20px;">
-                    <button type="button" data-toggle="modal" data-target="#myModal"
-                        class="btn btn-light report-btn" style="border: solid #FF3903 1.5px;"><i class="fa-solid fa-triangle-exclamation"
-                            style="color: black; margin-right: 10px; font-weight: 600;"></i><span style="font-weight: 600;">REPORT NEWS</span></button>
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"
+                        style="border: solid #FF3903 1.5px;"><i class="fa-solid fa-triangle-exclamation"
+                            style="color: black; margin-right: 10px; font-weight: 600;"></i><span
+                            style="font-weight: 600;">REPORT NEWS</span></button>
 
                     <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog">
@@ -145,20 +147,29 @@
                     </div>
                 </div>
 
-                @if ($latest = \Data::latest() ?? null) 
-                    @include('defaultsite.mobile-v2.components-ui.slider', ['hl' => $latest, 'title' => 'Latest News'])
+                @include('defaultsite.mobile-v2.components-ui.list-main-news', [
+                    'latest' => $row['latest'],
+                    'title' => 'Related Photo',
+                ])
+
+                @if ($latest = \Data::latest() ?? null)
+                    @include('defaultsite.mobile-v2.components-ui.slider', [
+                        'hl' => $latest,
+                        'title' => 'Latest News',
+                    ])
                 @endif
 
                 @if ($popular = \Data::popular() ?? null)
                     @include('defaultsite.mobile-v2.components-ui.populer-news', ['popular' => $popular])
                 @endif
 
-                @if ($latest = \Data::latest() ?? null) 
+                @if ($latest = \Data::latest() ?? null)
                     @include('defaultsite.mobile-v2.components-ui.related-article', [
                         'news' => $latest,
                         'title' => 'LATEST UPDATE',
                     ])
                 @endif
+
 
                 @include('defaultsite.mobile-v2.components.footer-maverick')
             </div>
