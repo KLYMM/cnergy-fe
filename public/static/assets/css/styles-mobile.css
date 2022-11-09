@@ -168,6 +168,10 @@ nav {
 :root {
     --prompt-font: "Prompt", sans-serif;
     --lato-font: "Lato", sans-serif;
+    --font-inter: "Inter", sans-serif;
+    --font-nunito: "Nunito Sans", sans-serif;
+    --font-redhat: "Red Hat Display", sans-serif;
+    --font-outfit: "Outfit", sans-serif;
 }
 
 .special-font-lato,
@@ -257,7 +261,7 @@ nav img {
 }
 
 .main-breadcrumb {
-    font-family: var(--lato-font);
+    font-family: var(--);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -1249,7 +1253,9 @@ nav img {
 }
 
 .dt-share-container {
-    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fa-facebook-f,
