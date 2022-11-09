@@ -129,12 +129,12 @@
                 </a>
                 <div class="d-flex flex-column justify-content-center gap-1">
                     <p class="photo-author pt-2 font-outfit">
-                        <a style="color: #CA0000 ;"
+                        <a
                             href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}
                         </a>
 
                     </p>
-                    <span class="font-outfit"> {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
+                    <span class="author_publish"> {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
                 </div>
             </div>
         </div>

@@ -1548,9 +1548,12 @@ nav img {
 }
 
 .photo-author {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 400;
     font-size: 12px;
-    line-height: 14px;
-    color: #000;
+    line-height: 15px;
+    color: #000000;
 }
 
 .photo-content,
@@ -2272,4 +2275,13 @@ nav img {
     /* identical to box height */
 
     color: #999999;
+}
+.author_publish {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #787878;
 }
