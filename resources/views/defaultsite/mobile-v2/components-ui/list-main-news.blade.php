@@ -1,5 +1,7 @@
 @if (count($latest) > 0)
     @if ($latest = collect($latest)->slice(0, 5))
+        <h2 class="title-list-main">{{ $title ?? 'Related News' }}</h2>
+
         <div class="list-main-news-container">
             <h2 class="related_h2 font-outfit">{{ $title ?? 'Related News' }}</h2>
             @foreach ($latest as $ln)
@@ -19,7 +21,6 @@
                                 <p class="font-inter">{{ $ln['category_name'] }}</p>
                                 <span class="font-outfit">{{ Util::date($ln['news_date_publish'], 'ago') }}</span>
                             </div>
-                           
                         </div>
                     </a>
                 </div>
