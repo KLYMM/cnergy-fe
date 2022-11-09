@@ -39,7 +39,7 @@ a:hover {
 
 #btn-back-toTop {
     display: inline-block;
-    background-color: #ca00005c;
+    background-color: #ff39035c;
     width: 50px;
     height: 50px;
     text-align: center;
@@ -67,7 +67,7 @@ a:hover {
 
 #btn-back-toTop:active {
     background-color: silver;
-    color: #ca0000;
+    color: #ff3903;
     text-decoration: none;
 }
 
@@ -342,7 +342,6 @@ nav img {
 .trending-tag-container h4 {
     font-family: var(--prompt-font);
     font-weight: 700;
-    font-style: italic;
     font-size: 16px;
     color: #000;
     text-transform: uppercase;
@@ -442,6 +441,7 @@ nav img {
 
 .slider-container {
     margin: 30px auto;
+    margin-bottom: 20px;
 }
 
 .slider-container h4 {
@@ -624,10 +624,6 @@ nav img {
     color: #000;
 }
 
-.account-detail {
-    margin-top: 15px;
-}
-
 .main-content-news-container h5,
 .main-content-news-container span,
 .photo-collection-container .card-photo-news p,
@@ -720,44 +716,39 @@ nav img {
 
 .baca-juga-list-container {
     padding: 15px;
-    background: #f9f9f9;
-    border: 1px solid #e5e5e5;
+    background: #ff39030d;
+    border: 1px solid #ff6600;
     border-radius: 4px;
-    margin: 40px 20px;
+    margin: 20px;
 }
 
 .artikel-terkait-container h4,
 .populer-container h4,
 .related-tag-title {
     padding-bottom: 10px;
-    font-style: italic;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+.populer-container h4 {
+    background-color: #ff3903;
+    color: white;
+    padding: 10px;
 }
 
 .baca-juga-list-container h4 {
     font-family: var(--prompt-font);
     font-weight: 700;
     font-size: 16px;
-    font-style: italic;
     text-transform: uppercase;
     color: #000;
 }
 
 .baca-juga-list-container ul {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    list-style: none;
     padding-top: 10px;
-    margin: 0;
-    line-height: 1.7em;
-}
-
-.baca-juga-list-container li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    line-height: 1.5em;
+    list-style-type: none;
+    padding-left: 20px;
 }
 
 .artikel-terkait-container figure figcaption a {
@@ -778,11 +769,6 @@ nav img {
 .populer-container a {
     display: block;
     text-decoration: none;
-}
-
-.baca-juga-list-container ul li::before {
-    content: "• ";
-    color: #ca0000;
 }
 
 .baca-juga-list-container ul li a {
@@ -818,7 +804,8 @@ nav img {
 }
 
 .btn-related {
-    background-color: #ca0000;
+    background-color: #ff3903;
+    padding: 10px;
     border-radius: 8px;
 }
 
@@ -864,20 +851,10 @@ nav img {
     margin: 15px 20px;
 }
 
-.list-berita-populer {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
 .list-berita-populer a {
     text-decoration: none;
     display: flex;
-    padding: 20px 7px;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.list-berita-populer a:last-child {
-    border-bottom: none;
+    padding: 10px 7px;
 }
 
 .list-berita-populer h1 {
@@ -886,8 +863,8 @@ nav img {
     color: #e5e5e5;
     font-size: 45px;
     font-family: var(--prompt-font);
-    font-style: italic;
     font-weight: 700;
+    color: #ff3903;
 }
 
 .highlight-article-container {
@@ -997,8 +974,9 @@ nav img {
 
 .berita-populer-deskripsi p {
     font-family: var(--lato-font);
-    font-size: 14px;
+    font-size: 16px;
     color: #000;
+    font-weight: 700;
 }
 
 .tab-news-container {
@@ -1214,6 +1192,10 @@ nav img {
     padding: 10px 23px;
 }
 
+.fa-triangle-exclamation {
+    color: black;
+}
+
 .fa-brands {
     font-family: "Font Awesome 6 Brands";
     align-items: center;
@@ -1412,7 +1394,6 @@ nav img {
 /*! detail */
 .report-btn {
     height: 40px;
-    width: 200px;
     background: #fff;
     border: 1px solid #e5e5e5;
     border-radius: 8px;
@@ -1452,12 +1433,11 @@ nav img {
     color: #000;
     line-height: 1.5;
     text-align: justify;
-    padding-top: 20px;
     font-weight: 400;
 }
 
 .photo-content {
-    margin: 20px;
+    margin: 30px 20px;
 }
 
 .icons-share-link,
@@ -1465,6 +1445,7 @@ nav img {
     line-height: 12px;
     font-family: Lato;
     font-style: normal;
+    min-width: max-content;
 }
 
 .main-gallery-body-left .main-photo-swiper {
@@ -1558,8 +1539,9 @@ nav img {
 
 .slider-counter {
     text-align: center;
-    padding: 10px 0 0;
+    padding: 0px 10px;
     font-size: 16px;
+    min-width: max-content;
 }
 
 .icons-share-link {
@@ -1591,7 +1573,7 @@ nav img {
 }
 
 .pages-button--img .item {
-    background-color: #ce0000;
+    background-color: #ff3903;
     color: #fff;
     border-radius: 8px;
 }
@@ -1672,6 +1654,50 @@ nav img {
 
 .hidden-component {
     display: none;
+}
+
+/* photo-detail-account */
+.account img {
+    border-radius: 80%;
+}
+
+.account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.account .account-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.account .account-detail p a {
+    font-family: var(--prompt-font);
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+}
+
+.account .account-detail p a:hover {
+    color: #dc3545;
+}
+
+.account p,
+.account span {
+    font-family: var(--prompt-font);
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+    display: inline-block;
+    margin: 0;
+}
+
+.account span {
+    color: #999999;
 }
 
 /* ?? VIEW BARU ?? */
