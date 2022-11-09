@@ -1,13 +1,5 @@
 @extends('defaultsite.mobile-v2.layouts.main')
 
-
-
-{{-- @push('preload')
-@if ($headline[0]['news_id'] ?? null)
-<link rel="preload" as="image" href="{{ Src::imgNewsCdn($headline[0], '375x208', 'webp') }}" />
-@endif
-@endpush --}}
-
 @section('content')
     <ul class="main-breadcrumb" style="margin:20px;">
         <li class="main-breadcrumb-item"><a href="/">Home</a></li>
@@ -54,35 +46,35 @@
             @endif
 
             <div class="py-3">
-                @include('defaultsite.mobile.components-ui.ads-on')
+                @include('defaultsite.mobile-v2.components-ui.ads-on')
             </div>
 
             {{-- <div class="channel-ad channel-ad_ad-sc">
             {!! Util::getAds('showcase-1') !!}
         </div> --}}
             @if ($feed)
-                @include('defaultsite.mobile.components-ui.listphoto', [
+                @include('defaultsite.mobile-v2.components-ui.listphoto', [
                     'rows' => $feed,
                     'page' => 'homepage',
                     'data' => 'headline',
                 ])
             @endif
             @if ($popular)
-                @include('defaultsite.mobile.components-ui.listphoto', [
+                @include('defaultsite.mobile-v2.components-ui.listphoto', [
                     'rows' => $popular,
                     'page' => 'homepage',
                     'data' => 'popular',
                 ])
             @endif
             @if ($recommendation)
-                @include('defaultsite.mobile.components-ui.listphoto', [
+                @include('defaultsite.mobile-v2.components-ui.listphoto', [
                     'rows' => $recommendation,
                     'page' => 'homepage',
                     'data' => 'recommendation',
                 ])
             @endif
             @if ($latest)
-                @include('defaultsite.mobile.components-ui.listphoto', [
+                @include('defaultsite.mobile-v2.components-ui.listphoto', [
                     'rows' => $latest,
                     'page' => 'homepage',
                     'data' => 'latest',
