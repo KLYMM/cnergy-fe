@@ -124,13 +124,13 @@
                         width="40" height="40" alt="user">
                 </a>
                 <div class="d-flex flex-column justify-content-center gap-1">
-                    <p class="photo-author pt-2">
+                    <p class="photo-author pt-2 font-outfit">
                         <a style="color: #CA0000 ;"
                             href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}
                         </a>
 
                     </p>
-                    <span> {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
+                    <span class="font-outfit"> {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
 
         <div style="margin:20px;">
             <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
-                    class="fa-solid fa-triangle-exclamation" style="color: #ca0000; margin-right: 10px;"></i>REPORT
+                    class="fa-solid fa-triangle-exclamation font-outfit" style="color: #ca0000; margin-right: 10px;"></i>REPORT
                 ARTICLE</button>
 
             <div class="modal fade" id="myModal" role="dialog">
@@ -158,12 +158,6 @@
             'title' => 'Related Video',
         ])
 
-        @if ($latest = \Data::latest() ?? null)
-            @include('defaultsite.mobile-v2.components-ui.related-article', [
-                'news' => $latest,
-                'title' => 'LATEST UPDATE',
-            ])
-        @endif
 
         @if ($latest = \Data::latest() ?? null)
             @include('defaultsite.mobile-v2.components-ui.slider', [
@@ -175,5 +169,12 @@
         @if ($popular = \Data::popular() ?? null)
             @include('defaultsite.mobile-v2.components-ui.populer-news', ['popular' => $popular])
         @endif
+
+        @if ($latest = \Data::latest() ?? null)
+        @include('defaultsite.mobile-v2.components-ui.related-article', [
+            'news' => $latest,
+            'title' => 'LATEST UPDATE',
+        ])
+    @endif
     </div>
 @endsection
