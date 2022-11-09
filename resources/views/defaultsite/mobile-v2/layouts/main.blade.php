@@ -227,10 +227,103 @@
 </script>
 
 <script>
+function copyToClipboard() {
+    var dummy = document.createElement('input'),
+        text = window.location.href;
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+    var button = document.querySelector(".icons-share-link")
+    button.innerHTML = "Copied !"
+}
+</script>
+
+<script>
+    // infinite delay scroll
+
+    var btn = document.querySelector('#btn-back-toTop');
+    var scrolling
+    buttons = document.getElementsByClassName('pages-button')
+    var elementPositionButton = buttons[0]
+    pagination = 0
+
+    function callback() {
+        for (i = 0; i < buttons.length; i++) {
+            if (i == pagination) {
+                var attr = buttons[i].getAttribute('data-target')
+                selected = document.querySelector('#data-' + attr)
+                selectedCount = buttons[i].getElementsByClassName('pages-button-countdown')[0]
+                parentButton = selectedCount.parentNode
+                maxParentTry = 3
+                while (!parentButton.classList.contains('pages-button') && maxParentTry-- > 0) {
+                    parentButton = parentButton.parentNode;
+                };
+
+                if (i + 1 != buttons.length) {
+                    elementPositionButton = buttons[i + 1]
+                }
+
+                counter = selectedCount.getAttribute('data-delay')
+                number = selectedCount.querySelector('.pages-button-countdown-html')
+                circle = selectedCount.querySelector('.pages-button-countdown-svg circle')
+                radius = circle.getAttribute('r')
+                circumference = 2 * Math.PI * radius
+
+                circle.style.strokeDasharray = circumference
+                circle.style.strokeDashoffset = 0
+
+                var timer = window.setInterval(function() {
+                    counter--;
+                    if (counter >= 0) {
+                        number.innerHTML = counter;
+                        circle.style.strokeDashoffset = circumference / counter
+                    }
+                    if (counter === 0) {
+                        selected.classList.remove('pages-item-hidden');
+                        parentButton.classList.add('pages-button-hidden')
+
+                        var headerOffset = 20;
+                        elementPosition = selected.getBoundingClientRect().top;
+                        offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        })
+
+                        window.clearInterval(timer);
+                        scrolling = false;
+                    }
+                }, 1000);
+            }
+            if (pagination == buttons.length) {
+                var hiddenComponent = document.getElementById("div-hidden");
+                hiddenComponent.classList.remove("hidden-component");
+                btn.classList.add("show")
+            }
+        }
+        pagination++;
+    }
+
+    if(document.getElementsByClassName('pages-button').length!=0){
+        window.addEventListener("scroll", (e) => {
+        if (elementPositionButton.getBoundingClientRect().bottom <= window.innerHeight) {
+            if (!scrolling) {
+                scrolling = true;
+                callback();
+            }
+            scrolling = true;
+        }
+    });
+    }
+</script>
+<script>
     var btn = document.querySelector('#btn-back-toTop');
 
     document.addEventListener('scroll', (e) => {
-        if (document.documentElement.scrollTop > 300) {
+        if (document.documentElement.scrollTop > 300 ) {
             btn.classList.add('show');
         } else {
             btn.classList.remove('show');
@@ -243,17 +336,4 @@
             document.documentElement.scrollTop = 0;
         })
     </script>
-    <script>
-    function copyToClipboard() {
-        var dummy = document.createElement('input'),
-            text = window.location.href;
-        document.body.appendChild(dummy);
-        dummy.value = text;
-        dummy.select();
-        document.execCommand('copy');
-        document.body.removeChild(dummy);
-        var button = document.querySelector(".icons-share-link")
-        button.innerHTML = "Copied !"
-    }
-</script>
 </html>

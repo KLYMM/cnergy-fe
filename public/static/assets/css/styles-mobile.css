@@ -900,6 +900,10 @@ nav img {
     margin: 15px 20px;
 }
 
+.list-berita-populer {
+    padding: 10px 0;
+}
+
 .list-berita-populer a {
     text-decoration: none;
     display: flex;
