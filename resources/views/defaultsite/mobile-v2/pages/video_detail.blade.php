@@ -72,6 +72,7 @@
 
         <div class="main-news-container">
             <h3 class="photo-t" style="margin: 20px;">{{ $row['news_title'] ?? null }}</h3>
+            <input type="checkbox" checked id="btn-read">
             <div class="dt-paragraph">
                 {!! str_replace(
                     ['mce-mce-mce-mce-no/type', 'mce-no/type'],
@@ -107,9 +108,12 @@
                                 }
                             }
                         }
+                        console.log(document.getElementsByClassName('dt-paragraph'))
                     </script>
                 @endpush
+
             </div>
+            <label for="btn-read" class="btn-inner"></label>
         </div>
 
 
@@ -138,15 +142,16 @@
         @include('defaultsite.mobile-v2.components-ui.related-tag', ['title' => ''])
 
         <div style="margin:20px;">
-            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
-                    class="fa-solid fa-triangle-exclamation" style="color: #ca0000; margin-right: 10px;"></i>REPORT
+            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"
+                style="border: 1px solid #ff3903;"><i class="fa-solid fa-triangle-exclamation"
+                    style="color: #ff3903; margin-right: 10px;"></i>REPORT
                 ARTICLE</button>
 
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-body">
-                            @include('defaultsite.mobile.components-ui.form-report')
+                            @include('defaultsite.mobile-v2.components-ui.form-report')
                         </div>
                     </div>
                 </div>

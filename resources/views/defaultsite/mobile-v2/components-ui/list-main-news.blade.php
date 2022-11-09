@@ -1,7 +1,7 @@
 @if (count($latest) > 0)
     @if ($latest = collect($latest)->slice(0, 5))
         {{-- !! --}}
-        <h2 class="HASAN TAMBAHIN">{{ $title ?? 'Related News' }}</h2>
+        <h2 class="title-list-main">{{ $title ?? 'Related News' }}</h2>
         <div class="list-main-news-container">
             @foreach ($latest as $ln)
                 <div class="card-news">
@@ -15,11 +15,11 @@
                         </div>
 
                         <div class="description">
+                            <h4>{{ $ln['news_title'] }}</h4>
                             <div class="banner">
                                 <p>{{ $ln['category_name'] }}</p>
                                 <span>{{ Util::date($ln['news_date_publish'], 'ago') }}</span>
                             </div>
-                            <h4>{{ $ln['news_title'] }}</h4>
                         </div>
                     </a>
                 </div>
