@@ -144,7 +144,7 @@
         <div style="margin:20px;">
 
             <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
-                    class="fa-solid fa-triangle-exclamation font-outfit" style="color: #ca0000; margin-right: 10px;"></i>REPORT
+                    class="fa-solid fa-triangle-exclamation font-outfit" style="color: #000000; margin-right: 10px;"></i>REPORT
                 ARTICLE</button>
 
             <div class="modal fade" id="myModal" role="dialog">
