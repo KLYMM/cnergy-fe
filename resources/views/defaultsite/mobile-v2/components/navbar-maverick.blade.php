@@ -221,6 +221,11 @@
                             position: relative;
                         }
 
+                        table.gssb_c{
+                            bottom:68px !important;
+                            top:initial !important;
+                        }
+
                         .gsst_b {
                             padding: 0;
                         }
