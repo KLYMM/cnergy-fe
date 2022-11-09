@@ -301,7 +301,6 @@ function copyToClipboard() {
             if (pagination == buttons.length) {
                 var hiddenComponent = document.getElementById("div-hidden");
                 hiddenComponent.classList.remove("hidden-component");
-                btn.classList.add("show")
             }
         }
         pagination++;
@@ -323,10 +322,14 @@ function copyToClipboard() {
     var btn = document.querySelector('#btn-back-toTop');
 
     document.addEventListener('scroll', (e) => {
-        if (document.documentElement.scrollTop > 300 ) {
-            btn.classList.add('show');
-        } else {
+        if(document.getElementsByClassName('pages-button').length!=0 && pagination <= buttons.length){
             btn.classList.remove('show');
+        } else{
+            if (document.documentElement.scrollTop > 300 ) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
         }
     })
 
