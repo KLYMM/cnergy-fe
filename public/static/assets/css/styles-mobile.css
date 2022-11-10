@@ -197,6 +197,16 @@ nav {
     background-color: #fff;
 }
 
+header {
+    transform: translateY(0);
+    transition: transform 0.1s ease-in-out;
+}
+
+header.hide {
+    transform: translateY(-100%);
+    transition: transform 0.1s ease-in-out;
+}
+
 .nav-header img,
 nav img {
     cursor: pointer;
@@ -1311,6 +1321,25 @@ nav img {
 .dt-share-container {
     display: flex;
     margin: 20px;
+    position: sticky;
+}
+
+.dt-share-container-fixed {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    justify-content: center;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    transform: translateY(-100%);
+    transition: transform 0.1s ease-in-out;
+}
+
+.dt-share-container-fixed.stick {
+    transform: translateY(0);
+    transition: transform 0.1s ease-in-out;
 }
 
 .fa-facebook-f,
@@ -1574,6 +1603,7 @@ nav img {
 }
 
 .icons-share-link,
+.icons-share-link-bar,
 .item-desc-time {
     line-height: 12px;
     font-family: Lato;
@@ -1686,7 +1716,8 @@ nav img {
     color: #000000;
 }
 
-.icons-share-link {
+.icons-share-link,
+.icons-share-link-bar {
     width: 80px;
     height: 35px;
     background-color: #424242;

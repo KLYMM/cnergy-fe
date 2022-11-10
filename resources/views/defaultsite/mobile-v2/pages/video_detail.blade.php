@@ -117,7 +117,7 @@
         </div>
 
 
-        @include('defaultsite.mobile.components-ui.dt-share')
+        @include('defaultsite.mobile-v2.components-ui.dt-share')
 
         <div class="header-photo">
             <h2 class="dt-title text-24 font-bold mb-6">{{ $row['news_sub_title'] ?? null }}</h2>
