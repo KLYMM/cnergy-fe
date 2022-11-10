@@ -1,9 +1,23 @@
-
-@if ($row['news_tag'] ?? null)
-<h4 class="related-tag-title">{{$title}}</h4>
+{{-- @if ($row['news_tag'] ?? null)
+    <h4 class="related-tag-title">{{ $title }}</h4>
     <div class="related-tag-container">
         @foreach ($row['news_tag'] as $r)
-            <a class="btn btn-related"  href="{{ Src::detailTag($r) }}">{{ $r['tag_name'] ?? null }}</a>
+            <a class="btn btn-related" href="{{ Src::detailTag($r) }}">{{ $r['tag_name'] ?? null }}</a>
         @endforeach
-      </div>
+    </div>
+@endif --}}
+
+@if ($row['news_tag'] ?? null)
+    <div aria-label="breadcrumb" style="margin: 0px 20px">
+        <h4 class="related-tag-title">{{ $title }}</h4>
+        <ol class="breadcrumb">
+            @foreach ($row['news_tag'] as $r)
+                <li class="breadcrumb-item">
+                    <a href="{{ Src::detailTag($r) }}"
+                        style="font-weight: 700; color: #ff3903;">{{ $r['tag_name'] ?? null }}
+                    </a>
+                </li>
+            @endforeach
+        </ol>
+    </div>
 @endif

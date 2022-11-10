@@ -9,7 +9,7 @@
                 @endif
             @endif
         @endif
-        <article id="{{$r['news_id']}}" class="artikel-terkait-container mb-5">
+        <article id="{{$r['news_id']}}" class="artikel-terkait-container mb-3">
             <figure class="image-news mb-3" >
                 <a href="{{ Src::detail($r) }}" aria-label="{{ $r[0]['news_title'] ?? null }}">
                         @include('image', [
@@ -29,7 +29,7 @@
                 </a>
                 <p class="item-desc-time ms-3">{{ Util::date(date('Y-M-d H:i:s', strtotime($r['news_date_publish'])), 'short') }}</p> 
                 </div>
-                <h2 class="item-desc-title py-3"><a  href="{{Src::detail($r)}}" >{{$r['news_title']??null}}</a></h2>
+                <h2 class="item-desc-title pb-3 pt-2"><a  href="{{Src::detail($r)}}" >{{$r['news_title']??null}}</a></h2>
             </figcaption>
         </article>
         @if ($loop->index==3)

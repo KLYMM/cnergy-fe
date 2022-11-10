@@ -125,10 +125,8 @@ window.addEventListener('load', function(){
                         <p class="photo-content">{{ $row['news_imageinfo'] ?? null }}</p>
 
                         @foreach ($row['photonews'] as $s)
-                            <div id="data-{{ $loop->index }}" data-target="{{ $loop->index }}"
-                                class="@if ($loop->index != 0) pages-item-hidden @endif">
-                                <div class="slider-counter">Photo {{ $loop->iteration }}<span id="sliderCounter"></span> of
-                                    {{ count($row['photonews']) }}</div>
+                            <div id="data-{{ $loop->index }}" data-target="{{ $loop->index }}" class="@if ($loop->index != 0) pages-item-hidden @endif">
+                                <div class="slider-counter">{{ $loop->iteration }}<span id="sliderCounter"></span> of {{ count($row['photonews']) }} photos</div>
                                 <div class="dt-share-container">
                                     <div class="icons mt-2 " style="display: flex; ">
                                         <div>
