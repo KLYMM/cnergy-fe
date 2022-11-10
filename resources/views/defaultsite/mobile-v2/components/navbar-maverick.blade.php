@@ -6,7 +6,7 @@
         <h1 class="header-body-logo text-3xl flex items-center font-bold">
             <a class="header-body-logo-link" href="/">
                 <span class="header-body-logo-link-icon">
-                    <img class="icon-lg object-contain dark:img-white"
+                    <img class="logo-section-3 icon-lg object-contain dark:img-white"
                         src="{{ URL::asset('assets/images/trstdly.png') }}" alt="logo" width="140"
                         height="48" />
                 </span>
@@ -61,18 +61,20 @@
     <div class="nav-main" style="transform: translateX(-150%);">
         <div class="nav-content">
             <div class="nav-header">
+                <a href="/"> <img class=" dark:img-white"
+                    src="{{ URL::asset('assets/images/trstdly.png') }}" alt="logo" width="140"
+                    height="48" /></a>
 
-                <img class="nav-close object-contain dark:img-white"
+                <img class="nav-close  dark:img-white"
                     src="{{ URL::asset('assets/icons/icon-close.svg') }}" alt="search-icon" width="25px"
                     height="25px">
-                <a href="/"> <img class="object-contain dark:img-white"
-                        src="{{ URL::asset('assets/images/trstdly.png') }}" alt="logo" width="140"
-                        height="48" /></a>
+              
                 
 
             </div>
 
             <ul class="nav-menus">
+              
                 @if ($menu = Data::menu())
                     @php
                         //get category tree
@@ -262,7 +264,7 @@
                             background-color: transparent !important;
                             margin: 0 !important;
                             width: 100%;
-                            background-color: yellow;
+                         
                         }
 
                         input.gsc-search-button,
@@ -292,23 +294,28 @@
                             float: right;
                             margin: 10px;
                             background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
-
                             background-repeat: no-repeat;
                             background-position: center;
+                            filter: invert(1) grayscale(2) brightness(0);
                             width: 40px;
                             height: 40px;
                             background-size: 20px;
                         }
 
                         .gsc-search-box-tools .gsc-search-box .gsc-input {
-                            font-family: 'Noto Sans', sans-serif;
+                           
+
+                            font-family: 'Inter';
+                            font-weight: 400;
                             padding-right: 10px;
                             height: 40px !important;
                             line-height: normal;
-                            color: var(--color-gray);
                             font-size: 14px;
                             background: #fff !important;
                             text-indent: 0 !important;
+                        }
+                        .gsc-input::placeholder {
+                            color: #333;
                         }
 
                         .gsc-search-box-tools .gsc-search-box .gsc-input::-webkit-input-placeholder {
@@ -325,6 +332,7 @@
 
                         .gsc-search-box-tools .gsc-search-box .gsc-input:-moz-placeholder {
                             opacity: 1;
+                            
                         }
 
                         td.gsc-search-button {
