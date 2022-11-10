@@ -1,6 +1,6 @@
 <div class="channel-ad channel-ad_ad-topfrm">
     {!! Util::getAds('billboardmasthead') !!}
-</div> 
+</div>
 <nav>
   <img class="nav-open" src="{{ URL::asset('assets/icons/hamburger.svg') }}" width="18px" height="18px"  alt="bar-icon" onclick="show()">
   <a href="/"><img src="{{ URL::asset('assets/images/logo.png') }}" alt="logo" width="142px" height="29px"></a>

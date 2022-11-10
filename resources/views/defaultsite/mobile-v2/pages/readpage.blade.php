@@ -42,7 +42,7 @@
         </div>
         @include('defaultsite.mobile.components-ui.ads-on')
         {{-- st-share --}}
-        @include('defaultsite.mobile.components-ui.dt-share')
+        @include('defaultsite.mobile-v2.components-ui.dt-share')
 
         <div class="dt-paragraph">
             @php

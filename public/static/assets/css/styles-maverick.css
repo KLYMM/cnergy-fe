@@ -590,6 +590,10 @@ article {
 }
 
 /* navbar */
+nav.hidden {
+    display: none;
+}
+
 .nav-main {
     height: 100vh;
     position: relative;

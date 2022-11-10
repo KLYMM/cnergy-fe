@@ -117,7 +117,7 @@
         </div>
 
 
-        @include('defaultsite.mobile.components-ui.dt-share')
+        @include('defaultsite.mobile-v2.components-ui.dt-share')
 
         <div class="header-photo">
             <h2 class="dt-title text-24 font-bold mb-6">{{ $row['news_sub_title'] ?? null }}</h2>
@@ -129,8 +129,7 @@
                 </a>
                 <div class="d-flex flex-column justify-content-center gap-1">
                     <p class="photo-author pt-2 font-outfit">
-                        <a
-                            href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}
+                        <a href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}
                         </a>
 
                     </p>
@@ -144,7 +143,8 @@
         <div style="margin:20px;">
 
             <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
-                    class="fa-solid fa-triangle-exclamation font-outfit" style="color: #000000; margin-right: 10px;"></i>REPORT
+                    class="fa-solid fa-triangle-exclamation font-outfit"
+                    style="color: #000000; margin-right: 10px;"></i>REPORT
                 ARTICLE</button>
 
             <div class="modal fade" id="myModal" role="dialog">
@@ -176,10 +176,10 @@
         @endif
 
         @if ($latest = \Data::latest() ?? null)
-        @include('defaultsite.mobile-v2.components-ui.related-article', [
-            'news' => $latest,
-            'title' => 'LATEST UPDATE',
-        ])
-    @endif
+            @include('defaultsite.mobile-v2.components-ui.related-article', [
+                'news' => $latest,
+                'title' => 'LATEST UPDATE',
+            ])
+        @endif
     </div>
 @endsection

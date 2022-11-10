@@ -10,7 +10,7 @@
                             href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">{{ $newsItem['news_tag'][0]['tag_name'] }}</a>
                     </span>
                 @endif
-                <h1 class="article-title vh-text-3xl font-outfit font-bold mb-2 animate animate--fadeInRight"
+                <h1 class="article-title vh-text-2xl font-outfit font-bold mb-2 animate animate--fadeInRight"
                     style="--delay: 100ms">
                     {{ $newsItem['news_title'] }}
                 </h1>
