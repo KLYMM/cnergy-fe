@@ -21,7 +21,7 @@
                         class="article-tag block capitalize font-inter font-bold text-primary  border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white-20 dark:border-white-20"
                         style="--delay: 0ms">
                         <a
-                            href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">{{ $newsItem['news_tag'][0]['tag_name'] }}</a>
+                            href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">{{ $tag ?? $newsItem['news_tag'][0]['tag_name'] }}</a>
                     </span>
                 @endif
             </div>

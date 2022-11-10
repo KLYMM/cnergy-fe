@@ -7,7 +7,7 @@
                         class="article-tag block capitalize font-inter font-bold text-primary  border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white-20 dark:border-white-20"
                         style="--delay: 0ms">
                         <a
-                            href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">{{ $newsItem['news_tag'][0]['tag_name'] }}</a>
+                            href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">{{ $tag ?? $newsItem['news_tag'][0]['tag_name'] }}</a>
                     </span>
                 @endif
                 <h1 class="article-title vh-text-2xl font-outfit font-bold mb-2 animate animate--fadeInRight"
@@ -19,7 +19,7 @@
                     style="--delay: 200ms">{{ Util::date($newsItem['news_date_publish'], 'ago') }}
                 </span>
             </div>
-            <div class="article-paragraph line-clamp-5 text-gray dark:text-white-20 px-6 animate animate--fadeInUp"
+            <div class="article-paragraph line-clamp-5 text-gray dark:text-white-20  animate animate--fadeInUp"
                 style="--delay: 300ms">
                 <p>
                     {{ $newsItem['news_synopsis'] }}
