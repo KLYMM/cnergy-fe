@@ -298,7 +298,7 @@ nav img {
 }
 
 .main-breadcrumb .main-breadcrumb-item {
-    color: #4a4a4a;
+    color: #979797;
 }
 
 .main-breadcrumb .active,
@@ -309,6 +309,7 @@ nav img {
 
 .main-breadcrumb .main-breadcrumb-item a {
     color: inherit;
+    font-weight: 700;
 }
 
 .main-breadcrumb .main-breadcrumb-item::after {
@@ -342,6 +343,20 @@ nav img {
     margin: 0 20px;
 }
 
+.main-news-deskripsi figure {
+    position: relative;
+}
+
+.main-news-deskripsi figure .frame-bottom {
+    position: absolute;
+    background-color: white;
+    width: 340px;
+    height: 30px;
+    bottom: 0;
+    left: 0;
+    border-top: 3px solid #FF3903;
+}
+
 .main-news-deskripsi figure .image-news {
     margin: 15px 0;
 }
@@ -373,6 +388,7 @@ nav img {
     color: #000;
     font-size: 24px;
     font-weight: bolder;
+    margin-top: -20px;
 }
 
 .main-news-deskripsi p {
@@ -685,6 +701,16 @@ nav img {
     margin: 20px;
 }
 
+.main-news-container .dt-paragraph p>b {
+    color: var(--color-primary);
+}
+
+.main-news-container .dt-paragraph p::after {
+    content: "\A";
+    white-space: pre;
+    display: block;
+}
+
 /* .dt-paragraph p {
     margin-bottom: 1.5rem;
 } */
@@ -693,7 +719,7 @@ nav img {
     display: none;
 }
 
-#btn-read:checked ~ .dt-paragraph p {
+#btn-read:checked~.dt-paragraph p {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -704,7 +730,7 @@ nav img {
     content: "Read Less";
 }
 
-#btn-read:checked ~ .btn-inner::before {
+#btn-read:checked~.btn-inner::before {
     content: "Read More";
 }
 
@@ -2088,11 +2114,11 @@ nav img {
     cursor: pointer;
 }
 
-.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-light {
+.switchTheme-control:checked~.switchTheme-icon .switchTheme-icon-light {
     opacity: 0;
 }
 
-.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-dark {
+.switchTheme-control:checked~.switchTheme-icon .switchTheme-icon-dark {
     opacity: 1;
 }
 
@@ -2257,6 +2283,7 @@ nav img {
     opacity: 1;
     transform: scale(1, 1) translate3d(0, 0, 0);
 }
+
 .related_h2 {
     font-family: "Outfit";
     font-style: normal;
@@ -2266,6 +2293,7 @@ nav img {
 
     color: #000000;
 }
+
 .title_slider {
     font-family: "Outfit";
     font-style: normal;
@@ -2275,6 +2303,7 @@ nav img {
 
     color: #000000;
 }
+
 .related-span {
     font-family: "Inter";
     font-style: normal;
@@ -2284,6 +2313,7 @@ nav img {
 
     color: #ff3903;
 }
+
 .related-span2 {
     font-family: "Outfit";
     font-style: normal;
@@ -2294,6 +2324,7 @@ nav img {
 
     color: #999999;
 }
+
 .author_publish {
     font-family: "Outfit";
     font-style: normal;
