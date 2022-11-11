@@ -823,10 +823,6 @@ nav img {
 }
 
 .baca-juga-list-container {
-    padding: 15px;
-    background: #ff39030d;
-    border: 1px solid #ff6600;
-    border-radius: 4px;
     margin: 20px;
 }
 
@@ -847,11 +843,9 @@ nav img {
 .baca-juga-list-container h4 {
     font-family: "Outfit";
     font-style: normal;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 16px;
-    line-height: 24px;
     /* identical to box height, or 150% */
-
     color: #000000;
 }
 
@@ -859,7 +853,6 @@ nav img {
     padding-top: 10px;
     line-height: 1.5em;
     list-style-type: none;
-    padding-left: 20px;
 }
 
 .artikel-terkait-container figure figcaption a {
@@ -883,13 +876,19 @@ nav img {
 }
 
 .baca-juga-list-container ul li a {
+    display: block;
     font-family: "Outfit";
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
-    line-height: 22px;
+    line-height: 23px;
     /* or 157% */
     color: #000000;
+    margin-bottom: 12px;
+}
+
+.baca-juga-list-container ul li {
+    border-bottom: 1px solid #ff3903;
 }
 
 .related-tag-container {
