@@ -72,7 +72,10 @@
                 
 
             </div>
-
+          
+          
+           
+           
             <ul class="nav-menus">
               
                 @if ($menu = Data::menu())
@@ -162,6 +165,8 @@
                         </li>
                     @endif
                 @endif
+
+                @include('defaultsite.mobile-v2.components-ui.trending-menu')
             </ul>
 
             @if (count($category_tree) > 0)

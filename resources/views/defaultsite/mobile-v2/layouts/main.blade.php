@@ -234,7 +234,7 @@
     window.__gcse = {
         callback: function cseSearch() {
             document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
-                "Search news, keywords, and more...");
+                "Search...");
         }
     };
 

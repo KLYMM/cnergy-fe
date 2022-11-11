@@ -161,6 +161,7 @@
                         </li>
                     @endif
                 @endif
+                @include('defaultsite.mobile-v2.components-ui.trending-menu')
             </ul>
 
             @if (count($category_tree) > 0)
@@ -285,27 +286,32 @@
 
                         td.gsc-search-button {
 
-                            float: right;
-                            margin: 10px;
-                            background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
-
-                            background-repeat: no-repeat;
-                            background-position: center;
-                            width: 40px;
-                            height: 40px;
-                            background-size: 20px;
+                        float: right;
+                        margin: 10px;
+                        background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        filter: invert(1) grayscale(2) brightness(0);
+                        width: 40px;
+                        height: 40px;
+                        background-size: 20px;
                         }
 
                         .gsc-search-box-tools .gsc-search-box .gsc-input {
-                            font-family: 'Noto Sans', sans-serif;
-                            padding-right: 10px;
-                            height: 40px !important;
-                            line-height: normal;
-                            color: var(--color-gray);
-                            font-size: 14px;
-                            background: #fff !important;
-                            text-indent: 0 !important;
-                        }
+                           
+
+                           font-family: 'Inter';
+                           font-weight: 400;
+                           padding-right: 10px;
+                           height: 40px !important;
+                           line-height: normal;
+                           font-size: 14px;
+                           background: #fff !important;
+                           text-indent: 0 !important;
+                       }
+                       .gsc-input::placeholder {
+                           color: #333;
+                       }
 
                         .gsc-search-box-tools .gsc-search-box .gsc-input::-webkit-input-placeholder {
                             opacity: 1;
