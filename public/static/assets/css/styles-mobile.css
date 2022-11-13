@@ -685,9 +685,9 @@ nav img {
     margin: 20px;
 }
 
-/* .dt-paragraph p {
-    margin-bottom: 1.5rem;
-} */
+.dt-paragraph p {
+    margin-bottom: 10px;
+}
 
 #btn-read {
     display: none;

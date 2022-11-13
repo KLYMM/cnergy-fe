@@ -47,25 +47,30 @@
     </ul>
     {{-- @dump($row) --}}
     <div>
-        <figure class="">
+        <figure class="item-vidio-inner">
             <style>
                 iframe {
                     aspect-ratio: 16 / 9;
                     width: 100%;
                     height: auto;
+                    /* background-color: inherit; */
                 }
 
-                ,
+                /* iframe body.videos.embed {
+                    margin: 0 !imp;
+                    width:100% !important
+                } */
 
                 .item-vidio-inner {
                     position: relative;
                     height: auto;
                     width: 100%;
+                    position: sticky;
+                    top: 3.6rem;
+                    z-index: 19;
                 }
-
-                ,
             </style>
-            <div class="item-vidio-inner">
+            <div >
                 {!! htmlspecialchars_decode($row['news_video']['video'] ?? null) !!}
             </div>
         </figure>

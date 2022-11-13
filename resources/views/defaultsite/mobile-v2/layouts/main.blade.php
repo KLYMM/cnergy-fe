@@ -360,10 +360,11 @@ function copyToClipboard() {
     </script>
     <script>
         var shareSection = document.querySelector(".dt-share-container")
+        var iframe = document.querySelector(".item-vidio-inner")
         var shareSectionSticky = document.querySelector(".dt-share-container-fixed")
         var navbar = document.querySelector("nav")
         var position = 0
-        if(shareSection){
+        if(shareSection!==null && iframe==null){
             window.addEventListener("scroll", (e) => {
                 if(window.scrollY < position){
                     shareSectionSticky.classList.remove("stick")
@@ -377,5 +378,18 @@ function copyToClipboard() {
                 }
             })
         }
+
+        // var iframeVidio = document.querySelector("iframe")
+        // var bodyIframe = iframeVidio.contentWindow.document.getElementsByTagName("head")        // bodyIframe.style.margin= "0 !important"
+        // bodyIframe.style.width= "100% !important"
+        // var style = document.createElement('style');
+        // style.textContent =
+        //     '.videos.embed {' +
+        //     '  margin: 0 !important;' +
+        //     '  width: 100% !important' +
+        //     '}'
+        //     ;
+        // bodyIframe.appendChild(style);
+        // console.log( bodyIframe)
     </script>
 </html>
