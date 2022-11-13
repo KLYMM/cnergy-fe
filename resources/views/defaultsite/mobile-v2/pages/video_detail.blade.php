@@ -55,18 +55,12 @@
                     height: auto;
                     /* background-color: inherit; */
                 }
-
-                /* iframe body.videos.embed {
-                    margin: 0 !imp;
-                    width:100% !important
-                } */
-
                 .item-vidio-inner {
                     position: relative;
                     height: auto;
                     width: 100%;
                     position: sticky;
-                    top: 3.6rem;
+                    top: 3.7rem;
                     z-index: 19;
                 }
             </style>
@@ -147,10 +141,10 @@
 
         <div style="margin:20px;">
 
-            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
+            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn" style="background-color:#FFF0EC; font-weight:bolder;"><i
                     class="fa-solid fa-triangle-exclamation font-outfit"
-                    style="color: #000000; margin-right: 10px;"></i>REPORT
-                ARTICLE</button>
+                    style="color:#ff3903; margin-right: 10px;"></i>REPORT
+                NEWS</button>
 
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+~<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -42,7 +42,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
 
@@ -56,19 +56,19 @@
     <div class=" max-w-full">
         {{-- Share Section on News Detail --}}
         <div class="dt-share-container-fixed">
-            <div class="icons mt-2 " style="display: flex; ">
-                <div>
-                    <a class="icons-share-a" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() .'?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom' )}}" target="_blank"><i class="icon icons--share icon--share-fb"><i class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
-                </div>
-                <div>
-                    <a class="icons-share-a" href="https://wa.me/?text={{ urlencode(url()->current() .'?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom' )}}" target="_blank"><i class="icon icons--share icon--share-fb"><i class="fa-brands fa-wa fa-whatsapp" style="margin-left: 10px"></i></i></a>
-                </div>
-                <div>
-                    <a class="icons-share-a" href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() .'?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom' )}}" target="_blank"><i class="icon icons--share icon--share-fb"><i class="fa-brands fa-twitter fa-twitter" style="margin-left: 10px"></i></i></a>
-                </div>  
-                <div class="ms-3">
-                    <button class="icons-share-link-bar icons-share-link-bar px-2" value="copy" onclick="copyToClipboard()">  <i class="fa-solid fa-link mx-1"></i> Copy Link</button>
-                </div>
+            <div class="icons d-flex align-items-center justify-content-center mt-2 gap-2">
+                <h3>Share</h3>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom') }}"
+                    target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i
+                            class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
+                <a href="https://wa.me/?text={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom') }}"
+                    target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i
+                            class="fa-brands fa-wa fa-whatsapp"></i></i></a>
+                <a href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom') }}"
+                    target="_blank"><i class="icon icons--share icon--share-fb "><i
+                            class="fa-brands fa-twitter fa-twitter fs-5"></i></i></a>
+                <a class="icons-share-link" value="copy" onclick="copyToClipboard()"> <i
+                        class="fa-solid fa-link fs-5"></i></a>
             </div>
         </div>
 
@@ -86,7 +86,7 @@
             @include('defaultsite.mobile-v2.components.footer-maverick')
         @endif
     </div>
-   
+
 
     <a id="btn-back-toTop" class="hover"></a>
 
@@ -213,12 +213,12 @@
         mainNav.style.transform = 'translateX(0)';
     }
 
-        function close() {
-            mainNav.style.transform = 'translateX(-150%)';
-            var s = document.getElementsByTagName('script')[0];
-            s.remove();
-        }
-    </script>
+    function close() {
+        mainNav.style.transform = 'translateX(-150%)';
+        var s = document.getElementsByTagName('script')[0];
+        s.remove();
+    }
+</script>
 
 <script>
     function cseSearch() {
@@ -234,7 +234,7 @@
     window.__gcse = {
         callback: function cseSearch() {
             document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
-                "Search news, keywords, and more...");
+                "Search...");
         }
     };
 
@@ -244,9 +244,9 @@
 </script>
 
 <script>
-function copyToClipboard() {
-    var dummy = document.createElement('input'),
-        text = window.location.href;
+    function copyToClipboard() {
+        var dummy = document.createElement('input'),
+            text = window.location.href;
         document.body.appendChild(dummy);
         dummy.value = text;
         dummy.select();
@@ -254,9 +254,9 @@ function copyToClipboard() {
         document.body.removeChild(dummy);
         var button = document.querySelector(".icons-share-link")
         var button2 = document.querySelector(".icons-share-link-bar")
-        button.innerHTML = "Copied !"
-        button2.innerHTML = "Copied !"
-}
+        button.style.opacity = 0.5
+        button2.style.opacity = 0.5
+    }
 </script>
 
 <script>
@@ -325,26 +325,26 @@ function copyToClipboard() {
         pagination++;
     }
 
-    if(document.getElementsByClassName('pages-button').length!=0){
+    if (document.getElementsByClassName('pages-button').length != 0) {
         window.addEventListener("scroll", (e) => {
-        if (elementPositionButton.getBoundingClientRect().bottom <= window.innerHeight) {
-            if (!scrolling) {
+            if (elementPositionButton.getBoundingClientRect().bottom <= window.innerHeight) {
+                if (!scrolling) {
+                    scrolling = true;
+                    callback();
+                }
                 scrolling = true;
-                callback();
             }
-            scrolling = true;
-        }
-    });
+        });
     }
 </script>
 <script>
     var btn = document.querySelector('#btn-back-toTop');
 
     document.addEventListener('scroll', (e) => {
-        if(document.getElementsByClassName('pages-button').length!=0 && pagination <= buttons.length){
+        if (document.getElementsByClassName('pages-button').length != 0 && pagination <= buttons.length) {
             btn.classList.remove('show');
-        } else{
-            if (document.documentElement.scrollTop > 300 ) {
+        } else {
+            if (document.documentElement.scrollTop > 300) {
                 btn.classList.add('show');
             } else {
                 btn.classList.remove('show');
