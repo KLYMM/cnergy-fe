@@ -711,10 +711,6 @@ nav img {
     display: block;
 }
 
-.dt-paragraph p {
-    margin-bottom: 1.5rem;
-}
-
 #btn-read {
     display: none;
 }
@@ -1380,8 +1376,6 @@ nav img {
 .fa-link {
     background-color: transparent;
     font-family: "Font Awesome 6 Brands";
-    width: 50px;
-    height: 35px;
 }
 
 .index-h1,

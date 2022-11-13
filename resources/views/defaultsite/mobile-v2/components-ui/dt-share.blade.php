@@ -1,5 +1,5 @@
 <div class="dt-share-container">
-    <div class="icons d-flex align-items-center justify-content-center mt-2 gap-2">
+    <div class="icons d-flex align-items-center justify-content-center mt-2 gap-4">
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom') }}"
             target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i
                     class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
