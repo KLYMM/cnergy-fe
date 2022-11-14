@@ -5,8 +5,8 @@
         <!-- snap -->
         <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth"
             data-scroller>
-            @if (count($headline) > 0 ?? null)
-                @foreach ($headline as $item)
+            @if (count($latest) > 0 ?? null)
+                @foreach ($latest as $item)
                     @if ($loop->iteration % 5 == 1)
                         <!-- theme.1 -->
                         <section data-section="section{{ $loop->iteration }}"

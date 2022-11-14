@@ -10,14 +10,15 @@
 @if ($row['news_tag'] ?? null)
     <div aria-label="breadcrumb" style="margin: 0px 20px">
         <h4 class="related-tag-title">{{ $title }}</h4>
-        <ol class="breadcrumb">
+        <ol class="d-flex flex-wrap gap-3 align-items-center">
             @foreach ($row['news_tag'] as $r)
-                <li class="breadcrumb-item">
+                <li >
                     <a href="{{ Src::detailTag($r) }}"
-                        style="font-weight: 700; color: #ff3903;">{{ $r['tag_name'] ?? null }}
+                        style="font-weight: 700; color: #ff3903; background-color: #FFF0EC; padding: 4px 8px;">{{ $r['tag_name'] ?? null }}
                     </a>
                 </li>
             @endforeach
+            <li style="font-weight: 700; color: #ff3903;  padding: 4px 8px;">More+</li>
         </ol>
     </div>
 @endif

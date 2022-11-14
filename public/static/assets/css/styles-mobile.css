@@ -240,7 +240,6 @@ nav img {
     justify-content: space-between;
     align-items: flex-start;
     padding: 15px 15px 5px;
-    border-bottom: 0.2px solid #dcdcdc;
 }
 
 .nav-menus li {
@@ -299,7 +298,7 @@ nav img {
 }
 
 .main-breadcrumb .main-breadcrumb-item {
-    color: #4a4a4a;
+    color: #979797;
 }
 
 .main-breadcrumb .active,
@@ -310,6 +309,7 @@ nav img {
 
 .main-breadcrumb .main-breadcrumb-item a {
     color: inherit;
+    font-weight: 700;
 }
 
 .main-breadcrumb .main-breadcrumb-item::after {
@@ -337,10 +337,28 @@ nav img {
     line-height: 2;
 }
 
+.main-news-deskripsi h3 {
+    width: 300px;
+}
+
 .main-news-deskripsi h3,
 .main-news-deskripsi p {
     line-height: 1.5;
     margin: 0 20px;
+}
+
+.main-news-deskripsi figure {
+    position: relative;
+}
+
+.main-news-deskripsi figure .frame-bottom {
+    position: absolute;
+    background-color: white;
+    width: 340px;
+    height: 30px;
+    bottom: 0;
+    left: 0;
+    border-top: 3px solid #ff3903;
 }
 
 .main-news-deskripsi figure .image-news {
@@ -374,6 +392,7 @@ nav img {
     color: #000;
     font-size: 24px;
     font-weight: bolder;
+    margin-top: -20px;
 }
 
 .main-news-deskripsi p {
@@ -384,19 +403,26 @@ nav img {
 }
 
 .trending-tag-container {
-    margin: 20px;
-    padding: 15px;
-    border: 2px solid #000;
-    border-radius: 4px;
+    background-color: #fff0ec;
+    height: 200px;
+}
+.content-tag {
+    padding: 15px 30px;
 }
 
 .slider-container h4,
 .trending-tag-container h4 {
-    font-family: var(--prompt-font);
-    font-weight: 700;
-    font-size: 16px;
-    color: #000;
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 20px;
+    color: #000000;
     text-transform: uppercase;
+}
+.trending-tag-container h4 {
+    margin-top: 15px;
 }
 
 .card-news a,
@@ -408,28 +434,23 @@ nav img {
     text-decoration: none;
 }
 
-.trending-tag-container .list-trending-tag {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-    line-height: 25px;
-    list-style: none;
+.list-trending-tag {
+    display: inline;
+    background-color: #ff3903;
+    padding-bottom: 9px;
 }
 
 .trending-tag-container .list-trending-tag a::after {
-    content: "/";
     margin-left: 15px;
     color: #000 !important;
 }
 
 .trending-tag-container .list-trending-tag a {
-    color: #000;
-    font-family: var(--lato-font);
-    font-weight: 700;
-    font-size: 12px;
-    text-transform: uppercase;
+    font-family: "Outfit";
+    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
 }
 
 .list-main-news-container {
@@ -686,9 +707,15 @@ nav img {
     margin: 20px;
 }
 
-/* .dt-paragraph p {
-    margin-bottom: 1.5rem;
-} */
+.main-news-container .dt-paragraph p > b {
+    color: var(--color-primary);
+}
+
+.main-news-container .dt-paragraph p::after {
+    content: "\A";
+    white-space: pre;
+    display: block;
+}
 
 #btn-read {
     display: none;
@@ -824,18 +851,19 @@ nav img {
 }
 
 .baca-juga-list-container {
-    padding: 15px;
-    background: #ff39030d;
-    border: 1px solid #ff6600;
-    border-radius: 4px;
     margin: 20px;
 }
 
 .artikel-terkait-container h4,
 .populer-container h4,
 .related-tag-title {
-    padding-bottom: 10px;
-    font-weight: 700;
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 20px;
+    color: #000000;
     text-transform: uppercase;
 }
 
@@ -848,11 +876,9 @@ nav img {
 .baca-juga-list-container h4 {
     font-family: "Outfit";
     font-style: normal;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 16px;
-    line-height: 24px;
     /* identical to box height, or 150% */
-
     color: #000000;
 }
 
@@ -860,7 +886,6 @@ nav img {
     padding-top: 10px;
     line-height: 1.5em;
     list-style-type: none;
-    padding-left: 20px;
 }
 
 .artikel-terkait-container figure figcaption a {
@@ -884,13 +909,19 @@ nav img {
 }
 
 .baca-juga-list-container ul li a {
+    display: block;
     font-family: "Outfit";
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
-    line-height: 22px;
+    line-height: 23px;
     /* or 157% */
     color: #000000;
+    margin-bottom: 12px;
+}
+
+.baca-juga-list-container ul li {
+    border-bottom: 1px solid #ff3903;
 }
 
 .related-tag-container {
@@ -928,7 +959,7 @@ nav img {
 }
 
 .artikel-terkait-container {
-    margin: 10px 20px;
+    margin: 30px 20px;
 }
 
 .artikel-terkait-container h4,
@@ -938,8 +969,7 @@ nav img {
     font-weight: 900;
     font-size: 20px;
     line-height: 25px;
-
-    color: #ffffff;
+    color: #000000;
 }
 
 .artikel-terkait-container .image-news {
@@ -1345,21 +1375,17 @@ nav img {
 .fa-facebook-f,
 .fa-twitter,
 .fa-whatsapp {
-    color: #fff;
-    padding: 10px 23px;
+    color: #ff3903;
 }
 
 .fa-triangle-exclamation {
     color: black;
 }
 
-.fa-brands {
+.fa-brands,
+.fa-link {
+    background-color: transparent;
     font-family: "Font Awesome 6 Brands";
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    width: 60px;
-    height: 35px;
 }
 
 .index-h1,
@@ -1369,7 +1395,7 @@ nav img {
     text-align: center;
 }
 
-.fa-fb {
+/* .fa-fb {
     background-color: #4a6db4;
 }
 
@@ -1379,7 +1405,7 @@ nav img {
 
 .fa-twitter {
     background-color: #1dadeb;
-}
+} */
 
 .index-h1 {
     font-weight: 900;
@@ -1602,8 +1628,6 @@ nav img {
     margin: 30px 20px;
 }
 
-.icons-share-link,
-.icons-share-link-bar,
 .item-desc-time {
     line-height: 12px;
     font-family: Lato;
@@ -1718,14 +1742,7 @@ nav img {
 
 .icons-share-link,
 .icons-share-link-bar {
-    width: 80px;
-    height: 35px;
-    background-color: #424242;
-    border-radius: 4px;
-    border: none;
-    color: #fff;
-    font-weight: 700;
-    font-size: 10px;
+    color: #ff3903;
 }
 
 .pages-button {
@@ -2270,24 +2287,26 @@ nav img {
     opacity: 1;
     transform: scale(1, 1) translate3d(0, 0, 0);
 }
+
 .related_h2 {
     font-family: "Outfit";
     font-style: normal;
     font-weight: 900;
     font-size: 20px;
     line-height: 25px;
-
     color: #000000;
+    text-transform: uppercase;
 }
+
 .title_slider {
     font-family: "Outfit";
     font-style: normal;
     font-weight: 700;
     font-size: 15px;
     line-height: 19px;
-
     color: #000000;
 }
+
 .related-span {
     font-family: "Inter";
     font-style: normal;
@@ -2297,6 +2316,7 @@ nav img {
 
     color: #ff3903;
 }
+
 .related-span2 {
     font-family: "Outfit";
     font-style: normal;
@@ -2307,6 +2327,7 @@ nav img {
 
     color: #999999;
 }
+
 .author_publish {
     font-family: "Outfit";
     font-style: normal;

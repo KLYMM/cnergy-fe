@@ -132,8 +132,9 @@
 
                 <div style="margin:20px;">
                     <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"
-                        style="border: solid #FF3903 1.5px;"><i class="fa-solid fa-triangle-exclamation"
-                            style="color: black; margin-right: 10px; font-weight: 600;"></i><span
+                        style="border: solid #FF3903 1.5px; background-color:  #FFF0EC"><i
+                            class="fa-solid fa-triangle-exclamation"
+                            style="color: #FF3903; margin-right: 10px; font-weight: 600;"></i><span
                             style="font-weight: 600;">REPORT NEWS</span></button>
 
                     <div class="modal fade" id="myModal" role="dialog">

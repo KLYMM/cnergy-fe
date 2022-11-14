@@ -2,12 +2,27 @@
     <article class="article flex flex-col h-full px-6 mt-6">
         <div class="article-main relative flex-1">
             <div class="article-background border-tag mb-4">
+                {{-- @dump(Request::path()) --}}
+                {{-- @dump($newsItem['category_name']) --}}
                 @if (count($newsItem['news_tag']) > 0 ?? null)
                     <span
                         class="article-tag block capitalize font-inter font-bold text-primary  border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white-20 dark:border-white-20"
                         style="--delay: 0ms">
-                        <a
-                            href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">{{ $newsItem['news_tag'][0]['tag_name'] }}</a>
+                        @if (Request::is('photo'))
+                            {{ $tagPhoto }}
+                        @elseif (Request::is('video'))
+                            {{ $tagVideo }}
+                        @elseif(Request::is('/'))
+                            {{ '' }}
+                        @elseif(Request::is('tag/*'))
+                            <a href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">
+                                #{{ $newsItem['news_tag'][0]['tag_name'] }}
+                            </a>
+                        @elseif(Request::is('*'))
+                            <a href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">
+                                {{ $newsItem['news_tag'][0]['tag_name'] }}
+                            </a>
+                        @endif
                     </span>
                 @endif
 
@@ -24,9 +39,14 @@
             <div class="article-asset mb-4">
                 {{-- @if (count($newsItem['news_image']['real']) > 0 ?? null) --}}
                 <figure class="article-asset w-full vh-h-landscape aspect-375 overflow-hidden">
-                    <img class="object-cover w-full h-full animate animate--fadeIn " style="--delay: 300ms"
-                        src="{{ $newsItem['news_image']['real'] }}" alt="{{ $newsItem['news_title'] }}" width="375"
-                        height="225" />
+                    <div class="object-cover w-full h-full animate animate--fadeIn " style="--delay: 300ms"
+                        width="375" height="208">
+                        @include('image ', [
+                            'source' => $newsItem,
+                            'size' => '375x208',
+                            $newsItem['news_title'] ?? null,
+                        ])
+                    </div>
                 </figure>
                 {{-- @endif --}}
             </div>
