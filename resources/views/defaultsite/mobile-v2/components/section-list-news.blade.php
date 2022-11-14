@@ -2,21 +2,27 @@
     <article class="article flex flex-col h-full px-6 mt-6">
         <div class="article-main relative flex-1">
             <div class="article-background border-tag mb-4">
+                {{-- @dump(Request::path()) --}}
+                {{-- @dump($newsItem['category_name']) --}}
                 @if (count($newsItem['news_tag']) > 0 ?? null)
                     <span
                         class="article-tag block capitalize font-inter font-bold text-primary  border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white-20 dark:border-white-20"
                         style="--delay: 0ms">
-                        <a href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">
-                            @if (Request::path() == 'photo')
-                                {{ $tagPhoto }}
-                            @elseif (Request::path() == 'video')
-                                {{ $tagVideo }}
-                            @elseif(Request::path() == '/')
-                                {{ '' }}
-                            @else
+                        @if (Request::is('photo'))
+                            {{ $tagPhoto }}
+                        @elseif (Request::is('video'))
+                            {{ $tagVideo }}
+                        @elseif(Request::is('/'))
+                            {{ '' }}
+                        @elseif(Request::is('tag/*'))
+                            <a href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">
                                 #{{ $newsItem['news_tag'][0]['tag_name'] }}
-                            @endif
-                        </a>
+                            </a>
+                        @elseif(Request::is('*'))
+                            <a href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">
+                                {{ $newsItem['news_tag'][0]['tag_name'] }}
+                            </a>
+                        @endif
                     </span>
                 @endif
 
