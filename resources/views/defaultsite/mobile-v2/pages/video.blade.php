@@ -54,6 +54,7 @@
                             data-theme="default">
                             @include('defaultsite.mobile-v2.components.section-list-news5', [
                                 'newsItem' => $item,
+                                'tagVideo' => 'Video',
                             ])
                         </section>
                     @endif

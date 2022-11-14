@@ -1,4 +1,4 @@
-~<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -352,44 +352,44 @@
         }
     })
 
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    })
+</script>
+<script>
+    var shareSection = document.querySelector(".dt-share-container")
+    var iframe = document.querySelector(".item-vidio-inner")
+    var shareSectionSticky = document.querySelector(".dt-share-container-fixed")
+    var navbar = document.querySelector("nav")
+    var position = 0
+    if (shareSection !== null && iframe == null) {
+        window.addEventListener("scroll", (e) => {
+            if (window.scrollY < position) {
+                shareSectionSticky.classList.remove("stick")
+                header.classList.remove("hide")
+                position = window.scrollY
+            } else if (shareSection.getBoundingClientRect().bottom <= 0) {
+                shareSectionSticky.classList.add("stick")
+                header.classList.add("hide")
+                position = window.scrollY
+            }
         })
-    </script>
-    <script>
-        var shareSection = document.querySelector(".dt-share-container")
-        var iframe = document.querySelector(".item-vidio-inner")
-        var shareSectionSticky = document.querySelector(".dt-share-container-fixed")
-        var navbar = document.querySelector("nav")
-        var position = 0
-        if(shareSection!==null && iframe==null){
-            window.addEventListener("scroll", (e) => {
-                if(window.scrollY < position){
-                    shareSectionSticky.classList.remove("stick")
-                    header.classList.remove("hide")
-                    position = window.scrollY
-                }
-                else if (shareSection.getBoundingClientRect().bottom <= 0) {
-                    shareSectionSticky.classList.add("stick")
-                    header.classList.add("hide")
-                    position= window.scrollY
-                }
-            })
-        }
+    }
 
-        // var iframeVidio = document.querySelector("iframe")
-        // var bodyIframe = iframeVidio.contentWindow.document.getElementsByTagName("head")        // bodyIframe.style.margin= "0 !important"
-        // bodyIframe.style.width= "100% !important"
-        // var style = document.createElement('style');
-        // style.textContent =
-        //     '.videos.embed {' +
-        //     '  margin: 0 !important;' +
-        //     '  width: 100% !important' +
-        //     '}'
-        //     ;
-        // bodyIframe.appendChild(style);
-        // console.log( bodyIframe)
-    </script>
+    // var iframeVidio = document.querySelector("iframe")
+    // var bodyIframe = iframeVidio.contentWindow.document.getElementsByTagName("head")        // bodyIframe.style.margin= "0 !important"
+    // bodyIframe.style.width= "100% !important"
+    // var style = document.createElement('style');
+    // style.textContent =
+    //     '.videos.embed {' +
+    //     '  margin: 0 !important;' +
+    //     '  width: 100% !important' +
+    //     '}'
+    //     ;
+    // bodyIframe.appendChild(style);
+    // console.log( bodyIframe)
+</script>
+
 </html>
