@@ -1,5 +1,11 @@
+<?php
+    $themeClass = '';
+    if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
+        $themeClass = 'dark';
+    }
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="<?php echo $themeClass; ?>">
 
 <head>
     <meta charset="utf-8" />
@@ -35,7 +41,25 @@
 </body>
 
 <script>
-    //snapscroll
+    //switchtheme
+    const checkbox = document.querySelector(".switchTheme-control");
+    const hour = new Date().getHours();
+    checkbox.addEventListener("change", (e) => {
+        document.documentElement.classList.toggle("dark");
+        if (document.querySelector(".dark")){
+            document.cookie = "darkmode=on;";
+        }
+        else{
+            document.cookie = "darkmode=off;";
+        }
+    });
+
+    if (hour >= 18) {
+        checkbox.click();
+        document.cookie = "darkmode=on";
+    }
+
+     //snapscroll
     const header = document.querySelector("[data-header]");
     const sections = document.querySelectorAll("[data-section]");
     const indicators = document.querySelector("[data-indicator]");
@@ -124,28 +148,21 @@
         io.observe(sections[i]);
     }
 
-    //switchtheme
-    const checkbox = document.querySelector(".switchTheme-control");
-    const hour = new Date().getHours();
-    checkbox.addEventListener("change", (e) => {
-        document.documentElement.classList.toggle("dark");
-    });
-
-    if (hour >= 18) {
-        checkbox.click();
-    }
 </script>
 
 <script>
-    let darkmode = document.querySelector(".switchTheme-control-2");
-    // const hour = new Date().getHours();
-    darkmode.addEventListener("change", (e) => {
-        document.documentElement.classList.toggle("dark");
-    });
-
-    if (hour >= 18) {
-        checkbox.click();
-    }
+    // let darkmode = document.querySelector(".switchTheme-control-2");
+    // darkmode.addEventListener("change", (e) => {
+    //     document.documentElement.classList.toggle("dark");
+    //     console.log("masuk1")
+    //     if (document.querySelector(".dark")){
+    //         console.log("masuk2")
+    //         document.cookie = "darkmode=on;";
+    //     }
+    //     else{
+    //         document.cookie = "darkmode=off;";
+    //     }
+    // });
 </script>
 
 <script>
