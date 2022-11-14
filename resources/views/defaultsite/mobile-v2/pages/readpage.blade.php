@@ -87,7 +87,7 @@
     </div>
 
     @if (($row['has_paging'] ?? null) == 1)
-        @include('defaultsite/mobile/components-ui/pagination2', [
+        @include('defaultsite/mobile-v2/components-ui/pagination2', [
             'current_page' => $row['current_page'],
             'last_page' => $row['last_page'],
             'slug' => $row['slug'],
@@ -95,7 +95,20 @@
     @endif
 
     {{-- report --}}
-    <div style="margin:0px 20px;">
+
+
+
+
+    {{-- read too list --}}
+    @if ($popular = \Data::popular() ?? null)
+        @include('defaultsite.mobile-v2.components-ui.read-too-list', ['news' => $popular])
+    @endif
+
+    {{-- related tag --}}
+
+    @include('defaultsite.mobile-v2.components-ui.related-tag', ['title' => ''])
+
+    <div style="margin:30px 20px;">
         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
                 class="fa-solid fa-triangle-exclamation" style="color: #ca0000; margin-right: 10px;"></i>REPORT
             ARTICLE</button>
@@ -107,54 +120,51 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         {{-- FORM REPORT --}}
-                        @include('defaultsite.mobile.components-ui.form-report')
+                        @include('defaultsite.mobile-v2.components-ui.form-report')
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-    </div>
+
+    @include('defaultsite.mobile-v2.components-ui.list-main-news', [
+        'latest' => $row['latest'],
+        'title' => 'Related News',
+    ])
 
 
-    {{-- read too list --}}
-    @if ($popular = \Data::popular() ?? null)
-        @include('defaultsite.mobile.components-ui.read-too-list', ['news' => $popular])
-    @endif
 
-    {{-- related tag --}}
-
-    @include('defaultsite.mobile.components-ui.related-tag', ['title' => 'Related Tags'])
-
-    {{-- related artikel --}}
-    @if ($latest = \Data::popular() ?? null)
-        @include('defaultsite.mobile.components-ui.related-article', [
-            'news' => $latest,
-            'title' => 'Related News',
-        ])
-    @endif
     <div class="channel-ad channel-ad_ad-sc text-center">
         {!! Util::getAds('showcase-1') !!}
     </div>
 
     {{-- trending tag --}}
-    @include('defaultsite.mobile.components-ui.trending-tag')
+    @include('defaultsite.mobile-v2.components-ui.trending-tag')
+
+
+    {{-- related artikel --}}
+    @if ($latest = \Data::latest() ?? null)
+        @include('defaultsite.mobile-v2.components-ui.related-article', [
+            'news' => $latest,
+            'title' => 'Latest Update',
+        ])
+    @endif
 
     {{-- slider latest news --}}
-    @if ($popular = \Data::popular() ?? null)
-        @include('defaultsite.mobile.components-ui.slider', ['hl' => $popular, 'title' => 'Popular News'])
-    @endif
+    {{-- @if ($latest = \Data::latest() ?? null)
+        @include('defaultsite.mobile-v2.components-ui.slider', [
+            'hl' => $latest,
+            'title' => 'Latest News',
+        ])
+    @endif --}}
+
     <div class="channel-ad channel-ad_ad-sc-2 text-center">
         {!! Util::getAds('showcase-2') !!}
     </div>
 
     {{-- list populer news --}}
     @if ($popular = \Data::popular() ?? null)
-        @include('defaultsite.mobile.components-ui.populer-news', ['hl' => $popular])
-    @endif
-
-    {{-- slider latest news --}}
-    @if ($latest = \Data::latest() ?? null)
-        @include('defaultsite.mobile.components-ui.slider', ['hl' => $latest, 'title' => 'Latest News'])
+        @include('defaultsite.mobile-v2.components-ui.populer-news', ['popular' => $popular])
     @endif
 @endsection

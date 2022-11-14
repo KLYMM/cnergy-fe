@@ -5,8 +5,8 @@
         <!-- snap -->
         <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth"
             data-scroller>
-            @if (count($headline) > 0 ?? null)
-                @foreach ($headline as $item)
+            @if (count($latest) > 0 ?? null)
+                @foreach ($latest as $item)
                     @if ($loop->iteration % 5 == 1)
                         <!-- theme.1 -->
                         <section data-section="section{{ $loop->iteration }}"
@@ -14,7 +14,6 @@
                             data-theme="default">
                             @include('defaultsite.mobile-v2.components.section-list-news', [
                                 'newsItem' => $item,
-                                'tag' => '',
                             ])
                         </section>
                     @elseif($loop->iteration % 5 == 2)
@@ -24,7 +23,6 @@
                             data-theme="default">
                             @include('defaultsite.mobile-v2.components.section-list-news2', [
                                 'newsItem' => $item,
-                                'tag' => '',
                             ])
                         </section>
                     @elseif($loop->iteration % 5 == 3)
@@ -34,7 +32,6 @@
                             data-theme="yellow">
                             @include('defaultsite.mobile-v2.components.section-list-news3', [
                                 'newsItem' => $item,
-                                'tag' => '',
                             ])
                         </section>
                     @elseif($loop->iteration % 5 == 4)
@@ -44,7 +41,6 @@
                             data-theme="default">
                             @include('defaultsite.mobile-v2.components.section-list-news4', [
                                 'newsItem' => $item,
-                                'tag' => '',
                             ])
                         </section>
                     @elseif($loop->iteration % 5 == 0)
@@ -54,7 +50,6 @@
                             data-theme="default">
                             @include('defaultsite.mobile-v2.components.section-list-news5', [
                                 'newsItem' => $item,
-                                'tag' => '',
                             ])
                         </section>
                     @endif
