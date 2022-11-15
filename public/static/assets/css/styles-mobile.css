@@ -338,7 +338,7 @@ nav img {
 }
 
 .main-news-deskripsi h3 {
-    width: 340px;
+    width: 300px;
 }
 
 .main-news-deskripsi h3,
@@ -403,19 +403,26 @@ nav img {
 }
 
 .trending-tag-container {
-    margin: 20px;
-    padding: 15px;
-    border: 2px solid #000;
-    border-radius: 4px;
+    background-color: #fff0ec;
+    height: 200px;
+}
+.content-tag {
+    padding: 15px 30px;
 }
 
 .slider-container h4,
 .trending-tag-container h4 {
-    font-family: var(--prompt-font);
-    font-weight: 700;
-    font-size: 16px;
-    color: #000;
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 20px;
+    color: #000000;
     text-transform: uppercase;
+}
+.trending-tag-container h4 {
+    margin-top: 15px;
 }
 
 .card-news a,
@@ -427,28 +434,23 @@ nav img {
     text-decoration: none;
 }
 
-.trending-tag-container .list-trending-tag {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-    line-height: 25px;
-    list-style: none;
+.list-trending-tag {
+    display: inline;
+    background-color: #ff3903;
+    padding-bottom: 9px;
 }
 
 .trending-tag-container .list-trending-tag a::after {
-    content: "/";
     margin-left: 15px;
     color: #000 !important;
 }
 
 .trending-tag-container .list-trending-tag a {
-    color: #000;
-    font-family: var(--lato-font);
-    font-weight: 700;
-    font-size: 12px;
-    text-transform: uppercase;
+    font-family: "Outfit";
+    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
 }
 
 .list-main-news-container {
@@ -855,8 +857,13 @@ nav img {
 .artikel-terkait-container h4,
 .populer-container h4,
 .related-tag-title {
-    padding-bottom: 10px;
-    font-weight: 700;
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 20px;
+    color: #000000;
     text-transform: uppercase;
 }
 
@@ -952,7 +959,7 @@ nav img {
 }
 
 .artikel-terkait-container {
-    margin: 10px 20px;
+    margin: 30px 20px;
 }
 
 .artikel-terkait-container h4,
@@ -962,8 +969,7 @@ nav img {
     font-weight: 900;
     font-size: 20px;
     line-height: 25px;
-
-    color: #ffffff;
+    color: #000000;
 }
 
 .artikel-terkait-container .image-news {
@@ -2287,8 +2293,8 @@ nav img {
     font-weight: 900;
     font-size: 20px;
     line-height: 25px;
-
     color: #000000;
+    text-transform: uppercase;
 }
 
 .title_slider {
@@ -2297,7 +2303,6 @@ nav img {
     font-weight: 700;
     font-size: 15px;
     line-height: 19px;
-
     color: #000000;
 }
 
