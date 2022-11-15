@@ -677,3 +677,6 @@ nav.hidden {
 .border-tag {
     border-top: 2px solid #ff3903;
 }
+.nav-menus .active a {
+    color: var(--color-primary);
+}

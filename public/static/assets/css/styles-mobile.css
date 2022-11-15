@@ -71,7 +71,7 @@ a {
 .list-trending-tag a:hover,
 .slider-news figcaption:hover,
 a:hover {
-    color: #dc3545 !important;
+    color: var(--color-primary) !important;
 }
 
 #btn-back-toTop {
@@ -213,7 +213,7 @@ nav img {
 }
 
 .nav-menus .active a {
-    color: #ca0000 !important;
+    color: var(--color-primary) !important;
 }
 
 .nav-main {
@@ -271,7 +271,7 @@ nav img {
 }
 
 .header-nav-item a:hover {
-    color: #cd2027;
+    color: var(--color-primary);
     text-decoration: none;
 }
 
@@ -325,7 +325,7 @@ nav img {
 }
 
 .main-news-deskripsi h3:hover {
-    color: #dc3545;
+    color: var(--color-primary);
 }
 
 .main-news-deskripsi a {
@@ -698,10 +698,10 @@ nav img {
 }
 
 .main-news-container .dt-paragraph {
-    font-family: var(--font-outfit);
-    font-weight: 400;
+    font-family: var(--font-inter);
+    font-weight: 700;
     font-size: 16px;
-    line-height: 20px;
+    line-height: 26px;
     color: #444444;
     text-align: justify;
     margin: 20px;
