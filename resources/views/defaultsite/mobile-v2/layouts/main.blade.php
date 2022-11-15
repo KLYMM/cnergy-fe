@@ -56,7 +56,7 @@
     <div class=" max-w-full">
         {{-- Share Section on News Detail --}}
         <div class="dt-share-container-fixed">
-            <div class="icons d-flex align-items-center justify-content-center my-2 gap-4">
+            <div class="icons d-flex align-items-center justify-content-between my-2 gap-4">
                 <h3 style="font-weight:bolder;">Share</h3>
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom') }}"
                     target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i
