@@ -1,5 +1,5 @@
 <div class="populer-container">
-    <h4 class="title-popular">Popular News</h4>
+    <h4 class="title-popular" style="color: white">Popular News</h4>
     <div class="list-berita-populer">
         @foreach ($popular as $item)
             <a href="{{ Src::detail($item) }}" aria-label="{{ $item['news_title'] ?? null }}">

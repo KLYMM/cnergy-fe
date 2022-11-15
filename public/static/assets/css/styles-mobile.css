@@ -388,11 +388,10 @@ nav img {
 }
 
 .main-news-deskripsi h3 {
-    font-family: var(--lato-font);
+    font-family: "Inter";
     color: #000;
     font-size: 24px;
     font-weight: bolder;
-    margin-top: -20px;
 }
 
 .main-news-deskripsi p {
@@ -699,7 +698,7 @@ nav img {
 
 .main-news-container .dt-paragraph {
     font-family: var(--font-inter);
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
     line-height: 26px;
     color: #444444;
