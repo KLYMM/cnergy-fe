@@ -349,7 +349,7 @@ nav img {
 }
 
 .main-news-deskripsi h3 {
-    width: 300px;
+    width: 85%;
 }
 
 .main-news-deskripsi h3,
@@ -365,7 +365,7 @@ nav img {
 .main-news-deskripsi figure .frame-bottom {
     position: absolute;
     background-color: white;
-    width: 340px;
+    width: 85%;
     height: 30px;
     bottom: 0;
     left: 0;
@@ -416,7 +416,7 @@ nav img {
     color: #dddddd;
 }
 .author-name {
-    color: var(--color-primary);
+    color: #ff3903;
 }
 
 .main-news-deskripsi p {
@@ -441,7 +441,7 @@ nav img {
 .trending-tag-container h4 {
     font-family: "Outfit";
     font-style: normal;
-    font-weight: 900;
+    font-weight: bolder;
     font-size: 20px;
     line-height: 25px;
     margin-bottom: 20px;
@@ -911,7 +911,7 @@ nav img {
 .related-tag-title {
     font-family: "Outfit";
     font-style: normal;
-    font-weight: 900;
+    font-weight: bolder;
     font-size: 20px;
     line-height: 25px;
     margin-bottom: 20px;
@@ -923,7 +923,7 @@ nav img {
 .dark .related-tag-title {
     font-family: "Outfit";
     font-style: normal;
-    font-weight: 900;
+    font-weight: bolder;
     font-size: 20px;
     line-height: 25px;
     margin-bottom: 20px;
@@ -1988,7 +1988,7 @@ nav img {
     font-family: var(--prompt-outfit);
     font-weight: 400;
     font-size: 12px;
-    color: #000000;
+    color: #ff3903;
 }
 .dark .account .account-detail p a {
     color: #ffff;
@@ -2444,6 +2444,7 @@ nav img {
     font-size: 10px;
     line-height: 12px;
     color: #ff3903;
+    margin-right: 4px;
 }
 .dark .slider-category {
     color: #dddddd;
@@ -2466,7 +2467,7 @@ nav img {
     font-weight: 700;
     font-size: 10px;
     line-height: 12px;
-
+    margin-right: 4px;
     color: #ff3903;
 }
 .dark .related-span {
