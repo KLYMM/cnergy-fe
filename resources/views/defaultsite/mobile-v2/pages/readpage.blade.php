@@ -32,9 +32,8 @@
                 <div class="frame-bottom"></div>
                 {{-- <p>{{ $row['news_imageinfo'] ?? null }}</p> --}}
             </figure>
-            <h3>{{ $row['news_title'] ?? null }}</h3>
-            <p>By <span><a href="{{ Src::author($row) }}"
-                        style="color: #FF3903;">{{ $row['news_editor'][0]['name'] ?? null }}</a></span>
+            <h3 class="author-title">{{ $row['news_title'] ?? null }}</h3>
+            <p class="author-detail">By <span><a class="author-name" href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a></span>
                 {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}
             </p>
         </div>

@@ -65,10 +65,10 @@
                             <div id="data-{{ $loop->index }}" data-target="{{ $loop->index }}"
                                 class="@if ($loop->index != 0) pages-item-hidden @endif">
                                 <div style="display:flex; align-items: center; margin: 20px;">
-                                    <hr style="width:50%;text-align:left;margin-left:0">
+                                    <hr class="hr-list">
                                     <div class="slider-counter">{{ $loop->iteration }}<span id="sliderCounter"></span> of
                                         {{ count($row['photonews']) }} photos</div>
-                                    <hr style="width:50%;text-align:left;margin-left:0">
+                                    <hr class="hr-list" >
                                 </div>
 
                                 <a href="{{ Src::detail($s) }}" aria-label="{{ $s[0]['news_title'] ?? null }}">
