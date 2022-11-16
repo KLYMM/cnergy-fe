@@ -8,7 +8,7 @@
 @endif --}}
 
 @if ($row['news_tag'] ?? null)
-    <div aria-label="breadcrumb" style="margin: 0px 20px">
+    <div aria-label="breadcrumb" style="margin:40px 20px">
         <h4 class="related-tag-title">{{ $title }}</h4>
         <ol class="d-flex flex-wrap gap-3 align-items-center">
             @foreach ($row['news_tag'] as $r)
