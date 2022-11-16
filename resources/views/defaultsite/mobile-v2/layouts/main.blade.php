@@ -390,6 +390,25 @@
     //     ;
     // bodyIframe.appendChild(style);
     // console.log( bodyIframe)
+</script>\
+<script>
+    var moreButton = document.querySelector("#more")
+    var relatedTags = document.querySelectorAll(".hiddenLi")
+    function showMoreRelatedTag (){
+        if (moreButton.innerHTML == "More+"){
+            for (let tag of relatedTags){
+                tag.style.display = "block"
+            }
+            moreButton.innerHTML = "Show Less"
+        }
+        else{
+            for (let tag of relatedTags){
+                tag.style.display = "none"
+                moreButton.innerHTML = "More+"
+            }
+        }
+
+    }
 </script>
 
 </html>

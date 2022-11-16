@@ -2522,8 +2522,11 @@ nav img {
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
-    color: #ffff;
+    color: #ff3903;
     padding: 4px 8px;
+}
+.dark .newstag-a_a {
+    color: white;
 }
 .hr-list {
     width: 50%;
