@@ -32,9 +32,8 @@
                 <div class="frame-bottom"></div>
                 {{-- <p>{{ $row['news_imageinfo'] ?? null }}</p> --}}
             </figure>
-            <h3>{{ $row['news_title'] ?? null }}</h3>
-            <p>By <span><a href="{{ Src::author($row) }}"
-                        style="color: #FF3903;">{{ $row['news_editor'][0]['name'] ?? null }}</a></span>
+            <h3 class="author-title">{{ $row['news_title'] ?? null }}</h3>
+            <p class="author-detail">By <span><a class="author-name" href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a></span>
                 {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}
             </p>
         </div>
@@ -46,58 +45,63 @@
         {{-- st-share --}}
         @include('defaultsite.mobile-v2.components-ui.dt-share')
 
+    @if(count($row['news_paging']) >0)
+        @foreach ($row['news_paging'] as $news_content)
+            @if($loop->iteration !=1)
+                <div style="display:flex; align-items: center; margin: 20px; margin-bottom:46px;">
+                    <hr class="hr-list">
+                    <div class="slider-counter">Page {{ $loop->iteration }}<span id="sliderCounter"></span> of
+                        {{ count($row['news_paging']) }}</div>
+                    <hr class="hr-list">
+                </div>
+            @endif
+            <div class="dt-paragraph">
+                {!! str_replace(
+                    ['mce-mce-mce-mce-no/type', 'mce-no/type'],
+                    '',
+                    htmlspecialchars_decode($news_content['content'] ?? null),
+                ) !!}
+            </div>
+        @endforeach
+    @else
         <div class="dt-paragraph">
-
             {!! str_replace(
                 ['mce-mce-mce-mce-no/type', 'mce-no/type'],
                 '',
                 htmlspecialchars_decode($row['news_content'] ?? null),
             ) !!}
-
-            @push('script')
-                <script>
-                    if (document.getElementsByClassName('dt-paragraph')) {
-                        //change tag br to tag p
-                        if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('br')[0] != null) {
-                            document.getElementsByClassName('dt-paragraph')[0].innerHTML = document.getElementsByClassName(
-                                'dt-paragraph')[0].innerHTML.replace(/<br>\\*/g, '</p><p>')
-                        }
-                        //add ads
-                        if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[0] != null) {
-                            //get 2 paragraf before add ads
-                            var lis = document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')
-                            var counter = 0
-                            for (var i = 0; i < lis.length - 1; i++) {
-                                if (lis[i].innerHTML !== "") {
-                                    counter++
-                                    if (counter == 2) {
-                                        document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[i]
-                                            .insertAdjacentHTML('afterend', (
-                                                    '<div class="channel-ad channel-ad_ad-exposer">  {!! str_replace('script', 'scr+ipt', Util::getAds('exposer')) !!} </div>')
-                                                .replaceAll('+', ''));
-                                        break
-                                    }
-                                }
+        </div>
+    @endif
+    @push('script')
+        <script>
+            if (document.getElementsByClassName('dt-paragraph')) {
+                //change tag br to tag p
+                if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('br')[0] != null) {
+                    document.getElementsByClassName('dt-paragraph')[0].innerHTML = document.getElementsByClassName(
+                        'dt-paragraph')[0].innerHTML.replace(/<br>\\*/g, '</p><p>')
+                }
+                //add ads
+                if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[0] != null) {
+                    //get 2 paragraf before add ads
+                    var lis = document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')
+                    var counter = 0
+                    for (var i = 0; i < lis.length - 1; i++) {
+                        if (lis[i].innerHTML !== "") {
+                            counter++
+                            if (counter == 2) {
+                                document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[i]
+                                    .insertAdjacentHTML('afterend', (
+                                            '<div class="channel-ad channel-ad_ad-exposer">  {!! str_replace('script', 'scr+ipt', Util::getAds('exposer')) !!} </div>')
+                                        .replaceAll('+', ''));
+                                break
                             }
                         }
                     }
-                </script>
-            @endpush
-        </div>
+                }
+            }
+        </script>
+    @endpush
     </div>
-
-    @if (($row['has_paging'] ?? null) == 1)
-        @include('defaultsite/mobile-v2/components-ui/pagination2', [
-            'current_page' => $row['current_page'],
-            'last_page' => $row['last_page'],
-            'slug' => $row['slug'],
-        ])
-    @endif
-
-    {{-- report --}}
-
-
-
 
     {{-- read too list --}}
     @if ($popular = \Data::popular() ?? null)
@@ -107,26 +111,6 @@
     {{-- related tag --}}
 
     @include('defaultsite.mobile-v2.components-ui.related-tag', ['title' => ''])
-
-    <div style="margin:30px 20px;">
-        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
-                class="fa-solid fa-triangle-exclamation" style="color: #ca0000; margin-right: 10px;"></i>REPORT
-            ARTICLE</button>
-
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-body">
-                        {{-- FORM REPORT --}}
-                        @include('defaultsite.mobile-v2.components-ui.form-report')
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     @include('defaultsite.mobile-v2.components-ui.list-main-news', [
         'latest' => $row['latest'],

@@ -8,17 +8,32 @@
 @endif --}}
 
 @if ($row['news_tag'] ?? null)
-    <div aria-label="breadcrumb" style="margin: 0px 20px">
+    <div aria-label="breadcrumb" style="margin:40px 20px">
         <h4 class="related-tag-title">{{ $title }}</h4>
         <ol class="d-flex flex-wrap gap-3 align-items-center">
             @foreach ($row['news_tag'] as $r)
-                <li >
-                    <a href="{{ Src::detailTag($r) }}"
-                        style="font-weight: 700; color: #ff3903; background-color: #FFF0EC; padding: 4px 8px;">{{ $r['tag_name'] ?? null }}
-                    </a>
-                </li>
+                @if (count($row['news_tag']) > 5)
+                    @if($loop->iteration > 5)
+                        <li class="hiddenLi" style="display:none;">
+                            <a href="{{ Src::detailTag($r) }}"  class="newstag-a">#{{ $r['tag_name'] ?? null }}
+                            </a>
+                        </li>
+                    @else
+                        <li >
+                            <a href="{{ Src::detailTag($r) }}" class="newstag-a">#{{ $r['tag_name'] ?? null }}
+                            </a>
+                        </li>
+                    @endif
+                @else
+                    <li >
+                        <a href="{{ Src::detailTag($r) }}" class="newstag-a">#{{ $r['tag_name'] ?? null }}
+                        </a>
+                    </li>
+                @endif
             @endforeach
-            <li style="font-weight: 700; color: #ff3903;  padding: 4px 8px;">More+</li>
+            @if (count($row['news_tag']) > 5)
+                <li id="more" class="newstag-a_a more" onclick="showMoreRelatedTag()">More+</li>
+            @endif
         </ol>
     </div>
 @endif

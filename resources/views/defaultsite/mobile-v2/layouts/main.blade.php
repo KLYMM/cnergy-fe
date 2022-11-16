@@ -1,5 +1,11 @@
+<?php
+$themeClass = '';
+if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
+    $themeClass = 'dark';
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="<?php echo $themeClass; ?>">
 
 <head>
     <meta charset="utf-8">
@@ -56,7 +62,7 @@
     <div class=" max-w-full">
         {{-- Share Section on News Detail --}}
         <div class="dt-share-container-fixed">
-            <div class="icons d-flex align-items-center justify-content-center my-2 gap-4">
+            <div class="icons d-flex align-items-center justify-content-between my-2 gap-4">
                 <h3 style="font-weight:bolder;">Share</h3>
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom') }}"
                     target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i
@@ -93,6 +99,23 @@
 </body>
 
 <script>
+    //switchtheme
+    const checkbox = document.querySelector(".switchTheme-control");
+    const hour = new Date().getHours();
+    checkbox.addEventListener("change", (e) => {
+        document.documentElement.classList.toggle("dark");
+        if (document.querySelector(".dark")) {
+            document.cookie = "darkmode=on;";
+        } else {
+            document.cookie = "darkmode=off;";
+        }
+    });
+
+    if (hour >= 18) {
+        checkbox.click();
+        document.cookie = "darkmode=on";
+    }
+
     //snapscroll
     const header = document.querySelector("[data-header]");
     const sections = document.querySelectorAll("[data-section]");
@@ -174,31 +197,7 @@
         elementIndices[sections[i].dataset.section] = i;
         io.observe(sections[i]);
     }
-
-    //switchtheme
-    const checkbox = document.querySelector(".switchTheme-control");
-    const hour = new Date().getHours();
-    checkbox.addEventListener("change", (e) => {
-        document.documentElement.classList.toggle("dark");
-    });
-
-    if (hour >= 18) {
-        checkbox.click();
-    }
 </script>
-
-<script>
-    let darkmode = document.querySelector(".switchTheme-control-2");
-    // const hour = new Date().getHours();
-    darkmode.addEventListener("change", (e) => {
-        document.documentElement.classList.toggle("dark");
-    });
-
-    if (hour >= 18) {
-        checkbox.click();
-    }
-</script>
-
 <script>
     const mainNav = document.querySelector('.nav-main');
     const closeNav = document.querySelector('.nav-close');
@@ -377,19 +376,26 @@
             }
         })
     }
-
-    // var iframeVidio = document.querySelector("iframe")
-    // var bodyIframe = iframeVidio.contentWindow.document.getElementsByTagName("head")        // bodyIframe.style.margin= "0 !important"
-    // bodyIframe.style.width= "100% !important"
-    // var style = document.createElement('style');
-    // style.textContent =
-    //     '.videos.embed {' +
-    //     '  margin: 0 !important;' +
-    //     '  width: 100% !important' +
-    //     '}'
-    //     ;
-    // bodyIframe.appendChild(style);
-    // console.log( bodyIframe)
+</script>
+<script>
+    var moreButton = document.querySelector("#more")
+    var relatedTags = document.querySelectorAll(".hiddenLi")
+    function showMoreRelatedTag (){
+        if (moreButton.classList.contains("more")){
+            for (let tag of relatedTags){
+                tag.style.display = "block"
+            }
+            moreButton.innerHTML = "Show Less"
+            moreButton.classList.remove("more")
+        }
+        else{
+            for (let tag of relatedTags){
+                tag.style.display = "none"
+            }
+            moreButton.innerHTML = "More+"
+            moreButton.classList.add("more")
+        }
+    }
 </script>
 
 </html>

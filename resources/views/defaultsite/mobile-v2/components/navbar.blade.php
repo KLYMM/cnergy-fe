@@ -1,4 +1,4 @@
-<header class="header fixed top-0 inset-x-0 max-w-screen-md mx-auto z-20 h-16 bg-white" data-header>
+<header class="header fixed top-0 inset-x-0 max-w-screen-md mx-auto z-20 h-16" data-header>
 
     <div class="flex justify-between items-center " style="padding: 20px 26px 0px 26px">
         <img class="nav-open " src="{{ URL::asset('assets/icons/burger.svg') }}" width="18px" height="18px" alt="bar-icon"
