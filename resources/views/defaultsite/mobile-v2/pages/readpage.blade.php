@@ -108,26 +108,6 @@
 
     @include('defaultsite.mobile-v2.components-ui.related-tag', ['title' => ''])
 
-    <div style="margin:30px 20px;">
-        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn"><i
-                class="fa-solid fa-triangle-exclamation" style="color: #ca0000; margin-right: 10px;"></i>REPORT
-            ARTICLE</button>
-
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-body">
-                        {{-- FORM REPORT --}}
-                        @include('defaultsite.mobile-v2.components-ui.form-report')
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     @include('defaultsite.mobile-v2.components-ui.list-main-news', [
         'latest' => $row['latest'],
         'title' => 'Related News',

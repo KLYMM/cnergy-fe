@@ -139,24 +139,6 @@
 
         @include('defaultsite.mobile-v2.components-ui.related-tag', ['title' => ''])
 
-        <div style="margin:20px;">
-
-            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-light report-btn" style="background-color:#FFF0EC; font-weight:bolder;"><i
-                    class="fa-solid fa-triangle-exclamation font-outfit"
-                    style="color:#ff3903; margin-right: 10px;"></i>REPORT
-                NEWS</button>
-
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            @include('defaultsite.mobile-v2.components-ui.form-report')
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         @include('defaultsite.mobile-v2.components-ui.list-main-news', [
             'latest' => $row['latest'],
             'title' => 'Related Video',
