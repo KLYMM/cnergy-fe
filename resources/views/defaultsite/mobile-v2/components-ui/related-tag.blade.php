@@ -32,7 +32,7 @@
                 @endif
             @endforeach
             @if (count($row['news_tag']) > 5)
-                <li id="more" class="newstag-a_a" onclick="showMoreRelatedTag()">More+</li>
+                <li id="more" class="newstag-a_a more" onclick="showMoreRelatedTag()">More+</li>
             @endif
         </ol>
     </div>

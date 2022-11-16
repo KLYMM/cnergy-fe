@@ -99,6 +99,23 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 </body>
 
 <script>
+    //switchtheme
+    const checkbox = document.querySelector(".switchTheme-control");
+    const hour = new Date().getHours();
+    checkbox.addEventListener("change", (e) => {
+        document.documentElement.classList.toggle("dark");
+        if (document.querySelector(".dark")) {
+            document.cookie = "darkmode=on;";
+        } else {
+            document.cookie = "darkmode=off;";
+        }
+    });
+
+    if (hour >= 18) {
+        checkbox.click();
+        document.cookie = "darkmode=on";
+    }
+
     //snapscroll
     const header = document.querySelector("[data-header]");
     const sections = document.querySelectorAll("[data-section]");
@@ -180,31 +197,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         elementIndices[sections[i].dataset.section] = i;
         io.observe(sections[i]);
     }
-
-    //switchtheme
-    const checkbox = document.querySelector(".switchTheme-control");
-    const hour = new Date().getHours();
-    checkbox.addEventListener("change", (e) => {
-        document.documentElement.classList.toggle("dark");
-    });
-
-    if (hour >= 18) {
-        checkbox.click();
-    }
 </script>
-
-<script>
-    let darkmode = document.querySelector(".switchTheme-control-2");
-    // const hour = new Date().getHours();
-    darkmode.addEventListener("change", (e) => {
-        document.documentElement.classList.toggle("dark");
-    });
-
-    if (hour >= 18) {
-        checkbox.click();
-    }
-</script>
-
 <script>
     const mainNav = document.querySelector('.nav-main');
     const closeNav = document.querySelector('.nav-close');
@@ -383,37 +376,25 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             }
         })
     }
-
-    // var iframeVidio = document.querySelector("iframe")
-    // var bodyIframe = iframeVidio.contentWindow.document.getElementsByTagName("head")        // bodyIframe.style.margin= "0 !important"
-    // bodyIframe.style.width= "100% !important"
-    // var style = document.createElement('style');
-    // style.textContent =
-    //     '.videos.embed {' +
-    //     '  margin: 0 !important;' +
-    //     '  width: 100% !important' +
-    //     '}'
-    //     ;
-    // bodyIframe.appendChild(style);
-    // console.log( bodyIframe)
-</script>\
+</script>
 <script>
     var moreButton = document.querySelector("#more")
     var relatedTags = document.querySelectorAll(".hiddenLi")
     function showMoreRelatedTag (){
-        if (moreButton.innerHTML == "More+"){
+        if (moreButton.classList.contains("more")){
             for (let tag of relatedTags){
                 tag.style.display = "block"
             }
             moreButton.innerHTML = "Show Less"
+            moreButton.classList.remove("more")
         }
         else{
             for (let tag of relatedTags){
                 tag.style.display = "none"
-                moreButton.innerHTML = "More+"
             }
+            moreButton.innerHTML = "More+"
+            moreButton.classList.add("more")
         }
-
     }
 </script>
 

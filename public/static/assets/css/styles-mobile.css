@@ -2533,5 +2533,8 @@ nav img {
     width: 50%;
     text-align: left;
     margin-left: 0;
+}
+
+.dark .hr-list {
     border: 1px solid #ececec;
 }

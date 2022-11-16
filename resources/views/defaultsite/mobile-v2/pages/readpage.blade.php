@@ -45,58 +45,63 @@
         {{-- st-share --}}
         @include('defaultsite.mobile-v2.components-ui.dt-share')
 
+    @if(count($row['news_paging']) >0)
+        @foreach ($row['news_paging'] as $news_content)
+            @if($loop->iteration !=1)
+                <div style="display:flex; align-items: center; margin: 20px; margin-bottom:46px;">
+                    <hr class="hr-list">
+                    <div class="slider-counter">Page {{ $loop->iteration }}<span id="sliderCounter"></span> of
+                        {{ count($row['news_paging']) }}</div>
+                    <hr class="hr-list">
+                </div>
+            @endif
+            <div class="dt-paragraph">
+                {!! str_replace(
+                    ['mce-mce-mce-mce-no/type', 'mce-no/type'],
+                    '',
+                    htmlspecialchars_decode($news_content['content'] ?? null),
+                ) !!}
+            </div>
+        @endforeach
+    @else
         <div class="dt-paragraph">
-
             {!! str_replace(
                 ['mce-mce-mce-mce-no/type', 'mce-no/type'],
                 '',
                 htmlspecialchars_decode($row['news_content'] ?? null),
             ) !!}
-
-            @push('script')
-                <script>
-                    if (document.getElementsByClassName('dt-paragraph')) {
-                        //change tag br to tag p
-                        if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('br')[0] != null) {
-                            document.getElementsByClassName('dt-paragraph')[0].innerHTML = document.getElementsByClassName(
-                                'dt-paragraph')[0].innerHTML.replace(/<br>\\*/g, '</p><p>')
-                        }
-                        //add ads
-                        if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[0] != null) {
-                            //get 2 paragraf before add ads
-                            var lis = document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')
-                            var counter = 0
-                            for (var i = 0; i < lis.length - 1; i++) {
-                                if (lis[i].innerHTML !== "") {
-                                    counter++
-                                    if (counter == 2) {
-                                        document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[i]
-                                            .insertAdjacentHTML('afterend', (
-                                                    '<div class="channel-ad channel-ad_ad-exposer">  {!! str_replace('script', 'scr+ipt', Util::getAds('exposer')) !!} </div>')
-                                                .replaceAll('+', ''));
-                                        break
-                                    }
-                                }
+        </div>
+    @endif
+    @push('script')
+        <script>
+            if (document.getElementsByClassName('dt-paragraph')) {
+                //change tag br to tag p
+                if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('br')[0] != null) {
+                    document.getElementsByClassName('dt-paragraph')[0].innerHTML = document.getElementsByClassName(
+                        'dt-paragraph')[0].innerHTML.replace(/<br>\\*/g, '</p><p>')
+                }
+                //add ads
+                if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[0] != null) {
+                    //get 2 paragraf before add ads
+                    var lis = document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')
+                    var counter = 0
+                    for (var i = 0; i < lis.length - 1; i++) {
+                        if (lis[i].innerHTML !== "") {
+                            counter++
+                            if (counter == 2) {
+                                document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[i]
+                                    .insertAdjacentHTML('afterend', (
+                                            '<div class="channel-ad channel-ad_ad-exposer">  {!! str_replace('script', 'scr+ipt', Util::getAds('exposer')) !!} </div>')
+                                        .replaceAll('+', ''));
+                                break
                             }
                         }
                     }
-                </script>
-            @endpush
-        </div>
+                }
+            }
+        </script>
+    @endpush
     </div>
-
-    @if (($row['has_paging'] ?? null) == 1)
-        @include('defaultsite/mobile-v2/components-ui/pagination2', [
-            'current_page' => $row['current_page'],
-            'last_page' => $row['last_page'],
-            'slug' => $row['slug'],
-        ])
-    @endif
-
-    {{-- report --}}
-
-
-
 
     {{-- read too list --}}
     @if ($popular = \Data::popular() ?? null)
