@@ -47,7 +47,7 @@
                                     <span>Published {{ Util::date($row['news_date_publish'] ?? null, 'ago') }}</span>
                                 </div>
                             </div>
-                            <p class="photo-synopsis"> {{ $row['news_synopsis'] ?? null }}</p>
+                            @include('defaultsite.mobile-v2.components-ui.dt-share')
                         </div>
                         <div class="image-news">
                             @include('image', [
@@ -55,8 +55,8 @@
                                 'size' => '380x214',
                                 $row['news_title'] ?? null,
                             ])
+                            <p class="photo-synopsis"> {{ $row['news_synopsis'] ?? null }}</p>
                         </div>
-                        @include('defaultsite.mobile-v2.components-ui.dt-share')
 
                         <p class="photo-content">{{ $row['news_imageinfo'] ?? null }}</p>
 
