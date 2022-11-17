@@ -367,7 +367,7 @@ nav img {
     background-color: white;
     width: 85%;
     height: 30px;
-    bottom: 0;
+    bottom: -3px;
     left: 0;
     border-top: 3px solid #ff3903;
 }
@@ -406,6 +406,7 @@ nav img {
     color: #000;
     font-size: 24px;
     font-weight: bolder;
+    max-width: 75%;
 }
 .dark .main-news-deskripsi h3 {
     color: #dddddd;

@@ -61,16 +61,12 @@
     <div class="nav-main" style="transform: translateX(-150%);">
         <div class="nav-content">
             <div class="nav-header">
-
-                
                 <a href="/"> <img class="object-contain dark:img-white"
                         src="{{ URL::asset('assets/images/trstdly.png') }}" alt="logo" width="140"
                         height="48" /></a>
                         <img class="nav-close object-contain dark:img-white"
                     src="{{ URL::asset('assets/icons/icon-close.svg') }}" alt="search-icon" width="25px"
                     height="25px">
-                
-
             </div>
 
             <ul class="nav-menus">

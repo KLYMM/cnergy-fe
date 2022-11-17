@@ -57,8 +57,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <title>@yield('title')</title>
 </head>
 
-<body>
-
+<body style="margin:auto;">
     <div class=" max-w-full">
         {{-- Share Section on News Detail --}}
         <div class="dt-share-container-fixed">
@@ -105,15 +104,15 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     checkbox.addEventListener("change", (e) => {
         document.documentElement.classList.toggle("dark");
         if (document.querySelector(".dark")) {
-            document.cookie = "darkmode=on;";
+            document.cookie = "darkmode=on;path=/";
         } else {
-            document.cookie = "darkmode=off;";
+            document.cookie = "darkmode=off;path=/";
         }
     });
 
     if (hour >= 18) {
         checkbox.click();
-        document.cookie = "darkmode=on";
+        document.cookie = "darkmode=on;path=/";
     }
 
     //snapscroll

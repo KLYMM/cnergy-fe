@@ -73,15 +73,15 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     checkbox.addEventListener("change", (e) => {
         document.documentElement.classList.toggle("dark");
         if (document.querySelector(".dark")) {
-            document.cookie = "darkmode=on;";
+            document.cookie = "darkmode=on;path=/";
         } else {
-            document.cookie = "darkmode=off;";
+            document.cookie = "darkmode=off;path=/";
         }
     });
 
     if (hour >= 18) {
         checkbox.click();
-        document.cookie = "darkmode=on";
+        document.cookie = "darkmode=on;path=/";
     }
 
     //snapscroll
