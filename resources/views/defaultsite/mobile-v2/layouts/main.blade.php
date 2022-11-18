@@ -61,21 +61,24 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <div class=" max-w-full">
         {{-- Share Section on News Detail --}}
         <div class="dt-share-container-fixed">
-            <div class="icons d-flex align-items-center justify-content-between my-2 gap-4">
-                <h3 style="font-weight:bolder;">Share</h3>
+            <div class="icons d-flex align-items-center justify-content-between  my-2 gap-4">
+                <h3 class="main-share">Share</h3>
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom') }}"
-                    target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i
+                    target="_blank"><i class="icon icons--share  "><i
                             class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
                 <a href="https://wa.me/?text={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom') }}"
-                    target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i
-                            class="fa-brands fa-wa fa-whatsapp"></i></i></a>
+                    target="_blank"><i class="icon icons--share  "><i
+                            class="fa-brands fa-wa fa-whatsapp "></i></i></a>
                 <a href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom') }}"
-                    target="_blank"><i class="icon icons--share icon--share-fb "><i
-                            class="fa-brands fa-twitter fa-twitter fs-5"></i></i></a>
-                <a class="icons-share-link-bar" value="copy" onclick="copyToClipboard()"> <i
-                        class="fa-solid fa-link fs-5"></i></a>
+                    target="_blank"><i class="icon icons--share  "><i
+                            class="fa-brands fa-twitter fa-twitter "></i></i></a>
+                <a href="https://t.me/share/url?url={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=telegram&utm_campaign=Share_Bottom') }}"  
+                    target="_blank"><i class="fa-brands fa-telegram  "></i> </a>
+                <a class="icons-share-link-bar " value="copy" onclick="copyToClipboard()"> <i
+                        class="fa-solid fa-link  "></i></a>
             </div>
         </div>
+        
 
         {{-- Header --}}
         @include('defaultsite.mobile-v2.components.navbar')
