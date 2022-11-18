@@ -126,8 +126,7 @@
                     width="40" height="40px">
                 <div class="d-flex flex-column justify-content-center gap-1">
                     <p class="photo-author font-outfit">
-                        <a href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}
-                        </a>
+                        trstd.ly
                     </p>
                     <span class="author_publish">
                         {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
@@ -157,7 +156,7 @@
         @if ($latest = \Data::latest() ?? null)
             @include('defaultsite.mobile-v2.components-ui.related-article', [
                 'news' => $latest,
-                'title' => 'LATEST UPDATE',
+                'title' => 'Latest Update',
             ])
         @endif
     </div>

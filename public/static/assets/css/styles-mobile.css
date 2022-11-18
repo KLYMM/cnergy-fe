@@ -349,11 +349,6 @@ nav img {
 }
 
 .main-news-deskripsi h3 {
-    width: 85%;
-}
-
-.main-news-deskripsi h3,
-.main-news-deskripsi p {
     line-height: 1.5;
     margin: 0 20px;
 }
@@ -406,7 +401,7 @@ nav img {
     color: #000;
     font-size: 24px;
     font-weight: bolder;
-    max-width: 75%;
+    max-width: 80%;
 }
 .dark .main-news-deskripsi h3 {
     color: #dddddd;
@@ -415,17 +410,25 @@ nav img {
 .dark .author-title,
 .dark .author-name {
     color: #dddddd;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
 }
 .author-name {
     color: #ff3903;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
 }
 
-.main-news-deskripsi p {
+/* .main-news-deskripsi p {
     font-family: var(--lato-font);
     font-weight: 400;
     font-size: 12px;
     color: #999;
-}
+} */
 
 .trending-tag-container {
     background-color: #fff0ec;
@@ -1650,14 +1653,16 @@ nav img {
 .publish_category {
     font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
+    font-size: 14px;
 }
 .dark .photo-author,
 .dark .publish_category {
     font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     color: #fff;
+    font-size: 14px;
 }
 
 .publish_category {
@@ -1728,10 +1733,9 @@ nav img {
 }
 
 .photo-author {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
+    font-family: "Inter" !important;
+    font-weight: 700;
+    font-size: 14px;
     line-height: 15px;
     color: #ff3903;
 }
@@ -2432,9 +2436,9 @@ nav img {
 }
 
 .related_h2 {
-    font-family: "Outfit";
+    font-family: "Outfit" !important;
     font-style: normal;
-    font-weight: 900;
+    font-weight: bolder;
     font-size: 20px;
     line-height: 25px;
     color: #000000;
