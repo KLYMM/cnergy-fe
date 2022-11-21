@@ -33,21 +33,20 @@
                 {{-- <p>{{ $row['news_imageinfo'] ?? null }}</p> --}}
             </figure>
             <h3 class="author-title">{{ $row['news_title'] ?? null }}</h3>
-            <div class="account mx-4">
-                <a href="{{ Src::author($row) }}">
-                    <img class="rounded rounded-5" src="{{ URL::asset('assets/images/author.PNG') }}"
-                        alt="author" width="40" height="40px">
-                </a>
-                <div class="account-detail " >
-                    <p href="{{ Src::author($row) }}">
-                        <a href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a>
-                    </p>
-                    <span>Published {{ Util::date($row['news_date_publish'] ?? null, 'ago') }}</span>
+            <div class="header-photo">
+                {{-- <h2 class="dt-title text-24 font-bold mb-6">{{ $row['news_sub_title'] ?? null }}</h2> --}}
+                <div class="d-flex  my-2 align-items-center gap-2">
+                    <img class="rounded rounded-5" src="{{ URL::asset('assets/images/author.PNG') }}" alt="author"
+                        width="40" height="40px">
+                    <div class="d-flex flex-column justify-content-center gap-1">
+                        <p class="photo-author font-outfit">
+                            trstd.ly
+                        </p>
+                        <span class="author_publish">
+                            {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
+                    </div>
                 </div>
             </div>
-            {{-- <p class="author-detail">By <span><a class="author-name" href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a></span>
-                {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}
-            </p> --}}
         </div>
         {{-- adds --}}
         {{-- <div class="channel-ad channel-ad_ad-headline text-center">
@@ -57,62 +56,62 @@
         {{-- st-share --}}
         @include('defaultsite.mobile-v2.components-ui.dt-share')
 
-    @if(count($row['news_paging']) >0)
-        @foreach ($row['news_paging'] as $news_content)
-            @if($loop->iteration !=1)
-                <div style="display:flex; align-items: center; margin: 20px; margin-bottom:46px;">
-                    <hr class="hr-list">
-                    <div class="slider-counter">Page {{ $loop->iteration }}<span id="sliderCounter"></span> of
-                        {{ count($row['news_paging']) }}</div>
-                    <hr class="hr-list">
+        @if (count($row['news_paging']) > 0)
+            @foreach ($row['news_paging'] as $news_content)
+                @if ($loop->iteration != 1)
+                    <div style="display:flex; align-items: center; margin: 20px; margin-bottom:46px;">
+                        <hr class="hr-list">
+                        <div class="slider-counter">Page {{ $loop->iteration }}<span id="sliderCounter"></span> of
+                            {{ count($row['news_paging']) }}</div>
+                        <hr class="hr-list">
+                    </div>
+                @endif
+                <div class="dt-paragraph">
+                    {!! str_replace(
+                        ['mce-mce-mce-mce-no/type', 'mce-no/type'],
+                        '',
+                        htmlspecialchars_decode($news_content['content'] ?? null),
+                    ) !!}
                 </div>
-            @endif
+            @endforeach
+        @else
             <div class="dt-paragraph">
                 {!! str_replace(
                     ['mce-mce-mce-mce-no/type', 'mce-no/type'],
                     '',
-                    htmlspecialchars_decode($news_content['content'] ?? null),
+                    htmlspecialchars_decode($row['news_content'] ?? null),
                 ) !!}
             </div>
-        @endforeach
-    @else
-        <div class="dt-paragraph">
-            {!! str_replace(
-                ['mce-mce-mce-mce-no/type', 'mce-no/type'],
-                '',
-                htmlspecialchars_decode($row['news_content'] ?? null),
-            ) !!}
-        </div>
-    @endif
-    @push('script')
-        <script>
-            if (document.getElementsByClassName('dt-paragraph')) {
-                //change tag br to tag p
-                if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('br')[0] != null) {
-                    document.getElementsByClassName('dt-paragraph')[0].innerHTML = document.getElementsByClassName(
-                        'dt-paragraph')[0].innerHTML.replace(/<br>\\*/g, '</p><p>')
-                }
-                //add ads
-                if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[0] != null) {
-                    //get 2 paragraf before add ads
-                    var lis = document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')
-                    var counter = 0
-                    for (var i = 0; i < lis.length - 1; i++) {
-                        if (lis[i].innerHTML !== "") {
-                            counter++
-                            if (counter == 2) {
-                                document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[i]
-                                    .insertAdjacentHTML('afterend', (
-                                            '<div class="channel-ad channel-ad_ad-exposer">  {!! str_replace('script', 'scr+ipt', Util::getAds('exposer')) !!} </div>')
-                                        .replaceAll('+', ''));
-                                break
+        @endif
+        @push('script')
+            <script>
+                if (document.getElementsByClassName('dt-paragraph')) {
+                    //change tag br to tag p
+                    if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('br')[0] != null) {
+                        document.getElementsByClassName('dt-paragraph')[0].innerHTML = document.getElementsByClassName(
+                            'dt-paragraph')[0].innerHTML.replace(/<br>\\*/g, '</p><p>')
+                    }
+                    //add ads
+                    if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[0] != null) {
+                        //get 2 paragraf before add ads
+                        var lis = document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')
+                        var counter = 0
+                        for (var i = 0; i < lis.length - 1; i++) {
+                            if (lis[i].innerHTML !== "") {
+                                counter++
+                                if (counter == 2) {
+                                    document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[i]
+                                        .insertAdjacentHTML('afterend', (
+                                                '<div class="channel-ad channel-ad_ad-exposer">  {!! str_replace('script', 'scr+ipt', Util::getAds('exposer')) !!} </div>')
+                                            .replaceAll('+', ''));
+                                    break
+                                }
                             }
                         }
                     }
                 }
-            }
-        </script>
-    @endpush
+            </script>
+        @endpush
     </div>
 
     {{-- read too list --}}
@@ -124,6 +123,7 @@
 
     @include('defaultsite.mobile-v2.components-ui.related-tag', ['title' => ''])
 
+    {{-- @dump($row['latest']) --}}
     @include('defaultsite.mobile-v2.components-ui.list-main-news', [
         'latest' => $row['latest'],
         'title' => 'Related News',
@@ -138,11 +138,20 @@
     {{-- trending tag --}}
     @include('defaultsite.mobile-v2.components-ui.trending-tag')
 
+    {{-- list populer news --}}
+    @if ($popular = \Data::popular() ?? null)
+        @include('defaultsite.mobile-v2.components-ui.populer-news', [
+            'popular' => $popular,
+            'title' => 'Trending',
+        ])
+    @endif
+
 
     {{-- related artikel --}}
+    {{-- @dump(Data::latest()) --}}
     @if ($latest = \Data::latest() ?? null)
-        @include('defaultsite.mobile-v2.components-ui.related-article', [
-            'news' => $latest,
+        @include('defaultsite.mobile-v2.components-ui.list-main-news', [
+            'latest' => $latest,
             'title' => 'Latest Update',
         ])
     @endif
@@ -158,9 +167,4 @@
     <div class="channel-ad channel-ad_ad-sc-2 text-center">
         {!! Util::getAds('showcase-2') !!}
     </div>
-
-    {{-- list populer news --}}
-    @if ($popular = \Data::popular() ?? null)
-        @include('defaultsite.mobile-v2.components-ui.populer-news', ['popular' => $popular])
-    @endif
 @endsection

@@ -42,7 +42,7 @@
                                 </a>
                                 <div class="account-detail">
                                     <p href="{{ Src::author($row) }}">
-                                        <a href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a>
+                                        trstd.ly
                                     </p>
                                     <span>Published {{ Util::date($row['news_date_publish'] ?? null, 'ago') }}</span>
                                 </div>
