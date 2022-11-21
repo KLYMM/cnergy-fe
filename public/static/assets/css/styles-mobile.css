@@ -349,11 +349,6 @@ nav img {
 }
 
 .main-news-deskripsi h3 {
-    width: 85%;
-}
-
-.main-news-deskripsi h3,
-.main-news-deskripsi p {
     line-height: 1.5;
     margin: 0 20px;
 }
@@ -367,7 +362,7 @@ nav img {
     background-color: white;
     width: 85%;
     height: 30px;
-    bottom: 0;
+    bottom: -3px;
     left: 0;
     border-top: 3px solid #ff3903;
 }
@@ -402,10 +397,11 @@ nav img {
 }
 
 .main-news-deskripsi h3 {
-    font-family: "Inter";
+    font-family: "Outfit";
     color: #000;
     font-size: 24px;
     font-weight: bolder;
+    max-width: 75%;
 }
 .dark .main-news-deskripsi h3 {
     color: #dddddd;
@@ -414,21 +410,31 @@ nav img {
 .dark .author-title,
 .dark .author-name {
     color: #dddddd;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
 }
 .author-name {
     color: #ff3903;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
 }
 
 .main-news-deskripsi p {
-    font-family: var(--lato-font);
-    font-weight: 400;
-    font-size: 12px;
-    color: #999;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ff3903;
 }
-
 .trending-tag-container {
     background-color: #fff0ec;
     height: 200px;
+    margin: 50px 0;
 }
 .dark .trending-tag-container {
     background-color: #000000;
@@ -438,10 +444,9 @@ nav img {
 }
 
 .slider-container h4,
-.trending-tag-container h4 {
-    font-family: "Outfit";
+.content-tag h4 {
     font-style: normal;
-    font-weight: bolder;
+    font-weight: 900;
     font-size: 20px;
     line-height: 25px;
     margin-bottom: 20px;
@@ -549,7 +554,7 @@ nav img {
 }
 
 .list-main-news-container .card-news .banner span {
-    font-family: "Outfit";
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
@@ -755,6 +760,9 @@ nav img {
 .dark .main-news-container .dt-paragraph {
     color: #dddddd;
 }
+.dt-paragraph strong {
+    color: var(--color-primary);
+}
 
 .main-news-container .dt-paragraph p > b {
     color: var(--color-primary);
@@ -821,7 +829,12 @@ nav img {
     font-size: 12px;
     color: #000;
 }
-
+.main-share {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 14px;
+}
 .photo-p {
     font-weight: 400;
     font-size: 12px;
@@ -909,9 +922,8 @@ nav img {
 .artikel-terkait-container h4,
 .populer-container h4,
 .related-tag-title {
-    font-family: "Outfit";
     font-style: normal;
-    font-weight: bolder;
+    font-weight: 900;
     font-size: 20px;
     line-height: 25px;
     margin-bottom: 20px;
@@ -921,9 +933,8 @@ nav img {
 .dark .artikel-terkait-container h4,
 .dark .populer-container h4,
 .dark .related-tag-title {
-    font-family: "Outfit";
     font-style: normal;
-    font-weight: bolder;
+    font-weight: 900;
     font-size: 20px;
     line-height: 25px;
     margin-bottom: 20px;
@@ -941,7 +952,6 @@ nav img {
 }
 
 .baca-juga-list-container h4 {
-    font-family: "Outfit";
     font-style: normal;
     font-weight: 900;
     font-size: 20px;
@@ -1039,7 +1049,6 @@ nav img {
 
 .artikel-terkait-container h4,
 .populer-container h4 {
-    font-family: "Outfit";
     font-style: normal;
     font-weight: 900;
     font-size: 20px;
@@ -1441,8 +1450,9 @@ nav img {
     position: fixed;
     top: 0;
     z-index: 1000;
-    transform: translateY(-100%);
+    transform: translateY(-150%);
     transition: transform 0.1s ease-in-out;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 .dark .dt-share-container-fixed {
     background-color: #751900;
@@ -1456,12 +1466,20 @@ nav img {
 
 .fa-facebook-f,
 .fa-twitter,
-.fa-whatsapp {
+.fa-whatsapp,
+.fa-telegram,
+.fa-link {
     color: #ff3903;
+    font-size: 20px;
+}
+.fa-telegram {
+    background-color: white;
 }
 .dark .fa-facebook-f,
 .dark .fa-twitter,
-.dark .fa-whatsapp {
+.dark .fa-whatsapp,
+.dark .fa-telegram,
+.dark .fa-link {
     color: #ffff;
 }
 
@@ -1632,14 +1650,16 @@ nav img {
 .publish_category {
     font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
+    font-size: 14px;
 }
 .dark .photo-author,
 .dark .publish_category {
     font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     color: #fff;
+    font-size: 14px;
 }
 
 .publish_category {
@@ -1710,10 +1730,9 @@ nav img {
 }
 
 .photo-author {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
+    font-family: "Inter" !important;
+    font-weight: 700;
+    font-size: 14px;
     line-height: 15px;
     color: #ff3903;
 }
@@ -1986,8 +2005,8 @@ nav img {
 
 .account .account-detail p a {
     font-family: var(--prompt-outfit);
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 700;
+    font-size: 14px;
     color: #ff3903;
 }
 .dark .account .account-detail p a {
@@ -2000,22 +2019,21 @@ nav img {
 
 .account p,
 .account span {
-    font-family: var(--prompt-font);
-    font-weight: 400;
-    font-size: 12px;
-    color: #000000;
-    display: inline-block;
-    margin: 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ff3903;
 }
 
 .account span {
-    font-family: "Outfit";
+    font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-
-    color: #787878;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 22px;
+    color: #000000;
 }
 .dark .account span {
     color: #ffff;
@@ -2414,7 +2432,6 @@ nav img {
 }
 
 .related_h2 {
-    font-family: "Outfit";
     font-style: normal;
     font-weight: 900;
     font-size: 20px;
@@ -2486,10 +2503,10 @@ nav img {
 }
 
 .author_publish {
-    font-family: "Outfit";
+    font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 700;
+    font-size: 14px;
     line-height: 15px;
 
     color: #787878;

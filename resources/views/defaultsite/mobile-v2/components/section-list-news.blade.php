@@ -26,7 +26,7 @@
                     </span>
                 @endif
 
-                <h1 class="article-title mt-1 vh-text-lg font-outfit font-bold mb-2 animate animate--fadeInRight mt-6"
+                <h1 class="article-title mt-1 vh-text-2xl font-outfit font-bold mb-2 animate animate--fadeInRight mt-6"
                     style="--delay: 100ms">
                     {{ $newsItem['news_title'] }}
                 </h1>

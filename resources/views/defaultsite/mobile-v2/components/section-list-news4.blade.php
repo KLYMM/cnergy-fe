@@ -2,7 +2,7 @@
     <article class="article flex flex-col h-full px-6 mt-5">
         <div class="article-main relative flex-1">
             <div class="article-background mb-4">
-                <h1 class="article-title vh-text-lg font-outfit font-bold mb-2 animate animate--fadeInRight"
+                <h1 class="article-title vh-text-2xl font-outfit font-bold mb-2 animate animate--fadeInRight"
                     style="--delay: 0ms">
                     {{ $newsItem['news_title'] }}
                 </h1>

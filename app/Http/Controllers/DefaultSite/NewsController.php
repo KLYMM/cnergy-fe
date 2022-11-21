@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\DefaultSite;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 use Site, Data, Util, Str;
 
@@ -16,7 +17,7 @@ class NewsController extends Controller
 
         $latest = Data::latest(
             ex_id: Util::getNewsExId($headline),
-            //limit: Site::isMobile() ? 25 : 50
+            // limit: Site::isMobile() ? 25 : 50
         );
         $headline[0]['detail_news']=\Data::detailNews($headline[0]['news_id']??null);
         config()->set('site.attributes.meta', [
@@ -85,7 +86,7 @@ class NewsController extends Controller
     /**
      * News Category
      */
-    function category(...$params)
+    function category(Request $request, ...$params)
     {
         $slug = head($params);
         $page = null;
@@ -167,6 +168,13 @@ class NewsController extends Controller
             ]);
 
             $slug = $paginationUrl;
+
+            if(request()->ajax() || $request->api_component) {
+                return view('defaultsite.mobile-v2.components.sections', [
+                    'page' => $page,
+                    'latest' => $latest
+                ]);
+            }
 
             return Site::view('pages.category', compact('headline', 'feed', 'latest', 'slug'));
         }
@@ -603,7 +611,7 @@ class NewsController extends Controller
     /**
      * Index Berita
      */
-    function indexBerita($page=null)
+    function indexBerita(Request $request ,$page=null)
     {
         if( $categories = collect(Data::listCategory()) )
         {
@@ -660,6 +668,13 @@ class NewsController extends Controller
                     'slug'=> \Str::slug('index-berita'),
                 ],
             ]);
+
+            if(request()->ajax() || $request->api_component) {
+                return view('defaultsite.mobile-v2.components.sections', [
+                    'page' => $page,
+                    'latest' => $latest
+                ]);
+            }
 
             return Site::view('pages.index-berita', compact('headline', 'feed', 'latest', 'slug'));
         }
