@@ -1,7 +1,7 @@
 @if (count($latest) > 0)
     @if ($latest = collect($latest)->slice(0, 5))
         <div class="list-main-news-container">
-            <h2 class="related_h2 font-outfit">{{ $title ?? 'Related News' }}</h2>
+            <h2 class="related_h2 ">{{ $title ?? 'Related News' }}</h2>
             @foreach ($latest as $ln)
                 <div class="card-news">
                     <a href="{{ Src::detail($ln) }}" aria-label="{{ $ln['news_title'] ?? null }}">

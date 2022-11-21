@@ -14,7 +14,7 @@
                 </figure>
             </div>
             <div class="article-background">
-                <h1 class="article-title vh-text-lg font-outfit font-bold mb-2 animate animate--fadeInRight"
+                <h1 class="article-title vh-text-2xl font-outfit font-bold mb-2 animate animate--fadeInRight"
                     style="--delay: 100ms">
                     {{ $newsItem['news_title'] }}
                 </h1>

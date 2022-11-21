@@ -14,11 +14,11 @@
                 </figure>
             </div>
             <div class="article-background">
-                <h1 class="article-title vh-text-lg font-outfit font-bold mb-2 animate animate--fadeInRight"
+                <h1 class="article-title vh-text-2xl font-outfit font-bold mb-2 animate animate--fadeInRight"
                     style="--delay: 0ms">{{ $newsItem['news_title'] }}
                 </h1>
                 <span
-                    class="article-date vh-text-xs text-primary dark:text-white-20 mb-4 inline-block animate animate--fadeInLeft"
+                    class="article-date text-sm text-primary dark:text-white-20 mb-4 inline-block animate animate--fadeInLeft"
                     style="--delay: 100ms">{{ Util::date($newsItem['news_date_publish'], 'ago') }}
                 </span>
                 <div class="article-paragraph line-clamp-5 text-gray dark:text-white-20 animate animate--fadeInUp mb-4"

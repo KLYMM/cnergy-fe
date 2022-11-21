@@ -33,9 +33,21 @@
                 {{-- <p>{{ $row['news_imageinfo'] ?? null }}</p> --}}
             </figure>
             <h3 class="author-title">{{ $row['news_title'] ?? null }}</h3>
-            <p class="author-detail">By <span><a class="author-name" href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a></span>
+            <div class="account mx-4">
+                <a href="{{ Src::author($row) }}">
+                    <img class="rounded rounded-5" src="{{ URL::asset('assets/images/author.PNG') }}"
+                        alt="author" width="40" height="40px">
+                </a>
+                <div class="account-detail " >
+                    <p href="{{ Src::author($row) }}">
+                        <a href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a>
+                    </p>
+                    <span>Published {{ Util::date($row['news_date_publish'] ?? null, 'ago') }}</span>
+                </div>
+            </div>
+            {{-- <p class="author-detail">By <span><a class="author-name" href="{{ Src::author($row) }}">{{ $row['news_editor'][0]['name'] ?? null }}</a></span>
                 {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}
-            </p>
+            </p> --}}
         </div>
         {{-- adds --}}
         {{-- <div class="channel-ad channel-ad_ad-headline text-center">
