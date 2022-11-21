@@ -39,7 +39,7 @@
                     <img class="rounded rounded-5" src="{{ URL::asset('assets/images/author.PNG') }}" alt="author"
                         width="40" height="40px">
                     <div class="d-flex flex-column justify-content-center gap-1">
-                        <p class="photo-author font-outfit">
+                        <p class="photo-author ">
                             trstd.ly
                         </p>
                         <span class="author_publish">
