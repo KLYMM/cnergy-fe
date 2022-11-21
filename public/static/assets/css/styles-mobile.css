@@ -2019,22 +2019,21 @@ nav img {
 
 .account p,
 .account span {
-    font-family: var(--prompt-font);
-    font-weight: 400;
-    font-size: 12px;
-    color: #000000;
-    display: inline-block;
-    margin: 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ff3903;
 }
 
 .account span {
-    font-family: "Outfit";
+    font-family: "Inter";
     font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-
-    color: #787878;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 22px;
+    color: #000000;
 }
 .dark .account span {
     color: #ffff;
