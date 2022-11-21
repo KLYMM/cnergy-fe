@@ -48,6 +48,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
+        integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body class="vh-text-sm font-inter leading-normal bg-stone-100" style="padding-bottom: env(safe-area-inset-bottom)">
@@ -89,6 +95,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     const sections = document.querySelectorAll("[data-section]");
     const indicators = document.querySelector("[data-indicator]");
     const scrollRoot = document.querySelector("[data-scroller]");
+    let currentPage = 1;
 
     let currentIndex = 0;
     let prevYPosition = 0;
@@ -118,6 +125,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     };
 
     const setIndicator = () => {
+        const sections = document.querySelectorAll("[data-section]")
         indicators.innerHTML = "";
         for (var i = 0; i < sections.length; i++) {
             var button = document.createElement("span");
@@ -141,6 +149,18 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         entries.forEach((entry) => {
             const section = entry.target.dataset.section;
             const theme = entry.target.dataset.theme;
+
+            if (entry.isIntersecting) {
+                let elem = entry.target;
+
+                if (elem.classList.contains('paginate')) {
+                    console.log('load ajax')
+                    currentPage = currentPage + 1
+                    io.unobserve(entry.target)
+                    getNews(currentPage)
+                    entry.target.classList.remove("paginate")
+                }
+            }
 
             if (entry.intersectionRatio > 0.75) {
                 document.body.setAttribute("data-theme", theme);
@@ -167,11 +187,42 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         });
     }, options);
 
-    var elementIndices = {};
-    for (var i = 0; i < sections.length; i++) {
-        elementIndices[sections[i].dataset.section] = i;
-        io.observe(sections[i]);
+    const getNews = (page) => {
+        let url = window.location.href.split('?')[0]
+
+        window.axios.get(url + '/page-' + page + `?api_component=true`)
+            .then(function(response) {
+                console.log('load')
+                document.getElementById('feed-paging')
+                    .insertAdjacentHTML('beforebegin', response.data)
+                // setIndicator()
+                startIO()
+
+            })
+            .catch(function(error) {
+                console.log(response)
+            })
     }
+
+    var elementIndices = {};
+
+    function startIO() {
+        const sections = document.querySelectorAll("[data-section]");
+        for (var i = 0; i < sections.length; i++) {
+
+            if (i == (sections.length - 3)) {
+                io.unobserve(sections[i])
+                sections[i].classList.add("paginate")
+            }
+
+            elementIndices[sections[i].dataset.section] = i;
+            io.observe(sections[i]);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function(event) {
+        startIO()
+    })
 </script>
 
 <script>

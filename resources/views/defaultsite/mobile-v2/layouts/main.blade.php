@@ -67,18 +67,17 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                     target="_blank"><i class="icon icons--share  "><i
                             class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
                 <a href="https://wa.me/?text={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom') }}"
-                    target="_blank"><i class="icon icons--share  "><i
-                            class="fa-brands fa-wa fa-whatsapp "></i></i></a>
+                    target="_blank"><i class="icon icons--share  "><i class="fa-brands fa-wa fa-whatsapp "></i></i></a>
                 <a href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom') }}"
                     target="_blank"><i class="icon icons--share  "><i
                             class="fa-brands fa-twitter fa-twitter "></i></i></a>
-                <a href="https://t.me/share/url?url={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=telegram&utm_campaign=Share_Bottom') }}"  
+                <a href="https://t.me/share/url?url={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=telegram&utm_campaign=Share_Bottom') }}"
                     target="_blank"><i class="fa-brands fa-telegram  "></i> </a>
                 <a class="icons-share-link-bar " value="copy" onclick="copyToClipboard()"> <i
                         class="fa-solid fa-link  "></i></a>
             </div>
         </div>
-        
+
 
         {{-- Header --}}
         @include('defaultsite.mobile-v2.components.navbar')
@@ -123,6 +122,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     const sections = document.querySelectorAll("[data-section]");
     const indicators = document.querySelector("[data-indicator]");
     const scrollRoot = document.querySelector("[data-scroller]");
+    let currentPage = 1;
 
     let currentIndex = 0;
     let prevYPosition = 0;
@@ -152,6 +152,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     };
 
     const setIndicator = () => {
+        const sections = document.querySelectorAll("[data-section]")
         indicators.innerHTML = "";
         for (var i = 0; i < sections.length; i++) {
             var button = document.createElement("span");
@@ -160,6 +161,13 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             if (i === currentIndex) {
                 button.classList.add("indicator-bullet-active");
             }
+
+            // (function(i) {
+            //     button.onclick = function() {
+            //         sections[i].scrollIntoView();
+            //     }
+            // })(i);
+
             indicators.appendChild(button);
         }
     };
@@ -168,6 +176,18 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         entries.forEach((entry) => {
             const section = entry.target.dataset.section;
             const theme = entry.target.dataset.theme;
+
+            if (entry.isIntersecting) {
+                let elem = entry.target;
+
+                if (elem.classList.contains('paginate')) {
+                    console.log('load ajax')
+                    currentPage = currentPage + 1
+                    io.unobserve(entry.target)
+                    getNews(currentPage)
+                    entry.target.classList.remove("paginate")
+                }
+            }
 
             if (entry.intersectionRatio > 0.75) {
                 document.body.setAttribute("data-theme", theme);
@@ -194,11 +214,42 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         });
     }, options);
 
-    var elementIndices = {};
-    for (var i = 0; i < sections.length; i++) {
-        elementIndices[sections[i].dataset.section] = i;
-        io.observe(sections[i]);
+    const getNews = (page) => {
+        let url = window.location.href.split('?')[0]
+
+        window.axios.get(url + '/page-' + page + `?api_component=true`)
+            .then(function(response) {
+                console.log('load')
+                document.getElementById('feed-paging')
+                    .insertAdjacentHTML('beforebegin', response.data)
+                // setIndicator()
+                startIO()
+
+            })
+            .catch(function(error) {
+                console.log(response)
+            })
     }
+
+    var elementIndices = {};
+
+    function startIO() {
+        const sections = document.querySelectorAll("[data-section]");
+        for (var i = 0; i < sections.length; i++) {
+
+            if (i == (sections.length - 3)) {
+                io.unobserve(sections[i])
+                sections[i].classList.add("paginate")
+            }
+
+            elementIndices[sections[i].dataset.section] = i;
+            io.observe(sections[i]);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function(event) {
+        startIO()
+    })
 </script>
 <script>
     const mainNav = document.querySelector('.nav-main');
@@ -382,16 +433,16 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 <script>
     var moreButton = document.querySelector("#more")
     var relatedTags = document.querySelectorAll(".hiddenLi")
-    function showMoreRelatedTag (){
-        if (moreButton.classList.contains("more")){
-            for (let tag of relatedTags){
+
+    function showMoreRelatedTag() {
+        if (moreButton.classList.contains("more")) {
+            for (let tag of relatedTags) {
                 tag.style.display = "block"
             }
             moreButton.innerHTML = "Show Less"
             moreButton.classList.remove("more")
-        }
-        else{
-            for (let tag of relatedTags){
+        } else {
+            for (let tag of relatedTags) {
                 tag.style.display = "none"
             }
             moreButton.innerHTML = "More+"
