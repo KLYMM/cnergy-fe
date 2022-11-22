@@ -125,6 +125,18 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'logserver' => [
+            'driver' => 'monolog',
+            'handler' => SyslogUdpHandler::class,
+            'handler_with' => [
+                'host' => env('LOGSERVER_HOST', 'localhost'),
+                'port' => '514',
+                'level' => 'debug',
+                'ident' => env('LOG_IDENTITY', 'liputan6id'),
+            ],
+            'level' => 'debug',
+        ],
     ],
 
 ];
