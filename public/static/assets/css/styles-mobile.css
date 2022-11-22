@@ -354,6 +354,7 @@ nav img {
     font-size: 24px;
     font-weight: bolder;
     max-width: 75%;
+    margin: 0 20px;
 }
 .dark .main-news-deskripsi h3 {
     color: #dddddd;
@@ -373,10 +374,6 @@ nav img {
 }
 .dark .main-news-deskripsi figure .frame-bottom {
     background-color: #1e1e1e;
-}
-
-.main-news-deskripsi figure .image-news {
-    margin: 15px 0;
 }
 
 .item-img .image-news,
