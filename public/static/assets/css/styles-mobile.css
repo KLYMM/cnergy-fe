@@ -1456,7 +1456,6 @@ nav img {
     top: 0;
     z-index: 1000;
     transform: translateY(-150%);
-    transition: transform 0.1s ease-in-out;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 .dark .dt-share-container-fixed {
@@ -2255,43 +2254,6 @@ nav img {
 .button-section .like-button,
 .share-button {
     color: #8b02fd;
-}
-
-.switchTheme-control {
-    -webkit-appearance: none;
-    appearance: none;
-    position: absolute;
-    opacity: 0;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-light {
-    opacity: 0;
-}
-
-.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-dark {
-    opacity: 1;
-}
-
-.switchTheme-icon {
-    position: relative;
-    width: 24px;
-    height: 24px;
-}
-
-.switchTheme-icon-light,
-.switchTheme-icon-dark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: opacity 0.5s ease;
-}
-
-.switchTheme-icon-dark {
-    opacity: 0;
 }
 
 .dark {
