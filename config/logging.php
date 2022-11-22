@@ -133,7 +133,7 @@ return [
                 'host' => env('LOGSERVER_HOST', 'localhost'),
                 'port' => '514',
                 'level' => 'debug',
-                'ident' => env('LOG_IDENTITY', 'liputan6id'),
+                'ident' => env('LOG_IDENTITY', 'trstdly'),
             ],
             'level' => 'debug',
         ],
