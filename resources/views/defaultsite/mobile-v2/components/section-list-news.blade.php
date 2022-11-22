@@ -38,9 +38,9 @@
             </div>
             <div class="article-asset mb-4">
                 {{-- @if (count($newsItem['news_image']['real']) > 0 ?? null) --}}
-                <figure class="article-asset w-full vh-h-landscape aspect-375 overflow-hidden">
-                    <div class="object-cover w-full h-full animate animate--fadeIn " style="--delay: 300ms"
-                        width="375" height="208">
+                <figure class="article-asset w-full vh-h-landscape aspect-375 overflow-hidden justify">
+                    <div class="flex justify-center object-cover w-full h-full animate animate--fadeIn"
+                        style="--delay: 300ms" width="375" height="208">
                         @include('image ', [
                             'source' => $newsItem,
                             'size' => '375x208',
@@ -61,7 +61,7 @@
             style="--delay: 500ms">
             <div class="article-footer-left flex-1 ">
                 <a class="btn btn--outline rounded-lg flex items-center justify-center vh-h-btn  font-outfit font-medium bg-primary-40  dark:bg-primary-41 dark:text-white"
-                    href="{{ Src::detail($newsItem) }}">
+                    href="{{ Src::detail($newsItem) }}" title="{{ $newsItem['news_title'] }}">
                     <span>READ MORE</span>
                     <svg class="dark:svg-stroke-white ml-3" width="20" height="20" viewBox="0 0 24 24"
                         fill="none" xmlns="http://www.w3.org/2000/svg">

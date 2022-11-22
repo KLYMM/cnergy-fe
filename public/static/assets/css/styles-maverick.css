@@ -515,18 +515,23 @@ article {
     z-index: 1;
     cursor: pointer;
 }
-.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-light {
-    opacity: 0;
-}
-.switchTheme-control-2:checked ~ .switchTheme-icon .switchTheme-icon-light {
-    opacity: 0;
-}
-.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-dark {
+
+.switchTheme-icon-dark {
     opacity: 1;
 }
-.switchTheme-control-2:checked ~ .switchTheme-icon .switchTheme-icon-dark {
+
+.switchTheme-icon-light {
+    opacity: 0;
+}
+
+.dark .switchTheme-icon-dark {
+    opacity: 0;
+}
+
+.dark .switchTheme-icon-light {
     opacity: 1;
 }
+
 .switchTheme-icon {
     position: relative;
     width: 24px;
@@ -541,9 +546,7 @@ article {
     bottom: 0;
     transition: opacity 0.5s ease;
 }
-.switchTheme-icon-dark {
-    opacity: 0;
-}
+
 .header .icon-sm {
     display: none;
 }

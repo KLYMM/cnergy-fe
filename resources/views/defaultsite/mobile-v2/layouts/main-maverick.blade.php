@@ -27,9 +27,23 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     </script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
-    <title>Trstd.ly</title>
-    <meta name="description" content="Maverick" />
-    <meta name="keywords" content="Maverick" />
+    <title>{{ config('site.attributes.meta.title') }}</title>
+
+    <meta name="title" content="{{ config('site.attributes.meta.title') ?? null }}">
+    <meta name="description" content="{{ html_entity_decode(config('site.attributes.meta.site_description')) ?? null }}">
+    <meta name="keywords" content="{{ config('site.attributes.meta.article_keyword') ?? null }}">
+    <meta property="og:site_name" content="{{ config('site.attributes.reldomain.domain_name') ?? null }}">
+    <meta property="og:url" content="{{ config('site.attributes.meta.article_url') ?? null }}">
+    <meta property="og:title" content="{{ config('site.attributes.meta.article_title') ?? null }}">
+    <meta property="og:description" content="{{ config('site.attributes.meta.article_short_desc') ?? null }}">
+    <meta property="article:modified_time" content="{{ config('site.attributes.meta.article_last_update') ?? null }}">
+    <meta property="og:updated_time" content="{{ config('site.attributes.meta.article_last_update') ?? null }}">
+    <meta property="fb:app_id" content="{{ config('site.attributes.fb_app_id') ?? null }}">
+    <meta property="og:type" content="{{ config('site.attributes.meta.type') ?? null }}">
+    <meta property="og:image" content="{{ config('site.attributes.meta.article_url_image') ?? null }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="{{ config('site.attributes.twitter_username') ?? null }}">
+    <meta name="twitter:creator" content="{{ config('site.attributes.twitter_username') ?? null }}">
     <meta http-equiv="cache-control" content="public, no-transform" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -41,26 +55,19 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link rel="preconnect" href="https://via.placeholder.com/" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
-        integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js" integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body class="vh-text-sm font-inter leading-normal bg-stone-100" style="padding-bottom: env(safe-area-inset-bottom)">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH4RTMT" height="0" width="0"
-            style="display:none;visibility:hidden">
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH4RTMT" height="0" width="0" style="display:none;visibility:hidden">
         </iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
@@ -191,7 +198,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         let slug = url => new URL(url).pathname.match(/[^\/]+/g)
         let url = window.location.href.split('?')[0]
 
-        if(slug(url) == null) {
+        if (slug(url) == null) {
             url = url + 'index-berita'
         }
         console.log(url)

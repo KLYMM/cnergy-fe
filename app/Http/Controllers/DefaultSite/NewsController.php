@@ -20,15 +20,15 @@ class NewsController extends Controller
         );
         $headline[0]['detail_news']=\Data::detailNews($headline[0]['news_id']??null);
         config()->set('site.attributes.meta', [
-            "title"=>config('site.attributes.title'),
-            "article_title"=>$headline[0]['news_title']??null,
-            "site_description"=>config('site.attributes.site_description'),
-            "article_short_desc"=>$headline[0]['news_synopsis']??null,
-            "article_keyword"=>$headline[0]['detail_news']['news_keywords'][0]['keyword_name']??null,
-            "article_url"=>\Src::detail($headline[0]??null),
-            "article_last_update"=>$headline[0]['detail_news']['news_last_update']??null,
-            "article_url_image"=> \Src::imgNewsCdn($headline[0]??null, '640x360', 'jpeg'),
-            "type"=>'website'
+            "title" => config('site.attributes.title'),
+            "article_title" => $headline[0]['news_title']??null,
+            "site_description" => config('site.attributes.site_description'),
+            "article_short_desc" => $headline[0]['news_synopsis']??null,
+            "article_keyword" => $headline[0]['detail_news']['news_keywords'][0]['keyword_name']??null,
+            "article_url" => \Src::detail($headline[0]??null),
+            "article_last_update" => $headline[0]['detail_news']['news_last_update']??null,
+            "article_url_image" =>  \Src::imgNewsCdn($headline[0]??null, '640x360', 'jpeg'),
+            "type" => 'website'
         ]);
 
         //kly object
