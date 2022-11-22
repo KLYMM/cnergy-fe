@@ -38,9 +38,9 @@
             </div>
             <div class="article-asset mb-4">
                 {{-- @if (count($newsItem['news_image']['real']) > 0 ?? null) --}}
-                <figure class="article-asset w-full vh-h-landscape aspect-375 overflow-hidden">
-                    <div class="object-cover w-full h-full animate animate--fadeIn " style="--delay: 300ms"
-                        width="375" height="208">
+                <figure class="article-asset w-full vh-h-landscape aspect-375 overflow-hidden justify">
+                    <div class="flex justify-center object-cover w-full h-full animate animate--fadeIn"
+                        style="--delay: 300ms" width="375" height="208">
                         @include('image ', [
                             'source' => $newsItem,
                             'size' => '375x208',
