@@ -21,13 +21,13 @@ class NewsController extends Controller
         $headline[0]['detail_news']=\Data::detailNews($headline[0]['news_id']??null);
         config()->set('site.attributes.meta', [
             "title" => config('site.attributes.title'),
-            "article_title" => $headline[0]['news_title']??null,
+            "article_title" => config('site.attributes.title'),
             "site_description" => config('site.attributes.site_description'),
-            "article_short_desc" => $headline[0]['news_synopsis']??null,
-            "article_keyword" => $headline[0]['detail_news']['news_keywords'][0]['keyword_name']??null,
-            "article_url" => \Src::detail($headline[0]??null),
+            "article_short_desc" => config('site.attributes.site_description') ?? null,
+            "article_keyword" => config('site.attributes.meta.article_keyword') ?? null,
+            "article_url" => config('site.attributes.reldomain.domain_url'),
             "article_last_update" => $headline[0]['detail_news']['news_last_update']??null,
-            "article_url_image" =>  \Src::imgNewsCdn($headline[0]??null, '640x360', 'jpeg'),
+            "article_url_image" =>  config('site.attributes.site_logo'),
             "type" => 'website'
         ]);
 
