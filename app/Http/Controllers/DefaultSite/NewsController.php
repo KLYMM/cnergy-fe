@@ -180,11 +180,11 @@ class NewsController extends Controller
         else abort(404);
     }
 
-    function tag($slug=null, $page=null)
+    function tag($slug=null, $page=null, Request $request)
     {
         $page = str_replace('page-', '', $page);
 
-        $data=Data::listNewsByTag($slug, $page, 50);
+        $data=Data::listNewsByTag($slug, $page, 25);
         if ($data['attributes']['last_page']??null) {
             if ($page>$data['attributes']['last_page']) {
                 return redirect(url('tag/'.$slug.'/page-'.$data['attributes']['last_page']));
@@ -234,6 +234,14 @@ class NewsController extends Controller
                     'name'=> config('site.attributes.title'),
                 ],
             ]);
+
+            if(request()->ajax() || $request->api_component) {
+                return view('defaultsite.mobile-v2.components.sections', [
+                    'page' => $page,
+                    'latest' => $data,
+                ]);
+            }
+
             return Site::view('pages.tag', compact('headline', 'feed', 'rows','tag','data','photo','video'));
         }
         else abort(404);

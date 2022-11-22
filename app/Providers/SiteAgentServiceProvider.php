@@ -55,7 +55,9 @@ class SiteAgentServiceProvider extends ServiceProvider
             config()->set('site.device', $agent->isMobile() ? 'mobile-v2' : 'desktop');
         }
 
+
         // force mobile
+
         config()->set('site.device', 'mobile-v2');
 
         //define site path
