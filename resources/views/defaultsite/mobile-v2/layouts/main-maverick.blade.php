@@ -30,7 +30,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <title>{{ config('site.attributes.meta.title') }}</title>
 
     <meta name="title" content="{{ config('site.attributes.meta.title') ?? null }}">
-    <meta name="description" content="{{ html_entity_decode(config('site.attributes.meta.site_description')) ?? null }}">
+    <meta name="description" content="{!! config('site.attributes.meta.site_description') ?? null !!}">
     <meta name="keywords" content="{{ config('site.attributes.meta.article_keyword') ?? null }}">
     <meta property="og:site_name" content="{{ config('site.attributes.reldomain.domain_name') ?? null }}">
     <meta property="og:url" content="{{ config('site.attributes.meta.article_url') ?? null }}">
