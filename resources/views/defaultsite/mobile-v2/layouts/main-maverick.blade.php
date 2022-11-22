@@ -188,8 +188,13 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     }, options);
 
     const getNews = (page) => {
+        let slug = url => new URL(url).pathname.match(/[^\/]+/g)
         let url = window.location.href.split('?')[0]
 
+        if(slug(url) == null) {
+            url = url + 'index-berita'
+        }
+        console.log(url)
         window.axios.get(url + '/page-' + page + `?api_component=true`)
             .then(function(response) {
                 console.log('load')
@@ -200,7 +205,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
             })
             .catch(function(error) {
-                console.log(response)
+                console.log(error)
             })
     }
 
