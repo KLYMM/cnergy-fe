@@ -7,7 +7,7 @@ return [
         'namespace'=> 'DefaultSite'
     ],
     [
-        'domains' => ['www.trstd.ly', 'trstd.ly'],
+        'domains' => ['www.trstd.ly', 'trstd.ly', 'www.staging.trstd.ly', 'staging.trstd.ly'],
         'token' => env('NEWSHUB_TOKEN_TRSTDLY', ''),
         'namespace' => 'DefaultSite'
     ]
