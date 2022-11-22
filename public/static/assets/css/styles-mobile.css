@@ -349,10 +349,15 @@ nav img {
 }
 
 .main-news-deskripsi h3 {
-    line-height: 1.5;
-    margin: 0 20px;
+    font-family: "Outfit";
+    color: #000;
+    font-size: 24px;
+    font-weight: bolder;
+    max-width: 75%;
 }
-
+.dark .main-news-deskripsi h3 {
+    color: #dddddd;
+}
 .main-news-deskripsi figure {
     position: relative;
 }
@@ -410,10 +415,10 @@ nav img {
 .dark .author-title,
 .dark .author-name {
     color: #dddddd;
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
+    font-family: "Outfit";
+    font-size: 24px;
+    font-weight: bolder;
+    max-width: 75%;
 }
 .author-name {
     color: #ff3903;
@@ -2512,7 +2517,7 @@ nav img {
     color: #787878;
 }
 .dark .author_publish {
-    color: #ffffff;
+    color: #dddddd;
 }
 .newstag-a {
     font-family: "Outfit";

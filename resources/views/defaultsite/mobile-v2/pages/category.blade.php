@@ -7,7 +7,6 @@
             data-scroller>
             @include('defaultsite.mobile-v2.components.sections', ['page' => 1])
             <div id="feed-paging"></div>
-            {{-- ?? END OF SECTION !! --}}
         </div>
         <!-- end.snap -->
 

@@ -215,7 +215,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         const sections = document.querySelectorAll("[data-section]");
         for (var i = 0; i < sections.length; i++) {
 
-            if (i == (sections.length - 3)) {
+            if (i == (sections.length - 5)) {
                 io.unobserve(sections[i])
                 sections[i].classList.add("paginate")
             }
