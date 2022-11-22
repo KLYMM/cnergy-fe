@@ -349,10 +349,15 @@ nav img {
 }
 
 .main-news-deskripsi h3 {
-    line-height: 1.5;
-    margin: 0 20px;
+    font-family: "Outfit";
+    color: #000;
+    font-size: 24px;
+    font-weight: bolder;
+    max-width: 75%;
 }
-
+.dark .main-news-deskripsi h3 {
+    color: #dddddd;
+}
 .main-news-deskripsi figure {
     position: relative;
 }
