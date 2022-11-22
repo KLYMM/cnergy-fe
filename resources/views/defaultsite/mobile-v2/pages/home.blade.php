@@ -56,6 +56,7 @@
                 @endforeach
             @endif
             {{-- ?? END OF SECTION !! --}}
+            <div id="feed-paging"></div>
         </div>
         <!-- end.snap -->
 
