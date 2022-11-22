@@ -2,7 +2,7 @@
 
 return [
     [
-        'domains'=> ['demo.hyperlocal.kl-youniverse.com', 'demo.local.newshub.id', 'cnergy-fe.test', 'localhost', 'english-mm.kl-youniverse.com'],
+        'domains'=> ['demo.hyperlocal.kl-youniverse.com', 'demo.local.newshub.id', 'cnergy-fe.test', 'localhost', 'english-mm.kl-youniverse.com', 'www.staging.trstd.ly', 'staging.trstd.ly'],
         'token'=> env('NEWSHUB_TOKEN', ''),
         'namespace'=> 'DefaultSite'
     ],
