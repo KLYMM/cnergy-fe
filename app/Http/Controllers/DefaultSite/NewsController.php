@@ -180,7 +180,7 @@ class NewsController extends Controller
         else abort(404);
     }
 
-    function tag($slug=null, $page=null, Request $request)
+    function tag(Request $request, $slug=null, $page=null)
     {
         $page = str_replace('page-', '', $page);
 
