@@ -7,7 +7,7 @@ use Site, Str;
 class Data {
 
     protected static $defaultListNews = [
-        'news_id', 'news_type', 'news_title', 'news_date_publish', 'news_category',  'category_name', 
+        'news_id', 'news_type', 'news_title', 'news_date_publish', 'news_category',  'category_name',
         'news_synopsis', 'news_url', 'news_image', 'cdn_image', 'news_tag', 'photonews', 'photonews_count'
     ];
 
@@ -27,7 +27,7 @@ class Data {
                 'position'=> $position
             ]
         );
-        
+
         return $rows;
     }
 
@@ -53,7 +53,7 @@ class Data {
                 'orderby'=> 'news_date_publish-desc'
             ]
         );
-        
+
         return $rows['data'] ?? null;
     }
 
@@ -82,10 +82,10 @@ class Data {
         );
 
         //replace news url
-        if( $rows['data'] ?? null ) 
+        if( $rows['data'] ?? null )
         {
             $rows['data'] = array_map( function($v) {
-                
+
                 $v['news_url'] = Str::slug($v['news_title']);
 
                 return $v;
@@ -192,7 +192,7 @@ class Data {
             ttl  : '6minutes',
             tags : ['tag', 'trending', 'global'],
         );
-        
+
         return $rows['data'] ?? [];
     }
 
@@ -212,7 +212,7 @@ class Data {
                 'limit'=> $limit
             ]
         );
-        
+
         return $rows['data'] ?? [];
     }
 
@@ -228,7 +228,7 @@ class Data {
             force: $force,
             tags : ['tag']
         );
-        
+
         return $rows;
     }
 
@@ -238,18 +238,18 @@ class Data {
     static function detailNews( $newsID, $force=false )
     {
         if(!$newsID) return null;
-        
+
         $rows = Site::api(
             path : 'news/'.$newsID.'/'.($force?'&limit='.rand(0,9):''),
             key  : 'get-detail-news-'.$newsID,
             ttl  : '180minutes',
             force: $force,
             tags : ['news', 'news-'.$newsID],
-            params : [
-                'alltype'=> 1,
-            ]
+            // params : [
+            //     'alltype'=> 1,
+            // ]
         );
-        
+
         return $rows;
     }
 
@@ -271,7 +271,7 @@ class Data {
                 'limit'=> $limit
             ]
         );
-        
+
         return $rows;
     }
 
@@ -294,7 +294,7 @@ class Data {
                 'limit'=> $limit
             ]
         );
-        
+
         return $rows;
     }
 
@@ -322,7 +322,7 @@ class Data {
                 'orderby'=> 'news_date_publish-desc'
             ]
         );
-        
+
         return $rows;
     }
 
@@ -337,7 +337,7 @@ class Data {
             ttl  : '60minutes',
             force: $force,
         );
-        
+
         return $rows;
     }
 
@@ -355,7 +355,7 @@ class Data {
                 'slug'=> $slug,
             ]
         );
-        
+
         return $rows;
     }
 
@@ -370,7 +370,7 @@ class Data {
             method:'post',
             params : $request
         );
-        
+
         return $rows;
     }
 
@@ -385,7 +385,7 @@ class Data {
             ttl  : '60minutes',
             force: $force,
         );
-        
+
         return $rows;
     }
 }
