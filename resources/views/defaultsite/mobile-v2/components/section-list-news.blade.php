@@ -2,8 +2,6 @@
     <article class="article flex flex-col h-full px-6 mt-6">
         <div class="article-main relative flex-1">
             <div class="article-background border-tag mb-4">
-                {{-- @dump(Request::path()) --}}
-                {{-- @dump($newsItem['category_name']) --}}
                 @if (count($newsItem['news_tag']) > 0 ?? null)
                     <span
                         class="article-tag block capitalize font-inter font-bold text-primary  border-primary pt-2 mb-2 animate animate--fadeInUp dark:text-white-20 dark:border-white-20"
