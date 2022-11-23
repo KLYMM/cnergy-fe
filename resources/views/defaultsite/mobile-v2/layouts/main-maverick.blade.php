@@ -48,7 +48,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-
+    <link rel="icon" type="image/png" href="{{ config('site.attributes.favicon') }}">
     <link rel="shortcut icon" href="" />
     <link rel="canonical" href="" />
 

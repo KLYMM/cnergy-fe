@@ -7,7 +7,7 @@
             <a class="header-body-logo-link" href="/">
                 <span class="header-body-logo-link-icon">
                     <img class="logo-section-3 icon-lg object-contain dark:img-white"
-                        src="{{ URL::asset('assets/images/trstdly.png') }}" alt="logo" width="140"
+                        src="{{ URL::asset('assets/images/trstdly-logo.png') }}" alt="logo" width="140"
                         height="48" />
                 </span>
             </a>
@@ -62,7 +62,7 @@
         <div class="nav-content">
             <div class="nav-header">
                 <a href="/"> <img class=" dark:img-white"
-                    src="{{ URL::asset('assets/images/trstdly.png') }}" alt="logo" width="140"
+                    src="{{ URL::asset('assets/images/trstdly-logo.png') }}" alt="logo" width="140"
                     height="48" /></a>
 
                 <img class="nav-close  dark:img-white"
