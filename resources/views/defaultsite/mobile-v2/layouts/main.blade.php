@@ -8,6 +8,24 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 <html lang="en" class="<?php echo $themeClass; ?>">
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KH4RTMT');
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <title>{{ config('site.attributes.meta.title') }}</title>
     <meta http-equiv="cache-control" content="public, no-transform" />
@@ -58,6 +76,13 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 </head>
 
 <body style="margin:auto;">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH4RTMT" height="0" width="0"
+            style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class=" max-w-full">
         {{-- Share Section on News Detail --}}
         <div class="dt-share-container-fixed">
@@ -365,12 +390,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     if (shareSection !== null && iframe == null) {
         window.addEventListener("scroll", (e) => {
             if (window.scrollY < position) {
-                shareSectionSticky.style.transform='translateY(-150%)';
+                shareSectionSticky.style.transform = 'translateY(-150%)';
                 header.classList.remove("hide")
                 position = window.scrollY
             } else if (shareSection.getBoundingClientRect().bottom <= 0) {
-                shareSectionSticky.style.transform='translateY(-1%)';
-                shareSectionSticky.style.transition='transform 0.1s ease-in-out';
+                shareSectionSticky.style.transform = 'translateY(-1%)';
+                shareSectionSticky.style.transition = 'transform 0.1s ease-in-out';
                 header.classList.add("hide")
                 position = window.scrollY
             }
@@ -380,16 +405,16 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 <script>
     var moreButton = document.querySelector("#more")
     var relatedTags = document.querySelectorAll(".hiddenLi")
-    function showMoreRelatedTag (){
-        if (moreButton.classList.contains("more")){
-            for (let tag of relatedTags){
+
+    function showMoreRelatedTag() {
+        if (moreButton.classList.contains("more")) {
+            for (let tag of relatedTags) {
                 tag.style.display = "block"
             }
             moreButton.innerHTML = "Show Less"
             moreButton.classList.remove("more")
-        }
-        else{
-            for (let tag of relatedTags){
+        } else {
+            for (let tag of relatedTags) {
                 tag.style.display = "none"
             }
             moreButton.innerHTML = "More+"

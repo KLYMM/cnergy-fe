@@ -157,6 +157,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             const section = entry.target.dataset.section;
             const theme = entry.target.dataset.theme;
 
+
             if (entry.isIntersecting) {
                 let elem = entry.target;
 
@@ -167,6 +168,9 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                     getNews(currentPage)
                     entry.target.classList.remove("paginate")
                 }
+
+                onItersecting(entry.target, elementIndices[section]);
+
             }
 
             if (entry.intersectionRatio > 0.75) {
@@ -193,6 +197,46 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             }
         });
     }, options);
+
+
+    function virtual_pv(data) {
+        dataLayer.push({
+            'event': 'virtual_page_view',
+            'virtual_pageview_path': data.pageview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
+            'articleId': data.articleId,
+            'contentTitle': data.articleTitle,
+            'type': data.articleType, //feed
+            // 'subCategory': '$nama-category', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'authors': data.author,
+            'publicationDate': data.publicationDate, //2022-10-26
+            'publicationTime': data.publicationTime, //07:34:37
+            'templateId': data.template_id, //1|2|3|4
+            'templateName': data.template_name, //Headline 1|Headline 2|etc..
+            'position': data.position //1|2|3|etc...}
+        });
+    }
+
+    function onItersecting(target, currentIndex) {
+        // console.log('intersecting => ', target);
+        // console.log(target.dataset);
+        let date = target.querySelector('span.article-date').dataset.date.split(' ');
+
+
+        let data = {
+            pageview_path: window.location.href,
+            articleId: target.dataset.id,
+            articleTitle: target.querySelector('h1.article-title').textContent,
+            articleType: target.dataset.type,
+            author: target.dataset.author,
+            // publicationDate: date[0],
+            // publicationTime: date[1],
+            template_id: target.dataset.template,
+            template_name: 'Feed ' + target.dataset.template,
+            position: currentIndex + 1,
+        }
+
+        virtual_pv(data);
+    }
 
     const getNews = (page) => {
         let slug = url => new URL(url).pathname.match(/[^\/]+/g)
