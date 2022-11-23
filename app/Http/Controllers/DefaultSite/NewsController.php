@@ -15,7 +15,7 @@ class NewsController extends Controller
         $feed = collect($headline)->slice(1,6);
 
         $latest = Data::latest(
-            ex_id: Util::getNewsExId($headline)
+            // ex_id: Util::getNewsExId($headline)
             // limit: Site::isMobile() ? 25 : 50
         );
         $headline[0]['detail_news']=\Data::detailNews($headline[0]['news_id']??null);
