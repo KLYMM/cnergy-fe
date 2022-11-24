@@ -25,6 +25,11 @@ html,
 body {
     height: 100%;
 }
+
+.dark body {
+    background-color: var(--color-black);
+}
+
 img {
     color: transparent;
     vertical-align: middle;

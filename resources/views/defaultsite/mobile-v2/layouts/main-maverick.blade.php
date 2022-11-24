@@ -184,7 +184,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 let elem = entry.target;
 
                 if (elem.classList.contains('paginate')) {
-                    console.log('load ajax')
+                    // console.log('load ajax')
                     currentPage = currentPage + 1
                     io.unobserve(entry.target)
                     getNews(currentPage)
@@ -243,6 +243,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         // console.log('intersecting => ', target);
         // console.log(target.dataset);
         let date = target.querySelector('span.article-date').dataset.date.split(' ');
+        console.log(target.querySelector('span.article-date').dataset.date);
 
 
         let data = {
@@ -268,10 +269,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         if (slug(url) == null) {
             url = url + 'index-berita'
         }
-        console.log(url)
+        // console.log(url)
         window.axios.get(url + '/page-' + page + `?api_component=true`)
             .then(function(response) {
-                console.log('load')
+                // console.log('load')
                 document.getElementById('feed-paging')
                     .insertAdjacentHTML('beforebegin', response.data)
                 // setIndicator()
