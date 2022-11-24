@@ -48,6 +48,11 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link rel="icon" type="image/png" href="{{ config('site.attributes.favicon') }}">
+    <link rel="shortcut icon" href="" />
+    <link rel="canonical" href="" />
+
     @if(config('app.env') !== 'local')
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @endif
@@ -55,6 +60,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link rel="canonical" href="{{ request()->url() }}" />
 
     <link rel="dns-prefetch" href="https://cdns.klimg.com/" />
+
     <link rel="preconnect" href="https://via.placeholder.com/" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
