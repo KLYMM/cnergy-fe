@@ -388,7 +388,6 @@ nav img {
 .ads-container img,
 .main-content-news-container .content-news .image-news img,
 .main-news-container .image-news img,
-.not-found-container .image-news img,
 .slider-content .swiper-slide .image-news-slider img {
     position: absolute;
     top: 0;
@@ -396,6 +395,12 @@ nav img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.not-found-container .image-news img {
+    margin: 0 auto;
+    object-fit: cover;
+    padding-top: 100px;
 }
 
 .dark .main-news-deskripsi h3 {
@@ -1331,8 +1336,7 @@ nav img {
 .not-found-container .image-news {
     position: relative;
     --aspect-ratio: 5/4;
-    padding-bottom: calc(100% / (var(--aspect-ratio)));
-    background-color: #fff;
+    padding-bottom: 20px;
 }
 
 .ads-container,
@@ -1343,20 +1347,27 @@ nav img {
     background-color: silver;
 }
 
+.dark .not-found-container h1,
+p {
+    color: #dddddd;
+}
+
 .not-found-container h1 {
-    font-family: var(--lato-font);
-    font-weight: 900;
-    font-size: 24px;
-    color: #999;
-    margin-top: 45px;
-    margin-bottom: 10px;
+    font-family: var(--font-outfit);
+    color: #333333;
+    font-weight: bolder;
+    font-size: 22px;
+    margin-bottom: 8px;
 }
 
 .not-found-container p {
-    font-family: var(--lato-font);
+    font-family: var(--font-inter);
     font-weight: 400;
-    font-size: 16px;
-    color: #999;
+    font-size: 14px;
+    color: #999999;
+    line-height: 21px;
+    text-align: center;
+    padding: 0px 40px;
 }
 
 .report-article-container a {
