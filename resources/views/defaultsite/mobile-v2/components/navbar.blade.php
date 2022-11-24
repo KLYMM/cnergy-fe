@@ -204,8 +204,15 @@
                             position: absolute;
                             width: 100%;
                             bottom: 0;
-                            border: 2px solid white;
                             background-color: white;
+                        }
+
+                        .dark .all-search-box {
+                            position: absolute;
+                            width: 100%;
+                            bottom: 0;
+                            border: 2px solid ;
+                            background-color: #fff0ec !important;
                         }
 
                         form.gsc-search-box,
@@ -224,8 +231,9 @@
                         }
 
                         .gsib_a {
-                            padding: 0 10px;
-                            padding-left: 40px;
+                            padding: 10px;
+                            padding-right:0px;
+                            padding-left: 40px
                         }
 
                         .gsst_a {
@@ -284,6 +292,7 @@
 
                         float: right;
                         margin: 10px;
+                        margin-right: 40px;
                         background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
                         background-repeat: no-repeat;
                         background-position: center;
@@ -294,8 +303,6 @@
                         }
 
                         .gsc-search-box-tools .gsc-search-box .gsc-input {
-                           
-
                            font-family: 'Inter';
                            font-weight: 400;
                            padding-right: 10px;
@@ -305,6 +312,11 @@
                            background: #fff !important;
                            text-indent: 0 !important;
                        }
+
+                       .dark .gsc-search-box-tools .gsc-search-box .gsc-input {
+                           background:  #fff0ec !important;
+                       }
+
                        .gsc-input::placeholder {
                            color: #333;
                        }

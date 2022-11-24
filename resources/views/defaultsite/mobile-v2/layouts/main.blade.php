@@ -91,6 +91,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom') }}" target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
                 <a href="https://wa.me/?text={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom') }}" target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i class="fa-brands fa-wa fa-whatsapp"></i></i></a>
                 <a href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom') }}" target="_blank"><i class="icon icons--share icon--share-fb "><i class="fa-brands fa-twitter fa-twitter fs-5"></i></i></a>
+                <a href="https://t.me/share/url?url={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=telegram&utm_campaign=Share_Bottom') }}" target="_blank"><i class="fa-brands fa-telegram  "></i> </a>
                 <a class="icons-share-link-bar" value="copy" onclick="copyToClipboard()"> <i class="fa-solid fa-link fs-5"></i></a>
             </div>
         </div>
@@ -219,6 +220,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     const mainNav = document.querySelector('.nav-main');
     const closeNav = document.querySelector('.nav-close');
     const openNav = document.querySelector('.nav-open');
+    const body = document.querySelector('body');
 
     openNav.addEventListener('click', show);
     closeNav.addEventListener('click', close);
@@ -227,10 +229,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         cseSearch();
         mainNav.style.transition = 'transform 0.5s ease';
         mainNav.style.transform = 'translateX(0)';
+        body.style.overflowY='hidden'
     }
 
     function close() {
         mainNav.style.transform = 'translateX(-150%)';
+        body.style.overflowY='auto'
         var s = document.getElementsByTagName('script')[0];
         s.remove();
     }

@@ -238,8 +238,9 @@
                         }
 
                         .gsib_a {
-                            padding: 0 10px;
-                            padding-left: 40px;
+                            padding: 10px;
+                            padding-right:0px;
+                            padding-left: 40px
                         }
 
                         .gsst_a {
@@ -298,6 +299,7 @@
 
                             float: right;
                             margin: 10px;
+                            margin-right: 40px;
                             background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
                             background-repeat: no-repeat;
                             background-position: center;
