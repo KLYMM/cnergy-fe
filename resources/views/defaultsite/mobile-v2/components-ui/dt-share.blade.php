@@ -6,10 +6,10 @@
         <a href="https://wa.me/?text={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom') }}"
             target="_blank"><i class="icon icons--share  "><i
                     class="fa-brands fa-wa fa-whatsapp "></i></i></a>
-        <a href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom') }}"
+        <a href="https://twitter.com/intent/tweet?text={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom') }}"
             target="_blank"><i class="icon icons--share  "><i
                     class="fa-brands fa-twitter fa-twitter "></i></i></a>
-        <a href="https://t.me/share/url?url={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=telegram&utm_campaign=Share_Bottom') }}"  
+        <a href="https://t.me/share/url?url={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=telegram&utm_campaign=Share_Bottom') }}"
             target="_blank"><i class="fa-brands fa-telegram  "></i> </a>
         <a class="icons-share-link" value="copy" onclick="copyToClipboard()"> <i
                 class="fa-solid fa-link  "></i></a>
