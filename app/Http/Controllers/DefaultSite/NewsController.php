@@ -217,7 +217,7 @@ class NewsController extends Controller
 
             $headline['detail_news']=\Data::detailNews($headline['news_id']??null);
             config()->set('site.attributes.meta', [
-                "title"=>$headline['news_tag'][$key]['tag_name']." | ".config('site.attributes.title'),
+                "title"=>"trstdly will provide the best ".$headline['news_tag'][$key]['tag_name']." articles for you that are trustworthy and understandable",
                 "article_title"=>$headline['news_title']??null,
                 "site_description"=>config('site.attributes.site_description'),
                 "article_short_desc"=>$headline['news_synopsis']??null,
