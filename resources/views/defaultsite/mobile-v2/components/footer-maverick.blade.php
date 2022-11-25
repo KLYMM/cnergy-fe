@@ -1,8 +1,8 @@
 <div class="footer-container">
     @if ($logo = \Site::api('fe-setting') ?? null)
     <a href="/">
-    <img  src="{{ $logo['data']['site_logo'] ?? null }}" alt="logo footer" width="105px" height="21px" style="filter: invert(1) grayscale(2) brightness(100);">
-    @endif
+        <img src="{{ $logo['data']['site_logo'] ?? null }}" alt="logo footer" width="105px" height="21px" style="filter: invert(1) grayscale(2) brightness(100);">
+        @endif
     </a>
     <h1 class="footer-follow">FOLLOW US</h1>
     <div class="social-media mx-3">
@@ -15,5 +15,5 @@
         <a href="#"><img width="24px" height="24px" src="{{ URL::asset('assets/icons/linkedin-white.svg') }}" alt="linkedin"></a> --}}
         @if( $socmed->youtube ?? null )<a href="{{$socmed->youtube}}"><img width="24px" height="24px" src="{{ URL::asset('assets/icons/yt-white.svg') }}" alt="youtube"></a>@endif
     </div>
-    <span>{{ 'Copyright © ' . now()->year . ' Trstdly KLY KapanLagi Youniverse All Right Reserved' }}</span>
+    <span>{{ 'Copyright © ' . now()->year . ' trstdly KLY KapanLagi Youniverse All Right Reserved' }}</span>
 </div>
