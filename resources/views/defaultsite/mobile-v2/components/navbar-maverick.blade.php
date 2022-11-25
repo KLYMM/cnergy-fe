@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="nav-main" style="transform: translateX(-150%);">
+    <div class="nav-main" style="transform: translateX(-1000%);">
         <div class="nav-content">
             <div class="nav-header">
                 @if ($logo = \Site::api('fe-setting') ?? null)
