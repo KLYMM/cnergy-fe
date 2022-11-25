@@ -1,14 +1,15 @@
 <header class="header fixed top-0 inset-x-0 max-w-screen-md mx-auto z-20 h-16" data-header>
-
+    {{-- @dump(Site::api('fe-setting')) --}}
     <div class="flex justify-between items-center " style="padding: 20px 26px 0px 26px">
         <img class="nav-open " src="{{ URL::asset('assets/icons/burger.svg') }}" width="18px" height="18px" alt="bar-icon"
             onclick="show()">
         <h1 class="header-body-logo text-3xl flex items-center font-bold">
             <a class="header-body-logo-link" href="/">
                 <span class="header-body-logo-link-icon">
-                    <img class="logo-section-3 icon-lg object-contain dark:img-white"
-                        src="{{ URL::asset('assets/images/trstdly-logo.png') }}" alt="logo" width="140"
-                        height="48" />
+                    @if ($logo = \Site::api('fe-setting') ?? null)
+                    <img class="logo-section-3 icon-lg object-contain dark:img-white" alt="logo" width="140"
+                        height="48" src="{{ $logo['data']['site_logo'] ?? null }}" />
+                        @endif
                 </span>
             </a>
         </h1>
@@ -61,9 +62,11 @@
     <div class="nav-main" style="transform: translateX(-150%);">
         <div class="nav-content">
             <div class="nav-header">
+                @if ($logo = \Site::api('fe-setting') ?? null)
                 <a href="/"> <img class=" dark:img-white"
-                    src="{{ URL::asset('assets/images/trstdly-logo.png') }}" alt="logo" width="140"
+                    src="{{ $logo['data']['site_logo'] ?? null }}" alt="logo" width="140"
                     height="48" /></a>
+                @endif
 
                 <img class="nav-close  dark:img-white"
                     src="{{ URL::asset('assets/icons/icon-close.svg') }}" alt="search-icon" width="25px"

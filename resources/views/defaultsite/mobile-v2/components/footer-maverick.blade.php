@@ -1,6 +1,7 @@
 <div class="footer-container">
-    <img src="{{ URL::asset('assets/images/trstdly-logo.png') }}" alt="logo footer" width="105px" height="21px" style="filter: invert(1) grayscale(2) brightness(100);">
-
+    @if ($logo = \Site::api('fe-setting') ?? null)
+    <img src="{{ $logo['data']['site_logo'] ?? null }}" alt="logo footer" width="105px" height="21px" style="filter: invert(1) grayscale(2) brightness(100);">
+    @endif
     <h1 class="footer-follow">FOLLOW US</h1>
     <div class="social-media mx-3">
         @php $socmed = json_decode(config('site.attributes.sosmed', '{}')) @endphp
