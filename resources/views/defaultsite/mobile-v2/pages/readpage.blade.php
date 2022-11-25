@@ -40,7 +40,7 @@
                         width="40" height="40px">
                     <div class="d-flex flex-column justify-content-center gap-1">
                         <p class="photo-author ">
-                            trstd.ly
+                            trstdly
                         </p>
                         <span class="author_publish">
                             {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
