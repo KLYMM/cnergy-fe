@@ -327,12 +327,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
     function show() {
         cseSearch();
-        mainNav.style.transition = 'transform 0.5s ease';
+        mainNav.style.transition = 'transform 0.4s ease';
         mainNav.style.transform = 'translateX(0)';
     }
 
     function close() {
-        mainNav.style.transform = 'translateX(-1000%)';
+        mainNav.style.transform = 'translateX(-450%)';
         var s = document.getElementsByTagName('script')[0];
         s.remove();
     }

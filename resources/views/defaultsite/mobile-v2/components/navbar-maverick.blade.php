@@ -7,9 +7,9 @@
             <a class="header-body-logo-link" href="/">
                 <span class="header-body-logo-link-icon">
                     @if ($logo = \Site::api('fe-setting') ?? null)
-                    <img class="logo-section-3 icon-lg object-contain dark:img-white" alt="logo" width="140"
-                        height="48" src="{{ $logo['data']['site_logo'] ?? null }}" />
-                        @endif
+                        <img class="logo-section-3 icon-lg object-contain dark:img-white" alt="logo" width="140"
+                            height="48" src="{{ $logo['data']['site_logo'] ?? null }}" />
+                    @endif
                 </span>
             </a>
         </h1>
@@ -59,28 +59,26 @@
         </div>
     </div>
 
-    <div class="nav-main" style="transform: translateX(-1000%);">
+    <div class="nav-main" style="transform: translateX(-450%);">
         <div class="nav-content">
             <div class="nav-header">
                 @if ($logo = \Site::api('fe-setting') ?? null)
-                <a href="/"> <img class=" dark:img-white"
-                    src="{{ $logo['data']['site_logo'] ?? null }}" alt="logo" width="140"
-                    height="48" /></a>
+                    <a href="/"> <img class=" dark:img-white" src="{{ $logo['data']['site_logo'] ?? null }}"
+                            alt="logo" width="140" height="48" /></a>
                 @endif
 
-                <img class="nav-close  dark:img-white"
-                    src="{{ URL::asset('assets/icons/icon-close.svg') }}" alt="search-icon" width="25px"
-                    height="25px">
-              
-                
+                <img class="nav-close  dark:img-white" src="{{ URL::asset('assets/icons/icon-close.svg') }}"
+                    alt="search-icon" width="25px" height="25px">
+
+
 
             </div>
-          
-          
-           
-           
+
+
+
+
             <ul class="nav-menus">
-              
+
                 @if ($menu = Data::menu())
                     @php
                         //get category tree
@@ -231,9 +229,9 @@
                             position: relative;
                         }
 
-                        table.gssb_c{
-                            bottom:68px !important;
-                            top:initial !important;
+                        table.gssb_c {
+                            bottom: 68px !important;
+                            top: initial !important;
                         }
 
                         .gsst_b {
@@ -242,7 +240,7 @@
 
                         .gsib_a {
                             padding: 10px;
-                            padding-right:0px;
+                            padding-right: 0px;
                             padding-left: 40px
                         }
 
@@ -273,7 +271,7 @@
                             background-color: transparent !important;
                             margin: 0 !important;
                             width: 100%;
-                         
+
                         }
 
                         input.gsc-search-button,
@@ -313,7 +311,7 @@
                         }
 
                         .gsc-search-box-tools .gsc-search-box .gsc-input {
-                           
+
 
                             font-family: 'Inter';
                             font-weight: 400;
@@ -324,6 +322,7 @@
                             background: #fff !important;
                             text-indent: 0 !important;
                         }
+
                         .gsc-input::placeholder {
                             color: #333;
                         }
@@ -342,7 +341,7 @@
 
                         .gsc-search-box-tools .gsc-search-box .gsc-input:-moz-placeholder {
                             opacity: 1;
-                            
+
                         }
 
                         td.gsc-search-button {
