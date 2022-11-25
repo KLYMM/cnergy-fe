@@ -20,7 +20,7 @@
         "position": 1,
         "templateId": null,
         "templateName": null,
-        "subCategory": "{{ explode('.', config('site.attributes.reldomain.domain_name'))[0] }}", // nama kategori (level 1)
+        "subCategory": "feed", // nama kategori (level 1)
         "subSubCategory": "{{ config('site.attributes.object.article.news_category.0.name') }}", // nama sub kategori (level 2)
         "subsubSubCategory": "", // sub sub kategori (level 3)
         "tag": "{{ implode('|',collect(config('site.attributes.object.article.news_tag'))->pluck('tag_name')->sort()->toArray()) }}", // tag
@@ -92,7 +92,7 @@
         "verifyAge": false, // default false
         "publishDate": "{{ config('site.attributes.object.article.news_date_publish') }}" // publish date YYYY-MM-DD hh:mm:ss
     };
-    window.kly.site = '{{ Util::getDomain(request()->root()) }}'; // Dream
+    window.kly.site = '{{ request()->url() }}'; // Dream
     window.kly.related_system = 'tag'; // default tag
     window.kly.visitor = {
         "age": "",
