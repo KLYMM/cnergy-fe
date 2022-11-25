@@ -40,21 +40,33 @@
     </ul>
 
     <div class="main-news-deskripsi">
-        <h3>{{ $row['news_title'] ?? null }}</h3>
-        <p>By <span><a href="{{ Src::author($row) }}"
-                    style="color: #CA0000;">{{ $row['news_editor'][0]['name'] ?? null }}</a></span>
-            {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</p>
-        <figure>
-            <div class="image-news">
-                @include('defaultsite/mobile/amp/image', [
-                    'source' => $row,
-                    'sizeW' => '380',
-                    'sizeH' => '214',
-                    $row['news_title'] ?? null,
-                ])
+            <figure>
+                <div class="image-news">
+                    @include('defaultsite/mobile/amp/image', [
+                        'source' => $row,
+                        'sizeW' => '380',
+                        'sizeH' => '214',
+                        $row['news_title'] ?? null,
+                    ])
+                </div>
+                <div class="frame-bottom"></div>
+            </figure>
+            <h3 class="author-title">{{ $row['news_title'] ?? null }}</h3>
+            <div class="header-photo">
+                <div class="header-author">
+                    <amp-img class="rounded rounded-5" src="{{ URL::asset('assets/images/author.PNG') }}" alt="author"
+                        width="40" height="40">
+                    </amp-img>  
+                    <div class="d-flex flex-column justify-content-center gap-1">
+                        <p class="photo-author ">
+                            trstd.ly
+                        </p>
+                        <span class="author_publish">
+                            {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
+                    </div>
+                </div>
             </div>
-            <p>{{ $row['news_imageinfo'] ?? null }}</p>
-        </figure>
+    </div>
 
         <div class="dt-share-container">
             <div class="share flex flex-wrap items-center">
@@ -67,147 +79,69 @@
                 <div class="share-item share-item--tweet"><a
                         href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom') }}"
                         target="_blank"><i class="icon icons--share icon--share-tweet"></i></a></div>
+                <div class="share-item share-item--tele"><a href="https://t.me/share/url?url={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=telegram&utm_campaign=Share_Bottom') }}"
+                    target="_blank"><i class="icon icons--share icon--share-tele"></i></a></div>
+                    <div class="share-item share-item--link"><a href="https://t.me/share/url?url={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=telegram&utm_campaign=Share_Bottom') }}"
+                        target="_blank"><i class="icon icons--share icon--share-link"></i></a></div>
             </div>
         </div>
 
+        @if (count($row['news_paging']) > 0)
+        @foreach ($row['news_paging'] as $news_content)
+            @if ($loop->iteration != 1)
+                <div style="display:flex; align-items: center; margin: 20px; margin-bottom:46px;">
+                    <hr class="hr-list">
+                    <div class="slider-counter">Page {{ $loop->iteration }}<span id="sliderCounter"></span> of
+                        {{ count($row['news_paging']) }}</div>
+                    <hr class="hr-list">
+                </div>
+            @endif
+            <div class="dt-paragraph">
+                {!! str_replace(
+                    ['mce-mce-mce-mce-no/type', 'mce-no/type'],
+                    '',
+                    htmlspecialchars_decode($news_content['content'] ?? null),
+                ) !!}
+            </div>
+        @endforeach
+    @else
         <div class="dt-paragraph">
-            @php
-                function DOMinnerHTML(DOMNode $element)
-                {
-                    $innerHTML = '';
-                    $children = $element->childNodes;
-                
-                    foreach ($children as $child) {
-                        $innerHTML .= $element->ownerDocument->saveHTML($child);
-                    }
-                
-                    return $innerHTML;
-                }
-                function getEmbedYtb($str)
-                {
-                    $embedYtb = [];
-                    if (preg_match('/\/embed\/(.*?)"/', $str, $code) == 1) {
-                        $embedYtb['code'] = $code[1] ?? null;
-                    }
-                    if (preg_match('/height="(.*?)"/', $str, $height) == 1) {
-                        $embedYtb['height'] = $height[1] ?? 9;
-                    }
-                    if (preg_match('/width="(.*?)"/', $str, $width) == 1) {
-                        $embedYtb['width'] = $width[1] ?? 16;
-                    }
-                    return '<amp-youtube 
-                                width="' .
-                        $embedYtb['width'] .
-                        '"
-                                height="' .
-                        $embedYtb['height'] .
-                        '"
-                                layout="responsive"
-                                data-videoid="' .
-                        $embedYtb['code'] .
-                        '">
-                            </amp-youtube>';
-                }
-                function getEmbedTik($str)
-                {
-                    $embedTik = [];
-                    if (preg_match('/data-video-id="(.*?)"/', $str, $code) == 1) {
-                        $embedTik['code'] = $code[1] ?? null;
-                    }
-                    return $embedTik['code'];
-                }
-                function getEmbedIg($str)
-                {
-                    $embedIg = [];
-                    if (preg_match('/\/p\/(.*?)\//', $str, $code) == 1) {
-                        $embedIg['code'] = $code[1] ?? null;
-                    }
-                    return $embedIg['code'];
-                }
-                $doc = new DOMDocument();
-                // set error level
-                $internalErrors = libxml_use_internal_errors(true);
-                $doc->loadHTML(htmlspecialchars_decode($row['news_content'] ?? null));
-                // Restore error level
-                libxml_use_internal_errors($internalErrors);
-                if ($doc) {
-                    //change tag br to tag p
-                    if ($doc->getElementsByTagName('br')[0] != null) {
-                        libxml_use_internal_errors(true);
-                    $doc->loadHTML(preg_replace('#(?:<br\s*/@endphp\s*?){2,}#', '</p><p>', $doc->saveHTML()));
-        libxml_clear_errors();
-    }
-    //embed ig and tiktok (blockquote)
-    if ($doc->getElementsByTagName('blockquote')[0] != null) {
-        $blockquote = $doc->getElementsByTagName('blockquote');
-        for ($i = 0; $i <= $blockquote->length - 1; $i) {
-            $tag = $blockquote[$i]->ownerDocument->saveHtml($blockquote[$i]);
-            $old = $blockquote->item($i);
-
-            if (strstr($tag, 'instagram.com')) {
-                $new = $doc->createElement('p');
-                $old->parentNode->replaceChild($new, $old);
-                $link = $doc->createElement('amp-instagram');
-                $link->setAttribute('data-shortcode', getEmbedIg($tag));
-                $link->setAttribute('data-captioned', true);
-                $link->setAttribute('width', 1);
-                $link->setAttribute('height', 1);
-                $link->setAttribute('layout', 'responsive');
-                $new->appendChild($link);
-            } elseif (strstr($tag, 'tiktok.com')) {
-                $new = $doc->createElement('p');
-                $old->parentNode->replaceChild($new, $old);
-                $link = $doc->createElement('amp-tiktok');
-                $link->setAttribute('data-src', getEmbedTik($tag));
-                // $link->setAttribute('width', 1);
-                $link->setAttribute('height', 1);
-                $new->appendChild($link);
-            } else {
-                $i++;
-            }
-        }
-        // dd($doc->saveHtml());
-    }
-    //add ads
-    if ($doc->getElementsByTagName('p')[0] != null) {
-        //get 2 paragraf before add ads
-        $lis = $doc->getElementsByTagName('p');
-        $counter = 0;
-
-        for ($i = 0; $i <= $lis->length - 1; $i++) {
-            $p = DOMinnerHTML($lis[$i]);
-            if ($p) {
-                if (strstr($p, '/iframe>')) {
-                    if (strstr($p, 'youtube.com')) {
-                        echo getEmbedYtb($p);
-                    } else {
-                        echo '<p>' . str_replace('iframe', 'amp-iframe', $p) . '<p>';
-                    }
-                } else {
-                    echo '<p>' . $p . '<p>';
-                }
-                $counter++;
-                //   if ($counter==2)
-                //   {
-                //       $exposer1 = str_replace("script", "scr+ipt", str_replace('+', '',Util::getAds("exposer-1")));
-                //       echo '<div class="channel-ad channel-ad_ad-exposer">'.$exposer1.'</div>';
-                //   }
-            }
-        }
-    }
-}
-?>
+            {!! str_replace(
+                ['mce-mce-mce-mce-no/type', 'mce-no/type'],
+                '',
+                htmlspecialchars_decode($row['news_content'] ?? null),
+            ) !!}
         </div>
-    </div>
-
-
-    @if (($row['has_paging'] ?? null) == 1)
-        @include('defaultsite/mobile/amp/components-ui/pagination2', [
-            'current_page' => $row['current_page'],
-            'last_page' => $row['last_page'],
-            'slug' => $row['slug'],
-        ])
     @endif
+    {{-- @push('script')
+        <script>
+            if (document.getElementsByClassName('dt-paragraph')) {
+                //change tag br to tag p
+                if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('br')[0] != null) {
+                    document.getElementsByClassName('dt-paragraph')[0].innerHTML = document.getElementsByClassName(
+                        'dt-paragraph')[0].innerHTML.replace(/<br>\\*/g, '</p><p>')
+                }
+                //add ads
+                if (document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[0] != null) {
+                    //get 2 paragraf before add ads
+                    var lis = document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')
+                    var counter = 0
+                    for (var i = 0; i < lis.length - 1; i++) {
+                        if (lis[i].innerHTML !== "") {
+                            counter++
+                            if (counter == 2) {
+                                document.getElementsByClassName('dt-paragraph')[0].getElementsByTagName('p')[i]
+                                    .insertAdjacentHTML('afterend', (
+                                            '<div class="channel-ad channel-ad_ad-exposer">  {!! str_replace('script', 'scr+ipt', Util::getAds('exposer')) !!} </div>')
+                                        .replaceAll('+', ''));
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+    @endpush --}}
 
     {{-- read too list --}}
     @if ($popular = \Data::popular() ?? null)
