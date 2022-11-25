@@ -1,5 +1,4 @@
 @extends('defaultsite.mobile-v2.layouts.main-maverick')
-
 @section('content')
     <main class="main relative max-w-screen-md mx-auto h-full bg-white text-black dark:bg-black dark:text-white">
         <!-- snap -->
@@ -11,7 +10,7 @@
                         <!-- theme.1 -->
                         <section data-section="section{{ $loop->iteration }}" data-template="news-headline-v1" data-id="1"
                             class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
-                            data-theme="default">
+                            data-theme="default" data-page="1">
                             @include('defaultsite.mobile-v2.components.section-list-news', [
                                 'newsItem' => $item,
                             ])
@@ -20,7 +19,7 @@
                         <!-- theme.2 -->
                         <section data-section="section{{ $loop->iteration }}" data-template="news-headline-v2" data-id="2"
                             class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
-                            data-theme="default">
+                            data-theme="default"  data-page="1">
                             @include('defaultsite.mobile-v2.components.section-list-news2', [
                                 'newsItem' => $item,
                             ])
@@ -30,7 +29,7 @@
                         <section data-section="section{{ $loop->iteration }}" data-template="news-headline-v3"
                             data-id="3"
                             class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-yellow dark:bg-black dark:text-white-20"
-                            data-theme="yellow">
+                            data-theme="yellow"  data-page="1">
                             @include('defaultsite.mobile-v2.components.section-list-news3', [
                                 'newsItem' => $item,
                             ])
@@ -40,7 +39,7 @@
                         <section data-section="section{{ $loop->iteration }}" data-template="news-headline-v4"
                             data-id="4"
                             class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
-                            data-theme="default">
+                            data-theme="default"  data-page="1">
                             @include('defaultsite.mobile-v2.components.section-list-news4', [
                                 'newsItem' => $item,
                             ])
@@ -50,7 +49,7 @@
                         <section data-section="section{{ $loop->iteration }}" data-template="news-headline-v5"
                             data-id="5"
                             class="section snap-always snap-start w-full h-full flex flex-col shrink-0 pt-16 pb-6 transition bg-white dark:bg-black dark:text-white-20"
-                            data-theme="default">
+                            data-theme="default"  data-page="1">
                             @include('defaultsite.mobile-v2.components.section-list-news5', [
                                 'newsItem' => $item,
                             ])
