@@ -15,5 +15,5 @@
         <a href="#"><img width="24px" height="24px" src="{{ URL::asset('assets/icons/linkedin-white.svg') }}" alt="linkedin"></a> --}}
         @if( $socmed->youtube ?? null )<a href="{{$socmed->youtube}}"><img width="24px" height="24px" src="{{ URL::asset('assets/icons/yt-white.svg') }}" alt="youtube"></a>@endif
     </div>
-    <span>{{ 'Copyright © ' . now()->year . ' Trstdly.com KLY KapanLagi Youniverse All Right Reserved' }}</span>
+    <span>{{ 'Copyright © ' . now()->year . ' Trstdly KLY KapanLagi Youniverse All Right Reserved' }}</span>
 </div>
