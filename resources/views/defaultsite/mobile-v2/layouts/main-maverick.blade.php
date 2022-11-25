@@ -182,11 +182,9 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
             if (entry.isIntersecting) {
                 let elem = entry.target;
-                console.log(elem.getAttribute('data-page'));
+                console.log(elem.getAttribute("data-page"));
 
                 if (elem.classList.contains('paginate')) {
-                    // console.log('load ajax')
-                    console.log(currentPage)
                     currentPage = currentPage + 1
                     io.unobserve(entry.target)
                     getNews(currentPage)
