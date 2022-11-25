@@ -35,8 +35,7 @@
 
     <!-- CDN LINK -->
     <link rel="preconnect" href="https://cdns.klimg.com" crossorigin />
-    <link rel="preload"
-        href="https://cdns.klimg.com/newshub.id/resized/production/webp/168x34/fe_setting/2022/04/11/1/fe-setting-1-rev3.png"
+    <link rel="preload" href="https://cdns.klimg.com/newshub.id/fe_setting/2022/11/24/9/fe-setting-9-rev3.png"
         as="image" />
     <link rel="preload" href="https://fonts.gstatic.com/s/prompt/v5/-W_6XJnvUD7dzB2KZeKka1MsW5APdCox.woff2"
         as="font" type="font/woff2" crossorigin>

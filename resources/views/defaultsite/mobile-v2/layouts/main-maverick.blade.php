@@ -182,17 +182,21 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
             if (entry.isIntersecting) {
                 let elem = entry.target;
+                console.log(elem.getAttribute('data-page'));
 
                 if (elem.classList.contains('paginate')) {
                     // console.log('load ajax')
+                    console.log(currentPage)
                     currentPage = currentPage + 1
                     io.unobserve(entry.target)
                     getNews(currentPage)
                     entry.target.classList.remove("paginate")
                 }
 
+
                 onItersecting(entry.target, elementIndices[section]);
-                // console.log(entry.target, elementIndices[section]);
+                // console.log(elementIndices[section]);
+                // window.kly.gtm.position = elementIndices[section] + 1;
 
             }
 
@@ -243,8 +247,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         // console.log('intersecting => ', target);
         // console.log(target.dataset);
         let date = target.querySelector('span.article-date').dataset.date.split(' ');
-        console.log(target.querySelector('span.article-date').dataset.date);
-
+        // console.log(target.querySelector('span.article-date').dataset.date);
+        // console.log(elem.getAttribute('data-page'));
 
         let data = {
             pageview_path: window.location.href,
@@ -258,6 +262,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             template_name: 'Feed ' + target.dataset.template,
             position: currentIndex + 1,
         }
+
+        window.kly.gtm.position = currentIndex + 1;
+        window.kly.gtm.templateId = data.template_id;
+        window.kly.gtm.templateName = data.template_name;
 
         virtual_pv(data);
     }
@@ -282,13 +290,16 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             .catch(function(error) {
                 console.log(error)
             })
+
     }
 
     var elementIndices = {};
 
     function startIO() {
         const sections = document.querySelectorAll("[data-section]");
+
         for (var i = 0; i < sections.length; i++) {
+
 
             if (i == (sections.length - 5)) {
                 io.unobserve(sections[i])
@@ -305,20 +316,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     })
 </script>
 
-<script>
-    // let darkmode = document.querySelector(".switchTheme-control-2");
-    // darkmode.addEventListener("change", (e) => {
-    //     document.documentElement.classList.toggle("dark");
-    //     console.log("masuk1")
-    //     if (document.querySelector(".dark")){
-    //         console.log("masuk2")
-    //         document.cookie = "darkmode=on;";
-    //     }
-    //     else{
-    //         document.cookie = "darkmode=off;";
-    //     }
-    // });
-</script>
+
 
 <script>
     const mainNav = document.querySelector('.nav-main');
