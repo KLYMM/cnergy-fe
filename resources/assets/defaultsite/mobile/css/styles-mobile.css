@@ -1442,7 +1442,7 @@ nav img {
     background-color: white;
     position: fixed;
     top: 0;
-    z-index: 1000;
+    z-index: 19;
     transform: translateY(-150%);
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
@@ -1489,6 +1489,7 @@ nav img {
 .fa-link {
     background-color: transparent;
     font-family: "Font Awesome 6 Brands";
+    line-height: unset !important;
 }
 
 .index-h1,

@@ -6,9 +6,10 @@
         <h1 class="header-body-logo text-3xl flex items-center font-bold">
             <a class="header-body-logo-link" href="/">
                 <span class="header-body-logo-link-icon">
-                    <img class="icon-lg object-contain dark:img-white"
-                        src="{{ URL::asset('assets/images/trstdly-logo.png') }}" alt="logo" width="140"
-                        height="48" />
+                    @if ($logo = \Site::api('fe-setting') ?? null)
+                    <img class="logo-section-3 icon-lg object-contain dark:img-white" alt="logo" width="140"
+                        height="48" src="{{ $logo['data']['site_logo'] ?? null }}" />
+                        @endif
                 </span>
             </a>
         </h1>
@@ -61,9 +62,11 @@
     <div class="nav-main" style="transform: translateX(-150%);">
         <div class="nav-content">
             <div class="nav-header">
-                <a href="/"> <img class="object-contain dark:img-white"
-                        src="{{ URL::asset('assets/images/trstdly-logo.png') }}" alt="logo" width="140"
-                        height="48" /></a>
+                @if ($logo = \Site::api('fe-setting') ?? null)
+                <a href="/"> <img class=" dark:img-white"
+                    src="{{ $logo['data']['site_logo'] ?? null }}" alt="logo" width="140"
+                    height="48" /></a>
+                @endif
                         <img class="nav-close object-contain dark:img-white"
                     src="{{ URL::asset('assets/icons/icon-close.svg') }}" alt="search-icon" width="25px"
                     height="25px">
@@ -204,8 +207,15 @@
                             position: absolute;
                             width: 100%;
                             bottom: 0;
-                            border: 2px solid white;
                             background-color: white;
+                        }
+
+                        .dark .all-search-box {
+                            position: absolute;
+                            width: 100%;
+                            bottom: 0;
+                            border: 2px solid ;
+                            background-color: #fff0ec !important;
                         }
 
                         form.gsc-search-box,
@@ -224,8 +234,9 @@
                         }
 
                         .gsib_a {
-                            padding: 0 10px;
-                            padding-left: 40px;
+                            padding: 10px;
+                            padding-right:0px;
+                            padding-left: 40px
                         }
 
                         .gsst_a {
@@ -284,6 +295,7 @@
 
                         float: right;
                         margin: 10px;
+                        margin-right: 40px;
                         background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
                         background-repeat: no-repeat;
                         background-position: center;
@@ -294,8 +306,6 @@
                         }
 
                         .gsc-search-box-tools .gsc-search-box .gsc-input {
-                           
-
                            font-family: 'Inter';
                            font-weight: 400;
                            padding-right: 10px;
@@ -305,6 +315,11 @@
                            background: #fff !important;
                            text-indent: 0 !important;
                        }
+
+                       .dark .gsc-search-box-tools .gsc-search-box .gsc-input {
+                           background:  #fff0ec !important;
+                       }
+
                        .gsc-input::placeholder {
                            color: #333;
                        }

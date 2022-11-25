@@ -30,9 +30,11 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <title>{{ config('site.attributes.meta.title') }}</title>
     <meta http-equiv="cache-control" content="public, no-transform" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="{{ config('site.attributes.meta.rel_to_amp') ?? 'canonical' }}" href="{{ config('site.attributes.meta.ampUrl') ?? request()->url() }}" />
+    <link rel="{{ config('site.attributes.meta.rel_to_amp') ?? 'canonical' }}"
+        href="{{ config('site.attributes.meta.ampUrl') ?? request()->url() }}" />
     <link rel="canonical" href="{{ request()->url() }}" />
 
     <link rel="icon" type="image/png" href="{{ config('site.attributes.favicon') }}">
@@ -59,13 +61,21 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <meta name="adx:sections" content="{{ config('site.attributes.meta.type') ?? null }}">
     <meta name="adx:keywords" content="{{ config('site.attributes.meta.article_keyword') ?? null }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600&display=swap);" />
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-mobile.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600&display=swap);" />
+    {{-- <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-mobile.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}"> --}}
+    <link rel="preload" href="{{ Src::mix('css/styles-mobile.css') }}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="{{ Src::mix('css/styles-maverick.css') }}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
     {{-- font awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
@@ -88,10 +98,19 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         <div class="dt-share-container-fixed">
             <div class="icons d-flex align-items-center justify-content-between my-2 gap-4">
                 <h3 style="font-weight:bolder;">Share</h3>
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom') }}" target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
-                <a href="https://wa.me/?text={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom') }}" target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i class="fa-brands fa-wa fa-whatsapp"></i></i></a>
-                <a href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom') }}" target="_blank"><i class="icon icons--share icon--share-fb "><i class="fa-brands fa-twitter fa-twitter fs-5"></i></i></a>
-                <a class="icons-share-link-bar" value="copy" onclick="copyToClipboard()"> <i class="fa-solid fa-link fs-5"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=facebook&utm_campaign=Share_Bottom') }}"
+                    target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i
+                            class="fa-brands fa-fb fa-facebook-f  "></i></i></a>
+                <a href="https://wa.me/?text={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=whatsapp&utm_campaign=Share_Bottom') }}"
+                    target="_blank"><i class="icon icons--share icon--share-fb fs-5"><i
+                            class="fa-brands fa-wa fa-whatsapp"></i></i></a>
+                <a href="https://twitter.com/intent/tweet?u={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=twitter&utm_campaign=Share_Bottom') }}"
+                    target="_blank"><i class="icon icons--share icon--share-fb "><i
+                            class="fa-brands fa-twitter fa-twitter fs-5"></i></i></a>
+                <a href="https://t.me/share/url?url={{ urlencode(url()->current() . '?utm_source=Mobile&utm_medium=telegram&utm_campaign=Share_Bottom') }}"
+                    target="_blank"><i class="fa-brands fa-telegram  "></i> </a>
+                <a class="icons-share-link-bar" value="copy" onclick="copyToClipboard()"> <i
+                        class="fa-solid fa-link fs-5"></i></a>
             </div>
         </div>
 
@@ -106,7 +125,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
         {{-- Footer --}}
         @if (config('site.use_footer', 'yes') == 'yes')
-        @include('defaultsite.mobile-v2.components.footer-maverick')
+            @include('defaultsite.mobile-v2.components.footer-maverick')
         @endif
     </div>
 
@@ -219,6 +238,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     const mainNav = document.querySelector('.nav-main');
     const closeNav = document.querySelector('.nav-close');
     const openNav = document.querySelector('.nav-open');
+    const body = document.querySelector('body');
 
     openNav.addEventListener('click', show);
     closeNav.addEventListener('click', close);
@@ -227,10 +247,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         cseSearch();
         mainNav.style.transition = 'transform 0.5s ease';
         mainNav.style.transform = 'translateX(0)';
+        body.style.overflowY = 'hidden'
     }
 
     function close() {
         mainNav.style.transform = 'translateX(-150%)';
+        body.style.overflowY = 'auto'
         var s = document.getElementsByTagName('script')[0];
         s.remove();
     }

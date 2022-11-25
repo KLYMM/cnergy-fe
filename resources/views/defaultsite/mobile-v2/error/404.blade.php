@@ -1,20 +1,26 @@
 @extends('defaultsite.mobile-v2.layouts.main')
+@php
+    $popular = \Data::popular();
+    
+    $row = collect($popular)->slice(0, Site::isMobile() ? 20 : 21);
+@endphp
 
 @section('content')
-    @include('defaultsite.mobile.components-ui.not-found')
+    {{-- @dump($row) --}}
+    @include('defaultsite.mobile-v2.components-ui.not-found')
 
     {{-- slider trending tapi data belum ada --}}
-    @if ($popular = \Data::popular() ?? null)
-        @include('defaultsite.mobile.components-ui.slider', ['hl' => $popular, 'title' => 'Popular News'])
-    @endif
 
-    {{-- list populer news --}}
-    @if ($popular = \Data::popular() ?? null)
-        @include('defaultsite.mobile.components-ui.populer-news', ['hl' => $popular])
-    @endif
+    @include('defaultsite.mobile-v2.components-ui.slider', [
+        'hl' => $row,
+        'title' => 'Trending News',
+    ])
 
-    {{-- slider latest news --}}
+
     @if ($latest = \Data::latest() ?? null)
-        @include('defaultsite.mobile.components-ui.slider', ['hl' => $latest, 'title' => 'Latest News'])
+        @include('defaultsite.mobile-v2.components-ui.list-main-news', [
+            'latest' => $latest,
+            'title' => 'Latest News',
+        ])
     @endif
 @endsection
