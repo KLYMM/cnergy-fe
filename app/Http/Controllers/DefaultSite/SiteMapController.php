@@ -196,8 +196,8 @@ class SiteMapController extends Controller
      */
     function tag()
     {
-        $rows=Data::listTag(limit: 1000)['data']??null;
-        
+        $rows=Data::listTag(limit: 1000)??null;
+        // dd($rows);
         return response()->view('sitemap.tag', compact('rows'))->header('Content-Type', 'text/xml');
     }
 
