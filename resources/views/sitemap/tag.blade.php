@@ -12,7 +12,8 @@
                             <news:name>{{ config('site.attributes.title') }}</news:name>
                             <news:language>id</news:language>
                         </news:publication>
-                        <news:publication_date>{{ $u['date_entry'] }}</news:publication_date>
+                        <news:publication_date>{{ date('Y-m-d\TH:i:sP', strtotime($u['date_entry'])) }}
+                        </news:publication_date>
                         <news:title>
                             <![CDATA[ {{ $u['name'] }} ]]>
                         </news:title>
