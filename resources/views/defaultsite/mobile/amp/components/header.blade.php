@@ -1,6 +1,5 @@
-<header class="header">
-    <div class="container max-w-full">
-        <div class="header-body flex items-center justify-between">
+<header class="header ">
+        <div class=" header-main ">
             <div class="header-item">
                 <button type="button" class="header-btn header-btn--menu px-4" name="btn-menubar" aria-label="btn-menubar" on="tap:AMP.setState({menu: true, searchbar: false})">
                     <i class="icon icon--menu"></i>
@@ -15,7 +14,7 @@
                             </span>
                             <button type="button" class="header-btn header-btn--close px-4 -mr-4" name="btn-closemenubar" aria-label="btn-closemenubar" on="tap:AMP.setState({menu: false})">
                                 <i class="icon icon--close"></i>
-                                {{-- <img class="icon icon--image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFKSURBVHgBrdbRbYMwEAZg27cIiAWyQkG8d4PSySAbtM8IpGzQLgDtIEDuojgiDmD77F9CxMS5TxwYIsQ9ZVnWRVF8iMihmrjVegwaW5alklK+p2n6N47jr4gQwrBmg9sJ6yZY91tqbD2Rxl3XnUVANGbUbdQ0TRdzMk0Mae8WdgcvgKf5kyTJP7XTQFnt3cPmef7s+765XcNYqA2jz6APhqIu2BMYgrpiLyAH9cE2QR/UF7vVEAfJ87xSStXmcb1ufTEreIRuxYZRQFiy114O5gS6oK4YRQnHILZwvjPjdIZ7d+MKdH4iWUEb5otKDkbXjPZ7S+bo1QYcjG4Q7mMQOJgec1DgYlwUQjAOCqGYLwoxMB9UxsLWOXrL4HH1FhOj0G/1Wl2HLBiG4SvLshTHpxiYjtle3J/btq0eE/APcUOtEJFDNam2Hl8BE/WAjMjO/rcAAAAASUVORK5CYII=" alt="icon" width="18" height="18"> --}}
+                             
                             </button>
                         </div>
                         <div class="header-collapse-body overflow-y-auto flex-1">
@@ -80,7 +79,10 @@
             </div>
             <div class="header-item"><a href="{{ url('') }}" class="header-logo" style="background-image: url({{ Src::imgNewsCdn(config('site.attributes'), '320x', 'webp', 'file_logo') }});"></a></div>
             <div class="header-item">
-                <button type="button" class="header-btn header-btn--searchbar px-4" name="btn-searchbar" aria-label="btn-searchbar" on="tap:AMP.setState({searchbar: !searchbar})">
+                <button>
+                    <i class="icon icon--mode"></i>
+                </button>
+                {{-- <button type="button" class="header-btn header-btn--searchbar px-4" name="btn-searchbar" aria-label="btn-searchbar" on="tap:AMP.setState({searchbar: !searchbar})">
                     <i class="icon icon--search"></i>
                 </button>
                 <div class="header-collapse header-collapse--searchbar" [class]="searchbar ? 'header-collapse header-collapse--searchbar open' : 'header-collapse header-collapse--searchbar'">
@@ -91,11 +93,11 @@
                             </div>
                         </div>
                     </div>
-                    <button class="header-collapse-overlay" on="tap:AMP.setState({searchbar: false})"></button>
-                </div>
+                    <button class="header-collapse-overlay" on=" "></button>
+                </div> --}}
             </div>
         </div>
-    </div>
+   
     @if ($menu)
         {{-- search key from parameter category to list menu --}}
         @if (count($category_tree) > 0)
