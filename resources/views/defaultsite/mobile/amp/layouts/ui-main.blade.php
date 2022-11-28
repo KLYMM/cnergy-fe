@@ -541,30 +541,21 @@
         }
 
         .baca-juga-list-container {
-            padding: 15px;
-            background: #f9f9f9;
-            border: 1px solid #e5e5e5;
-            border-radius: 4px;
-            margin: 40px 20px;
+            margin:20px;
         }
 
         .baca-juga-list-container h4 {
-            font-family: var(--prompt-font);
-            font-weight: 700;
-            font-size: 16px;
-            font-style: italic;
-            text-transform: uppercase;
             color: #000;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: 25px;
         }
 
         .baca-juga-list-container ul {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            list-style: none;
+            line-height: 1.5em;
+            list-style-type: none;
             padding-top: 10px;
-            margin: 0;
-            line-height: 1.7em;
             
         }
 
@@ -574,17 +565,19 @@
             gap: 10px;
             
         }
-        .baca-juga-list-container ul li::before {
-            content: "• ";
-            color: #ca0000;
+        .baca-juga-list-container ul li {
+            border-bottom: 1px solid #ff3903;
         }
 
         .baca-juga-list-container ul li a {
             color: #000;
-            font-family: var(--lato-font);
-            font-weight: 700;
+            display: block;
+            font-family: Outfit;
             font-size: 14px;
-            text-align: justify;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 23px;
+            margin-bottom: 12px;
         }
         a:hover {
             color: #dc3545 ;
@@ -871,12 +864,24 @@
 
         /* footer */
         .footer-container {
-            background-color: #000;
-            border-top: 4px solid #ca0000;
-            padding: 35px 20px 15px;
+            background-color: #ff3903;
+            padding: 35px 42px 15px;
             text-align: center;
         }
-
+        .footer-container img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-follow {
+            color: #fff;
+            font-family: Outfit;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: 19px;
+            margin-top: 40px;
+        }
         .link-footer  {
             text-decoration: none;
             margin-top: 10px;
