@@ -280,7 +280,7 @@ article {
 }
 
 .vh-h-landscape {
-    height: 28vh;
+    height: 23vh;
 }
 .vh-h-btn {
     height: 6.4vh;
@@ -628,7 +628,7 @@ nav.hidden {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 30px 38px 20px;
+    padding: 30px 31px 20px;
     /* border-bottom: 0.2px solid #dcdcdc; */
 }
 .nav-menus {

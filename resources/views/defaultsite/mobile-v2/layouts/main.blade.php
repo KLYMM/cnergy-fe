@@ -251,7 +251,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     }
 
     function close() {
-        mainNav.style.transform = 'translateX(-150%)';
+        mainNav.style.transform = 'translateX(-450%)';
         body.style.overflowY = 'auto'
         var s = document.getElementsByTagName('script')[0];
         s.remove();

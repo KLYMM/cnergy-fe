@@ -41,7 +41,7 @@
             </div>
             <div class="article-asset mb-4">
                 <figure class="article-asset mt-5 w-full vh-h-landscape aspect-375 overflow-hidden">
-                    <div class="flex justify-center object-cover w-full h-full animate animate--fadeIn "
+                    <div class="flex justify-center object-cover w-full  animate animate--fadeIn "
                         style="--delay: 300ms" width="375" height="208">
                         @include('image ', [
                             'source' => $newsItem,

@@ -20,6 +20,7 @@ mix.postCss(path + sitePath + "css/components.css", sitePath + "css");
 mix.postCss(path + sitePath + "css/paging.css", sitePath + "css");
 mix.postCss(path + sitePath + "css/styles-maverick.css", sitePath + "css");
 mix.postCss(path + sitePath + "css/styles-mobile.css", sitePath + "css");
+mix.postCss(path + sitePath + "css/styles.css", sitePath + "css");
 
 //css page
 mix.postCss(path + sitePath + "css/detail.css", sitePath + "css");
@@ -32,29 +33,29 @@ mix.copyDirectory(path + sitePath + "js", "public/static/" + sitePath + "js");
 //img
 mix.copyDirectory(path + sitePath + "img", "public/static/" + sitePath + "img");
 
-//DEFAULTSITE - DESKTOP
-var sitePath = "defaultsite/desktop/";
-//css global
+// //DEFAULTSITE - DESKTOP
+// var sitePath = "defaultsite/desktop/";
+// //css global
 
-mix.postCss(path + sitePath + "css/font.css", sitePath + "css");
-mix.postCss(path + sitePath + "css/vendor.css", sitePath + "css");
-mix.postCss(path + sitePath + "css/utilities.css", sitePath + "css");
-mix.postCss(path + sitePath + "css/icons.css", sitePath + "css");
-mix.postCss(path + sitePath + "css/header.css", sitePath + "css");
-mix.postCss(path + sitePath + "css/footer.css", sitePath + "css");
-mix.postCss(path + sitePath + "css/components.css", sitePath + "css");
-mix.postCss(path + sitePath + "css/paging.css", sitePath + "css");
+// mix.postCss(path + sitePath + "css/font.css", sitePath + "css");
+// mix.postCss(path + sitePath + "css/vendor.css", sitePath + "css");
+// mix.postCss(path + sitePath + "css/utilities.css", sitePath + "css");
+// mix.postCss(path + sitePath + "css/icons.css", sitePath + "css");
+// mix.postCss(path + sitePath + "css/header.css", sitePath + "css");
+// mix.postCss(path + sitePath + "css/footer.css", sitePath + "css");
+// mix.postCss(path + sitePath + "css/components.css", sitePath + "css");
+// mix.postCss(path + sitePath + "css/paging.css", sitePath + "css");
 
-//css page
-mix.postCss(path + sitePath + "css/detail.css", sitePath + "css");
-mix.postCss(path + sitePath + "css/tag.css", sitePath + "css");
+// //css page
+// mix.postCss(path + sitePath + "css/detail.css", sitePath + "css");
+// mix.postCss(path + sitePath + "css/tag.css", sitePath + "css");
 
-//js global
-//mix.js( [path + sitePath + "js/main.js"], 'public/static/'+ sitePath +'js/main.js');
-mix.copyDirectory(path + sitePath + "js", "public/static/" + sitePath + "js");
+// //js global
+// //mix.js( [path + sitePath + "js/main.js"], 'public/static/'+ sitePath +'js/main.js');
+// mix.copyDirectory(path + sitePath + "js", "public/static/" + sitePath + "js");
 
-//img
-mix.copyDirectory(path + sitePath + "img", "public/static/" + sitePath + "img");
+// //img
+// mix.copyDirectory(path + sitePath + "img", "public/static/" + sitePath + "img");
 
 mix.options({
     postCss: [
