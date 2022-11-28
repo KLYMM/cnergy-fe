@@ -5,7 +5,7 @@
     window.kly.gtm = {
         "adblockExists": "no", // deteksi user pakai adblock atau tidak (yes or no, default no)
         "articleId": {!! config('site.attributes.object.article.news_id', '""') !!}, // id news
-        "articleTitle": "{{ config('site.attributes.object.article.news_title') }}", // news title
+        // "articleTitle": "{{ config('site.attributes.object.article.news_title') }}", // news title
         "category": "{{ config('site.attributes.object.pageType') }}", // tipe halaman (article, ChannelPage, TagPage, BrandPage, Homepage)
         "editors": "{{ implode(',',collect(config('site.attributes.object.article.news_editor'))->pluck('name')->sort()->toArray()) }}", // nama editor, jika > 1, maka pisahkan dengan koma. Urut abjad ASC
         "editorialType": "{!! !config('site.attributes.object.article')
@@ -20,7 +20,7 @@
         "position": 1,
         "templateId": null,
         "templateName": null,
-        "subCategory": "feed", // nama kategori (level 1)
+        "subCategory": "{{ explode('.', config('site.attributes.reldomain.domain_name'))[0] }}", // nama kategori (level 1)
         "subSubCategory": "{{ config('site.attributes.object.article.news_category.0.name') }}", // nama sub kategori (level 2)
         "subsubSubCategory": "", // sub sub kategori (level 3)
         "tag": "{{ implode('|',collect(config('site.attributes.object.article.news_tag'))->pluck('tag_name')->sort()->toArray()) }}", // tag
@@ -45,7 +45,7 @@
         "enabled": true, // default true
         "log": false, // default false
         "imageCreation": false, // default false
-        "type": "{{ ['news' => 'TextTypeArticle', 'photonews' => 'PhotoGallery', 'video' => 'VideoGallery'][config('site.attributes.object.article.news_type')] ?? '' }}", // tipe news (TextTypeArticle, PhotoGallery, VideoGallery)
+        "type": "{{ ['news' => 'text', 'photonews' => 'PhotoGallery', 'video' => 'VideoGallery'][config('site.attributes.object.article.news_type')] ?? '' }}", // tipe news (TextTypeArticle, PhotoGallery, VideoGallery)
         "videos": "", // kosongkan
         "partner": "", // kosongkan
         "isSEO": false, // SEO news true or false, default false
@@ -53,6 +53,7 @@
         "reporters": "{{ implode(',',collect(config('site.attributes.object.article.news_reporter'))->pluck('name')->sort()->toArray()) }}", // Nama reporter, jika > 1, maka pisahkan dengan koma. Urut abjad ASC
         "photographers": "{{ implode(',',collect(config('site.attributes.object.article.news_photographer'))->pluck('name')->sort()->toArray()) }}", // Nama fotografer
         "brand": "",
+        "is_virtual": 0,
     };
     window.kly.platform = '{{ ucfirst(config('site.device')) }}'; // Desktop atau Mobile
     window.kly.pageType =
@@ -92,8 +93,9 @@
         "verifyAge": false, // default false
         "publishDate": "{{ config('site.attributes.object.article.news_date_publish') }}" // publish date YYYY-MM-DD hh:mm:ss
     };
-    window.kly.site = '{{ request()->url() }}'; // Dream
+    window.kly.site = '{{ Util::getDomain(request()->root()) }}'; // Dream
     window.kly.related_system = 'tag'; // default tag
+    window.kly.gtm.audience = "";
     window.kly.visitor = {
         "age": "",
         "audience": "",
