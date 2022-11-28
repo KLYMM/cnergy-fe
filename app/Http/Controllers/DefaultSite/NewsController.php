@@ -22,7 +22,7 @@ class NewsController extends Controller
         config()->set('site.attributes.meta', [
             "title" => config('site.attributes.title'),
             "article_title" => config('site.attributes.title'),
-            "site_description" => config('site.attributes.site_description'),
+            "site_description" => "{!! config('site.attributes.site_description') !!}"??null,
             "article_short_desc" => config('site.attributes.site_description') ?? null,
             "article_keyword" => config('site.attributes.meta.article_keyword') ?? null,
             "article_url" => config('site.attributes.reldomain.domain_url'),
@@ -30,6 +30,7 @@ class NewsController extends Controller
             "article_url_image" =>  config('site.attributes.site_logo'),
             "type" => 'website'
         ]);
+        // dd(config('site.attributes'));
 
         //kly object
         config()->set('site.attributes.object', [
@@ -78,6 +79,23 @@ class NewsController extends Controller
             ex_id: Util::getNewsExId(array_merge($popular,$headline)),
             limit: 30
         );
+     
+       $symbolAposhtrope = "video gallery, latest video, trending video, popular video, today's video"; 
+    //echo html_entity_decode($symbolAposhtrope, ENT_QUOTES);
+       
+       
+        config()->set('site.attributes.meta', [
+            "title" => "Engaging Video Gallery of World Popular News - trstdly.com.",
+            "article_title" => config('site.attributes.title'),
+            "site_description" => "News with simple English. Interesting and engaging video with easy English.",
+            "article_short_desc" => config('site.attributes.site_description') ?? null,
+            "article_keyword" => config('site.attributes.meta.article_keyword') ?? null,
+            "article_url" => config('site.attributes.reldomain.domain_url'),
+            "article_last_update" => $headline[0]['detail_news']['news_last_update']??null,
+            "article_url_image" =>  config('site.attributes.site_logo'),
+            "type" => 'website'
+        ]);
+
 
         return Site::view('pages.video', compact('headline', 'feed', 'latest', 'popular'));
     }
@@ -144,8 +162,11 @@ class NewsController extends Controller
             }
 
             $rows[0]['detail_news']=\Data::detailNews($rows[0]['news_id']??null);
+
+            $categoryName = $rows[0]['category_name'];
+
             config()->set('site.attributes.meta', [
-                "title"=>($rows[0]['category_name']??null)." | ".config('site.attributes.title'),
+                "title"=>config('site.attributes.title'),
                 "article_title"=>$rows[0]['news_title']??null,
                 "site_description"=>config('site.attributes.site_description'),
                 "article_short_desc"=>$rows[0]['news_synopsis']??null,
@@ -155,6 +176,7 @@ class NewsController extends Controller
                 "article_url_image"=> \Src::imgNewsCdn($rows[0]??null, '640x360', 'jpeg'),
                 "type"=>'website'
             ]);
+            // dd(config('site.attributes'));
 
             //kly object
             config()->set('site.attributes.object', [
@@ -215,6 +237,8 @@ class NewsController extends Controller
                 news_type: "photonews"
             )['data']??null;
 
+            $tagName = $headline['news_tag'][$key]['tag_name'];
+
             $headline['detail_news']=\Data::detailNews($headline['news_id']??null);
             config()->set('site.attributes.meta', [
                 "title"=>"trstdly will provide the best ".$headline['news_tag'][$key]['tag_name']." articles for you that are trustworthy and understandable",
@@ -227,6 +251,9 @@ class NewsController extends Controller
                 "article_url_image"=> \Src::imgNewsCdn($headline??null, '640x360', 'jpeg'),
                 "type"=>'website'
             ]);
+            
+
+            
             //kly object
             config()->set('site.attributes.object', [
                 "pageType"=>'TagPage',
@@ -400,6 +427,7 @@ class NewsController extends Controller
             "rel_to_amp" => 'amphtml',
             "ampUrl" => \Src::detailAmp($row??null)
         ]);
+        // dd($row);
 
         //kly object
         config()->set('site.attributes.object', [
