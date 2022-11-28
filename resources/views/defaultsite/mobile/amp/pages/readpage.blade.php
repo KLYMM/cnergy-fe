@@ -172,14 +172,17 @@
 
     {{-- list populer news --}}
     @if ($popular = \Data::popular() ?? null)
-        @include('defaultsite.mobile.amp.components-ui.populer-news', ['hl' => $popular])
+        @include('defaultsite.mobile-v2.components-ui.populer-news', [
+            'popular' => $popular,
+            'title' => 'Trending',
+        ])
     @endif
 
     {{-- slider latest news --}}
-    @if ($latest = \Data::latest() ?? null)
+    {{-- @if ($latest = \Data::latest() ?? null)
         @include('defaultsite.mobile.amp.components-ui.slider', [
             'hl' => $latest,
             'title' => 'Latest News',
         ])
-    @endif
+    @endif --}}
 @endsection

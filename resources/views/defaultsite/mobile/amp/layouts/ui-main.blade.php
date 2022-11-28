@@ -799,11 +799,13 @@
             text-decoration: none;
         }
         .populer-container h4 {
-            font-weight: 700;
-            font-size: 16px;
-            font-family: var(--prompt-font);
-            font-style: italic;
-            text-transform: uppercase;
+            background-color: #ff3903;
+            color: #fff;
+            padding: 10px;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: 25px;
         }
         .populer-container {
             background: #fff;
@@ -815,7 +817,6 @@
 
         .list-berita-populer {
             margin-top: 20px;
-            border: 1px solid #ddd;
             border-radius: 8px;
         }
 
@@ -823,7 +824,7 @@
             text-decoration: none;
             display: flex;
             padding: 20px 7px;
-            border-bottom: 1px solid #e5e5e5;
+           
         }
 
         .list-berita-populer a:last-child {
@@ -835,13 +836,15 @@
         }
 
         .list-berita-populer h1 {
-            width: 65px;
+            color: #ff3903;
+            font-family: Outfit;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: 900;
+            height: 63px;
+            line-height: 63px;
             text-align: center;
-            color: #e5e5e5;
-            font-size: 45px;
-            font-family: var(--prompt-font);
-            font-style: italic;
-            font-weight: 700;
+            width: 50px;
         }
         .berita-populer-deskripsi {
             margin-left: 20px;
@@ -855,9 +858,12 @@
         }
 
         .berita-populer-deskripsi p {
-            font-family: var(--lato-font);
-            font-size: 14px;
             color: #000;
+            font-family: Outfit;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 22px;
         }
 
         /* end */

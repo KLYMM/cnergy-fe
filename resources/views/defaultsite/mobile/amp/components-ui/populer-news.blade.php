@@ -1,5 +1,5 @@
 <div class="populer-container">
-    <h4>popular</h4>
+    <h4 class="title-popular" style="color: white">{{ $title ?? 'Popular News' }}</h4>
     <div class="list-berita-populer">
         @foreach ($popular as $item)
             <a href="{{ Src::detail($item) }}" aria-label="{{ $item['news_title'] ?? null }}">
@@ -7,7 +7,6 @@
                     <h1>{{ $loop->iteration }}</h1>
                 </div>
                 <div class="berita-populer-deskripsi">
-                    <span>{{ $item['category_name'] }}</span>
                     <p>{{ $item['news_title'] }}</p>
                 </div>
             </a>
