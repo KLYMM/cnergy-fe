@@ -8,7 +8,7 @@ class Data {
 
     protected static $defaultListNews = [
         'news_id', 'news_type', 'news_title', 'news_date_publish', 'news_category',  'category_name',
-        'news_synopsis', 'news_url', 'news_image', 'cdn_image', 'news_tag', 'photonews', 'photonews_count','news_editor'
+        'news_synopsis', 'news_url', 'news_image', 'cdn_image', 'news_tag', 'photonews', 'photonews_count','news_editor',
     ];
 
     /**
@@ -264,7 +264,7 @@ class Data {
             ttl  : '5minutes',
             tags : ['category', 'global'],
             force : $force,
-            fields : ['name', 'url', 'id', 'parent'],
+            fields : ['name', 'url', 'id', 'parent','meta_name','meta_description'],
             params : [
                 'page'=> $page,
                 'nested'=> $nested ? 'yes' : 'no',

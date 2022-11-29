@@ -61,7 +61,7 @@
         <div class="article-footer flex justify-between items-center animate animate--fadeInUp mb-6 "
             style="--delay: 400ms">
             <div class="article-footer-left flex-1 ">
-                <a class="btn btn--outline flex items-center rounded-lg justify-center vh-h-btn  font-outfit font-medium bg-primary-40  dark:bg-primary-41 dark:text-white"
+                <a class="btn-baca btn btn--outline flex items-center rounded-lg justify-center vh-h-btn  font-outfit font-medium bg-primary-40  dark:bg-primary-41 dark:text-white"
                     href="{{ Src::detail($newsItem) }}">
                     <span>READ MORE </span>
                     <svg class="dark:svg-stroke-white ml-3" width="20" height="20" viewBox="0 0 24 24"

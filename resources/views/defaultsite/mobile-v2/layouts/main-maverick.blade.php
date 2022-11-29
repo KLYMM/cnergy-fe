@@ -35,7 +35,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <meta property="og:site_name" content="{{ config('site.attributes.reldomain.domain_name') ?? null }}">
     <meta property="og:url" content="{{ config('site.attributes.meta.article_url') ?? null }}">
     <meta property="og:title" content="{{ config('site.attributes.meta.article_title') ?? null }}">
-    <meta property="og:description" content="{{ config('site.attributes.meta.article_short_desc') ?? null }}">
+    <meta property="og:description" content="{!! config('site.attributes.meta.article_short_desc') ?? null !!}">
     <meta property="article:modified_time" content="{{ config('site.attributes.meta.article_last_update') ?? null }}">
     <meta property="og:updated_time" content="{{ config('site.attributes.meta.article_last_update') ?? null }}">
     <meta property="fb:app_id" content="{{ config('site.attributes.fb_app_id') ?? null }}">
@@ -183,10 +183,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             if (entry.isIntersecting) {
 
                 let elem = entry.target;
-                if (elem.dataset.list == sections.length){
+                if (elem.dataset.list == sections.length) {
                     elem.querySelector("#btn-up-id").classList.remove("mb-6");
                     elem.querySelector("#btn-up-id").classList.add("mb-16");
-                } 
+                }
 
                 if (elem.classList.contains('paginate')) {
                     currentPage = currentPage + 1
@@ -246,14 +246,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     }
 
     function onItersecting(target, currentIndex) {
-        // console.log('intersecting => ', target);
-        // console.log(target.dataset);
         let date = target.querySelector('span.article-date').dataset.date.split(' ');
-        // console.log(target.querySelector('span.article-date').dataset.date);
-        // console.log(elem.getAttribute('data-page'));
-        let positionPage = currentIndex + 1
-        // console.log(target.querySelector('span.article-date').dataset.authors);
-        let authorName = target.querySelector('span.article-date').dataset.authors
+        let positionPage = currentIndex + 1;
+        let authorName = target.querySelector('span.article-date').dataset.authors;
+        target.setAttribute('data-position', currentIndex + 1)
 
         let data = {
             pageview_path: window.location.href + "?page=" + positionPage,
@@ -312,10 +308,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
     function startIO() {
         const sections = document.querySelectorAll("[data-section]");
-      
+
         for (var i = 0; i < sections.length; i++) {
 
-        
+
 
             if (i == (sections.length - 5)) {
                 io.unobserve(sections[i])
@@ -332,9 +328,39 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     })
 
 
+
+    const btnMore = document.querySelectorAll('.btn-baca');
+    btnMore.forEach(el => el.addEventListener('click', function(e) {
+        const target = e.target.closest('section[data-section]')
+        // console.log(target);
+        btnBaca(target)
+        // e.preventDefault();
+        // return false;
+    }))
+
+
+    function btnBaca(target) {
+        let date = target.querySelector('span.article-date').dataset.date.split(' ');
+
+
+        dataLayer.push({
+            'event': 'click',
+            'feature_name': 'select_item',
+            'feature_location': 'feed',
+            'feature_position': window.kly.gtm.position,
+            'articleId': target.dataset.id,
+            'articleTitle': target.querySelector('h1.article-title').textContent.trim(),
+            'type': window.kly.gtm.type, //feed
+            'subCategory': 'feed', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'authors': window.kly.gtm.authors,
+            'publicationDate': target.querySelector('span.article-date').dataset.date, //2022-10-26
+            'publicationTime': target.querySelector('span.article-date').dataset.hour, //07:34:37
+            'templateId': target.dataset.template, //1|2|3|4
+            'templateName': target.dataset.template, //Headline 1|Headline 2|etc..
+        });
+
+    }
 </script>
-
-
 
 <script>
     const mainNav = document.querySelector('.nav-main');
@@ -373,7 +399,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         callback: function cseSearch() {
             document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
                 "Search...");
-
             // if (focus) {
             //     document.getElementsByClassName("gsc-input")[2].focus()
             // }
