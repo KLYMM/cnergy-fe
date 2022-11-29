@@ -19,7 +19,9 @@
                         <video:category>
                             <![CDATA[ {{ $u['category_name'] }} ]]>
                         </video:category>
-                        <!-- <video:player_loc>https://www.vidio.com/embed/6613143-kkn-di-desa-penari-hingga-pengabdi-setan-2-ini-film-horor-2022-yang-wajib-ditonton</video:player_loc> -->
+                        {{-- <video:player_loc>
+                            https://www.vidio.com/embed/6613143-kkn-di-desa-penari-hingga-pengabdi-setan-2-ini-film-horor-2022-yang-wajib-ditonton
+                        </video:player_loc> --}}
                     </video:video>
                 </url>
             @endforeach
