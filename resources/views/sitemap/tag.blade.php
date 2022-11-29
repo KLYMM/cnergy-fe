@@ -6,13 +6,18 @@
         @if ($rows)
             @foreach ($rows as $u)
                 <url>
-                    <loc>{{ Src::detailTag($u) }}</loc>
+                    <loc>
+                        {{ Src::detailTag($u) . '/' . strtolower(str_replace(' ', '-', trim(preg_replace('/[^a-zA-Z0-9 -]/', '', $u['name'])))) }}
+                    </loc>
                     <news:news>
                         <news:publication>
-                            <news:name>{{ config('site.attributes.title') }}</news:name>
+                            <news:name>
+                                <![CDATA[ {{ config('site.attributes.title') }} ]]>
+                            </news:name>
                             <news:language>id</news:language>
                         </news:publication>
-                        <news:publication_date>{{ $u['date_entry'] }}</news:publication_date>
+                        <news:publication_date>{{ date('Y-m-d\TH:i:sP', strtotime($u['date_entry'])) }}
+                        </news:publication_date>
                         <news:title>
                             <![CDATA[ {{ $u['name'] }} ]]>
                         </news:title>
