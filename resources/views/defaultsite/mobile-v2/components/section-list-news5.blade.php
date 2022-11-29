@@ -57,11 +57,12 @@
                 @endif
             </div>
         </div>
+
         <div class="article-footer flex justify-between items-center animate animate--fadeInUp mb-6 "
-            style="--delay: 400ms">
+            style="--delay: 400ms" id="btn-up-id">
             <div class="article-footer-left flex-1 ">
-                <a class="btn btn--outline flex items-center justify-center vh-h-btn rounded-lg  font-outfit font-medium bg-primary-40  dark:bg-primary-41 dark:text-white"
-                    href="{{ Src::detail($newsItem) }}">
+                <a class="up-btn btn-readmore btn btn--outline flex items-center justify-center vh-h-btn rounded-lg  font-outfit font-medium bg-primary-40  dark:bg-primary-41 dark:text-white"
+                    href="{{ Src::detail($newsItem) }}" >
                     <span>READ MORE</span>
                     <svg class="dark:svg-stroke-white ml-3" width="20" height="20" viewBox="0 0 24 24"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +72,20 @@
                             stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </a>
+
             </div>
         </div>
+        
+           
+       
+    
+        {{-- <div>
+            @include( 'defaultsite.mobile-v2.components.button-next',[
+                        'current_page'=> $latest['attributes']['current_page'],
+                        'last_page'=> $latest['attributes']['last_page'],
+                        'slug'=> $slug
+                    ])
+                
+        </div> --}}
     </article>
 </div>

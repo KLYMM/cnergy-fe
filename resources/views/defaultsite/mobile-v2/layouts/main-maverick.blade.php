@@ -178,16 +178,20 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         entries.forEach((entry) => {
             const section = entry.target.dataset.section;
             const theme = entry.target.dataset.theme;
-
+            const nextbtn = document.getElementById("btn-up-id");
 
             if (entry.isIntersecting) {
+
                 let elem = entry.target;
-                // console.log(elem.getAttribute("data-page"));
+                if (elem.dataset.list == sections.length){
+                    elem.querySelector("#btn-up-id").classList.remove("mb-6");
+                    elem.querySelector("#btn-up-id").classList.add("mb-16");
+                } 
 
                 if (elem.classList.contains('paginate')) {
                     currentPage = currentPage + 1
                     io.unobserve(entry.target)
-                    getNews(currentPage)
+                    // getNews(currentPage)
                     entry.target.classList.remove("paginate")
                 }
 
@@ -308,9 +312,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
     function startIO() {
         const sections = document.querySelectorAll("[data-section]");
-
+      
         for (var i = 0; i < sections.length; i++) {
 
+        
 
             if (i == (sections.length - 5)) {
                 io.unobserve(sections[i])
@@ -325,6 +330,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     document.addEventListener('DOMContentLoaded', function(event) {
         startIO()
     })
+
+
 </script>
 
 
