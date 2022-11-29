@@ -293,7 +293,7 @@ class NewsController extends Controller
                 ]);
             }
 
-            return Site::view('pages.tag', compact('headline', 'feed', 'rows','tag','data','photo','video'));
+            return Site::view('pages.tag', compact('headline', 'feed', 'rows','tag','data','photo','video', 'slug'));
         }
         else abort(404);
     }
