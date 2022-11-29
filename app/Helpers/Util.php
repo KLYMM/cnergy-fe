@@ -13,9 +13,12 @@ class Util {
     {
         $d = date("d", strtotime($date));
         $m = date("M", strtotime($date));
+        $n = date("m", strtotime($date));
         $y = date("Y", strtotime($date));
         $h = date("H", strtotime($date));
         $i = date("i", strtotime($date));
+        $s = date("s", strtotime($date));
+        
 
         return match ($format) 
         {
@@ -30,6 +33,8 @@ class Util {
            'short_time'  => sprintf('%s %s %d, %s:%s WIB', __('global.month_short.'.$m), $d, $y, $h, $i),
 
            'long_time'   => sprintf('%s %s %d, %s:%s WIB',__('global.month_long.'.$m), $d, $y, $h, $i),           
+           'default_date' => sprintf('%s-%s-%s',$y, $n, $d),           
+           'default_hour' => sprintf('%s:%s:%s',$h, $i, $s),           
         };
     }
 

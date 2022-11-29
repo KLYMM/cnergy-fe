@@ -23,13 +23,17 @@
                         @endif
                     </span>
                 @endif
-                <h1 class="article-title vh-text-2xl font-outfit font-bold mb-2 animate animate--fadeInRight"
-                    style="--delay: 100ms">
-                    {{ $newsItem['news_title'] }}
-                </h1>
+                <a href="{{ Src::detail($newsItem) }}">
+                    <h1 class="article-title vh-text-2xl font-outfit font-bold mb-2 animate animate--fadeInRight"
+                        style="--delay: 100ms">
+                        {{ $newsItem['news_title'] }}
+                    </h1>
+                </a>
                 <span
                     class="article-date vh-text-xs text-primary dark:text-white-20 inline-block animate animate--fadeInLeft"
-                    data-date="{{ Util::date($newsItem['news_date_publish'], 'ago') }}"
+                    data-date="{{ Util::date($newsItem['news_date_publish'], 'default_date') }}"
+                    data-hour="{{ Util::date($newsItem['news_date_publish'], 'default_hour') }}"
+                    data-author="{{ $newsItem['news_editor'][0]['name'] }}"
                     style="--delay: 200ms">{{ Util::date($newsItem['news_date_publish'], 'ago') }}
                 </span>
             </div>
@@ -40,22 +44,24 @@
                 </p>
             </div>
             <div class="article-asset mb-4">
-                <figure class="article-asset mt-5 w-full vh-h-landscape aspect-375 overflow-hidden">
-                    <div class="flex justify-center object-cover w-full  animate animate--fadeIn "
-                        style="--delay: 300ms" width="375" height="208">
-                        @include('image ', [
-                            'source' => $newsItem,
-                            'size' => '375x208',
-                            $newsItem['news_title'] ?? null,
-                        ])
-                    </div>
-                </figure>
+                <a href="{{ Src::detail($newsItem) }}">
+                    <figure class="article-asset mt-5 w-full vh-h-landscape aspect-375 overflow-hidden">
+                        <div class="flex justify-center object-cover w-full  animate animate--fadeIn "
+                            style="--delay: 300ms" width="375" height="208">
+                            @include('image ', [
+                                'source' => $newsItem,
+                                'size' => '375x208',
+                                $newsItem['news_title'] ?? null,
+                            ])
+                        </div>
+                    </figure>
+                </a>
             </div>
         </div>
         <div class="article-footer flex justify-between items-center animate animate--fadeInUp mb-6 "
             style="--delay: 400ms">
             <div class="article-footer-left flex-1 ">
-                <a class="btn btn--outline flex items-center rounded-lg justify-center vh-h-btn  font-outfit font-medium bg-primary-40  dark:bg-primary-41 dark:text-white"
+                <a class="btn-baca btn btn--outline flex items-center rounded-lg justify-center vh-h-btn  font-outfit font-medium bg-primary-40  dark:bg-primary-41 dark:text-white"
                     href="{{ Src::detail($newsItem) }}">
                     <span>READ MORE </span>
                     <svg class="dark:svg-stroke-white ml-3" width="20" height="20" viewBox="0 0 24 24"

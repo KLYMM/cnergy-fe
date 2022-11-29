@@ -83,6 +83,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
 
     <title>@yield('title')</title>
+
+
+    <!--window kly object-->
+    @include('object_js')
 </head>
 
 <body style="margin:auto;">
@@ -296,6 +300,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         button2.style.opacity = 0.5;
     }
 </script>
+
 
 <script>
     // infinite delay scroll
