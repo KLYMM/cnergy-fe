@@ -191,7 +191,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 if (elem.classList.contains('paginate')) {
                     currentPage = currentPage + 1
                     io.unobserve(entry.target)
-                    // getNews(currentPage)
+                    getNews(currentPage)
                     entry.target.classList.remove("paginate")
                 }
 
@@ -287,6 +287,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
         if (slug(url) == null) {
             url = url + 'index-berita'
+            let btn_next = document.getElementById('btn-next')
+            btn_next.setAttribute('href', url + '/page-' + (parseInt(page) + parseInt(1)))
         }
         // console.log(url)
         window.axios.get(url + '/page-' + page + `?api_component=true`)

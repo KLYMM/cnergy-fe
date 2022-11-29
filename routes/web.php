@@ -67,7 +67,7 @@ Route::group(['namespace'=> config('site.namespace')], function()
     });
 
     //news
-    Route::controller(NewsController::class)->group(function () {
+    Route::controller(NewsController::class)->name('news.')->group(function () {
 
         Route::get('/search', 'search')->middleware('cacheResponse:10800');
 
@@ -81,7 +81,7 @@ Route::group(['namespace'=> config('site.namespace')], function()
 
         Route::get('/author/{idAuthor}/{slug}/{page?}', 'author')->middleware('cacheResponse:10800')->where('page', '^page\-([0-9]+)');
 
-        Route::get('/index-berita/{page?}', 'indexBerita')->middleware('cacheResponse:900');
+        Route::get('/index-berita/{page?}', 'indexBerita')->middleware('cacheResponse:900')->name('index-berita');
 
         Route::get('amp/{category}/read/{id}/{slug?}/{page?}', 'detailAmp')->middleware(['cacheResponse:54000', 'cache.headers', 'desired.slug', 'varnish.ttl:30'])->where('page', '^page\-([0-9]+)');
 
