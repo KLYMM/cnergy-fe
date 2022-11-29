@@ -64,18 +64,6 @@ class NewsController extends Controller
             limit: 32
          );
          
-          
-        config()->set('site.attributes.meta', [
-            "title"=>config('site.attributes.title'),
-            "article_title" => config('site.attributes.title'),
-            "site_description" => "News with simple English. Interesting and engaging video with easy English.",
-            "article_short_desc" => config('site.attributes.site_description') ?? null,
-            "article_keyword" => config('site.attributes.meta.article_keyword') ?? null,
-            "article_url" => config('site.attributes.reldomain.domain_url'),
-            "article_last_update" => $headline[0]['detail_news']['news_last_update']??null,
-            "article_url_image" =>  config('site.attributes.site_logo'),
-            "type" => 'website'
-        ]);
 
         return Site::view('pages.photo', compact('headline', 'feed','latest','recommendation','popular'));
     }
@@ -114,7 +102,7 @@ class NewsController extends Controller
             "title"=>$metaTitle,
             "article_title" => config('site.attributes.title'),
             "site_description" => $metaDesc,
-            "article_short_desc" => config('site.attributes.site_description') ?? null,
+            "article_short_desc" => $metaDesc,
             "article_keyword" => config('site.attributes.meta.article_keyword') ?? null,
             "article_url" => config('site.attributes.reldomain.domain_url'),
             "article_last_update" => $headline[0]['detail_news']['news_last_update']??null,
@@ -280,7 +268,7 @@ class NewsController extends Controller
                 "title"=>"Understandable and Credible ".$tagName." articles.",
                 "article_title"=>$headline['news_title']??null,
                 "site_description"=>"News with simple English. Provide best ".$tagName." articles for you that are trustworthy and understandable.",
-                "article_short_desc"=>$headline['news_synopsis']??null,
+                "article_short_desc"=>"News with simple English. Provide best ".$tagName." articles for you that are trustworthy and understandable.",
                 "article_keyword"=>$headline['detail_news']['news_keywords'][0]['keyword_name']??null,
                 "article_url"=>\Src::detail($headline??null),
                 "article_last_update"=>$headline['detail_news']['news_last_update']??null,
@@ -453,8 +441,8 @@ class NewsController extends Controller
         config()->set('site.attributes.meta', [
             "title"=>($row['news_title']??null)." | ".config('site.attributes.title'),
             "article_title"=>$row['news_title']??null,
-            "site_description"=>$row['news_synopsis']??null,
-            "article_short_desc"=>$row['news_synopsis']??null,
+            "site_description"=>config('trstdly.prefix_description').$row['news_synopsis']??null,
+            "article_short_desc"=>config('trstdly.prefix_description').$row['news_synopsis']??null,
             "article_keyword"=>$row['news_keywords'][0]['keyword_name']??null,
             "article_url"=>\Src::detail($row??null),
             "article_last_update"=>$row['news_last_update']??null,

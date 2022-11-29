@@ -334,7 +334,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         const target = e.target.closest('section[data-section]')
         // console.log(target);
         btnBaca(target)
-        // e.preventDefault();
         // return false;
     }))
 
