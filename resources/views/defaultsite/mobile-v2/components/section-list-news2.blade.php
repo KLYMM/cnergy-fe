@@ -33,7 +33,7 @@
                     class="article-date vh-text-xs text-primary dark:text-white-20 inline-block animate animate--fadeInLeft"
                     data-date="{{ Util::date($newsItem['news_date_publish'], 'default_date') }}"
                     data-hour="{{ Util::date($newsItem['news_date_publish'], 'default_hour') }}"
-                    data-author="{{ $newsItem['news_editor'][0]['name'] }}"
+                    data-author="{{ $newsItem['news_editor'][0]['name'] ?? '' }}"
                     style="--delay: 200ms">{{ Util::date($newsItem['news_date_publish'], 'ago') }}
                 </span>
             </div>
