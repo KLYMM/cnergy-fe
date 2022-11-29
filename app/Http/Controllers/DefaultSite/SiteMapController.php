@@ -58,6 +58,13 @@ class SiteMapController extends Controller
         return response()->view('sitemap.news', compact('rows'))->header('Content-Type', 'text/xml');
     }
 
+    function index_news() 
+    {
+        $rows = Data::latest();
+
+        return response()->view('sitemap.index_news', compact('rows'))->header('Content-Type', 'text/xml');
+    }
+
     /**
      * TYPE PHOTO
      */
@@ -65,14 +72,22 @@ class SiteMapController extends Controller
     {
         if( !$rows )
         {
-            $rows = Data::latest(
+            // $rows = Data::latest(
+            //     path: 'photonews',
+            //     alltype: 0,
+            //     limit: 1000,
+            //     start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
+            //     end_date: date('Y-m-d 23:59:59')
+            // );
+
+            $rows = Data::headline(
                 path: 'photonews',
                 alltype: 0,
                 limit: 1000,
-                start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
-                end_date: date('Y-m-d 23:59:59')
             );
         }
+
+        // dd($rows);
         
         return response()->view('sitemap.image', compact('rows'))->header('Content-Type', 'text/xml');
     }
@@ -84,12 +99,18 @@ class SiteMapController extends Controller
     {
         if( !$rows )
         {
-            $rows = Data::latest(
+            // $rows = Data::latest(
+            //     path: 'video',
+            //     alltype: 0,
+            //     limit: 1000,
+            //     start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
+            //     end_date: date('Y-m-d 23:59:59')
+            // );
+
+            $rows = Data::headline(
                 path: 'video',
                 alltype: 0,
                 limit: 1000,
-                start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
-                end_date: date('Y-m-d 23:59:59')
             );
         }
 
@@ -107,7 +128,7 @@ class SiteMapController extends Controller
         if( $type == 'web' )
         {
             $urls = [];
-            foreach( [...$categories] as $list ){
+            foreach( $categories as $list ){
                 
                 if($slug == $list['url']){
                     $urls = Data::listNewsByCategory(
@@ -121,6 +142,7 @@ class SiteMapController extends Controller
                     
                 }                
             }
+            // dd($urls);
 
             return $this->index($urls);
         }
