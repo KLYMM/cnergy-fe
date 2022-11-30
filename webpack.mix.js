@@ -33,6 +33,10 @@ mix.copyDirectory(path + sitePath + "js", "public/static/" + sitePath + "js");
 //img
 mix.copyDirectory(path + sitePath + "img", "public/static/" + sitePath + "img");
 
+// detail tes
+mix.postCss(path + sitePath + "detail/css/color.css", sitePath + "detail/css");
+mix.postCss(path + sitePath + "detail/css/main.css", sitePath + "detail/css");
+
 // //DEFAULTSITE - DESKTOP
 // var sitePath = "defaultsite/desktop/";
 // //css global

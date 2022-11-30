@@ -3,6 +3,7 @@ namespace App\Http\Controllers\DefaultSite;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\Html;
 
 use Site, Data, Util, Str;
 
@@ -19,8 +20,8 @@ class NewsController extends Controller
             // limit: Site::isMobile() ? 25 : 50
         );
         $headline[0]['detail_news']=\Data::detailNews($headline[0]['news_id']??null);
-      
-       
+
+
 
         config()->set('site.attributes.meta', [
             "title" => config('site.attributes.title'),
@@ -63,7 +64,7 @@ class NewsController extends Controller
             ex_id: Util::getNewsExId(array_merge($headline,$popular,$recommendation)),
             limit: 32
          );
-         
+
 
         return Site::view('pages.photo', compact('headline', 'feed','latest','recommendation','popular'));
     }
@@ -91,11 +92,11 @@ class NewsController extends Controller
         $metaTitle = "";
         $metaDesc = "";
         foreach ($categories as $meta ) {
-            
+
             if($slug == $meta["url"] ) {
-                $metaTitle = $meta['meta_name']; 
-                $metaDesc = $meta['meta_description']; 
-            } 
+                $metaTitle = $meta['meta_name'];
+                $metaDesc = $meta['meta_description'];
+            }
         }
         // dd($categories);
         config()->set('site.attributes.meta', [
@@ -109,7 +110,7 @@ class NewsController extends Controller
             "article_url_image" =>  config('site.attributes.site_logo'),
             "type" => 'website'
         ]);
-    
+
 
         return Site::view('pages.video', compact('headline', 'feed', 'latest', 'popular'));
     }
@@ -121,7 +122,7 @@ class NewsController extends Controller
     {
         $slug = head($params);
         $page = null;
-        
+
         if (count($params) > 1)
         {
             $slug = last($params);
@@ -181,13 +182,13 @@ class NewsController extends Controller
             $metaTitle = "";
             $metaDesc = "";
             foreach ($categories as $meta ) {
-                
+
                 if($slug == $meta["url"] ) {
-                    $metaTitle = $meta['meta_name']; 
-                    $metaDesc = $meta['meta_description']; 
-                } 
+                    $metaTitle = $meta['meta_name'];
+                    $metaDesc = $meta['meta_description'];
+                }
             }
-            
+
 
             config()->set('site.attributes.meta', [
                 "title"=>$metaTitle,
@@ -277,7 +278,7 @@ class NewsController extends Controller
             ]);
             //  dd(config('site.attributes'));
 
-            
+
             //kly object
             config()->set('site.attributes.object', [
                 "pageType"=>'TagPage',
@@ -373,6 +374,8 @@ class NewsController extends Controller
 
     function detail($category, $id, $slug=null,$page=null)
     {
+        $type = request()->query('type');
+
         $page = $page==null?1: str_replace('page-', '', $page);
 
         if (request('code')!=null) {
@@ -464,7 +467,14 @@ class NewsController extends Controller
                 'id'=> $row['news_category'][0]['id']??null,
             ],
         ]);
-        // dd($row);
+
+        if($type === 'testing') {
+            $rowHtml = new Html();
+            $content = $rowHtml->parseDom($row['news_content']);
+
+            return Site::view('pages.detail.index', compact('content', 'row'));
+        }
+
         if( ($row['news_type']??null) == 'photonews' )
         {
             config()->set('site.use_footer', 'no');
