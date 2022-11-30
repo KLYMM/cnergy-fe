@@ -19,7 +19,6 @@
                 @endif
             @endforeach
         </ul>
-
         <div class="main-news-deskripsi">
             <figure>
                 <div class="image-news">
@@ -43,7 +42,7 @@
                             trstdly
                         </p>
                         <span class="author_publish">
-                            {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
+                            {{ Util::date($row['news_date_publish'] ?? null, 'short_time') }}</span>
                     </div>
                 </div>
             </div>
