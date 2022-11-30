@@ -30,10 +30,12 @@ class Util {
            
            'time'  => sprintf('%s:%s WIB', $h, $i),
 
-           'short_time'  => sprintf('%s %s %d, %s:%s WIB', __('global.month_short.'.$m), $d, $y, $h, $i),
+          'short_time'  => sprintf('%s %s, %d at %s:%s', __('global.month_short.'.$m), $d, $y, $h, $i),
 
-           'long_time'   => sprintf('%s %s %d, %s:%s WIB',__('global.month_long.'.$m), $d, $y, $h, $i),           
+           'long_time'   => sprintf('%s %s %d, %s:%s WIB',__('global.month_long.'.$m), $d, $y, $h, $i),        
+
            'default_date' => sprintf('%s-%s-%s',$y, $n, $d),           
+
            'default_hour' => sprintf('%s:%s:%s',$h, $i, $s),           
         };
     }
