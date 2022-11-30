@@ -6,6 +6,19 @@
         <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth"
             data-scroller>
             @include('defaultsite.mobile-v2.components.sections', ['page' => 1, 'latest' => $data])
+
+            {{-- BTN Next Page --}}
+            <div style="position: relative;
+            z-index: 20;
+            bottom: 46px;">
+                @include('defaultsite.mobile-v2.components.button-next', [
+                    'current_page' => $data['attributes']['current_page'],
+                    'last_page' => $data['attributes']['last_page'],
+                    'slug' => 'tag/' . $slug,
+                ])
+
+            </div>
+
             <div id="feed-paging"></div>
         </div>
         <!-- end.snap -->

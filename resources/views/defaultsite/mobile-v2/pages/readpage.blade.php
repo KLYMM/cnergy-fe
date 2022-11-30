@@ -19,7 +19,6 @@
                 @endif
             @endforeach
         </ul>
-
         <div class="main-news-deskripsi">
             <figure>
                 <div class="image-news">
@@ -43,7 +42,7 @@
                             trstdly
                         </p>
                         <span class="author_publish">
-                            {{ Util::date($row['news_date_publish'] ?? null, 'long_time') }}</span>
+                            {{ Util::date($row['news_date_publish'] ?? null, 'short_time') }}</span>
                     </div>
                 </div>
             </div>
@@ -56,16 +55,23 @@
         {{-- st-share --}}
         @include('defaultsite.mobile-v2.components-ui.dt-share')
 
+        @if ($row['news_content'] ?? null)
+            <div class="dt-paragraph">
+                {!! str_replace(
+                    ['mce-mce-mce-mce-no/type', 'mce-no/type'],
+                    '',
+                    htmlspecialchars_decode($row['news_content'] ?? null),
+                ) !!}
+            </div>
+        @endif
         @if (count($row['news_paging']) > 0)
             @foreach ($row['news_paging'] as $news_content)
-                @if ($loop->iteration != 1)
-                    <div style="display:flex; align-items: center; margin: 20px; margin-bottom:46px;">
-                        <hr class="hr-list">
-                        <div class="slider-counter">Page {{ $loop->iteration }}<span id="sliderCounter"></span> of
-                            {{ count($row['news_paging']) }}</div>
-                        <hr class="hr-list">
-                    </div>
-                @endif
+                <div style="display:flex; align-items: center; margin: 20px; margin-bottom:46px;">
+                    <hr class="hr-list">
+                    <div class="slider-counter">Page {{ $loop->iteration + 1 }}<span id="sliderCounter"></span> of
+                        {{ count($row['news_paging']) + 1}}</div>
+                    <hr class="hr-list">
+                </div>
                 <div class="dt-paragraph">
                     {!! str_replace(
                         ['mce-mce-mce-mce-no/type', 'mce-no/type'],
@@ -74,14 +80,6 @@
                     ) !!}
                 </div>
             @endforeach
-        @else
-            <div class="dt-paragraph">
-                {!! str_replace(
-                    ['mce-mce-mce-mce-no/type', 'mce-no/type'],
-                    '',
-                    htmlspecialchars_decode($row['news_content'] ?? null),
-                ) !!}
-            </div>
         @endif
         @push('script')
             <script>
