@@ -285,6 +285,9 @@ article {
 .vh-h-btn {
     height: 6.4vh;
 }
+.vh-h-btn-2 {
+    height: 7vh;
+}
 .vh-text-xs {
     font-size: 1.4vh;
 }
@@ -597,6 +600,9 @@ article {
     height: 100%;
     outline: none;
     border: 0;
+}
+.hidden {
+    display: none;
 }
 
 /* navbar */

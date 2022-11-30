@@ -19,11 +19,14 @@ class NewsController extends Controller
             // limit: Site::isMobile() ? 25 : 50
         );
         $headline[0]['detail_news']=\Data::detailNews($headline[0]['news_id']??null);
+      
+       
+
         config()->set('site.attributes.meta', [
             "title" => config('site.attributes.title'),
             "article_title" => config('site.attributes.title'),
-            "site_description" => "{!! config('site.attributes.site_description') !!}"??null,
-            "article_short_desc" => config('site.attributes.site_description') ?? null,
+            "site_description" => config('site.attributes.site_description')??null,
+            "article_short_desc" => config('site.attributes.site_description')?? null,
             "article_keyword" => config('site.attributes.meta.article_keyword') ?? null,
             "article_url" => config('site.attributes.reldomain.domain_url'),
             "article_last_update" => $headline[0]['detail_news']['news_last_update']??null,
@@ -60,12 +63,14 @@ class NewsController extends Controller
             ex_id: Util::getNewsExId(array_merge($headline,$popular,$recommendation)),
             limit: 32
          );
+         
 
         return Site::view('pages.photo', compact('headline', 'feed','latest','recommendation','popular'));
     }
     //list video
     function video()
     {
+        $slug = 'video';
         $headline = Data::headline(
             path: 'video',
             alltype: 0,
@@ -79,23 +84,32 @@ class NewsController extends Controller
             ex_id: Util::getNewsExId(array_merge($popular,$headline)),
             limit: 30
         );
-     
-       $symbolAposhtrope = "video gallery, latest video, trending video, popular video, today's video"; 
-    //echo html_entity_decode($symbolAposhtrope, ENT_QUOTES);
-       
-       
+        // dd($headline);
+
+        $categories = collect(Data::listCategory(nested: false));
+
+        $metaTitle = "";
+        $metaDesc = "";
+        foreach ($categories as $meta ) {
+            
+            if($slug == $meta["url"] ) {
+                $metaTitle = $meta['meta_name']; 
+                $metaDesc = $meta['meta_description']; 
+            } 
+        }
+        // dd($categories);
         config()->set('site.attributes.meta', [
-            "title" => "Engaging Video Gallery of World Popular News - trstdly.com.",
+            "title"=>$metaTitle,
             "article_title" => config('site.attributes.title'),
-            "site_description" => "News with simple English. Interesting and engaging video with easy English.",
-            "article_short_desc" => config('site.attributes.site_description') ?? null,
+            "site_description" => $metaDesc,
+            "article_short_desc" => $metaDesc,
             "article_keyword" => config('site.attributes.meta.article_keyword') ?? null,
             "article_url" => config('site.attributes.reldomain.domain_url'),
             "article_last_update" => $headline[0]['detail_news']['news_last_update']??null,
             "article_url_image" =>  config('site.attributes.site_logo'),
             "type" => 'website'
         ]);
-
+    
 
         return Site::view('pages.video', compact('headline', 'feed', 'latest', 'popular'));
     }
@@ -107,7 +121,7 @@ class NewsController extends Controller
     {
         $slug = head($params);
         $page = null;
-
+        
         if (count($params) > 1)
         {
             $slug = last($params);
@@ -125,6 +139,7 @@ class NewsController extends Controller
 
         if( $categories = collect(Data::listCategory(nested: false)) )
         {
+            // dd($categories);
             $url_name = $categories->pluck('name', 'url')[$slug] ?? null;
 
             $url_id = $categories->pluck('id', 'url')[$slug] ?? null;
@@ -163,12 +178,21 @@ class NewsController extends Controller
 
             $rows[0]['detail_news']=\Data::detailNews($rows[0]['news_id']??null);
 
-            $categoryName = $rows[0]['category_name'];
+            $metaTitle = "";
+            $metaDesc = "";
+            foreach ($categories as $meta ) {
+                
+                if($slug == $meta["url"] ) {
+                    $metaTitle = $meta['meta_name']; 
+                    $metaDesc = $meta['meta_description']; 
+                } 
+            }
+            
 
             config()->set('site.attributes.meta', [
-                "title"=>config('site.attributes.title'),
+                "title"=>$metaTitle,
                 "article_title"=>$rows[0]['news_title']??null,
-                "site_description"=>config('site.attributes.site_description'),
+                "site_description"=>$metaDesc,
                 "article_short_desc"=>$rows[0]['news_synopsis']??null,
                 "article_keyword"=>$rows[0]['detail_news']['news_keywords'][0]['keyword_name']??null,
                 "article_url"=>\Src::detail($rows[0]??null),
@@ -241,17 +265,17 @@ class NewsController extends Controller
 
             $headline['detail_news']=\Data::detailNews($headline['news_id']??null);
             config()->set('site.attributes.meta', [
-                "title"=>"trstdly will provide the best ".$headline['news_tag'][$key]['tag_name']." articles for you that are trustworthy and understandable",
+                "title"=>"Understandable and Credible ".$tagName." articles.",
                 "article_title"=>$headline['news_title']??null,
-                "site_description"=>config('site.attributes.site_description'),
-                "article_short_desc"=>$headline['news_synopsis']??null,
+                "site_description"=>"News with simple English. Provide best ".$tagName." articles for you that are trustworthy and understandable.",
+                "article_short_desc"=>"News with simple English. Provide best ".$tagName." articles for you that are trustworthy and understandable.",
                 "article_keyword"=>$headline['detail_news']['news_keywords'][0]['keyword_name']??null,
                 "article_url"=>\Src::detail($headline??null),
                 "article_last_update"=>$headline['detail_news']['news_last_update']??null,
                 "article_url_image"=> \Src::imgNewsCdn($headline??null, '640x360', 'jpeg'),
                 "type"=>'website'
             ]);
-            
+            //  dd(config('site.attributes'));
 
             
             //kly object
@@ -269,7 +293,7 @@ class NewsController extends Controller
                 ]);
             }
 
-            return Site::view('pages.tag', compact('headline', 'feed', 'rows','tag','data','photo','video'));
+            return Site::view('pages.tag', compact('headline', 'feed', 'rows','tag','data','photo','video', 'slug'));
         }
         else abort(404);
     }
@@ -417,8 +441,8 @@ class NewsController extends Controller
         config()->set('site.attributes.meta', [
             "title"=>($row['news_title']??null)." | ".config('site.attributes.title'),
             "article_title"=>$row['news_title']??null,
-            "site_description"=>$row['news_synopsis']??null,
-            "article_short_desc"=>$row['news_synopsis']??null,
+            "site_description"=>config('trstdly.prefix_description').$row['news_synopsis']??null,
+            "article_short_desc"=>config('trstdly.prefix_description').$row['news_synopsis']??null,
             "article_keyword"=>$row['news_keywords'][0]['keyword_name']??null,
             "article_url"=>\Src::detail($row??null),
             "article_last_update"=>$row['news_last_update']??null,

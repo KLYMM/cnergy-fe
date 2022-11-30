@@ -61,7 +61,7 @@
             style="--delay: 500ms">
             <div class="article-footer-left flex-1 ">
                 <a rel="nofollow"
-                    class="btn btn--outline  flex items-center justify-center vh-h-btn rounded-lg  font-outfit font-medium bg-primary-41 dark:bg-primary-41 dark:text-white"
+                    class="btn-baca btn btn--outline  flex items-center justify-center vh-h-btn rounded-lg  font-outfit font-medium bg-primary-41 dark:bg-primary-41 dark:text-white"
                     href="{{ Src::detail($newsItem) }}">
                     <span class="text-white ">READ MORE</span>
                     <svg class="dark:svg-stroke-white ml-3" width="20" height="20" viewBox="0 0 24 24"

@@ -301,60 +301,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     }
 </script>
 
-<script>
-    function virtual_pv(data) {
-        dataLayer.push({
-            'event': 'virtual_page_view',
-            'virtual_pageview_path': data.pageview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
-            'articleId': data.articleId,
-            'contentTitle': data.articleTitle,
-            'type': data.articleType, //feed
-            'subCategory': '$nama-category', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
-            'authors': data.author,
-            'publicationDate': data.publicationDate, //2022-10-26
-            'publicationTime': data.publicationTime, //07:34:37
-            'templateId': data.template_id, //1|2|3|4
-            'templateName': data.template_name, //Headline 1|Headline 2|etc..
-            'position': data.position //1|2|3|etc...}
-        });
-    }
-
-    let date = target.querySelector('span.article-date').dataset.date.split(' ');
-    // console.log(target.querySelector('span.article-date').dataset.date);
-    // console.log(elem.getAttribute('data-page'));
-    let positionPage = currentIndex + 1
-    // console.log(target.querySelector('span.article-date').dataset.authors);
-
-
-    let data = {
-        pageview_path: window.location.href + "?page=" + positionPage,
-        articleId: target.dataset.id,
-        articleTitle: target.querySelector('h1.article-title').textContent.trim(),
-        articleType: text,
-        author: target.querySelector('span.article-date').dataset.authors,
-        publicationDate: target.querySelector('span.article-date').dataset.date,
-        publicationTime: target.querySelector('span.article-date').dataset.hour,
-        template_id: target.dataset.template,
-        template_name: 'Feed ' + target.dataset.template,
-        position: currentIndex + 1,
-        is_virtual: currentIndex == 0 ? 0 : 1,
-    }
-
-
-    window.kly.gtm.subCategory = "feed";
-    window.kly.gtm.type = "text";
-    window.kly.gtm.contentTitle = data.articleTitle;
-    window.kly.gtm.articleId = data.articleId;
-    window.kly.gtm.authors = data.author;
-    window.kly.gtm.publicationDate = data.publicationDate;
-    window.kly.gtm.publicationTime = data.publicationTime;
-    window.kly.gtm.templateId = data.template_id;
-    window.kly.gtm.position = currentIndex + 1;
-    window.kly.gtm.templateName = data.template_name;
-    window.kly.gtm.is_virtual = data.is_virtual;
-
-    virtual_pv(data);
-</script>
 
 <script>
     // infinite delay scroll
