@@ -33,9 +33,9 @@
                 {{-- main --}}
                 <div class="swiper-wrapper">
                     @if (count($row['photonews'] ?? []) > 0)
-                        <div class="header-photo">
-                            <h3 class="photo-t">{{ $row['news_title'] ?? null }}</h3>
-                            <div class="account">
+                        <div style="margin: 20px 0;">
+                            <h3 class="photo-t" style="margin: 0px 20px">{{ $row['news_title'] ?? null }}</h3>
+                            <div class="account" style="margin:20px;">
                                 <a href="{{ Src::author($row) }}">
                                     <img class="rounded rounded-5" src="{{ URL::asset('assets/images/author.PNG') }}"
                                         alt="author" width="40" height="40px">

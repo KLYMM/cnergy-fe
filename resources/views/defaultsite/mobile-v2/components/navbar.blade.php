@@ -1,6 +1,6 @@
 <header class="header fixed top-0 inset-x-0 max-w-screen-md mx-auto z-20 h-16" data-header>
 
-    <div class="flex justify-between items-center " style="padding: 20px 26px 0px 26px">
+    <div class="header-top flex justify-between items-center " style="padding: 20px 26px 0px 26px">
         <img class="nav-open " src="{{ URL::asset('assets/icons/burger.svg') }}" width="18px" height="18px" alt="bar-icon"
             onclick="show()">
         <h1 class="header-body-logo text-3xl flex items-center font-bold">
@@ -58,316 +58,316 @@
             </div>
         </div>
     </div>
+</header>
 
-    <div class="nav-main" style="transform: translateX(-1000%);">
-        <div class="nav-content">
-            <div class="nav-header">
-                @if ($logo = \Site::api('fe-setting') ?? null)
-                <a href="/"> <img class=" dark:img-white"
-                    src="{{ $logo['data']['site_logo'] ?? null }}" alt="logo" width="140"
-                    height="48" /></a>
-                @endif
-                        <img class="nav-close object-contain dark:img-white"
-                    src="{{ URL::asset('assets/icons/icon-close.svg') }}" alt="search-icon" width="25px"
-                    height="25px">
-            </div>
+<div class="nav-main" style="transform: translateX(-1000%);">
+    <div class="nav-content">
+        <div class="nav-header">
+            @if ($logo = \Site::api('fe-setting') ?? null)
+            <a href="/"> <img class=" dark:img-white"
+                src="{{ $logo['data']['site_logo'] ?? null }}" alt="logo" width="140"
+                height="48" /></a>
+            @endif
+                    <img class="nav-close object-contain dark:img-white"
+                src="{{ URL::asset('assets/icons/icon-close.svg') }}" alt="search-icon" width="25px"
+                height="25px">
+        </div>
 
-            <ul class="nav-menus">
-                @if ($menu = Data::menu())
-                    @php
-                        //get category tree
-                        $category_tree = \Src::menu_tree(config('site.attributes.object.category.slug'));
-                        if ($row['news_category'] ?? null) {
-                            if (count($row['news_category']) > 0) {
-                                $category_tree = \Src::menu_tree(end($row['news_category'])['url']);
-                            }
+        <ul class="nav-menus">
+            @if ($menu = Data::menu())
+                @php
+                    //get category tree
+                    $category_tree = \Src::menu_tree(config('site.attributes.object.category.slug'));
+                    if ($row['news_category'] ?? null) {
+                        if (count($row['news_category']) > 0) {
+                            $category_tree = \Src::menu_tree(end($row['news_category'])['url']);
                         }
-                        if (count($category_tree) == 1) {
-                            //list subdomain 1 level
-                            $parent_slug = trim(end($category_tree)['url'], '/');
-                            $subdomain = collect($menu)
-                                ->filter(function ($row) use ($parent_slug) {
-                                    $arr_slug = explode('/', trim($row['url'], '/'));
-                                    $arr_parent_slug = explode('/', $parent_slug);
-                                    return strpos(end($arr_slug), end($arr_parent_slug)) > '' ? 1 : 0;
-                                })
-                                ->first();
-                        } elseif (count($category_tree) >= 2) {
-                            $parent_slug = trim(end($category_tree)['url'], '/');
-                            //get curent slug base on tree level
-                            if (count($category_tree) == 2) {
-                                $curent_slug = trim($category_tree[0]['url'], '/');
-                            } elseif (count($category_tree) == 3) {
-                                $curent_slug = trim($category_tree[1]['url'], '/');
-                            }
-                            //list subdomain 1 level
-                            $subdomain = collect($menu)
-                                ->filter(function ($row) use ($parent_slug) {
-                                    $arr_slug = explode('/', trim($row['url'], '/'));
-                                    $arr_parent_slug = explode('/', $parent_slug);
-                                    return strpos(end($arr_slug), end($arr_parent_slug)) > '' ? 1 : 0;
-                                })
-                                ->first();
-                            //list subdomain 2 level
-                            $second_subdomain = collect($subdomain['children'])
-                                ->filter(function ($row) use ($curent_slug) {
-                                    $arr_slug = explode('/', trim($row['url'], '/'));
-                                    $arr_curent_slug = explode('/', $curent_slug);
-                                    return strpos(end($arr_slug), end($arr_curent_slug)) > '' ? 1 : 0;
-                                })
-                                ->first();
-                            //check list subdomain 2 level > 0
-                            if (count($second_subdomain['children'] ?? []) > 0) {
-                                $subdomain = $second_subdomain;
-                            }
+                    }
+                    if (count($category_tree) == 1) {
+                        //list subdomain 1 level
+                        $parent_slug = trim(end($category_tree)['url'], '/');
+                        $subdomain = collect($menu)
+                            ->filter(function ($row) use ($parent_slug) {
+                                $arr_slug = explode('/', trim($row['url'], '/'));
+                                $arr_parent_slug = explode('/', $parent_slug);
+                                return strpos(end($arr_slug), end($arr_parent_slug)) > '' ? 1 : 0;
+                            })
+                            ->first();
+                    } elseif (count($category_tree) >= 2) {
+                        $parent_slug = trim(end($category_tree)['url'], '/');
+                        //get curent slug base on tree level
+                        if (count($category_tree) == 2) {
+                            $curent_slug = trim($category_tree[0]['url'], '/');
+                        } elseif (count($category_tree) == 3) {
+                            $curent_slug = trim($category_tree[1]['url'], '/');
                         }
-                    @endphp
+                        //list subdomain 1 level
+                        $subdomain = collect($menu)
+                            ->filter(function ($row) use ($parent_slug) {
+                                $arr_slug = explode('/', trim($row['url'], '/'));
+                                $arr_parent_slug = explode('/', $parent_slug);
+                                return strpos(end($arr_slug), end($arr_parent_slug)) > '' ? 1 : 0;
+                            })
+                            ->first();
+                        //list subdomain 2 level
+                        $second_subdomain = collect($subdomain['children'])
+                            ->filter(function ($row) use ($curent_slug) {
+                                $arr_slug = explode('/', trim($row['url'], '/'));
+                                $arr_curent_slug = explode('/', $curent_slug);
+                                return strpos(end($arr_slug), end($arr_curent_slug)) > '' ? 1 : 0;
+                            })
+                            ->first();
+                        //check list subdomain 2 level > 0
+                        if (count($second_subdomain['children'] ?? []) > 0) {
+                            $subdomain = $second_subdomain;
+                        }
+                    }
+                @endphp
 
-                    @foreach (array_slice($menu, 0, 9) as $m)
-                        @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
-                            <li
-                                class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }}">
-                                <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
-                            </li>
-                        @else
-                            <li
-                                class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }}">
-                                <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
-                            </li>
-                        @endif
-                    @endforeach
-                    @if (count($menu) > 9)
-                        <li class="header-nav-item-mobile" style="padding:0">
-                            <div class="header-nav-item-menu" style="padding-right:0">
-                                <ul class="header-nav-item-menu-list">
-                                    @foreach (array_slice($menu, 9) as $m)
-                                        @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
-                                            <li
-                                                class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }}">
-                                                <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
-                                            </li>
-                                        @else
-                                            <li
-                                                class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }}">
-                                                <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                                <span class="header-extra-nav header-nav-item-menu-back"><i
-                                        class="icon icon--arrowright rotate-180"></i></span>
-                            </div>
+                @foreach (array_slice($menu, 0, 9) as $m)
+                    @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
+                        <li
+                            class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }}">
+                            <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
+                        </li>
+                    @else
+                        <li
+                            class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }}">
+                            <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
                         </li>
                     @endif
-                @endif
-                @include('defaultsite.mobile-v2.components-ui.trending-menu')
-            </ul>
-
-            @if (count($category_tree) > 0)
-                @if ($subdomain)
-                    @if (count($subdomain['children']) > 0)
-                        <div class="header-submenu">
-                            <ul class="header-submenu-item">
-                                <li class="header-submenu-item-title">{{ strtoupper($subdomain['title']) }}</li>
-                                {{-- list subdomain level 1 or check list subdomain 2 level > 0 --}}
-                                @if (count($category_tree) > 0 || count($second_subdomain['children'] ?? []) > 0)
-                                    @foreach ($subdomain['children'] as $m)
-                                        @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
-                                            <li
-                                                class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
-                                                <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
-                                            </li>
-                                        @else
-                                            <li
-                                                class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
-                                                <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                @endif
+                @endforeach
+                @if (count($menu) > 9)
+                    <li class="header-nav-item-mobile" style="padding:0">
+                        <div class="header-nav-item-menu" style="padding-right:0">
+                            <ul class="header-nav-item-menu-list">
+                                @foreach (array_slice($menu, 9) as $m)
+                                    @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
+                                        <li
+                                            class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }}">
+                                            <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
+                                        </li>
+                                    @else
+                                        <li
+                                            class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }}">
+                                            <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
                             </ul>
+                            <span class="header-extra-nav header-nav-item-menu-back"><i
+                                    class="icon icon--arrowright rotate-180"></i></span>
                         </div>
-                    @endif
+                    </li>
                 @endif
             @endif
+            @include('defaultsite.mobile-v2.components-ui.trending-menu')
+        </ul>
+
+        @if (count($category_tree) > 0)
+            @if ($subdomain)
+                @if (count($subdomain['children']) > 0)
+                    <div class="header-submenu">
+                        <ul class="header-submenu-item">
+                            <li class="header-submenu-item-title">{{ strtoupper($subdomain['title']) }}</li>
+                            {{-- list subdomain level 1 or check list subdomain 2 level > 0 --}}
+                            @if (count($category_tree) > 0 || count($second_subdomain['children'] ?? []) > 0)
+                                @foreach ($subdomain['children'] as $m)
+                                    @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
+                                        <li
+                                            class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
+                                            <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
+                                        </li>
+                                    @else
+                                        <li
+                                            class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
+                                            <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                @endif
+            @endif
+        @endif
 
 
 
 
 
-            <div class="search-container">
-                <div class="all-search-box">
+        <div class="search-container">
+            <div class="all-search-box">
 
-                    <style>
-                        .gsc-search-button-v2 {
-                            display: none;
-                        }
+                <style>
+                    .gsc-search-button-v2 {
+                        display: none;
+                    }
 
-                        .all-search-box {
-                            position: absolute;
-                            width: 100%;
-                            bottom: 0;
-                            background-color: white;
-                        }
+                    .all-search-box {
+                        position: absolute;
+                        width: 100%;
+                        bottom: 0;
+                        background-color: white;
+                    }
 
-                        .dark .all-search-box {
-                            position: absolute;
-                            width: 100%;
-                            bottom: 0;
-                            border: 2px solid ;
-                            background-color: #fff0ec !important;
-                        }
+                    .dark .all-search-box {
+                        background-color: #fff0ec !important;
+                    }
 
-                        form.gsc-search-box,
-                        table.gsc-search-box {
-                            margin-bottom: 0;
-                        }
+                    form.gsc-search-box,
+                    table.gsc-search-box {
+                        margin-bottom: 0;
+                    }
 
 
-                        form.gsc-search-box {
-                            display: table;
-                            position: relative;
-                        }
+                    form.gsc-search-box {
+                        display: table;
+                        position: relative;
+                    }
 
-                        .gsst_b {
-                            padding: 0;
-                        }
+                    .gsst_b {
+                        padding: 0;
+                    }
 
-                        .gsib_a {
-                            padding: 10px;
-                            padding-right:0px;
-                            padding-left: 40px
-                        }
+                    .gsib_a {
+                        padding: 10px;
+                        padding-right:0px;
+                        padding-left: 40px
+                    }
 
-                        .gsst_a {
-                            padding: 0;
-                            vertical-align: middle;
-                            line-height: 1em;
-                            margin-top: -3px;
-                        }
+                    .gsst_a {
+                        padding: 0;
+                        vertical-align: middle;
+                        line-height: 1em;
+                        margin-top: -3px;
+                    }
 
-                        .gsst_a .gscb_a,
-                        .gsst_a:hover .gscb_a,
-                        .gsst_a:focus .gscb_a {
-                            font-family: 'Open Sans', sans-serif;
-                            color: #999;
-                            display: block;
-                            font-size: 32px;
-                            font-weight: 300;
-                        }
+                    .gsst_a .gscb_a,
+                    .gsst_a:hover .gscb_a,
+                    .gsst_a:focus .gscb_a {
+                        font-family: 'Open Sans', sans-serif;
+                        color: #999;
+                        display: block;
+                        font-size: 32px;
+                        font-weight: 300;
+                    }
 
-                        .gsc-input,
-                        .gsc-input-box,
-                        .gsc-input-box-hover,
-                        .gsc-input-box-focus {
-                            border: none;
-                            box-shadow: none;
-                            height: 100%;
-                            background-color: transparent !important;
-                            margin: 0 !important;
-                            width: 100%;
-                            background-color: yellow;
-                        }
+                    .gsc-input,
+                    .gsc-input-box,
+                    .gsc-input-box-hover,
+                    .gsc-input-box-focus {
+                        border: none;
+                        box-shadow: none;
+                        height: 100%;
+                        background-color: transparent !important;
+                        margin: 0 !important;
+                        width: 100%;
+                        background-color: yellow;
+                    }
 
-                        input.gsc-search-button,
-                        input.gsc-search-button:hover,
-                        input.gsc-search-button:focus {
-                            padding: 0;
-                            margin: 0;
-                            border: 0;
-                            border-radius: 0;
-                            background-color: transparent;
-                            cursor: pointer;
-                            text-indent: -9999px;
-                            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-                            filter: alpha(opacity=50);
-                            -moz-opacity: 0.5;
-                            -khtml-opacity: 0.5;
-                            opacity: 0;
-                            position: absolute;
-                            left: 0;
-                            top: 0;
-                            width: 100%;
-                            height: 100%;
-                        }
+                    .gsc-input-box{
+                        padding:0;
+                    }
 
-                        td.gsc-search-button {
+                    input.gsc-search-button,
+                    input.gsc-search-button:hover,
+                    input.gsc-search-button:focus {
+                        padding: 0;
+                        margin: 0;
+                        border: 0;
+                        border-radius: 0;
+                        background-color: transparent;
+                        cursor: pointer;
+                        text-indent: -9999px;
+                        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+                        filter: alpha(opacity=50);
+                        -moz-opacity: 0.5;
+                        -khtml-opacity: 0.5;
+                        opacity: 0;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
 
-                        float: right;
-                        margin: 10px;
-                        margin-right: 40px;
-                        background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        filter: invert(1) grayscale(2) brightness(0);
+                    td.gsc-search-button {
+
+                    float: right;
+                    margin: 10px;
+                    margin-right: 40px;
+                    background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    filter: invert(1) grayscale(2) brightness(0);
+                    width: 40px;
+                    height: 40px;
+                    background-size: 20px;
+                    }
+
+                    .gsc-search-box-tools .gsc-search-box .gsc-input {
+                        font-family: 'Inter';
+                        font-weight: 400;
+                        padding-right: 10px;
+                        height: 40px !important;
+                        line-height: normal;
+                        font-size: 14px;
+                        background: #fff !important;
+                        text-indent: 0 !important;
+                    }
+
+                    .dark .gsc-search-box-tools .gsc-search-box .gsc-input {
+                        background:  #fff0ec !important;
+                    }
+
+                    .gsc-input::placeholder {
+                        color: #333;
+                    }
+
+                    .gsc-search-box-tools .gsc-search-box .gsc-input::-webkit-input-placeholder {
+                        opacity: 1;
+                    }
+
+                    .gsc-search-box-tools .gsc-search-box .gsc-input::-moz-placeholder {
+                        opacity: 1;
+                    }
+
+                    .gsc-search-box-tools .gsc-search-box .gsc-input:-ms-input-placeholder {
+                        opacity: 1;
+                    }
+
+                    .gsc-search-box-tools .gsc-search-box .gsc-input:-moz-placeholder {
+                        opacity: 1;
+                    }
+
+                    td.gsc-search-button {
+                        margin-left: 0;
+                    }
+
+                    td.gsc-search-button .gsc-search-button-v2,
+                    td.gsc-search-button .gsc-search-button-v2:hover,
+                    td.gsc-search-button .gsc-search-button-v2:focus {
+                        background-color: transparent;
+                        border: 0;
+                        margin: 0;
+                        padding: 0;
+                        border-radius: 0;
+                        cursor: pointer;
                         width: 40px;
                         height: 40px;
-                        background-size: 20px;
-                        }
+                    }
 
-                        .gsc-search-box-tools .gsc-search-box .gsc-input {
-                           font-family: 'Inter';
-                           font-weight: 400;
-                           padding-right: 10px;
-                           height: 40px !important;
-                           line-height: normal;
-                           font-size: 14px;
-                           background: #fff !important;
-                           text-indent: 0 !important;
-                       }
+                    td.gsc-search-button .gsc-search-button-v2 svg {
+                        display: none;
+                    }
+                </style>
+                <gcse:searchbox-only style="border-radius: 8px;" resultsUrl="{{ url('search') }}">
+                </gcse:searchbox-only>
 
-                       .dark .gsc-search-box-tools .gsc-search-box .gsc-input {
-                           background:  #fff0ec !important;
-                       }
-
-                       .gsc-input::placeholder {
-                           color: #333;
-                       }
-
-                        .gsc-search-box-tools .gsc-search-box .gsc-input::-webkit-input-placeholder {
-                            opacity: 1;
-                        }
-
-                        .gsc-search-box-tools .gsc-search-box .gsc-input::-moz-placeholder {
-                            opacity: 1;
-                        }
-
-                        .gsc-search-box-tools .gsc-search-box .gsc-input:-ms-input-placeholder {
-                            opacity: 1;
-                        }
-
-                        .gsc-search-box-tools .gsc-search-box .gsc-input:-moz-placeholder {
-                            opacity: 1;
-                        }
-
-                        td.gsc-search-button {
-                            margin-left: 0;
-                        }
-
-                        td.gsc-search-button .gsc-search-button-v2,
-                        td.gsc-search-button .gsc-search-button-v2:hover,
-                        td.gsc-search-button .gsc-search-button-v2:focus {
-                            background-color: transparent;
-                            border: 0;
-                            margin: 0;
-                            padding: 0;
-                            border-radius: 0;
-                            cursor: pointer;
-                            width: 40px;
-                            height: 40px;
-                        }
-
-                        td.gsc-search-button .gsc-search-button-v2 svg {
-                            display: none;
-                        }
-                    </style>
-                    <gcse:searchbox-only style="border-radius: 8px;" resultsUrl="{{ url('search') }}">
-                    </gcse:searchbox-only>
-
-                </div>
             </div>
-
-
         </div>
+
+
     </div>
-</header>
+</div>

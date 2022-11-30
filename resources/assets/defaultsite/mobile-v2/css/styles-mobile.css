@@ -40,6 +40,7 @@
     bottom: 0;
     right: 0;
     left: 0;
+    top: 0;
 }
 
 .baca-juga-container p,
@@ -222,7 +223,6 @@ nav img {
     position: fixed;
     z-index: 30;
     background: #fff;
-    overflow-y: auto;
     transform: translateX(-100%);
 }
 
