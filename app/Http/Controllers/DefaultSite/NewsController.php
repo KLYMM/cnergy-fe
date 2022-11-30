@@ -374,7 +374,7 @@ class NewsController extends Controller
 
     function detail($category, $id, $slug=null,$page=null)
     {
-        $type = request()->query('type');
+        $debug = request()->query('debug');
 
         $page = $page==null?1: str_replace('page-', '', $page);
 
@@ -468,7 +468,7 @@ class NewsController extends Controller
             ],
         ]);
 
-        if($type === 'testing') {
+        if($debug === 'true') {
             $rowHtml = new Html();
             $content = $rowHtml->parseDom($row['news_content']);
 
