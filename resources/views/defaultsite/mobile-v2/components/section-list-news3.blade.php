@@ -25,7 +25,7 @@
                     class="article-date vh-text-xs color-primary-41 dark:text-white-20 mb-4 inline-block animate animate--fadeInLeft"
                     data-date="{{ Util::date($newsItem['news_date_publish'], 'default_date') }}"
                     data-hour="{{ Util::date($newsItem['news_date_publish'], 'default_hour') }}"
-                    data-authors="{{ $newsItem['news_editor'][0]['name'] }}"
+                    data-authors="{{ $newsItem['news_editor'][0]['name'] ?? '' }}"
                     style="--delay: 200ms">{{ Util::date($newsItem['news_date_publish'], 'ago') }}
                 </span>
                 <div class="article-paragraph line-clamp-5 text-primary-42 dark:text-white-20 mb-4 animate animate--fadeInUp"
