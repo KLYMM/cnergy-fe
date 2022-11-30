@@ -612,12 +612,11 @@ nav.hidden {
 
 .nav-main {
     height: 100vh;
-    position: relative;
+    position: fixed;
     z-index: 30;
     background: #fff0ec;
-    overflow-y: auto;
-    bottom: 69px;
     width: 100%;
+    top: 0;
 }
 
 .nav-content {
@@ -635,7 +634,6 @@ nav.hidden {
     justify-content: space-between;
     align-items: flex-start;
     padding: 30px 31px 20px;
-    /* border-bottom: 0.2px solid #dcdcdc; */
 }
 .nav-menus {
     padding: 0 43px;

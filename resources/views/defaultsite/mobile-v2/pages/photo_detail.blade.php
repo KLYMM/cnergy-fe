@@ -33,9 +33,9 @@
                 {{-- main --}}
                 <div class="swiper-wrapper">
                     @if (count($row['photonews'] ?? []) > 0)
-                        <div class="header-photo">
-                            <h3 class="photo-t">{{ $row['news_title'] ?? null }}</h3>
-                            <div class="account">
+                        <div style="margin: 20px 0;">
+                            <h3 class="photo-t" style="margin: 0px 20px">{{ $row['news_title'] ?? null }}</h3>
+                            <div class="account" style="margin:20px;">
                                 <a href="{{ Src::author($row) }}">
                                     <img class="rounded rounded-5" src="{{ URL::asset('assets/images/author.PNG') }}"
                                         alt="author" width="40" height="40px">
@@ -83,39 +83,41 @@
                                     </figure>
                                 </a>
 
-                                @if ($loop->iteration != $loop->last)
-                                    <button class="pages-button pages-button--img mt-6"
-                                        data-target="{{ $loop->iteration }}">
-                                        <figure class="item item--text d-flex "
-                                            style="align-items: center;justify-content: space-between; margin:0; ">
-                                            <span class="item--text-img">
-                                                <div class="image-news" alt="image">
-                                                    @include('image', [
-                                                        'source' => $s,
-                                                        'size' => '93x53',
-                                                        $s['news_title'] ?? null,
-                                                    ])
-                                                </div>
-                                            </span>
-                                            <figcaption class="item-desc d-flex  px-4"
-                                                style="justify-content: space-between; align-items: center; flex: 1 1 0%;">
-                                                <span class="pages-button--img-text">
-                                                    <span class="pages-button-text">There are
-                                                        {{ count($row['photonews']) - $loop->iteration }} more
-                                                        photos</span>
+                                <div style="text-align:center">
+                                    @if ($loop->iteration != $loop->last)
+                                        <button class="pages-button pages-button--img mt-6"
+                                            data-target="{{ $loop->iteration }}">
+                                            <figure class="item item--text d-flex "
+                                                style="align-items: center;justify-content: space-between; margin:0; ">
+                                                <span class="item--text-img">
+                                                    <div class="image-news" alt="image">
+                                                        @include('image', [
+                                                            'source' => $s,
+                                                            'size' => '93x53',
+                                                            $s['news_title'] ?? null,
+                                                        ])
+                                                    </div>
                                                 </span>
-                                                <span class="pages-button-countdown ml-2" data-delay="5">
-                                                    <span class="pages-button-countdown-html">5</span>
-                                                    <svg class="pages-button-countdown-svg">
-                                                        <circle r="14" cx="16" cy="16"
-                                                            stroke-linecap="round" stroke-width="3" fill="none"
-                                                            stroke="currentColor"></circle>
-                                                    </svg>
-                                                </span>
-                                            </figcaption>
-                                        </figure>
-                                    </button>
-                                @endif
+                                                <figcaption class="item-desc d-flex  px-4"
+                                                    style="justify-content: space-between; align-items: center; flex: 1 1 0%;">
+                                                    <span class="pages-button--img-text">
+                                                        <span class="pages-button-text">There are
+                                                            {{ count($row['photonews']) - $loop->iteration }} more
+                                                            photos</span>
+                                                    </span>
+                                                    <span class="pages-button-countdown ml-2" data-delay="5">
+                                                        <span class="pages-button-countdown-html">5</span>
+                                                        <svg class="pages-button-countdown-svg">
+                                                            <circle r="14" cx="16" cy="16"
+                                                                stroke-linecap="round" stroke-width="3" fill="none"
+                                                                stroke="currentColor"></circle>
+                                                        </svg>
+                                                    </span>
+                                                </figcaption>
+                                            </figure>
+                                        </button>
+                                    @endif
+                                </div>
                             </div>
                         @endforeach
                     @endif

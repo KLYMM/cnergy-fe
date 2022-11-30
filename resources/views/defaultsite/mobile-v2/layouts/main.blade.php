@@ -313,7 +313,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
     function callback() {
         for (i = 0; i < buttons.length; i++) {
-            if (i == pagination) {
+            if (i == pagination ) {
                 var attr = buttons[i].getAttribute('data-target')
                 selected = document.querySelector('#data-' + attr)
                 selectedCount = buttons[i].getElementsByClassName('pages-button-countdown')[0]
