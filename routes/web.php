@@ -47,11 +47,11 @@ Route::group(['namespace'=> config('site.namespace')], function()
 
         Route::get('/sitemap_web.xml', 'index')->middleware('cacheResponse:900');
 
-        Route::get('/sitemap_news.xml', 'index_news')->middleware('cacheResponse:900');
+        Route::get('/sitemap_news.xml', 'news')->middleware('cacheResponse:900');
 
-        Route::get('/photo/sitemap_image.xml', 'photo')->middleware('cacheResponse:900');
+        Route::get('sitemap_image.xml', 'photo')->middleware('cacheResponse:900');
 
-        Route::get('/video/sitemap_video.xml', 'video')->middleware('cacheResponse:900');
+        Route::get('sitemap_video.xml', 'video')->middleware('cacheResponse:900');
 
         Route::get('/sitemap_tag.xml', 'tag')->middleware('cacheResponse:900');
 
