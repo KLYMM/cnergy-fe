@@ -21,6 +21,7 @@ class NewsController extends Controller
         );
         $headline[0]['detail_news']=\Data::detailNews($headline[0]['news_id']??null);
 
+        $ogImage = "https://cdns.klimg.com/newshub.id//real/2022/12/01/3255650/og-image-homepage-trstdly.png";
 
 
         config()->set('site.attributes.meta', [
@@ -31,7 +32,7 @@ class NewsController extends Controller
             "article_keyword" => config('site.attributes.meta.article_keyword') ?? null,
             "article_url" => config('site.attributes.reldomain.domain_url'),
             "article_last_update" => $headline[0]['detail_news']['news_last_update']??null,
-            "article_url_image" =>  config('site.attributes.site_logo'),
+            "article_url_image" =>  $ogImage,
             "type" => 'website'
         ]);
         // dd(config('site.attributes'));
@@ -715,17 +716,21 @@ class NewsController extends Controller
 
             $rows[0]['detail_news']=\Data::detailNews($rows[0]['news_id']??null);
 
+            // dd(config('site.attributes'));
+
+            // dd($rows);
             config()->set('site.attributes.meta', [
-                "title"=>($rows[0]['category_name']??null)." | ".config('site.attributes.title'),
-                "article_title"=>$rows[0]['news_title']??null,
-                "site_description"=>config('site.attributes.site_description'),
-                "article_short_desc"=>$rows[0]['news_synopsis']??null,
-                "article_keyword"=>$rows[0]['detail_news']['news_keywords'][0]['keyword_name']??null,
-                "article_url"=>\Src::detail($rows[0]??null),
-                "article_last_update"=>$rows[0]['detail_news']['news_last_update']??null,
-                "article_url_image"=> \Src::imgNewsCdn($rows[0]??null, '640x360', 'jpeg'),
-                "type"=>'website'
+                "title" => config('site.attributes.title'),
+                "article_title" => config('site.attributes.title'),
+                "site_description" => config('site.attributes.site_description')??null,
+                "article_short_desc" => config('site.attributes.site_description')?? null,
+                "article_keyword" => config('site.attributes.meta.article_keyword') ?? null,
+                "article_url" => config('site.attributes.reldomain.domain_url'),
+                "article_last_update" => $headline[0]['detail_news']['news_last_update']??null,
+                "article_url_image" =>  config('site.attributes.site_logo'),
+                "type" => 'website'
             ]);
+        
 
             // kly object
             config()->set('site.attributes.object', [

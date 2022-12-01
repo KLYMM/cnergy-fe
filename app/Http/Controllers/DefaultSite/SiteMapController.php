@@ -15,13 +15,6 @@ class SiteMapController extends Controller
         if( !$urls )
         {
             $urls = [
-                // url('sitemap_tag.xml'),
-                // url('sitemap_web.xml'),
-                // url('sitemap_news.xml'),
-                // url('photo/sitemap_image.xml'),
-                // url('video/sitemap_video.xml'),
-                
-                // Url Baru 
                 url('sitemap_tag.xml'),
                 url('sitemap_news.xml'),
                 url('sitemap_image.xml'),
@@ -33,18 +26,11 @@ class SiteMapController extends Controller
             foreach( [...$categories] as $path )
             { 
                 $urls = [...$urls, ...[
-                    // url($path.'/sitemap_web.xml'),
-                    // url($path.'/sitemap_news.xml'),
-                    // url($path.'/sitemap_video.xml'),
-                    // url($path.'/sitemap_image.xml'),
-
-                    // Url Baru Kategori
                     url($path.'/sitemap_news.xml'),
                 ]];
             }
 
         }
-        // dd($urls);
 
         return response()->view('sitemap.index', compact('urls'))->header('Content-Type', 'text/xml');
     }
@@ -60,25 +46,12 @@ class SiteMapController extends Controller
                 path: 'news',
                 alltype: 0,
                 limit: 100,
-                // start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
-                // end_date: date('Y-m-d 23:59:59')
+                start_date: date('Y-m-d 00:00:01', strtotime('-7 days')),
+                end_date: date('Y-m-d 23:59:59')
             );
         }
-        // dd($rows);
         return response()->view('sitemap.news', compact('rows'))->header('Content-Type', 'text/xml');
     }
-
-    // function index_news() 
-    // {
-    //     $rows = Data::latest(
-    //         limit: 2,
-    //         alltype: 0,
-    //         start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
-    //         end_date: date('Y-m-d 23:59:59')
-    //     );
-
-    //     return response()->view('sitemap.index_news', compact('rows'))->header('Content-Type', 'text/xml');
-    // }
 
     /**
      * TYPE PHOTO
@@ -90,15 +63,13 @@ class SiteMapController extends Controller
             $rows = Data::latest(
                 path: 'photonews',
                 alltype: 0,
-                limit: 1000,
-                // start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
-                // end_date: date('Y-m-d 23:59:59')
+                limit: 100,
+                start_date: date('Y-m-d 00:00:01', strtotime('-7 days')),
+                end_date: date('Y-m-d 23:59:59')
             );
 
         }
 
-        // dd($rows);
-        
         return response()->view('sitemap.image', compact('rows'))->header('Content-Type', 'text/xml');
     }
 
@@ -113,14 +84,11 @@ class SiteMapController extends Controller
                 path: 'video',
                 alltype: 0,
                 limit: 100,
-
-                // Ini dinonaktifkan sementara karena berita yang diambil 1 hari sebelum hari ini
-                // start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
-                // end_date: date('Y-m-d 23:59:59')
+                start_date: date('Y-m-d 00:00:01', strtotime('-7 days')),
+                end_date: date('Y-m-d 23:59:59')
             );
 
         }
-        // dd($rows);
 
         return response()->view('sitemap.video', compact('rows'))->header('Content-Type', 'text/xml');
     }
@@ -141,17 +109,15 @@ class SiteMapController extends Controller
                 if($slug == $list['url']){
                     $urls = Data::listNewsByCategory(
                         categoryId: $list['id'],
-                        limit: 1000,
+                        limit: 100,
                         path: 'news',
                         alltype: 1,
-                        start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
+                        start_date: date('Y-m-d 00:00:01', strtotime('-7 days')),
                         end_date: date('Y-m-d 23:59:59')
                     );                  
                     
                 }                
             }
-            // dd($urls);
-
             return $this->index($urls);
         }
         //news
@@ -163,15 +129,14 @@ class SiteMapController extends Controller
                 if($slug == $list['url']){
                     $rows = Data::listNewsByCategory(
                         categoryId: $list['id'],
-                        limit: 1000,
+                        limit: 100,
                         path: 'news',
                         alltype: 0,
-                        start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
+                        start_date: date('Y-m-d 00:00:01', strtotime('-7 days')),
                         end_date: date('Y-m-d 23:59:59')
                     );                    
                 }                
             }
-            
             return $this->news($rows['data']);
         }
         //photo
@@ -183,18 +148,14 @@ class SiteMapController extends Controller
                 if($slug == $list['url']){
                     $rows = Data::listNewsByCategory(
                         categoryId: $list['id'],
-                        limit: 1000,
+                        limit: 100,
                         path: 'photonews',
                         alltype: 0,
-                        start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
+                        start_date: date('Y-m-d 00:00:01', strtotime('-7 days')),
                         end_date: date('Y-m-d 23:59:59')
                     );
-                    
                 }
-                
             }
-            #dd($rows['data']);
-
             return $this->photo($rows['data']);
         }
         //video
@@ -206,17 +167,16 @@ class SiteMapController extends Controller
                 if($slug == $list['url']){
                     $rows = Data::listNewsByCategory(
                         categoryId: $list['id'],
-                        limit: 1000,
+                        limit: 100,
                         path: 'video',
                         alltype: 0,
-                        start_date: date('Y-m-d 00:00:01', strtotime('-1 days')),
+                        start_date: date('Y-m-d 00:00:01', strtotime('-7 days')),
                         end_date: date('Y-m-d 23:59:59')
                     );
                     
                 }
                 
             }
-            #dd($rows);
             return $this->video($rows['data']);
         }
     }
@@ -226,7 +186,7 @@ class SiteMapController extends Controller
      */
     function tag()
     {
-        $rows=Data::listTag(limit: 1000)??null;
+        $rows=Data::listTag(limit: 100)??null;
         // dd($rows);
         return response()->view('sitemap.tag', compact('rows'))->header('Content-Type', 'text/xml');
     }
