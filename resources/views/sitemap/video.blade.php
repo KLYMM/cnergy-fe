@@ -14,8 +14,8 @@
                             <![CDATA[ {{ $u['news_synopsis'] }} ]]>
                         </video:description>
                         <video:thumbnail_loc>{{ Src::imgNewsCdn($u, '640x360') }}</video:thumbnail_loc>
-                        <video:publication_date>{{ date('Y-m-d\TH:i:sP', strtotime($u['news_date_publish'])) }}
-                        </video:publication_date>
+                        {{-- <video:publication_date>{{ date('Y-m-d\TH:i:sP', strtotime($u['news_date_publish'])) }}
+                        </video:publication_date> --}}
                         <video:category>
                             <![CDATA[ {{ $u['category_name'] }} ]]>
                         </video:category>

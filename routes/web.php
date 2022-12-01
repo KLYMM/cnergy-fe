@@ -47,11 +47,11 @@ Route::group(['namespace'=> config('site.namespace')], function()
 
         Route::get('/sitemap_web.xml', 'index')->middleware('cacheResponse:900');
 
-        Route::get('/sitemap_news.xml', 'index_news')->middleware('cacheResponse:900');
+        Route::get('/sitemap_news.xml', 'news')->middleware('cacheResponse:900');
 
-        Route::get('/photo/sitemap_image.xml', 'photo')->middleware('cacheResponse:900');
+        Route::get('sitemap_image.xml', 'photo')->middleware('cacheResponse:900');
 
-        Route::get('/video/sitemap_video.xml', 'video')->middleware('cacheResponse:900');
+        Route::get('sitemap_video.xml', 'video')->middleware('cacheResponse:900');
 
         Route::get('/sitemap_tag.xml', 'tag')->middleware('cacheResponse:900');
 
@@ -85,7 +85,7 @@ Route::group(['namespace'=> config('site.namespace')], function()
 
         Route::get('amp/{category}/read/{id}/{slug?}/{page?}', 'detailAmp')->middleware(['cacheResponse:54000', 'cache.headers', 'desired.slug', 'varnish.ttl:30'])->where('page', '^page\-([0-9]+)');
 
-        Route::get('/{category}/read/{id}/{slug?}/{page?}', 'detail')->middleware(['cacheResponse:54000', 'cache.headers', 'desired.slug', 'varnish.ttl:30'])->where('page', '^page\-([0-9]+)');
+        Route::get('/{category}/read/{id}/{slug?}/{page?}/{debug?}', 'detail')->middleware(['cacheResponse:54000', 'cache.headers', 'desired.slug', 'varnish.ttl:30'])->where('page', '^page\-([0-9]+)');
 
         Route::get('/{category}/{page?}', 'category')->middleware(['cacheResponse:900', 'desired.slug'])->where('page', '^page\-([0-9]+)');
         Route::get('/{category}/{subCategory1}/{page?}', 'category')->middleware(['cacheResponse:900', 'desired.slug'])->where('page', '^page\-([0-9]+)');

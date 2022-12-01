@@ -6,33 +6,16 @@
             @foreach ($rows as $u)
                 <url>
                     <loc>{{ Src::detail($u) }}</loc>
-                    <image:image>
-                        <image:loc>
-                            <![CDATA[ {{ $u['news_image']['real'] }} ]]>
-                        </image:loc>
-                        <image:caption>
-                            <![CDATA[ {{ $u['news_synopsis'] }} ]]>
-                        </image:caption>
-                        <image:title>
-                            <![CDATA[ {{ $u['news_title'] }} ]]>
-                        </image:title>
-                    </image:image>
-                </url>
-
-                {{-- @if ($u['photonews'])
-                    @foreach ($u['photonews'] as $img)
-                        <!-- loop photos -->
-                        <url>
-                            <loc>{{ url('photonews/read/' . $img['id'] . '/' . $img['url']) }}</loc>
+                    @if ($u['photonews'])
+                        @foreach ($u['photonews'] as $img)
                             <image:image>
                                 <image:loc>
-                                    <![CDATA[ {{ $img['image']['real'] }} ]]>
+                                    {{ $img['image']['real'] }}
                                 </image:loc>
                             </image:image>
-                        </url>
-                        <!-- loop -->
-                    @endforeach
-                @endif --}}
+                        @endforeach
+                    @endif
+                </url>
             @endforeach
         @endif
     </urlset>
