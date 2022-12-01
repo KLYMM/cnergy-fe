@@ -373,10 +373,8 @@ class NewsController extends Controller
         else abort(404);
     }
 
-    function detail($category, $id, $slug=null,$page=null)
+    function detail($category, $id, $slug=null, $page=null, $debug=null)
     {
-        $debug = request()->query('debug');
-
         $page = $page==null?1: str_replace('page-', '', $page);
 
         if (request('code')!=null) {
