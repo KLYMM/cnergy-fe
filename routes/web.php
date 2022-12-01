@@ -85,7 +85,7 @@ Route::group(['namespace'=> config('site.namespace')], function()
 
         Route::get('amp/{category}/read/{id}/{slug?}/{page?}', 'detailAmp')->middleware(['cacheResponse:54000', 'cache.headers', 'desired.slug', 'varnish.ttl:30'])->where('page', '^page\-([0-9]+)');
 
-        Route::get('/{category}/read/{id}/{slug?}/{page?}', 'detail')->middleware(['cacheResponse:54000', 'cache.headers', 'desired.slug', 'varnish.ttl:30'])->where('page', '^page\-([0-9]+)');
+        Route::get('/{category}/read/{id}/{slug?}/{page?}/{debug?}', 'detail')->middleware(['cacheResponse:54000', 'cache.headers', 'desired.slug', 'varnish.ttl:30'])->where('page', '^page\-([0-9]+)');
 
         Route::get('/{category}/{page?}', 'category')->middleware(['cacheResponse:900', 'desired.slug'])->where('page', '^page\-([0-9]+)');
         Route::get('/{category}/{subCategory1}/{page?}', 'category')->middleware(['cacheResponse:900', 'desired.slug'])->where('page', '^page\-([0-9]+)');
