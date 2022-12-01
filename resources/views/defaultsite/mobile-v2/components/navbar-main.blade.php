@@ -7,9 +7,9 @@
             <a class="header-body-logo-link" href="/">
                 <span class="header-body-logo-link-icon">
                     @if ($logo = \Site::api('fe-setting') ?? null)
-                    <img class="logo-section-3 icon-lg object-contain dark:img-white" alt="logo" width="140"
-                        height="48" src="{{ $logo['data']['site_logo'] ?? null }}" />
-                        @endif
+                        <img class="logo-section-3 icon-lg object-contain dark:img-white" alt="logo" width="140"
+                            height="48" src="{{ $logo['data']['site_logo'] ?? null }}" />
+                    @endif
                 </span>
             </a>
         </h1>
@@ -64,13 +64,11 @@
     <div class="nav-content">
         <div class="nav-header">
             @if ($logo = \Site::api('fe-setting') ?? null)
-            <a href="/"> <img class=" dark:img-white"
-                src="{{ $logo['data']['site_logo'] ?? null }}" alt="logo" width="140"
-                height="48" /></a>
+                <a href="/"> <img class=" dark:img-white" src="{{ $logo['data']['site_logo'] ?? null }}"
+                        alt="logo" width="140" height="48" /></a>
             @endif
-                    <img class="nav-close object-contain dark:img-white"
-                src="{{ URL::asset('assets/icons/icon-close.svg') }}" alt="search-icon" width="25px"
-                height="25px">
+            <img class="nav-close object-contain dark:img-white" src="{{ URL::asset('assets/icons/icon-close.svg') }}"
+                alt="search-icon" width="25px" height="25px">
         </div>
 
         <ul class="nav-menus">
@@ -209,6 +207,7 @@
                         width: 100%;
                         bottom: 0;
                         background-color: white;
+                        left: 0;
                     }
 
                     .dark .all-search-box {
@@ -232,7 +231,7 @@
 
                     .gsib_a {
                         padding: 10px;
-                        padding-right:0px;
+                        padding-right: 0px;
                         padding-left: 40px
                     }
 
@@ -266,8 +265,8 @@
                         background-color: yellow;
                     }
 
-                    .gsc-input-box{
-                        padding:0;
+                    .gsc-input-box {
+                        padding: 0;
                     }
 
                     input.gsc-search-button,
@@ -294,16 +293,16 @@
 
                     td.gsc-search-button {
 
-                    float: right;
-                    margin: 10px;
-                    margin-right: 40px;
-                    background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    filter: invert(1) grayscale(2) brightness(0);
-                    width: 40px;
-                    height: 40px;
-                    background-size: 20px;
+                        float: right;
+                        margin: 10px;
+                        margin-right: 40px;
+                        background-image: url(https://cdns.klimg.com/kapanlagi.com/v5/i/channel/entertainment/h2-search.png);
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        filter: invert(1) grayscale(2) brightness(0);
+                        width: 40px;
+                        height: 40px;
+                        background-size: 20px;
                     }
 
                     .gsc-search-box-tools .gsc-search-box .gsc-input {
@@ -318,7 +317,7 @@
                     }
 
                     .dark .gsc-search-box-tools .gsc-search-box .gsc-input {
-                        background:  #fff0ec !important;
+                        background: #fff0ec !important;
                     }
 
                     .gsc-input::placeholder {

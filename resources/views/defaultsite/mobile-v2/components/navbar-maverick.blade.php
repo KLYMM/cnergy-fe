@@ -211,6 +211,11 @@
                         width: 100%;
                         bottom: 0;
                         background-color: white;
+                        left: 0;
+                    }
+
+                    .dark .gsc-search-box-tools .gsc-search-box .gsc-input {
+                        background: #fff0ec !important;
                     }
 
                     .dark .all-search-box {
@@ -243,8 +248,8 @@
                         padding-left: 40px
                     }
 
-                    .gsc-input-box{
-                        padding:0;
+                    .gsc-input-box {
+                        padding: 0;
                     }
 
                     .gsst_a {
