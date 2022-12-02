@@ -39,13 +39,13 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
     <link rel="icon" type="image/png" href="{{ config('site.attributes.favicon') }}">
 
-    <meta name="title" content="{{ config('site.attributes.meta.title') ?? null }}">
-    <meta name="description" content="{{ config('site.attributes.meta.site_description') ?? null }}">
+    <meta name="title" content="{!! config('site.attributes.meta.title') ?? null !!}">
+    <meta name="description" content="{!! config('site.attributes.meta.site_description') ?? null !!}">
     <meta name="keywords" content="{{ config('site.attributes.meta.article_keyword') ?? null }}">
     <meta property="og:site_name" content="{{ config('site.attributes.reldomain.domain_name') ?? null }}">
     <meta property="og:url" content="{{ config('site.attributes.meta.article_url') ?? null }}">
-    <meta property="og:title" content="{{ config('site.attributes.meta.article_title') ?? null }}">
-    <meta property="og:description" content="{{ config('site.attributes.meta.article_short_desc') ?? null }}">
+    <meta property="og:title" content="{!! config('site.attributes.meta.article_title') ?? null !!}">
+    <meta property="og:description" content="{!! config('site.attributes.meta.article_short_desc') ?? null !!}">
     <meta property="article:modified_time" content="{{ config('site.attributes.meta.article_last_update') ?? null }}">
     <meta property="og:updated_time" content="{{ config('site.attributes.meta.article_last_update') ?? null }}">
     <meta property="fb:app_id" content="{{ config('site.attributes.fb_app_id') ?? null }}">
