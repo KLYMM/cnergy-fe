@@ -23,6 +23,7 @@
             <figure>
                 <div class="image-news">
                     @include('image', [
+                        'title' => $row['news_title'],
                         'source' => $row,
                         'size' => '380x214',
                         $row['news_title'] ?? null,
@@ -69,7 +70,7 @@
                 <div style="display:flex; align-items: center; margin: 20px; margin-bottom:46px;">
                     <hr class="hr-list">
                     <div class="slider-counter">Page {{ $loop->iteration + 1 }}<span id="sliderCounter"></span> of
-                        {{ count($row['news_paging']) + 1}}</div>
+                        {{ count($row['news_paging']) + 1 }}</div>
                     <hr class="hr-list">
                 </div>
                 <div class="dt-paragraph">

@@ -51,6 +51,7 @@
                         </div>
                         <div class="image-news">
                             @include('image', [
+                                'title' => $row['news_title'],
                                 'source' => $row,
                                 'size' => '380x214',
                                 $row['news_title'] ?? null,
@@ -61,6 +62,7 @@
                         <p class="photo-content">{{ $row['news_imageinfo'] ?? null }}</p>
 
                         @foreach ($row['photonews'] as $s)
+                            {{-- @dump($s) --}}
                             <div id="data-{{ $loop->index }}" data-target="{{ $loop->index }}"
                                 class="@if ($loop->index != 0) pages-item-hidden @endif">
                                 <div style="display:flex; align-items: center; margin: 20px;">
@@ -74,9 +76,10 @@
                                     <figure>
                                         <div class="image-news">
                                             @include('image', [
+                                                'title' => $s['title'],
                                                 'source' => $s,
                                                 'size' => '380x214',
-                                                $s['news_title'] ?? null,
+                                                $s['title'] ?? null,
                                             ])
                                         </div>
                                         <p class="photo-content">{{ $row['news_imageinfo'] ?? null }}</p>
