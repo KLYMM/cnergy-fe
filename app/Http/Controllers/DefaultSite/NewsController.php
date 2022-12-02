@@ -193,9 +193,9 @@ class NewsController extends Controller
 
             config()->set('site.attributes.meta', [
                 "title"=>$metaTitle,
-                "article_title"=>$rows[0]['news_title']??null,
+                "article_title"=>$metaTitle,
                 "site_description"=>$metaDesc,
-                "article_short_desc"=>$rows[0]['news_synopsis']??null,
+                "article_short_desc"=>$metaDesc,
                 "article_keyword"=>$rows[0]['detail_news']['news_keywords'][0]['keyword_name']??null,
                 "article_url"=>\Src::detail($rows[0]??null),
                 "article_last_update"=>$rows[0]['detail_news']['news_last_update']??null,
@@ -268,7 +268,7 @@ class NewsController extends Controller
             $headline['detail_news']=\Data::detailNews($headline['news_id']??null);
             config()->set('site.attributes.meta', [
                 "title"=>"Understandable and Credible ".$tagName." articles.",
-                "article_title"=>$headline['news_title']??null,
+                "article_title"=>"Understandable and Credible ".$tagName." articles.",
                 "site_description"=>"News with simple English. Provide best ".$tagName." articles for you that are trustworthy and understandable.",
                 "article_short_desc"=>"News with simple English. Provide best ".$tagName." articles for you that are trustworthy and understandable.",
                 "article_keyword"=>$headline['detail_news']['news_keywords'][0]['keyword_name']??null,
