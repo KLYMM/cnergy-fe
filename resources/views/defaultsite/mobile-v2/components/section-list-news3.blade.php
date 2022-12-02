@@ -7,6 +7,7 @@
                         <div class="flex justify-center object-cover w-full  animate animate--fadeIn "
                             style="--delay: 300ms" width="375" height="208">
                             @include('image ', [
+                                'title' => $newsItem['news_title'],
                                 'source' => $newsItem,
                                 'size' => '375x208',
                                 $newsItem['news_title'] ?? null,
