@@ -202,15 +202,16 @@
 
         var elementIndices = {};
         var backtop = document.querySelector('.backtop');
+
         console.log(sections.length)
         for (var i = 0; i < sections.length; i++) {
             elementIndices[sections[i].dataset.section] = i;
             io.observe(sections[i]);
 
-            backtop.addEventListener("click", function(e) {
-                sections[0].scrollIntoView();
-                e.preventDefault();
-            });
+            // backtop.addEventListener("click", function(e) {
+            //     sections[0].scrollIntoView();
+            //     e.preventDefault();
+            // });
         }
 
         //switchtheme
