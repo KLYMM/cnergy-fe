@@ -79,6 +79,8 @@ Route::group(['namespace'=> config('site.namespace')], function()
     // Tag News
     Route::controller(TagController::class)->group(function () {
         Route::get('/tag/{category?}/{page?}', 'tag')->middleware('cacheResponse:900')->where('page', '^page\-([0-9]+)');
+        Route::get('/tag/{category?}/{page?}/{newsid?}/{slug?}', 'tag')->middleware('cacheResponse:900')->where('page', '^page\-([0-9]+)')->where('newsid', '^([0-9]+)');
+        // Route::get('/tag-id/{id}', 'getTag')->middleware('cacheResponse:900');
     });
 
    // Index Berita

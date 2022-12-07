@@ -10,10 +10,18 @@ use Site, Data, Util, Str;
 
 class TagController extends Controller
 {
+    function getTag($id) {
+        $row = \Data::detailNews($id);
+        return view('defaultsite.mobile-v2.components.sections', [
+            'page' => 1,
+            'latest' => ['data' => [$row]],
+        ]);
+    }
     // Tag News
 
-    function tag(Request $request, $slug=null, $page=null)
+    function tag(Request $request, $slug=null, $page=null, $newsid=null, $newslug=null)
     {
+        // dd($newslug);
         $page = str_replace('page-', '', $page);
 
         $data=Data::listNewsByTag($slug, $page, 25);
@@ -22,7 +30,22 @@ class TagController extends Controller
                 return redirect(url('tag/'.$slug.'/page-'.$data['attributes']['last_page']));
             }
         }
+        if ($newsid && $page==1) {
+           
+           $news = \Data::detailNews($newsid);
+        //    dd($news['news_url']);
+           if (!$news){
+            return abort(404);
+           }
+           if (\Str::slug($news['news_title']) != $newslug) {
+            return redirect(\Src::tag($news));
+              }
 
+            $data['data']=array_merge([$news], $data['data']);
+           
+        }
+      
+    //    dd($data); 
         if( $rows = collect($data['data']??null) )
         {
             if( !($rows[0]['news_tag'][0]['tag_id']??null) ) return abort(404);

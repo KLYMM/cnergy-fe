@@ -2,7 +2,7 @@
     <h4 class="mb-3">ALSO READ</h4>
     <ul>
         @foreach ($news as $item)
-            <li class="mb-3"><a href="{{ Src::detail($item) }}"
+            <li class="mb-3"><a href="{{ Src::tag($item) }}"
                     aria-label="{{ $item['news_title'] ?? null }}">{{ $item['news_title'] }}
                 </a>
             </li>

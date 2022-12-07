@@ -134,6 +134,13 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         threshold: 0.75,
     };
 
+    // if (window.kly.gtm.category == "TagPage" && window.location.hash ) {
+    //     let newsId = window.location.hash.replace("#", "");
+    //     newsId = newsId.split("/")[0];
+    //     alert(news);
+        
+    // }
+
     const setScrollDirection = () => {
         if (scrollRoot.scrollTop > prevYPosition) {
             if (currentIndex % 5 === 0) {
