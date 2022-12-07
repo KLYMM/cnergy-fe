@@ -1,5 +1,5 @@
 <section data-section="section3" class="section snap-always snap-start w-full h-full flex flex-col shrink-0 transition bg-light-4 text-white dark:bg-dark-4" data-theme="highlight1">
-    <div class="section-body relative overflow-hidden flex-1 container max-w-full">
+    {{-- <div class="section-body relative overflow-hidden flex-1 container max-w-full">
         <article class="article relative overflow-hidden flex flex-col h-full px-6">
             <div class="article-main relative pt-12 flex-1">
                 <div class="article-desc flex relative pr-12 z-20">
@@ -7,7 +7,7 @@
                         @foreach ($chunk as $item)
                         @if($item->firstChild->nodeName === 'img')
                         <div class="article-asset relative -mx-6 mb-6  animate animate--fadeInUp" style="--delay: 0ms">
-                            <figure class="article-asset w-full vh-h-potrait aspect-375 bg-cover bg-no-repeat bg-center overflow-hidden" style="background-image: url(''); background-position: center -140px;">
+                            <figure class="article-asset w-full  bg-center overflow-hidden" style="background-image: url('');">
                                 {!! $item->ownerDocument->saveHtml($item->firstChild) !!}
                             </figure>
                         </div>
@@ -17,7 +17,7 @@
                         @else
                         <div class="article-desc relative">
                             <div class="article-paragraph font-primary-2 line-clamp-6 animate animate--fadeInUp" style="--delay: 100ms">
-                                <p>{{ $item->textContent }}</p>
+                                <p>{{    $item->textContent }}</p>
                             </div>
                         </div>
                         @endif
@@ -35,6 +35,39 @@
                 <span class="article-swipeup font-primary-2 vh-text-md animate-swipe animate-swipe-up"><svg class="transform rotate-180 inline-block -mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor">
                         <path d="m12 15.586-4.293-4.293-1.414 1.414L12 18.414l5.707-5.707-1.414-1.414z"></path>
                         <path d="m17.707 7.707-1.414-1.414L12 10.586 7.707 6.293 6.293 7.707 12 13.414z"></path>
+                    </svg> SWIPE UP</span>
+            </div>
+        </article>
+    </div> --}}
+    <div class="section-body relative overflow-hidden flex-1 container max-w-full">
+        <article class="article relative overflow-hidden flex flex-col h-full px-6">
+            <div class="article-main relative flex-1">
+                @foreach ($chunk as $item)
+                @if($item->firstChild->nodeName === 'img')
+                <div class="article-asset relative mb-6 mt-5  animate animate--fadeInUp" style="--delay: 0ms">
+                    <figure class="article-asset w-full rounded-2xl	  bg-center bg-cover overflow-hidden vh-h-potrait w-full" style="background-image: url('');">
+                        {!! $item->ownerDocument->saveHtml($item->firstChild) !!}
+                    </figure>
+                </div>
+                @endif
+                @if($loop->odd)
+                <div class="article-desc relative z-20">
+                    <div class="article-desc-body relative pl-16">
+                        <h1 class="article-title vh-text-md font-semibold mb-6 animate animate--fadeInUp" style="--delay: 0ms">{{ $item->textContent }}</h1>
+                        @else
+                        <span class="absolute top-3 left-0 w-12 border-t border-current  animate animate--fadeInUp" style="--delay: 100ms"></span>
+                        <div class="article-paragraph font-primary-2 line-clamp-9 animate animate--fadeInUp" style="--delay: 200ms">
+                            <p>{{$item->textContent }}</p>
+                        </div>
+                    </div>
+                   
+                </div>
+                @endif
+                @endforeach
+            </div>
+            <div class="article-footer flex justify-center items-center py-6">
+                <span class="article-swipeup font-primary-2 vh-text-md animate-swipe animate-swipe-up"><svg class="transform rotate-180 inline-block -mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor">
+                        <path d="m12 15.586-4.293-4.293-1.414 1.414L12 18.414l5.707-5.707-1.414-1.414z"></path><path d="m17.707 7.707-1.414-1.414L12 10.586 7.707 6.293 6.293 7.707 12 13.414z"></path>
                     </svg> SWIPE UP</span>
             </div>
         </article>
