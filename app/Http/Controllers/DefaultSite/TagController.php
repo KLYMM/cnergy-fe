@@ -24,7 +24,7 @@ class TagController extends Controller
         // dd($newslug);
         $page = str_replace('page-', '', $page);
 
-        $data=Data::listNewsByTag($slug, $page, 25);
+        $data=Data::listNewsByTag($slug, $page, 15);
         if ($data['attributes']['last_page']??null) {
             if ($page>$data['attributes']['last_page']) {
                 return redirect(url('tag/'.$slug.'/page-'.$data['attributes']['last_page']));

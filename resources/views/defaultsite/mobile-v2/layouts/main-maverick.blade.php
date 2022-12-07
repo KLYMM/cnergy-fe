@@ -138,7 +138,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     //     let newsId = window.location.hash.replace("#", "");
     //     newsId = newsId.split("/")[0];
     //     alert(news);
-        
+
     // }
 
     const setScrollDirection = () => {
@@ -202,6 +202,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                     getNews(currentPage)
                     entry.target.classList.remove("paginate")
                 }
+
+
 
 
                 onItersecting(entry.target, elementIndices[section]); // screen view
