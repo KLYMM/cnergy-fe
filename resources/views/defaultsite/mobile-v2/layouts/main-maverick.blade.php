@@ -356,15 +356,14 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             let btn_next = document.getElementById('btn-next')
             btn_next.setAttribute('href', url + '/page-' + (parseInt(page) + parseInt(1)))
         }
-        // console.log(url)
+
         window.axios.get(url + '/page-' + page + `?api_component=true`)
             .then(function(response) {
-                // console.log('load')
-                document.getElementById('feed-paging')
+                if(response.status == 200){
+                    document.getElementById('feed-paging')
                     .insertAdjacentHTML('beforebegin', response.data)
-                // setIndicator()
-                startIO()
-
+                    startIO()
+                }
             })
             .catch(function(error) {
                 console.log(error)
