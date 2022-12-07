@@ -181,11 +181,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             const nextbtn = document.getElementById("btn-up-id");
 
             if (entry.isIntersecting) {
-
                 let elem = entry.target;
+
                 if (elem.dataset.list == sections.length) {
                     elem.querySelector("#btn-up-id").classList.remove("mb-6");
                     elem.querySelector("#btn-up-id").classList.add("mb-16");
+                    onScreen(entry.target, elementIndices[section]); // page view
                 }
 
                 if (elem.classList.contains('paginate')) {
@@ -196,10 +197,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 }
 
 
-                onItersecting(entry.target, elementIndices[section]);
-                // console.log(elementIndices[section]);
-                // window.kly.gtm.position = elementIndices[section] + 1;
-
+                onItersecting(entry.target, elementIndices[section]); // screen view
             }
 
             if (entry.intersectionRatio > 0.75) {
@@ -228,6 +226,25 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     }, options);
 
 
+    function virtual_sv(data) {
+        dataLayer.push({
+            'event': 'screen_view',
+            'virtual_sreenview_path': data
+                .screenview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
+            'articleId': data.articleId,
+            'contentTitle': data.articleTitle,
+            'type': data.articleType, //feed
+            'subCategory': '$nama-category', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'authors': data.author,
+            'publicationDate': data.publicationDate, //2022-10-26
+            'publicationTime': data.publicationTime, //07:34:37
+            'templateId': data.template_id, //1|2|3|4
+            'templateName': data.template_name, //Headline 1|Headline 2|etc..
+            'position': data.position //1|2|3|etc...}
+        });
+    }
+
+
     function virtual_pv(data) {
         dataLayer.push({
             'event': 'virtual_page_view',
@@ -245,14 +262,15 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         });
     }
 
-    function onItersecting(target, currentIndex) {
+    function onScreen(target, currentIndex) {
         let date = target.querySelector('span.article-date').dataset.date.split(' ');
         let positionPage = currentIndex + 1;
         let authorName = target.querySelector('span.article-date').dataset.authors;
         target.setAttribute('data-position', currentIndex + 1)
 
+
         let data = {
-            pageview_path: window.location.href + "?page=" + positionPage,
+            pageview_path: window.location.href + "?page=" + currentPage,
             articleId: target.dataset.id,
             articleTitle: target.querySelector('h1.article-title').textContent.trim(),
             articleType: target.dataset.type,
@@ -278,7 +296,46 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         window.kly.gtm.templateName = data.template_name;
         window.kly.gtm.is_virtual = data.is_virtual;
 
+
         virtual_pv(data);
+    }
+
+
+    function onItersecting(target, currentIndex) {
+        let date = target.querySelector('span.article-date').dataset.date.split(' ');
+        let positionPage = currentIndex + 1;
+        let authorName = target.querySelector('span.article-date').dataset.authors;
+        target.setAttribute('data-position', currentIndex + 1)
+
+        let data = {
+            screenview_path: window.location.href + "?page=" + positionPage,
+            articleId: target.dataset.id,
+            articleTitle: target.querySelector('h1.article-title').textContent.trim(),
+            articleType: target.dataset.type,
+            author: authorName == undefined ? "" : authorName,
+            publicationDate: target.querySelector('span.article-date').dataset.date,
+            publicationTime: target.querySelector('span.article-date').dataset.hour,
+            template_id: target.dataset.template,
+            template_name: 'Feed ' + target.dataset.template,
+            position: currentIndex + 1,
+            is_virtual: currentIndex == 0 ? 0 : 1,
+        }
+
+
+        window.kly.gtm.subCategory = "feed";
+        window.kly.gtm.type = "feed";
+        window.kly.gtm.contentTitle = data.articleTitle;
+        window.kly.gtm.articleId = data.articleId;
+        window.kly.gtm.authors = data.author;
+        window.kly.gtm.publicationDate = data.publicationDate;
+        window.kly.gtm.publicationTime = data.publicationTime;
+        window.kly.gtm.templateId = data.template_id;
+        window.kly.gtm.position = currentIndex + 1;
+        window.kly.gtm.templateName = data.template_name;
+        window.kly.gtm.is_virtual = data.is_virtual;
+
+        virtual_sv(data);
+
     }
 
     const getNews = (page) => {

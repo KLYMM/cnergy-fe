@@ -2,7 +2,7 @@
     {{-- @dump(Site::api('fe-setting')) --}}
     <div class="flex justify-between items-center " style="padding: 20px 26px 0px 26px">
         <img class="nav-open " src="{{ URL::asset('assets/icons/burger.svg') }}" width="18px" height="18px" alt="bar-icon"
-            onclick="show()">
+            onclick="show()" style="cursor: pointer">
         <h1 class="header-body-logo text-3xl flex items-center font-bold">
             <a class="header-body-logo-link" href="/">
                 <span class="header-body-logo-link-icon">
