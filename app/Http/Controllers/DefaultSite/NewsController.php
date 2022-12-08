@@ -468,8 +468,7 @@ class NewsController extends Controller
         ]);
 
         if($debug === 'true') {
-            $rowHtml = new Html();
-            $content = $rowHtml->parseDom($row['news_content']);
+            $content = app(Html::class)->parseNews($row);
 
             return Site::view('pages.detail.index', compact('content', 'row'));
         }
@@ -730,7 +729,7 @@ class NewsController extends Controller
                 "article_url_image" =>  config('site.attributes.site_logo'),
                 "type" => 'website'
             ]);
-        
+
 
             // kly object
             config()->set('site.attributes.object', [
