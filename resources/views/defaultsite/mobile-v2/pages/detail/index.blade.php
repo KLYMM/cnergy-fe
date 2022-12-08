@@ -2,7 +2,7 @@
 
 
 @section('content')
-{{-- @dd($content[3]->ownerDocument->saveHtml($content[3]->firstChild)) --}}
+{{-- @dd($content->chunk(2)) --}}
 @include('defaultsite.mobile-v2.pages.detail.components.dua', ['row' => $row])
 @foreach ($content->chunk(2) as $chunk)
 @if ($loop->odd)

@@ -19,7 +19,7 @@
                     <h1 class="article-title vh-text-2xl font-semibold mb-6 pr-12 -mt-20 animate animate--fadeInUp" style="--delay: 300ms">{{ $row['news_title'] }}</h1>
                     <div class="article-desc-body relative pl-16">
                         <span class="absolute top-3 left-0 w-12 border-t border-current animate animate--fadeInUp" style="--delay: 400ms"></span>
-                        <div class="article-paragraph font-primary-2 line-clamp-6 animate animate--fadeInUp" style="--delay: 500ms">
+                        <div class="article-paragraph font-primary-2 animate animate--fadeInUp" style="--delay: 500ms">
                             <p>{{ $row['news_synopsis'] }}</p>
                         </div>
                     </div>
