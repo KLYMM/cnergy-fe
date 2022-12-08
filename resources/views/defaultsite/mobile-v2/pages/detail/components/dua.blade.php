@@ -1,8 +1,8 @@
 <!-- story.1 -->
 <section data-section="section1"
-    class="section snap-always snap-start w-full h-full flex flex-col shrink-0 transition bg-light-1 text-white dark:bg-dark-1"
+    class="section snap-always snap-start w-full h-full flex flex-col shrink-0 transition bg-light-1 text-white dark:bg-dark-1 pt-16"
     data-theme="story1">
-    <div class="section-body relative overflow-hidden flex-1 container max-w-full">
+    <div class="section-body mt-5F relative overflow-hidden flex-1 container max-w-full">
         <article class="article relative overflow-hidden flex flex-col h-full px-6">
             <div class="article-main relative flex-1">
                 <span
