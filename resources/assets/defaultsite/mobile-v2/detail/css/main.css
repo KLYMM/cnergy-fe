@@ -716,5 +716,8 @@ article {
     height: 100%;
 }
 .article-paragraph p {
-    text-align: justify;
+    text-align: left;
+}
+.ml-63 {
+    margin-left: 63px;
 }

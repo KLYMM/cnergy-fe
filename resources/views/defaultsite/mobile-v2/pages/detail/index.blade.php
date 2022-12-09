@@ -13,4 +13,8 @@
             @include('defaultsite.mobile-v2.pages.detail.components.tiga', ['chunk' => $chunk])
         @endif
     @endforeach
+    @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase1', ['row' => $row])
+    @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase2', ['row' => $row])
+    @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase3', ['row' => $row])
+    @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase4', ['row' => $row])
 @endsection
