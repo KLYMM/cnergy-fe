@@ -1,26 +1,26 @@
-<section data-section="section4"
-    class="section snap-always snap-start w-full h-full flex flex-col shrink-0 transition  dark:bg-dark-3 dark:text-white pt-16"
+<section data-section="section7"
+    class="section snap-always snap-start w-full h-full flex flex-col shrink-0 transition bg-light-5 text-black dark:bg-dark-3 dark:text-white pt-16"
     data-theme="highlight2">
-    <div class="section-body mt-5 relative overflow-hidden flex-1 container max-w-full">
+    <div class="section-body mt-7 relative overflow-hidden flex-1 container max-w-full">
         <article class="article relative overflow-hidden flex flex-col h-full px-6">
             <div class="article-main relative flex-1">
                 <div class="article-desc flex relative pr-12 z-20">
-                    <div class="article-desc-highlight ">
-                        <div class="article-desc relative">
-                            <div class="article-paragraph font-inter text-dark7 mt-5 text-xl font-normal  line-clamp-2 animate animate--fadeInUp"
-                                style="--delay: 100ms">
-                                <p>Baseball is a very popular sport in many countries. This sport has millions of fans across the world. For all baseball lovers, you should check out this collection of the best baseball quotes funny The best way to enjoy your free time is to read some silly jokes. </p>
-                            </div>
-                        </div>
-                        <div class="flex mt-5">
-                            <span
-                                    class="w-24 border-t-4 color-primary mt-3.5 border-current  animate animate--fadeInUp"
-                                    style="--delay: 100ms"></span>
-                                <div class="article-paragraph font-inter text-dark7 line-clamp-9 animate animate--fadeInUp"
-                                    style="--delay: 200ms">
-                                    <h1 class="article-title text-2xl pr-6 text-dark7 ml-10 font-bold">Funny black good morning quotes can be references and ideas</h1>
-                                </div>  
-
+                    <div class="article-desc-body relative pl-16">
+                        <span class="absolute top-3 left-0 w-12 border-t border-current animate animate--fadeInUp"
+                            style="--delay: 400ms">
+                        </span>
+                        <div class="article-paragraph font-primary-2  animate animate--fadeInUp">
+                            <ul class="animate animate--fadeInUp">
+                                <li class="mb-7 font-bold vh-text-lg uppercase ">
+                                    1. Search for the Apple Watch that you want to unpair. Then, tap the information
+                                    button on the right side to select it. It's the small circle button with an "i"
+                                    inside.
+                                </li>
+                                <li class="font-bold vh-text-lg uppercase ">
+                                    2. Then, scroll down and tap on the "Unpair Apple Watch" button. Confirm to
+                                    disconnect your Apple Watch from your old iPhone.
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
