@@ -414,6 +414,7 @@ nav img {
     font-size: 24px;
     font-weight: bolder;
     max-width: 75%;
+    line-height: 2rem;
 }
 .author-name {
     color: #ff3903;
@@ -1441,7 +1442,7 @@ nav img {
 .dt-share-container {
     display: flex;
     margin: 20px;
-    position: sticky;
+    /* position: sticky; */
 }
 
 .dt-share-container-fixed {
@@ -1499,6 +1500,7 @@ nav img {
     background-color: transparent;
     font-family: "Font Awesome 6 Brands";
     line-height: unset !important;
+    font-size: large;
 }
 
 .index-h1,
@@ -2344,8 +2346,9 @@ nav img {
 }
 
 .article-title {
-    font-size: 18px;
-    color: #000;
+    font-style: var(--font-inter);
+    font-size: 16px;
+    color: #333333;
 }
 
 .article-date,

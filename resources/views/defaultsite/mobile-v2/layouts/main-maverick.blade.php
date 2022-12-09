@@ -193,7 +193,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 if (elem.dataset.list == sections.length) {
                     elem.querySelector("#btn-up-id").classList.remove("mb-6");
                     elem.querySelector("#btn-up-id").classList.add("mb-16");
-                    onScreen(entry.target, elementIndices[section]); // page view
+                }
+
+                if (elem.dataset.list % 15 == 1 && elem.dataset.list != 1) {
+                    onScreen(entry.target, elementIndices[section]);
                 }
 
                 if (elem.classList.contains('paginate')) {
@@ -202,9 +205,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                     getNews(currentPage)
                     entry.target.classList.remove("paginate")
                 }
-
-
-
 
                 onItersecting(entry.target, elementIndices[section]); // screen view
             }
@@ -317,7 +317,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         target.setAttribute('data-position', currentIndex + 1)
 
         let data = {
-            screenview_path: window.location.href + "?page=" + positionPage,
+            screenview_path: window.location.href + "?screen=" + positionPage,
             articleId: target.dataset.id,
             articleTitle: target.querySelector('h1.article-title').textContent.trim(),
             articleType: target.dataset.type,
@@ -356,14 +356,15 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             let btn_next = document.getElementById('btn-next')
             btn_next.setAttribute('href', url + '/page-' + (parseInt(page) + parseInt(1)))
         }
-
+        // console.log(url)
         window.axios.get(url + '/page-' + page + `?api_component=true`)
             .then(function(response) {
-                if(response.status == 200){
-                    document.getElementById('feed-paging')
+                // console.log('load')
+                document.getElementById('feed-paging')
                     .insertAdjacentHTML('beforebegin', response.data)
-                    startIO()
-                }
+                // setIndicator()
+                startIO()
+
             })
             .catch(function(error) {
                 console.log(error)
