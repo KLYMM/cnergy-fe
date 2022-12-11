@@ -7,19 +7,19 @@
                 <div class="article-desc flex relative pr-12 z-20">
                     <div class="article-desc-highlight relative">
                         @foreach ($chunk as $item)
-                        @if ($item->firstChild->nodeName === 'img')
+                        {{-- @if($item->firstChild->nodeName === 'img')
                         <div class="article-asset relative -mx-6 mb-6  animate animate--fadeInUp" style="--delay: 0ms">
                             <figure class="article-asset w-full  bg-center overflow-hidden" style="background-image: url('');">
                                 {!! $item->ownerDocument->saveHtml($item->firstChild) !!}
                             </figure>
                         </div>
-                        @endif
-                        @if ($loop->odd)
-                        <h1 class="article-title vh-text-md font-semibold mb-6 animate animate--fadeInUp" style="--delay: 0ms">{{ $item->textContent }}</h1>
+                        @endif --}}
+                        @if($loop->odd)
+                        <h1 class="article-title vh-text-md font-semibold mb-6 animate animate--fadeInUp" style="--delay: 0ms">{!! $item !!}</h1>
                         @else
                         <div class="article-desc relative">
-                            <div class="article-paragraph font-primary-2 line-clamp-6 animate animate--fadeInUp" style="--delay: 100ms">
-                                <p>{{    $item->textContent }}</p>
+                            <div class="article-paragraph font-primary-2 animate animate--fadeInUp" style="--delay: 100ms">
+                                <p>{!! $item !!}</p>
                             </div>
                         </div>
                         @endif

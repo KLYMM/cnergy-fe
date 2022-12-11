@@ -72,6 +72,4 @@ class NewsController extends Controller
 
         return Site::view('pages.search');
     }
-
-
 }
