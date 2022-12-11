@@ -1,5 +1,11 @@
+<?php
+$themeClass = '';
+if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
+    $themeClass = 'dark';
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="<?php echo $themeClass; ?>">
 
 <head>
     <meta charset="utf-8">
@@ -27,7 +33,9 @@
     <link href="{{ Src::mix('detail/css/color.css') }}" rel="stylesheet">
     <link rel="preload" href="{{ Src::mix('css/styles-maverick.css') }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
-
+    <link rel="preload" href="{{ Src::mix('css/styles-mobile.css') }}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
 <body class="vh-text-md leading-normal bg-stone-100 font-primary-1 maverick-info">
