@@ -17,6 +17,7 @@
     --color-primary: #ff3903;
     --color-light5: #f8e569;
     --color-light6: #e0d0b7;
+    --color-light7: #fff0ec;
     --font-primary1: "Poppins", sans-serif;
     --font-primary2: "Karla", sans-serif;
     --font-inter: "Inter", sans-serif;
@@ -366,6 +367,9 @@
 
 .bg-light-5 {
     background-color: var(--color-light5);
+}
+.bg-light7 {
+    background-color: var(--color-light7);
 }
 
 .border-dark-5 {
