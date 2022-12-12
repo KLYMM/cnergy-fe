@@ -787,6 +787,25 @@ nav img {
     overflow: hidden;
 }
 
+#btn-read:checked ~ .dt-paragraph.article-paragraph p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.dt-paragraph.article-paragraph p {
+    transform: translateY(-100%);
+    position: absolute;
+    z-index: 10;
+}
+
+.dt-paragraph.article-paragraph.layout-down p {
+    transform: translateY(0);
+    position: relative;
+}
+
 .btn-inner::before {
     content: "Read Less";
 }
@@ -795,11 +814,19 @@ nav img {
     content: "Read More";
 }
 
+#btn-read:checked ~ .btn-inner-photo::before {
+    content: "Read More";
+}
+
 .btn-inner {
     margin-left: 20px;
     color: #ff3903;
     font-weight: 700;
     font-family: var(--font-inter);
+}
+
+.btn-inner-photo {
+    margin-left: 0.375rem;
 }
 
 .dt-paragraph p img {
