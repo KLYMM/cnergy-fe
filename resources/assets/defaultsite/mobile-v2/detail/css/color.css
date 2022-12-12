@@ -2,25 +2,33 @@
 
 :root {
     --color-dark0: #141414;
-    --color-dark1: #2F0055;
+    --color-dark1: #2f0055;
     --color-dark2: #290658;
     --color-dark3: #432000;
-    --color-dark4: #55170D;
-    --color-dark5: #3C3200;
-    --color-dark6: #2E2D2E;
-    --color-light0: #FFFFFF;
-    --color-light1: #8E01FF;
-    --color-light2: #680CE3;
-    --color-light3: #FFA754;
-    --color-light4: #F34F34;
-    --color-light5: #F8E569;
-    --color-light6: #E0D0B7;
-    --font-primary1: 'Poppins', sans-serif;
-    --font-primary2: 'Karla', sans-serif;
+    --color-dark4: #55170d;
+    --color-dark5: #3c3200;
+    --color-dark6: #2e2d2e;
+    --color-dark7: #333333;
+    --color-light0: #ffffff;
+    --color-light1: #8e01ff;
+    --color-light2: #680ce3;
+    --color-light3: #ffa754;
+    --color-light4: #f34f34;
+    --color-primary: #ff3903;
+    --color-light5: #f8e569;
+    --color-light6: #e0d0b7;
+    --color-light7: #fff0ec;
+    --font-primary1: "Poppins", sans-serif;
+    --font-primary2: "Karla", sans-serif;
+    --font-inter: "Inter", sans-serif;
 }
 
 .bg-gradient-blur {
-    background-image: linear-gradient(to bottom, var(--color-light1), var(--color-light3));
+    background-image: linear-gradient(
+        to bottom,
+        var(--color-light1),
+        var(--color-light3)
+    );
     filter: blur(200px);
 }
 
@@ -65,6 +73,9 @@
 .text-dark-0 {
     color: var(--color-dark0);
 }
+.text-dark7 {
+    color: var(--color-dark7);
+}
 
 .text-light-0 {
     color: var(--color-light0);
@@ -87,7 +98,11 @@
 }
 
 .dark .bg-gradient-blur {
-    background-image: linear-gradient(to bottom, var(--color-dark1), var(--color-dark3));
+    background-image: linear-gradient(
+        to bottom,
+        var(--color-dark1),
+        var(--color-dark3)
+    );
 }
 
 .dark .dark\:text-light-0 {
@@ -139,7 +154,11 @@
 }
 
 .dark .bg-gradient-blur {
-    background-image: linear-gradient(to bottom, var(--color-dark1), var(--color-dark3));
+    background-image: linear-gradient(
+        to bottom,
+        var(--color-dark1),
+        var(--color-dark3)
+    );
 }
 
 .dark .dark\:text-light-1 {
@@ -191,7 +210,11 @@
 }
 
 .dark .bg-gradient-blur {
-    background-image: linear-gradient(to bottom, var(--color-dark1), var(--color-dark3));
+    background-image: linear-gradient(
+        to bottom,
+        var(--color-dark1),
+        var(--color-dark3)
+    );
 }
 
 .dark .dark\:text-light-2 {
@@ -243,7 +266,11 @@
 }
 
 .dark .bg-gradient-blur {
-    background-image: linear-gradient(to bottom, var(--color-dark1), var(--color-dark3));
+    background-image: linear-gradient(
+        to bottom,
+        var(--color-dark1),
+        var(--color-dark3)
+    );
 }
 
 .dark .dark\:text-light-3 {
@@ -295,7 +322,11 @@
 }
 
 .dark .bg-gradient-blur {
-    background-image: linear-gradient(to bottom, var(--color-dark1), var(--color-dark3));
+    background-image: linear-gradient(
+        to bottom,
+        var(--color-dark1),
+        var(--color-dark3)
+    );
 }
 
 .dark .dark\:text-light-4 {
@@ -337,6 +368,9 @@
 .bg-light-5 {
     background-color: var(--color-light5);
 }
+.bg-light7 {
+    background-color: var(--color-light7);
+}
 
 .border-dark-5 {
     border-color: var(--color-dark5);
@@ -347,7 +381,11 @@
 }
 
 .dark .bg-gradient-blur {
-    background-image: linear-gradient(to bottom, var(--color-dark1), var(--color-dark3));
+    background-image: linear-gradient(
+        to bottom,
+        var(--color-dark1),
+        var(--color-dark3)
+    );
 }
 
 .dark .dark\:text-light-5 {
@@ -399,7 +437,11 @@
 }
 
 .dark .bg-gradient-blur {
-    background-image: linear-gradient(to bottom, var(--color-dark1), var(--color-dark3));
+    background-image: linear-gradient(
+        to bottom,
+        var(--color-dark1),
+        var(--color-dark3)
+    );
 }
 
 .dark .dark\:text-light-6 {
@@ -427,7 +469,6 @@
 }
 
 @keyframes wheelup {
-
     0%,
     100% {
         transform: translateY(0);
@@ -444,7 +485,6 @@
 }
 
 @keyframes wheeldown {
-
     0%,
     100% {
         transform: translateY(0);
@@ -461,7 +501,6 @@
 }
 
 @keyframes wheelopacity {
-
     0%,
     100% {
         opacity: 0;

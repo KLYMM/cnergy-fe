@@ -42,6 +42,20 @@ class Src
              .'/'. \Str::slug($row['news_title']??'') 
         );
     }
+     /**
+     * DETAIL NEWS URL
+     * [domain]/[kanal/]read/[id]/[slug]
+     */
+    static function tag($row)
+    {
+       
+        return url( 
+                   'tag/'.($row['news_tag'][0]['tag_url']??'') 
+        .'/page-1/'. ($row['news_id']??'') 
+             .'/'. \Str::slug($row['news_title']??'') 
+        );
+    }
+
 
     /**
      * DETAIL AUTHOR

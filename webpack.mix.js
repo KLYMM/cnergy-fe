@@ -19,6 +19,7 @@ mix.postCss(path + sitePath + "css/footer.css", sitePath + "css");
 mix.postCss(path + sitePath + "css/components.css", sitePath + "css");
 mix.postCss(path + sitePath + "css/paging.css", sitePath + "css");
 mix.postCss(path + sitePath + "css/styles-maverick.css", sitePath + "css");
+mix.postCss(path + sitePath + "css/detail-maverick.css", sitePath + "css");
 mix.postCss(path + sitePath + "css/styles-mobile.css", sitePath + "css");
 mix.postCss(path + sitePath + "css/styles.css", sitePath + "css");
 
