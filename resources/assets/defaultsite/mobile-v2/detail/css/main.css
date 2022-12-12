@@ -1,18 +1,18 @@
 :root {
-    --color-primary: #8B02FD;
+    --color-primary: #8b02fd;
     --color-primary-60: #310057;
-    --color-primary-40: #F7ECFF;
-    --color-yellow: #FFA952;
-    --color-yellow-40: #FFC485;
+    --color-primary-40: #f7ecff;
+    --color-yellow: #ffa952;
+    --color-yellow-40: #ffc485;
     --color-black: #000000;
     --color-black-60: #171717;
-    --color-black-40: #2E2D2E;
-    --color-white: #FFFFFF;
-    --color-white-20: #DCDCDC;
-    --color-gray: #514F4F;
-    --font-inter: 'Inter', sans-serif;
-    --font-nunito: 'Nunito Sans', sans-serif;
-    --font-redhat: 'Red Hat Display', sans-serif;
+    --color-black-40: #2e2d2e;
+    --color-white: #ffffff;
+    --color-white-20: #dcdcdc;
+    --color-gray: #514f4f;
+    --font-inter: "Inter", sans-serif;
+    --font-nunito: "Nunito Sans", sans-serif;
+    --font-redhat: "Red Hat Display", sans-serif;
 }
 
 @-ms-viewport {
@@ -99,8 +99,10 @@ article {
 .animate {
     --delay: 0ms;
     opacity: 0;
-    -webkit-transition: opacity 800ms var(--delay), transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99) var(--delay);
-    transition: opacity 800ms var(--delay), transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99) var(--delay);
+    -webkit-transition: opacity 800ms var(--delay),
+        transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99) var(--delay);
+    transition: opacity 800ms var(--delay),
+        transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99) var(--delay);
 }
 
 .animate--fadeIn {
@@ -483,7 +485,7 @@ article {
 }
 
 .border-t-12 {
-    border-top-width: .75rem;
+    border-top-width: 0.75rem;
 }
 
 .text-black {
@@ -544,8 +546,8 @@ article {
 }
 
 .rounded-xl {
-    -webkit-border-radius: .75rem;
-    border-radius: .75rem;
+    -webkit-border-radius: 0.75rem;
+    border-radius: 0.75rem;
 }
 
 .snap-mandatory {
@@ -622,11 +624,11 @@ article {
     cursor: pointer;
 }
 
-.switchTheme-control:checked~.switchTheme-icon .switchTheme-icon-light {
+.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-light {
     opacity: 0;
 }
 
-.switchTheme-control:checked~.switchTheme-icon .switchTheme-icon-dark {
+.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-dark {
     opacity: 1;
 }
 
@@ -643,7 +645,7 @@ article {
     left: 0;
     right: 0;
     bottom: 0;
-    transition: opacity .5s ease;
+    transition: opacity 0.5s ease;
 }
 
 .switchTheme-icon-dark {
@@ -704,4 +706,18 @@ article {
     height: 100%;
     outline: none;
     border: 0;
+}
+
+.article-asset figure img {
+    width: 100%;
+    color: transparent;
+    vertical-align: middle;
+    object-fit: cover;
+    height: 100%;
+}
+.article-paragraph p {
+    text-align: left;
+}
+.ml-63 {
+    margin-left: 63px;
 }
