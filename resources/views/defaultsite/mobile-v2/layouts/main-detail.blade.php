@@ -31,10 +31,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="{{ Src::mix('detail/css/main.css') }}" rel="stylesheet">
     <link href="{{ Src::mix('detail/css/color.css') }}" rel="stylesheet">
+
     <link rel="preload" href="{{ Src::mix('css/styles-maverick.css') }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="{{ Src::mix('css/styles-mobile.css') }}" as="style"
+    <link rel="preload" href="{{ Src::mix('css/detail-maverick.css') }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 

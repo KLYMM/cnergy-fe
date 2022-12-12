@@ -694,5 +694,5 @@ nav.hidden {
     border-top: 2px solid #ff3903;
 }
 .nav-menus .active a {
-    color: red;
+    color: var(--color-primary);
 }
