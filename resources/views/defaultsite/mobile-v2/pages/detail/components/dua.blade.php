@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div> --}}
-                @include('defaultsite.mobile-v2.components-ui.dt-share')
+                @include('defaultsite.mobile-v2.components.tailwind-dt-share')
             </div>
             <div class="article-footer flex relative  justify-center items-center py-6 text-red-600 font-bold">
                 <span class="article-swipeup  font-primary-2 vh-text-md animate-swipe animate-swipe-up"><svg
