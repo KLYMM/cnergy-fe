@@ -105,12 +105,12 @@ class DetailNewsController extends Controller
             ],
         ]);
 
-        $debug = (request()->query('new_exp') == 'maverick') ?? $debug;
+        // $debug = (request()->query('new_exp') == 'maverick') ?? $debug;
         // dd($debug);
         if($debug == 'true') {
             $rowHtml = new Html();
             $content = $rowHtml->parseNews($row);
-            // dd($content);
+
             return Site::view('pages.detail.index', compact('content', 'row'));
         }
 
