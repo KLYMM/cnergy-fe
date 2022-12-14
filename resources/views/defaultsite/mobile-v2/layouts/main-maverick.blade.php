@@ -237,6 +237,15 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         });
     }, options);
 
+    let subCategory = '';
+    if (window.location.pathname.split('/')[1] == '' || window.location.pathname.split('/')[1] == 'index-berita' ||
+        window.location.pathname.split('/')[1] == 'photo' || window.location.pathname.split('/')[1] == 'video') {
+        subCategory = 'feed';
+    } else if (window.location.pathname.split('/')[1] == 'tag') {
+        subCategory = 'tag';
+    } else {
+        subCategory = window.location.pathname.split('/')[1];
+    }
 
     function virtual_sv(data) {
         dataLayer.push({
@@ -246,7 +255,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             'articleId': data.articleId,
             'contentTitle': data.articleTitle,
             'type': 'feed', //feed
-            'subCategory': 'feed', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'subCategory': subCategory, //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
             'authors': data.author,
             'publicationDate': data.publicationDate, //2022-10-26
             'publicationTime': data.publicationTime, //07:34:37
@@ -264,7 +273,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             'articleId': data.articleId,
             'contentTitle': data.articleTitle,
             'type': 'feed', //feed
-            'subCategory': 'feed', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'subCategory': subCategory, //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
             'authors': data.author,
             'publicationDate': data.publicationDate, //2022-10-26
             'publicationTime': data.publicationTime, //07:34:37
@@ -295,7 +304,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             is_virtual: currentIndex == 0 ? 0 : 1,
         }
 
-
+        window.kly.gtm.pageTitle = data.articleTitle;
         window.kly.gtm.subCategory = "feed";
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
@@ -333,7 +342,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             is_virtual: currentIndex == 0 ? 0 : 1,
         }
 
-
+        window.kly.gtm.pageTitle = data.articleTitle;
         window.kly.gtm.subCategory = "feed";
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
@@ -421,7 +430,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             'articleId': target.dataset.id,
             'articleTitle': target.querySelector('h1.article-title').textContent.trim(),
             'type': window.kly.gtm.type, //feed
-            'subCategory': 'feed', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'subCategory': subCategory, //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
             'authors': window.kly.gtm.authors,
             'publicationDate': target.querySelector('span.article-date').dataset.date, //2022-10-26
             'publicationTime': target.querySelector('span.article-date').dataset.hour, //07:34:37
