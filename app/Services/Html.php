@@ -25,6 +25,7 @@ class Html
 
         $news = $this->transformElement($news);
 
+        // dd($news);
         return $news;
     }
 
@@ -49,28 +50,31 @@ class Html
         return $dom;
     }
 
-    // public function loadDOMElement($elmData): DOMElement
+    // public function loadDOMElement($elmData)
     // {
-    //     $elm = new DOMElement();
+    //     $elm = $this->loadDOM($elmData);
     //     $elm->loadHtml($elmData);
+    //     dd($elm);
 
     //     return $elm;
     // }
 
-    public function checkChildElement($elm): string
-    {
-        $dom = $this->loadDOM($elm);
+    // public function checkChildElement($elm): string
+    // {
+    //     $dom = $this->loadDOM($elm);
+    //     dd($dom);
 
-        if(count($dom->childNodes) > 0) {
-            dd($dom->firstChild);
-        }
-        return '';
-    }
+    //     // if(count($dom->childNodes) > 0) {
+    //     //     dd($dom->firstChild);
+    //     // }
+    //     return '';
+    // }
 
     public function transformElement(Collection $elm): array
     {
         $elm->transform(function($item, $key) {
-            // $itemChildType = $this->checkChildElement($item);
+            // $itemChildType = $this->loadDOMElement($item);
+            // echo ($itemChildType);
             return [
                 'type' => '',
                 'chars' => strlen(strip_tags($item)),
