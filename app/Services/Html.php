@@ -4,6 +4,7 @@ namespace App\Services;
 
 use DOMDocument;
 use DOMXPath;
+use Illuminate\Support\Collection;
 
 class Html
 {
@@ -18,6 +19,8 @@ class Html
                 $news = $news->merge($this->parseDom(html_entity_decode($np['content'])));
             }
         }
+
+        $news = $this->checkElement($news);
 
         return $news;
     }
@@ -43,8 +46,18 @@ class Html
         return $dom;
     }
 
-    public function checkElement($elm)
+    public function checkElement(Collection $elm): array
     {
-        return $this->loadDOM($elm);
+        $elm->transform(function($item, $key) {
+            return [
+                'type' => 'text',
+                'chars' => strlen(strip_tags($item)),
+                'words' => str_word_count(strip_tags($item)),
+                'santences' => 3,
+                'content' => $item
+            ];
+        });
+
+        return $elm->all();
     }
 }
