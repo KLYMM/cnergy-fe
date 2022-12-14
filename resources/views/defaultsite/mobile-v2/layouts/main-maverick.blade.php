@@ -242,8 +242,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 .screenview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
             'articleId': data.articleId,
             'contentTitle': data.articleTitle,
-            'type': data.articleType, //feed
-            'subCategory': '$nama-category', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'type': 'feed', //feed
+            'subCategory': 'feed', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
             'authors': data.author,
             'publicationDate': data.publicationDate, //2022-10-26
             'publicationTime': data.publicationTime, //07:34:37
@@ -260,8 +260,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             'virtual_pageview_path': data.pageview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
             'articleId': data.articleId,
             'contentTitle': data.articleTitle,
-            'type': data.articleType, //feed
-            'subCategory': '$nama-category', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'type': 'feed', //feed
+            'subCategory': 'feed', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
             'authors': data.author,
             'publicationDate': data.publicationDate, //2022-10-26
             'publicationTime': data.publicationTime, //07:34:37
