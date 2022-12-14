@@ -295,7 +295,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             is_virtual: currentIndex == 0 ? 0 : 1,
         }
 
-
+        window.kly.gtm.pageTitle = data.articleTitle;
         window.kly.gtm.subCategory = "feed";
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
@@ -333,7 +333,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             is_virtual: currentIndex == 0 ? 0 : 1,
         }
 
-
+        window.kly.gtm.pageTitle = data.articleTitle;
         window.kly.gtm.subCategory = "feed";
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
