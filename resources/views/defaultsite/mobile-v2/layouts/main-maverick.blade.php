@@ -126,6 +126,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     const scrollRoot = document.querySelector("[data-scroller]");
     let currentPage = 1;
 
+
     let currentIndex = 0;
     let prevYPosition = 0;
 
@@ -191,8 +192,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 let elem = entry.target;
 
                 if (elem.dataset.list == sections.length) {
-                    elem.querySelector("#btn-up-id").classList.remove("mb-6");
-                    elem.querySelector("#btn-up-id").classList.add("mb-16");
+                    if (elem.querySelector("#btn-up-id")) {
+                        elem.querySelector("#btn-up-id").classList.remove("mb-6");
+                        elem.querySelector("#btn-up-id").classList.add("mb-16");
+                    }
                 }
 
                 if (elem.dataset.list % 15 == 1 && elem.dataset.list != 1) {
@@ -238,7 +241,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     function virtual_sv(data) {
         dataLayer.push({
             'event': 'screen_view',
-            'virtual_sreenview_path': data
+            'virtual_screenview_path': data
                 .screenview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
             'articleId': data.articleId,
             'contentTitle': data.articleTitle,
@@ -292,7 +295,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             is_virtual: currentIndex == 0 ? 0 : 1,
         }
 
-
+        window.kly.gtm.pageTitle = data.articleTitle;
         window.kly.gtm.subCategory = "feed";
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
@@ -330,7 +333,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             is_virtual: currentIndex == 0 ? 0 : 1,
         }
 
-
+        window.kly.gtm.pageTitle = data.articleTitle;
         window.kly.gtm.subCategory = "feed";
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
