@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
 use DOMDocument;
+use DOMElement;
 use DOMXPath;
+use Illuminate\Support\Collection;
 
 class Html
 {
@@ -19,6 +23,9 @@ class Html
             }
         }
 
+        $news = $this->transformElement($news);
+
+        // dd($news);
         return $news;
     }
 
@@ -43,8 +50,40 @@ class Html
         return $dom;
     }
 
-    public function checkElement($elm)
+    // public function loadDOMElement($elmData)
+    // {
+    //     $elm = $this->loadDOM($elmData);
+    //     $elm->loadHtml($elmData);
+    //     dd($elm);
+
+    //     return $elm;
+    // }
+
+    // public function checkChildElement($elm): string
+    // {
+    //     $dom = $this->loadDOM($elm);
+    //     dd($dom);
+
+    //     // if(count($dom->childNodes) > 0) {
+    //     //     dd($dom->firstChild);
+    //     // }
+    //     return '';
+    // }
+
+    public function transformElement(Collection $elm): array
     {
-        return $this->loadDOM($elm);
+        $elm->transform(function($item, $key) {
+            // $itemChildType = $this->loadDOMElement($item);
+            // echo ($itemChildType);
+            return [
+                'type' => '',
+                'chars' => strlen(strip_tags($item)),
+                'words' => str_word_count(strip_tags($item)),
+                'santences' => 0,
+                'content' => $item
+            ];
+        });
+
+        return $elm->all();
     }
 }
