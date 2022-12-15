@@ -40,11 +40,11 @@ class IndexBeritaController extends Controller
                 page: $page,
                 paging: 1,
                 ex_id: Util::getNewsExId($rows),
-                limit: Site::isMobile() ? 15 : 50
+                limit: Site::isMobile() ? 25 : 50
             );
             if ($latest['attributes']['last_page']??null) {
                 if ($page>$latest['attributes']['last_page']) {
-                    return redirect(url('index-berita/page-'.$latest['attributes']['last_page']));
+                    return abort(404);
                 }
             }
 
