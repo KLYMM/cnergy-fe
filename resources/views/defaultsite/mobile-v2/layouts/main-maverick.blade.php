@@ -9,22 +9,24 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 <head>
     <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KH4RTMT');
-    </script>
+    @if (config('app.env'))
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-KH4RTMT');
+        </script>
+    @endif
     <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <title>{{ config('site.attributes.meta.title') }}</title>
@@ -198,7 +200,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                     }
                 }
 
-                if (elem.dataset.list % 15 == 1 && elem.dataset.list != 1) {
+                if (elem.dataset.list % 25 == 1 && elem.dataset.list != 1) {
                     onScreen(entry.target, elementIndices[section]);
                 }
 
@@ -371,12 +373,11 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         // console.log(url)
         window.axios.get(url + '/page-' + page + `?api_component=true`)
             .then(function(response) {
-                // console.log('load')
-                document.getElementById('feed-paging')
-                    .insertAdjacentHTML('beforebegin', response.data)
-                // setIndicator()
-                startIO()
-
+                if (response.status == 200) {
+                    document.getElementById('feed-paging')
+                        .insertAdjacentHTML('beforebegin', response.data)
+                    startIO()
+                }
             })
             .catch(function(error) {
                 console.log(error)
@@ -393,7 +394,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 
 
-            if (i == (sections.length - 5)) {
+            if (i == (sections.length - 5 && i > 0)) {
                 io.unobserve(sections[i])
                 sections[i].classList.add("paginate")
             }
