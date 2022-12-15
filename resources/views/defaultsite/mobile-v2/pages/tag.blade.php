@@ -8,7 +8,7 @@
             @include('defaultsite.mobile-v2.components.sections', ['page' => 1, 'latest' => $data])
 
             {{-- BTN Next Page --}}
-            <div style="position: relative;
+            <!-- <div style="position: relative;
             z-index: 20;
             bottom: 46px;">
                 @include('defaultsite.mobile-v2.components.button-next', [
@@ -17,7 +17,7 @@
                     'slug' => 'tag/' . $slug,
                 ])
 
-            </div>
+            </div> -->
 
             <div id="feed-paging"></div>
         </div>
