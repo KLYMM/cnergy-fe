@@ -71,6 +71,8 @@ return [
 
     'enabled_turbolink' => env('ENABLED_TURBOLINK', true),
 
+    'enabled_tracelog' => env('ENABLED_TRACELOG', true),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

@@ -126,6 +126,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     const scrollRoot = document.querySelector("[data-scroller]");
     let currentPage = 1;
 
+
     let currentIndex = 0;
     let prevYPosition = 0;
 
@@ -191,8 +192,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 let elem = entry.target;
 
                 if (elem.dataset.list == sections.length) {
-                    elem.querySelector("#btn-up-id").classList.remove("mb-6");
-                    elem.querySelector("#btn-up-id").classList.add("mb-16");
+                    if (elem.querySelector("#btn-up-id")) {
+                        elem.querySelector("#btn-up-id").classList.remove("mb-6");
+                        elem.querySelector("#btn-up-id").classList.add("mb-16");
+                    }
                 }
 
                 if (elem.dataset.list % 15 == 1 && elem.dataset.list != 1) {
@@ -234,16 +237,25 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         });
     }, options);
 
+    let subCategory = '';
+    if (window.location.pathname.split('/')[1] == '' || window.location.pathname.split('/')[1] == 'index-berita' ||
+        window.location.pathname.split('/')[1] == 'photo' || window.location.pathname.split('/')[1] == 'video') {
+        subCategory = 'feed';
+    } else if (window.location.pathname.split('/')[1] == 'tag') {
+        subCategory = 'tag';
+    } else {
+        subCategory = window.location.pathname.split('/')[1];
+    }
 
     function virtual_sv(data) {
         dataLayer.push({
             'event': 'screen_view',
-            'virtual_sreenview_path': data
+            'virtual_screenview_path': data
                 .screenview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
             'articleId': data.articleId,
             'contentTitle': data.articleTitle,
-            'type': data.articleType, //feed
-            'subCategory': '$nama-category', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'type': 'feed', //feed
+            'subCategory': subCategory, //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
             'authors': data.author,
             'publicationDate': data.publicationDate, //2022-10-26
             'publicationTime': data.publicationTime, //07:34:37
@@ -260,8 +272,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             'virtual_pageview_path': data.pageview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
             'articleId': data.articleId,
             'contentTitle': data.articleTitle,
-            'type': data.articleType, //feed
-            'subCategory': '$nama-category', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'type': 'feed', //feed
+            'subCategory': subCategory, //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
             'authors': data.author,
             'publicationDate': data.publicationDate, //2022-10-26
             'publicationTime': data.publicationTime, //07:34:37
@@ -292,7 +304,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             is_virtual: currentIndex == 0 ? 0 : 1,
         }
 
-
+        window.kly.gtm.pageTitle = data.articleTitle;
         window.kly.gtm.subCategory = "feed";
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
@@ -330,7 +342,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             is_virtual: currentIndex == 0 ? 0 : 1,
         }
 
-
+        window.kly.gtm.pageTitle = data.articleTitle;
         window.kly.gtm.subCategory = "feed";
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
@@ -417,7 +429,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             'articleId': target.dataset.id,
             'articleTitle': target.querySelector('h1.article-title').textContent.trim(),
             'type': window.kly.gtm.type, //feed
-            'subCategory': 'feed', //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+            'subCategory': subCategory, //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
             'authors': window.kly.gtm.authors,
             'publicationDate': target.querySelector('span.article-date').dataset.date, //2022-10-26
             'publicationTime': target.querySelector('span.article-date').dataset.hour, //07:34:37

@@ -20,7 +20,7 @@
         "position": 1,
         "templateId": null,
         "templateName": null,
-        "subCategory": "{{ explode('.', config('site.attributes.reldomain.domain_name'))[0] }}", // nama kategori (level 1)
+        "subCategory": "{{ explode('.', config('site.attributes.reldomain.domain_name'))[0] ?? 'feed' }}", // nama kategori (level 1)
         "subSubCategory": "{{ config('site.attributes.object.article.news_category.0.name') }}", // nama sub kategori (level 2)
         "subsubSubCategory": "", // sub sub kategori (level 3)
         "tag": "{{ implode('|',collect(config('site.attributes.object.article.news_tag'))->pluck('tag_name')->sort()->toArray()) }}", // tag
@@ -45,7 +45,7 @@
         "enabled": true, // default true
         "log": false, // default false
         "imageCreation": false, // default false
-        "type": "{{ ['news' => 'text', 'photonews' => 'PhotoGallery', 'video' => 'VideoGallery'][config('site.attributes.object.article.news_type')] ?? '' }}", // tipe news (TextTypeArticle, PhotoGallery, VideoGallery)
+        "type": "{{ ['news' => 'text', 'photonews' => 'PhotoGallery', 'video' => 'VideoGallery'][config('site.attributes.object.article.news_type')] ?? 'feed' }}", // tipe news (TextTypeArticle, PhotoGallery, VideoGallery)
         "videos": "", // kosongkan
         "partner": "", // kosongkan
         "isSEO": false, // SEO news true or false, default false
@@ -174,3 +174,25 @@
 @if (config('app.enabled_ads'))
     {!! Util::getAds('gpt') !!}
 @endif
+
+<!-- KLY TRACE LOG -->
+
+@if (config('app.enabled_tracelog'))
+    <script type="text/javascript">
+        (function(doc, id) {
+            if (doc.getElementById(id)) {
+                return;
+            }
+            var kly_trace_log___scripts = doc.createElement('script');
+            kly_trace_log___scripts.src = 'https://trace-log.kl-youniverse.com/js/embed.js';
+            kly_trace_log___scripts.type = 'text/javascript';
+            kly_trace_log___scripts.async = true;
+            kly_trace_log___scripts.defer = true;
+            kly_trace_log___scripts.id = id;
+            var s = doc.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(kly_trace_log___scripts, s);
+        })(document, 'klytracelog');
+    </script>
+@endif
+
+<!-- END OF KLY TRACE LOG -->

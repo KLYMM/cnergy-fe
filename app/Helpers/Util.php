@@ -184,4 +184,7 @@ class Util {
         
         return  str_replace(["\n", "\r"], "", config('site.ads')[$name] ?? '');
     }
+
 }
+
+    
