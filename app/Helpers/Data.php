@@ -147,7 +147,7 @@ class Data {
     /**
      * Get Lates News
      */
-    static function latest( $category=null, $page=1, $limit=15, $max_id=null, $paging=false, $path='news', $ex_id=null, $force=false, $alltype=1, $publish_at=null, $start_date=null, $end_date=null, $author=null  )
+    static function latest( $category=null, $page=1, $limit=25, $max_id=null, $paging=false, $path='news', $ex_id=null, $force=false, $alltype=1, $publish_at=null, $start_date=null, $end_date=null, $author=null  )
     {
         if( $paging ) self::$defaultListNews = '*';
 
