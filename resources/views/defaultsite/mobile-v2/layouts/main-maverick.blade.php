@@ -351,12 +351,19 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     const getNews = (page) => {
         let slug = url => new URL(url).pathname.match(/[^\/]+/g)
         let url = window.location.href.split('?')[0]
+        url = url.split('/page-')[0]
+
+        // newUrl.pop();
+        // console.log(slug(url));
+        // console.log(page);
+        // console.log("url", url);
 
         if (slug(url) == null) {
             url = url + 'index-berita'
             let btn_next = document.getElementById('btn-next')
             btn_next.setAttribute('href', url + '/page-' + (parseInt(page) + parseInt(1)))
         }
+
         // console.log(url)
         window.axios.get(url + '/page-' + page + `?api_component=true`)
             .then(function(response) {
@@ -377,9 +384,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
     function startIO() {
         const sections = document.querySelectorAll("[data-section]");
+        // console.log("sections", sections);
+        // console.log("sections.length", sections.length);
 
         for (var i = 0; i < sections.length; i++) {
             if (i == (sections.length - 5)) {
+                // console.log('test', i);
                 io.unobserve(sections[i])
                 sections[i].classList.add("paginate")
             }
