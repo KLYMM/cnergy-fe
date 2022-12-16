@@ -27,7 +27,7 @@ class TagController extends Controller
         $data=Data::listNewsByTag($slug, $page, 25);
         if ($data['attributes']['last_page']??null) {
             if ($page>$data['attributes']['last_page']) {
-                return abort(404);
+                return redirect(url('tag/'.$slug.'/page-'.$data['attributes']['last_page']));
             }
         }
         if ($newsid && $page==1) {

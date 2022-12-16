@@ -171,16 +171,23 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
             button.classList.add("snap-always", "shrink-0", "indicator-bullet");
             if (i === currentIndex) {
+                console.log(i)
                 button.classList.add("indicator-bullet-active");
             }
-
-            // (function(i) {
-            //     button.onclick = function() {
-            //         sections[i].scrollIntoView();
-            //     }
-            // })(i);
-
             indicators.appendChild(button);
+        }
+        if(sections.length % 5 != 0){
+            let buttonsNeeded
+            for(var j = 1 ; j<5 ; j++){
+                if((sections.length + j) % 5 == 0){
+                    buttonsNeeded = j;
+                }
+            }
+            for (var i = 1; i <= buttonsNeeded; i++) {
+                var button = document.createElement("span");
+                button.classList.add("snap-always", "shrink-0", "indicator-bullet", "invisible");
+                indicators.appendChild(button);
+            }
         }
     };
 
@@ -206,7 +213,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
                 if (elem.classList.contains('paginate')) {
                     currentPage = currentPage + 1
-                    io.unobserve(entry.target)
+                    // io.unobserve(entry.target)
                     getNews(currentPage)
                     entry.target.classList.remove("paginate")
                 }
@@ -370,13 +377,14 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             let btn_next = document.getElementById('btn-next')
             btn_next.setAttribute('href', url + '/page-' + (parseInt(page) + parseInt(1)))
         }
-        // console.log(url)
+        console.log(url)
         window.axios.get(url + '/page-' + page + `?api_component=true`)
             .then(function(response) {
                 if (response.status == 200) {
                     document.getElementById('feed-paging')
                         .insertAdjacentHTML('beforebegin', response.data)
                     startIO()
+                    setIndicator();
                 }
             })
             .catch(function(error) {
@@ -391,10 +399,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         const sections = document.querySelectorAll("[data-section]");
 
         for (var i = 0; i < sections.length; i++) {
-
-
-
-            if (i == (sections.length - 5 && i > 0)) {
+            if (i == (sections.length - 5) && sections.length >= 25 ) {
                 io.unobserve(sections[i])
                 sections[i].classList.add("paginate")
             }
