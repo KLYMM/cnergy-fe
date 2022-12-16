@@ -7,21 +7,18 @@
             data-scroller>
             @include('defaultsite.mobile-v2.components.sections', ['page' => 1])
 
+
+            {{-- BTN Next Page --}}
+            <div id="feed-paging"></div>
             <div style="position: relative;
             z-index: 20;
             bottom: 46px ;">
-                @include('defaultsite.mobile-v2.components.button-next', [
-                    'current_page' => $latest['attributes']['current_page'],
-                    'last_page' => $latest['attributes']['last_page'],
-                    'slug' => $slug,
-                ])
+                @include('defaultsite.mobile-v2.components.button-next')
 
             </div>
+        </div>
 
-            <div id="feed-paging">
-            </div>
-
-            {{-- ?? END OF SECTION !! --}}
+        {{-- ?? END OF SECTION !! --}}
         </div>
         <!-- end.snap -->
 

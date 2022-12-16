@@ -25,11 +25,11 @@ class TagController extends Controller
         $page = str_replace('page-', '', $page);
 
         $data=Data::listNewsByTag($slug, $page, 25);
-        if ($data['attributes']['last_page']??null) {
-            if ($page>$data['attributes']['last_page']) {
-                return abort(404);
-            }
-        }
+        // if ($data['attributes']['last_page']??null) {
+        //     if ($page>$data['attributes']['last_page']) {
+        //         return redirect(url('tag/'.$slug.'/page-'.$data['attributes']['last_page']));
+        //     }
+        // }
         if ($newsid && $page==1) {
            
            $news = \Data::detailNews($newsid);

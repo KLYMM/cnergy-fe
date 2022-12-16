@@ -8,26 +8,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 <html lang="en" class="<?php echo $themeClass; ?>">
 
 <head>
-    <!-- Google Tag Manager -->
-    @if (config('app.env'))
-        <script>
-            (function(w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                    'gtm.start': new Date().getTime(),
-                    event: 'gtm.js'
-                });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
-                j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', 'GTM-KH4RTMT');
-        </script>
-    @endif
-    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <title>{{ config('site.attributes.meta.title') }}</title>
 
@@ -84,7 +64,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 
     <!--window kly object-->
-    @include('object_js')
+    @include('object_js', ['isMaverick' => true])
 </head>
 
 <body class="vh-text-sm font-inter leading-normal bg-stone-100" style="padding-bottom: env(safe-area-inset-bottom)">
@@ -171,16 +151,23 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
             button.classList.add("snap-always", "shrink-0", "indicator-bullet");
             if (i === currentIndex) {
+                // console.log(i)
                 button.classList.add("indicator-bullet-active");
             }
-
-            // (function(i) {
-            //     button.onclick = function() {
-            //         sections[i].scrollIntoView();
-            //     }
-            // })(i);
-
             indicators.appendChild(button);
+        }
+        if (sections.length % 5 != 0) {
+            let buttonsNeeded
+            for (var j = 1; j < 5; j++) {
+                if ((sections.length + j) % 5 == 0) {
+                    buttonsNeeded = j;
+                }
+            }
+            for (var i = 1; i <= buttonsNeeded; i++) {
+                var button = document.createElement("span");
+                button.classList.add("snap-always", "shrink-0", "indicator-bullet", "invisible");
+                indicators.appendChild(button);
+            }
         }
     };
 
@@ -193,7 +180,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             if (entry.isIntersecting) {
                 let elem = entry.target;
 
-                if (elem.dataset.list == sections.length) {
+                if (elem.dataset.list == sections.length && elem.dataset.list % 25 == 0) {
                     if (elem.querySelector("#btn-up-id")) {
                         elem.querySelector("#btn-up-id").classList.remove("mb-6");
                         elem.querySelector("#btn-up-id").classList.add("mb-16");
@@ -206,7 +193,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
                 if (elem.classList.contains('paginate')) {
                     currentPage = currentPage + 1
-                    io.unobserve(entry.target)
+                    // io.unobserve(entry.target)
                     getNews(currentPage)
                     entry.target.classList.remove("paginate")
                 }
@@ -377,6 +364,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                     document.getElementById('feed-paging')
                         .insertAdjacentHTML('beforebegin', response.data)
                     startIO()
+                    setIndicator();
                 }
             })
             .catch(function(error) {
@@ -391,10 +379,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         const sections = document.querySelectorAll("[data-section]");
 
         for (var i = 0; i < sections.length; i++) {
-
-
-
-            if (i == (sections.length - 5 && i > 0)) {
+            if (i == (sections.length - 5)) {
                 io.unobserve(sections[i])
                 sections[i].classList.add("paginate")
             }
