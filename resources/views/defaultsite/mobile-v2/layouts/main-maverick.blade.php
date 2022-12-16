@@ -294,7 +294,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         }
 
         window.kly.gtm.pageTitle = data.articleTitle;
-        window.kly.gtm.subCategory = "feed";
+        window.kly.gtm.subCategory = subCategory;
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
         window.kly.gtm.articleId = data.articleId;
@@ -332,7 +332,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         }
 
         window.kly.gtm.pageTitle = data.articleTitle;
-        window.kly.gtm.subCategory = "feed";
+        window.kly.gtm.subCategory = subCategory;
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
         window.kly.gtm.articleId = data.articleId;
