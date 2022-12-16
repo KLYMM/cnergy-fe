@@ -9,10 +9,15 @@
 
             {{-- BTN Next Page --}}
             <div id="feed-paging"></div>
+            {{-- BTN Next Page --}}
             <div style="position: relative;
-            z-index: 20;
-            bottom: 46px ;">
-                @include('defaultsite.mobile-v2.components.button-next')
+             z-index: 20;
+             bottom: 46px;">
+                @include('defaultsite.mobile-v2.components.button-next', [
+                    'current_page' => $data['attributes']['current_page'],
+                    'last_page' => $data['attributes']['last_page'],
+                    'slug' => 'tag/' . $slug,
+                ])
 
             </div>
         </div>
