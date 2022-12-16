@@ -38,6 +38,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         onload="this.onload=null;this.rel='stylesheet'">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    @include('object_js', ['isMaverick' => true])
 </head>
 
 <body class="vh-text-md leading-normal bg-stone-100 font-primary-1 maverick-info">

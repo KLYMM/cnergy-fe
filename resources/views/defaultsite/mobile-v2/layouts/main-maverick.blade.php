@@ -8,26 +8,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 <html lang="en" class="<?php echo $themeClass; ?>">
 
 <head>
-    <!-- Google Tag Manager -->
-    @if (config('app.env'))
-        <script>
-            (function(w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                    'gtm.start': new Date().getTime(),
-                    event: 'gtm.js'
-                });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
-                j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', 'GTM-KH4RTMT');
-        </script>
-    @endif
-    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <title>{{ config('site.attributes.meta.title') }}</title>
 
@@ -84,7 +64,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 
     <!--window kly object-->
-    @include('object_js')
+    @include('object_js', ['isMaverick' => true])
 </head>
 
 <body class="vh-text-sm font-inter leading-normal bg-stone-100" style="padding-bottom: env(safe-area-inset-bottom)">
@@ -171,15 +151,15 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
             button.classList.add("snap-always", "shrink-0", "indicator-bullet");
             if (i === currentIndex) {
-                console.log(i)
+                // console.log(i)
                 button.classList.add("indicator-bullet-active");
             }
             indicators.appendChild(button);
         }
-        if(sections.length % 5 != 0){
+        if (sections.length % 5 != 0) {
             let buttonsNeeded
-            for(var j = 1 ; j<5 ; j++){
-                if((sections.length + j) % 5 == 0){
+            for (var j = 1; j < 5; j++) {
+                if ((sections.length + j) % 5 == 0) {
                     buttonsNeeded = j;
                 }
             }
@@ -200,7 +180,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             if (entry.isIntersecting) {
                 let elem = entry.target;
 
-                if (elem.dataset.list == sections.length) {
+                if (elem.dataset.list == sections.length && elem.dataset.list % 25 == 0) {
                     if (elem.querySelector("#btn-up-id")) {
                         elem.querySelector("#btn-up-id").classList.remove("mb-6");
                         elem.querySelector("#btn-up-id").classList.add("mb-16");
@@ -377,7 +357,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             let btn_next = document.getElementById('btn-next')
             btn_next.setAttribute('href', url + '/page-' + (parseInt(page) + parseInt(1)))
         }
-        console.log(url)
+        // console.log(url)
         window.axios.get(url + '/page-' + page + `?api_component=true`)
             .then(function(response) {
                 if (response.status == 200) {
@@ -399,7 +379,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         const sections = document.querySelectorAll("[data-section]");
 
         for (var i = 0; i < sections.length; i++) {
-            if (i == (sections.length - 5) && sections.length >= 25 ) {
+            if (i == (sections.length - 5)) {
                 io.unobserve(sections[i])
                 sections[i].classList.add("paginate")
             }
