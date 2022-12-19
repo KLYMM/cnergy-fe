@@ -25,7 +25,7 @@ class Html
 
         $news = $this->transformElement($news);
 
-        // dd($news);
+        dd($news);
         return $news;
     }
 
@@ -36,54 +36,85 @@ class Html
         $entries = $domx->evaluate("//p");
         $arr = array();
         foreach ($entries as $entry) {
-            $arr[] = $entry->ownerDocument->saveHtml($entry);
+            $arr[] = $entry; // $entry->ownerDocument->saveHtml($entry);
         }
 
         return collect($arr);
     }
 
-    public function loadDOM($data)
+    public function loadDOM($data, $opt=0)
     {
         $dom = new DOMDocument();
-        $dom->loadHTML($data);
+        $dom->loadHTML($data, $opt);
 
         return $dom;
     }
 
-    // public function loadDOMElement($elmData)
-    // {
-    //     $elm = $this->loadDOM($elmData);
-    //     $elm->loadHtml($elmData);
-    //     dd($elm);
-
-    //     return $elm;
-    // }
-
-    // public function checkChildElement($elm): string
-    // {
-    //     $dom = $this->loadDOM($elm);
-    //     dd($dom);
-
-    //     // if(count($dom->childNodes) > 0) {
-    //     //     dd($dom->firstChild);
-    //     // }
-    //     return '';
-    // }
-
     public function transformElement(Collection $elm): array
     {
         $elm->transform(function($item, $key) {
-            // $itemChildType = $this->loadDOMElement($item);
-            // echo ($itemChildType);
             return [
-                'type' => '',
-                'chars' => strlen(strip_tags($item)),
-                'words' => str_word_count(strip_tags($item)),
-                'santences' => 0,
-                'content' => $item
+                'type' => $this->checkChildElement($item),
+                'chars' => strlen(strip_tags($this->elmToHtml($item))),
+                'words' => str_word_count(strip_tags($this->elmToHtml($item))),
+                'santences' => [
+                    'count' => count($this->getSentences(strip_tags($this->elmToHtml($item)))),
+                    'items' => $this->getSentences(strip_tags($this->elmToHtml($item)))
+                ],
+                'templateName' => $this->getTemplate($this->checkChildElement($item)),
+                'content' => $this->elmToHtml($item),
+                // 'rawContent' => $this->elmToHtml($item)
             ];
         });
 
         return $elm->all();
+    }
+
+    public function elmToHtml(DOMElement $dom): string
+    {
+        return $dom->ownerDocument->saveHtml($dom);
+    }
+
+    public function getChildElement($dom)
+    {
+        return $dom->firstChild;
+    }
+
+    public function checkChildElement($dom)
+    {
+        return $dom->firstChild->nodeName;
+    }
+
+    public function getTemplate($type)
+    {
+        $template = config('trstdly.templates');
+
+        switch ($type) {
+            case 'img':
+                return collect($template['image'])->random();
+
+                break;
+
+            default:
+                return collect($template['text'])->random();
+
+                break;
+        }
+
+        return $template;
+    }
+
+    public function getSentences($data)
+    {
+        $sentence = explode('.', $data);
+
+        $sentence_array = [];
+        foreach($sentence as $s) {
+            if($s != '') {
+                $sentence_array[] = trim($s);
+            }
+        }
+
+        return $sentence_array;
     }
 }

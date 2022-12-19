@@ -10,12 +10,19 @@
 @include('defaultsite.mobile-v2.pages.detail.components.textCase.textTemp2')
 @include('defaultsite.mobile-v2.pages.detail.components.textCase.textTemp3') --}}
 @foreach ($content as $chunk)
+
     @if ($loop->first)
         @include('defaultsite.mobile-v2.pages.detail.components.satu', [
             'chunk' => $chunk,
         ])
     @endif
-    @if ($loop->even && !$loop->first)
+
+    @if(!$loop->first)
+        @include('defaultsite.mobile-v2.pages.detail.components.' . $chunk['templateName'], [
+        'chunk' => $chunk,
+        ])
+    @endif
+    {{-- @if ($loop->even && !$loop->first)
         @include('defaultsite.mobile-v2.pages.detail.components.textCase.textCase1', [
             'chunk' => $chunk,
         ])
@@ -23,9 +30,9 @@
         @include('defaultsite.mobile-v2.pages.detail.components.dua', [
             'chunk' => $chunk,
         ])
-    @endif
+    @endif --}}
 @endforeach
-    {{-- list-case-sample --}}
+{{-- list-case-sample --}}
 {{-- @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase1', ['row' => $row])
     @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase2', ['row' => $row])
     @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase3', ['row' => $row])
