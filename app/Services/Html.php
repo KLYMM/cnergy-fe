@@ -25,7 +25,7 @@ class Html
 
         $news = $this->transformElement($news);
 
-        dd($news);
+        // dd($news);
         return $news;
     }
 

@@ -37,56 +37,38 @@
     font-family: var(--font-outfit);
 }
 
-.main-breadcrumb {
-    font-family: var(--);
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    list-style-type: none;
-    font-size: 14px;
-    margin: 20px 20px 0;
-}
-
-.main-breadcrumb .main-breadcrumb-item {
-    color: #979797;
-}
-.dark .main-breadcrumb .main-breadcrumb-item {
-    color: #dddddd;
-}
-
-.main-breadcrumb .active {
-    color: var(--color-primary);
-    font-weight: bold;
-}
-
-.dark .main-breadcrumb .active {
-    color: #751900;
-    font-weight: bold;
-}
-
-.main-breadcrumb .main-breadcrumb-item::after {
-    content: ">";
-    margin: 0 10px;
-    color: #000000;
-}
-
-.dark .main-breadcrumb .main-breadcrumb-item::after {
-    color: #751900;
-}
-
-.main-breadcrumb .main-breadcrumb-item:last-child::after {
-    content: "";
-}
-
-.main-news-deskripsi h3:hover {
-    color: var(--color-primary);
-}
-
 .text-black {
     color: var(--color-black);
 }
 
-.main-news-deskripsi a {
+figure .image-news img {
+    width: 100%;
+    height: 40vh;
+}
+
+.dt-para p:not(.image-news):first-of-type::before {
+    content: "";
+    position: absolute;
+    top: 0.75rem;
+    left: 0;
+    width: 10%;
+    border-top: 1px solid;
+}
+
+.dt-para p:not(.image-news) {
+    padding-left: 15%;
+}
+
+.dt-para p{
+    position: relative;
+}
+
+/* .main-news-deskripsi h3:hover {
+    color: var(--color-primary);
+} */
+
+
+/* .main-news-deskripsi a {
     text-decoration: none !important;
 }
 
@@ -133,7 +115,7 @@
     font-size: 14px;
     line-height: 22px;
     color: #ff3903;
-}
+} */
 
 /* .dark .author-title {
     color: #dddddd;
@@ -144,7 +126,7 @@
     line-height: 2rem;
 } */
 
-.header-photo {
+/* .header-photo {
     margin: 20px;
 }
 
@@ -180,9 +162,9 @@
 .dt-share-container {
     display: flex;
     margin: 20px;
-}
+} */
 
-#btn-read {
+/* #btn-read {
     display: none;
 }
 
@@ -263,7 +245,7 @@
 .dt-share-container {
     display: flex;
     margin: 20px;
-}
+} */
 
 .fa-facebook-f,
 .fa-twitter,
@@ -299,13 +281,8 @@
     color: #333333;
 }
 
-.image-news {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    background-color: silver;
-}
-
 .image-news img {
     width: 100%;
+    height: 40vh;
+    object-fit: cover;
 }
