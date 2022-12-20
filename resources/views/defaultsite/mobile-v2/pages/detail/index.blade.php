@@ -11,18 +11,18 @@
 @include('defaultsite.mobile-v2.pages.detail.components.textCase.textTemp3') --}}
 @foreach ($content as $chunk)
 
-    @if ($loop->first)
-        @include('defaultsite.mobile-v2.pages.detail.components.satu', [
-            'chunk' => $chunk,
-        ])
-    @endif
+@if ($loop->first)
+@include('defaultsite.mobile-v2.pages.detail.components.satu', [
+'chunk' => $chunk,
+])
+@endif
 
-    @if(!$loop->first)
-        @include('defaultsite.mobile-v2.pages.detail.components.' . $chunk['templateName'], [
-        'chunk' => $chunk,
-        ])
-    @endif
-    {{-- @if ($loop->even && !$loop->first)
+@if(!$loop->first)
+@include('defaultsite.mobile-v2.pages.detail.components.' . $chunk['template']['name'], [
+'chunk' => $chunk,
+])
+@endif
+{{-- @if ($loop->even && !$loop->first)
         @include('defaultsite.mobile-v2.pages.detail.components.textCase.textCase1', [
             'chunk' => $chunk,
         ])

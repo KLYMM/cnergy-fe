@@ -1,4 +1,4 @@
-<section data-section="section4" class="section snap-always snap-start w-full h-full flex flex-col shrink-0 transition bg-light-3 text-black dark:bg-dark-3 dark:text-white pt-16" data-theme="highlight2">
+<section data-section="section4" class="section snap-always snap-start w-full h-full flex flex-col shrink-0 transition {{ $chunk['template']['bg_theme'] }} text-black dark:bg-dark-3 dark:text-white pt-16" data-theme="highlight2">
     <div class="section-body mt-5 relative overflow-hidden flex-1 container max-w-full">
         <article class="article relative overflow-hidden flex flex-col h-full px-6">
             <div class="article-main relative flex-1">

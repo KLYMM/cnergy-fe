@@ -9,7 +9,7 @@ use DOMElement;
 use DOMXPath;
 use Illuminate\Support\Collection;
 
-class Html
+class HtmlBackup
 {
     public function parseNews($row)
     {

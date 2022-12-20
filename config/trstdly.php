@@ -5,10 +5,11 @@ return [
     'templates' => [
         'text' => [
             'textCase.textCase1',
-            'dua'
+            'textCase.textCase2',
         ],
         'image' => [
-            'textCase.textCase1'
+            'dua',
+            'dua',
         ]
     ]
 ];
