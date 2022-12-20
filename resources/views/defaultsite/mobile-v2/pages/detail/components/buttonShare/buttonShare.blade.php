@@ -1,8 +1,20 @@
 <div class="absolute z-20 w-12 h-12 bg-light7 buttom-0 right-0 bottom-20">
-    <div class="mx-3 my-3">
-         <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M14.4 17.928V12.672C7.728 12.672 3.336 14.712 0 19.2C1.344 12.792 5.064 6.408 14.4 5.112V0L24 8.952L14.4 17.928Z" fill="#FF3903"/>
-        </svg>
+    <div style="background-color: #000000;
+    width: 356px;
+    height: 50px;
+    border-radius: 20% / 120%;
+    position: absolute;
+    left: 20px;
+    
+  ">
+       <div style="position: absolute;
+       z-index: 20;
+       top: 23px;
+       left: 23px;">
+        <svg width="17" height="3" viewBox="0 0 17 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M17 0L17 3L14 3L14 -1.31134e-07L17 0ZM10 -3.0598e-07L10 3L7 3L7 -4.37114e-07L10 -3.0598e-07ZM3 3L3 -6.11959e-07L0 -7.43093e-07L-1.31134e-07 3L3 3Z" fill="white"/>
+            </svg>
+       </div>
     </div>
    
         
