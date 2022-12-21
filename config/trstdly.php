@@ -6,9 +6,10 @@ return [
         'text' => [
             'textCase.textCase1',
             'textCase.textCase2',
-            // 'textCase.textHeading',
+            
         ],
         'image' => [
+            'textPhotocase.temp3',
             'textPhotocase.temp2',
         ],
         'text-heading' => [
