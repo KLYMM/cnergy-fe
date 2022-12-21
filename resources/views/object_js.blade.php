@@ -25,7 +25,7 @@
         "subsubSubCategory": "", // sub sub kategori (level 3)
         "tag": "{{ implode('|',collect(config('site.attributes.object.article.news_tag'))->pluck('tag_name')->sort()->toArray()) }}", // tag
         "authors": {
-            "type": "{{ config('site.attributes.object.article.news_reporter.0.id') ? 'author' : (config('site.attributes.object.article.news_photographer.0.id') ? 'photographer' : 'editor') }}", // author|editor|photographer -> jika reporter maka di isi author, jika reporter kosong maka editor, jika photo news maka photographer 
+            "type": "{{ config('site.attributes.object.article.news_reporter.0.id') ? 'author' : (config('site.attributes.object.article.news_photographer.0.id') ? 'photographer' : 'editor') }}", // author|editor|photographer -> jika reporter maka di isi author, jika reporter kosong maka editor, jika photo news maka photographer
             "names": "{{ config('site.attributes.object.article.news_reporter.0.id')
                 ? implode(
                     ',',
@@ -73,7 +73,7 @@
         "id": {!! config('site.attributes.object.article.news_id', '""') !!}, // id news
         "title": "{{ config('site.attributes.object.article.news_title') }}", // news title
         "type": "{{ ['news' => 'TextTypeArticle', 'photonews' => 'PhotoGallery', 'video' => 'VideoGallery'][config('site.attributes.object.article.news_type')] ?? '' }}", // tipe news (TextTypeArticle, PhotoGallery, VideoGallery)
-        "shortDescription": "{{ str_replace(["\n", "\r"], '', config('site.attributes.object.article.news_synopsis')) }}", // Synopsis 
+        "shortDescription": "{{ str_replace(["\n", "\r"], '', config('site.attributes.object.article.news_synopsis')) }}", // Synopsis
         "keywords": "{{ implode(',',collect(config('site.attributes.object.article.news_keywords'))->pluck('keyword_name')->sort()->toArray()) }}", // keywords
         "isAdvertorial": {!! !config('site.attributes.object.article')
             ? '""'
@@ -140,7 +140,7 @@
                 j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
                 f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', {{ $isMaverick ?? null ? 'GTM-KH4RTMT' : 'GTM-W4BFXJK' }});
+            })(window, document, 'script', 'dataLayer', "{{ $isMaverick ?? null ? 'GTM-KH4RTMT' : 'GTM-W4BFXJK' }}");
         </script>
     @else
         <script>
