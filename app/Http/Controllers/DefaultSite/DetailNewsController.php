@@ -107,14 +107,12 @@ class DetailNewsController extends Controller
 
         // $debug = (request()->query('new_exp') == 'maverick') ?? $debug;
         // dd($debug);
-        if($debug == 'true') {
-            $rowHtml = new HtmlChunk($row);
-            $content = $rowHtml->parseNews($row);
-            // dd($content);
-            return Site::view('pages.detail.index', compact('content', 'row'));
-        }
+        $rowHtml = new HtmlChunk($row);
+        $content = $rowHtml->parseNews($row);
 
-        if( ($row['news_type']??null) == 'photonews' )
+        return Site::view('pages.detail.index', compact('content', 'row'));
+
+        /* if( ($row['news_type']??null) == 'photonews' )
         {
             config()->set('site.use_footer', 'no');
 
@@ -124,7 +122,7 @@ class DetailNewsController extends Controller
         {
             return Site::view('pages.video_detail',compact('row'));
         }
-        else return Site::view('pages.readpage',compact('row'));
+        else return Site::view('pages.readpage',compact('row')); */
     }
 
     function detailAmp($category, $id, $slug=null,$page=null)
