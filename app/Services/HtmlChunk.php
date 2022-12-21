@@ -120,7 +120,7 @@ class HtmlChunk
             //skip no value on paragraph
             if ($return['chars'] > 5 || $return['type'] == 'img') {
                 return $return;
-            }  
+            }
         });
 
         //Add template information
@@ -150,7 +150,7 @@ class HtmlChunk
                     $template_name = $this->getTemplate($row['type']);
 
                     //CASE : -- if next row is part of image caption
-                    if ($rows[$index + 1]['type'] == 'img-caption') {
+                    if (isset($rows[$index + 1]['type']) && $rows[$index + 1]['type'] == 'img-caption') {
                         //combine next row data of image caption into this row
                         $row['attributes']['caption'] = $rows[$index + 1];
                         //skip for next itteration
@@ -182,7 +182,7 @@ class HtmlChunk
                         }
                     }
                     break;
-              
+
                 default:
             }
 
@@ -307,7 +307,7 @@ class HtmlChunk
                 break;
 
 
-            case 'text-heading': 
+            case 'text-heading':
                 $text_template = $template['text-heading'];
 
                 // if((session('last_text_template_key') + 1) >= count($text_template)) {
