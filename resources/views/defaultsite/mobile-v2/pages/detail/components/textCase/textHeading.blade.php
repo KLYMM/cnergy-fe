@@ -1,8 +1,11 @@
-<section data-section="sectionTiga" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-8 text-black dark:bg-dark-0 dark:text-white" data-theme="dt-text-3">
+@dump($chunk['attributes']['subcontent']['content'])
+<section data-section="sectionHeading" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-8 text-black dark:bg-dark-0 dark:text-white" data-theme="dt-text-3">
     <div class="section-body relative flex flex-col h-full">
         <div class="dt relative overflow-hidden flex-1">
-            <div class="dt-para mt-10 relative z-10 leading-relaxed pt-12 px-6 animate animate--fadeInUp" style="--delay: 0ms">
-                {!! $chunk['content'] !!} 
+            <div class="dt-para {{ $chunk['template']['fontSize_class'] }} relative z-10 leading-relaxed pt-12 px-6 animate animate--fadeInUp" style="--delay: 0ms">
+                <strong class="vh-text-3xl">{!! $chunk['rawContent'] !!}</strong> 
+                
+                {!! $chunk['attributes']['subcontent']['content']?? null !!}
             </div>
             <span class="absolute bottom-0 left-0 animate animate--fadeIn" style="--delay: 100ms">
                 <svg class="dark:svg-logo-black"  width="235" height="234" viewBox="0 0 235 234" fill="none" xmlns="http://www.w3.org/2000/svg">

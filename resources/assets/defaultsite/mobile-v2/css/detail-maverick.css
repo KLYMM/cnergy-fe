@@ -46,7 +46,7 @@ figure .image-news img {
     height: 40vh;
 }
 
-.dt-para p:not(.image-news):first-of-type::before {
+/* .dt-para p:not(.image-news):first-of-type::before {
     content: "";
     position: absolute;
     top: 0.75rem;
@@ -61,7 +61,7 @@ figure .image-news img {
 
 .dt-para p {
     position: relative;
-}
+} */
 
 .fa-facebook-f,
 .fa-twitter,

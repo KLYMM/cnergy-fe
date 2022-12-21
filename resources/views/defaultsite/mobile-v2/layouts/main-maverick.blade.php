@@ -219,13 +219,17 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     }, options);
 
     let subCategory = '';
-    if (window.location.pathname.split('/')[1] == '' || window.location.pathname.split('/')[1] == 'index-berita' ||
-        window.location.pathname.split('/')[1] == 'photo' || window.location.pathname.split('/')[1] == 'video') {
+    if ( window.location.pathname.split('/')[1] == 'photo' || window.location.pathname.split('/')[1] == 'video') {
         subCategory = 'feed';
     } else if (window.location.pathname.split('/')[1] == 'tag') {
         subCategory = 'tag';
+    } else if (window.location.pathname.split('/')[1] == '') {
+        subCategory = 'home';
+    } else if (window.location.pathname.split('/')[1] == 'index-berita') {
+        subCategory = 'index-berita';
     } else {
         subCategory = window.location.pathname.split('/')[1];
+     
     }
 
     function virtual_sv(data) {
