@@ -9,7 +9,7 @@ use DOMElement;
 use DOMXPath;
 use Illuminate\Support\Collection;
 
-class Html
+class HtmlBackup
 {
     public function parseNews($row)
     {
@@ -25,7 +25,7 @@ class Html
 
         $news = $this->transformElement($news);
 
-        // dd($news);
+        dd($news);
         return $news;
     }
 
