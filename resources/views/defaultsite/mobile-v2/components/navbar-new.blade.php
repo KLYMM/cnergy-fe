@@ -1,26 +1,26 @@
-<header class="header fixed bottom-8 right-0 z-40 text-white transition dark:text-white" data-header="">
-    <div class="flex flex-col items-center space-y-4">
-        <a href="#" data-toggle="menu" class="flex items-center rounded-tl-full rounded-bl-full h-12 pl-4 px-3 bg-dark-0 dark:bg-dark-1">
-            <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H18V2.25H0V0ZM0 6.25H18V8.5H0V6.25ZM18 12.5H3.5V14.75H18V12.5Z" fill="white"></path>
-            </svg>
-        </a>
-        <a href="#" class="block" onclick="copyToClipboard()">
+<header class="header fixed bottom-16 right-4 z-40 text-white transition dark:text-white" data-header="">
+    <div class="flex flex-col items-center space-y-2">
+        <a href="#" class="flex items-center justify-center rounded-full h-12 w-12 bg-dark-40 dark:bg-white-40" onclick="copyToClipboard()" >
             <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.8 16.2458V12.3038C6.796 12.3038 3.502 13.8338 1 17.1998C2.008 12.3938 4.798 7.60581 11.8 6.63381V2.7998L19 9.5138L11.8 16.2458Z" stroke="currentColor" stroke-width="2"></path>
+            </svg>
+        </a>
+        <a href="#" data-toggle="menu" class="flex items-center  justify-center rounded-full h-12 w-12 bg-dark-40 dark:bg-white-40">
+            <svg width="18" height="16" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H18V2.25H0V0ZM0 6.25H18V8.5H0V6.25ZM18 12.5H3.5V14.75H18V12.5Z" fill="white"></path>
             </svg>
         </a>
     </div>
 
 
 
-    <div data-toggle-open="menu" class="header-menu fixed inset-0 bg-light-1 text-white pointer-events-none transform translate-x-full dark:bg-dark-1">
+    <div data-toggle-open="menu" class="header-menu fixed inset-0 bg-light-1 text-white pointer-events-none transform translate-x-full dark:bg-dark-0">
         <div class="header-menu-inner w-full h-full flex flex-col justify-between">
             <div class="header-menu-top flex items-center justify-between h-16">
                 <div class="header-menu-top-switch switchTheme relative h-full px-6 flex items-center justify-center animate animate--fadeIn">
                     <input class="switchTheme-control" type="checkbox" name="checkbox" id="switchTheme" autocomplete="off">
                     <label class="switchTheme-icon" for="switchTheme">
-                        <svg class="switchTheme-icon-dark" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="switchTheme-icon-dark" width="21" height="21" viewBox="0 0 21S 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.96726 2.5C5.93378 4.15761 6.23356 5.80515 6.84896 7.34568C7.46437 8.88621 8.38297 10.2886 9.55072 11.4704C10.7185 12.6522 12.1118 13.5895 13.6487 14.2271C15.1856 14.8648 16.835 15.1899 18.5 15.1833C17.8468 16.2246 16.9901 17.1246 15.9808 17.8298C14.9716 18.535 13.8304 19.0312 12.6249 19.2888C12.5131 19.3125 12.4005 19.3406 12.2862 19.3606C10.1711 19.7325 7.99194 19.3547 6.12739 18.293C4.26284 17.2313 2.83071 15.5527 2.07982 13.5488C1.32892 11.545 1.3067 9.34249 2.01702 7.32402C2.72734 5.30554 4.12451 3.59881 5.96726 2.5Z" stroke="currentColor" stroke-width="2"></path>
                         </svg>
                         <svg class="switchTheme-icon-light" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -175,6 +175,22 @@
                             color:black;
                         }
 
+                        .dark .all-search-box{
+                            color: white;
+                        }
+
+                        .dark .gsc-search-box-tools .gsc-search-box .gsc-input {
+                            background:  #751900 !important;
+                        }
+
+                        .dark .gsc-search-box-tools .gsc-search-box .gsc-input ::placeholder {
+                            color: white;
+                        }
+
+                        .dark .all-search-box {
+                            background-color:  #751900 !important;
+                        }
+
                         form.gsc-search-box,
                         table.gsc-search-box {
                             margin-bottom: 0;
@@ -271,9 +287,11 @@
                             background-size: 20px;
                         }
 
+                        .dark td.gsc-search-button{
+                            filter: invert(1) grayscale(2) brightness(100);
+                        }
+
                         .gsc-search-box-tools .gsc-search-box .gsc-input {
-
-
                             font-family: 'Inter';
                             font-weight: 400;
                             padding-right: 10px;
