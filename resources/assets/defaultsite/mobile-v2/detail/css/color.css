@@ -2,7 +2,7 @@
 
 :root {
     --color-dark0: #141414;
-    --color-dark1: #2f0055;
+    --color-dark1: #751900;
     --color-dark2: #290658;
     --color-dark3: #432000;
     --color-dark4: #55170d;
@@ -534,4 +534,11 @@
 .is-visible .animate-swipe-down-text {
     opacity: 0;
     animation: wheelopacity 4s infinite 2s;
+}
+
+[data-theme="dt-text-1"] .header,
+[data-theme="dt-text-3"] .header,
+[data-theme="dt-textphoto-1"] .header,
+[data-theme="dt-textphoto-3"] .header {
+    color: var(--color-dark0);
 }
