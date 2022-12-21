@@ -6,10 +6,14 @@ return [
         'text' => [
             'textCase.textCase1',
             'textCase.textCase2',
+            
         ],
         'image' => [
-            'dua',
-            'dua',
+            'textPhotocase.temp3',
+            'textPhotocase.temp2',
+        ],
+        'text-heading' => [
+            'textCase.textHeading',
         ]
     ]
 ];

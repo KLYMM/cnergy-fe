@@ -8,26 +8,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 <html lang="en" class="<?php echo $themeClass; ?>">
 
 <head>
-    <!-- Google Tag Manager -->
-    @if (config('app.env'))
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KH4RTMT');
-    </script>
-    @endif
-    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <title>{{ config('site.attributes.meta.title') }}</title>
 
@@ -77,7 +57,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 
     <!--window kly object-->
-    @include('object_js')
+    @include('object_js', ['isMaverick' => true])
 </head>
 
 <body class="vh-text-sm font-inter leading-normal bg-stone-100" style="padding-bottom: env(safe-area-inset-bottom)">
@@ -163,15 +143,15 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
             button.classList.add("snap-always", "shrink-0", "indicator-bullet");
             if (i === currentIndex) {
-                console.log(i)
+                // console.log(i)
                 button.classList.add("indicator-bullet-active");
             }
             indicators.appendChild(button);
         }
-        if(sections.length % 5 != 0){
+        if (sections.length % 5 != 0) {
             let buttonsNeeded
-            for(var j = 1 ; j<5 ; j++){
-                if((sections.length + j) % 5 == 0){
+            for (var j = 1; j < 5; j++) {
+                if ((sections.length + j) % 5 == 0) {
                     buttonsNeeded = j;
                 }
             }
@@ -192,7 +172,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             if (entry.isIntersecting) {
                 let elem = entry.target;
 
-                if (elem.dataset.list == sections.length) {
+                if (elem.dataset.list == sections.length && elem.dataset.list % 25 == 0) {
                     if (elem.querySelector("#btn-up-id")) {
                         elem.querySelector("#btn-up-id").classList.remove("mb-6");
                         elem.querySelector("#btn-up-id").classList.add("mb-16");
@@ -239,13 +219,17 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     }, options);
 
     let subCategory = '';
-    if (window.location.pathname.split('/')[1] == '' || window.location.pathname.split('/')[1] == 'index-berita' ||
-        window.location.pathname.split('/')[1] == 'photo' || window.location.pathname.split('/')[1] == 'video') {
+    if ( window.location.pathname.split('/')[1] == 'photo' || window.location.pathname.split('/')[1] == 'video') {
         subCategory = 'feed';
     } else if (window.location.pathname.split('/')[1] == 'tag') {
         subCategory = 'tag';
+    } else if (window.location.pathname.split('/')[1] == '') {
+        subCategory = 'home';
+    } else if (window.location.pathname.split('/')[1] == 'index-berita') {
+        subCategory = 'index-berita';
     } else {
         subCategory = window.location.pathname.split('/')[1];
+     
     }
 
     function virtual_sv(data) {
@@ -306,7 +290,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         }
 
         window.kly.gtm.pageTitle = data.articleTitle;
-        window.kly.gtm.subCategory = "feed";
+        window.kly.gtm.subCategory = subCategory;
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
         window.kly.gtm.articleId = data.articleId;
@@ -344,7 +328,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         }
 
         window.kly.gtm.pageTitle = data.articleTitle;
-        window.kly.gtm.subCategory = "feed";
+        window.kly.gtm.subCategory = subCategory;
         window.kly.gtm.type = "feed";
         window.kly.gtm.contentTitle = data.articleTitle;
         window.kly.gtm.articleId = data.articleId;
@@ -363,13 +347,20 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     const getNews = (page) => {
         let slug = url => new URL(url).pathname.match(/[^\/]+/g)
         let url = window.location.href.split('?')[0]
+        url = url.split('/page-')[0]
+
+        // newUrl.pop();
+        // console.log(slug(url));
+        // console.log(page);
+        // console.log("url", url);
 
         if (slug(url) == null) {
             url = url + 'index-berita'
             let btn_next = document.getElementById('btn-next')
             btn_next.setAttribute('href', url + '/page-' + (parseInt(page) + parseInt(1)))
         }
-        console.log(url)
+
+        // console.log(url)
         window.axios.get(url + '/page-' + page + `?api_component=true`)
             .then(function(response) {
                 if (response.status == 200) {
@@ -389,10 +380,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
     function startIO() {
         const sections = document.querySelectorAll("[data-section]");
+        // console.log("sections", sections);
+        // console.log("sections.length", sections.length);
 
         for (var i = 0; i < sections.length; i++) {
-
-            if (i == (sections.length - 5) && sections.length >= 25 ) {
+            if (i == (sections.length - 5)) {
+                // console.log('test', i);
                 io.unobserve(sections[i])
                 sections[i].classList.add("paginate")
             }

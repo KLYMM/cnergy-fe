@@ -7,6 +7,9 @@
             data-scroller>
             @include('defaultsite.mobile-v2.components.sections', ['page' => 1])
 
+
+            {{-- BTN Next Page --}}
+            <div id="feed-paging"></div>
             <div style="position: relative;
             z-index: 20;
             bottom: 46px ;">
@@ -17,11 +20,9 @@
                 ])
 
             </div>
+        </div>
 
-            <div id="feed-paging">
-            </div>
-
-            {{-- ?? END OF SECTION !! --}}
+        {{-- ?? END OF SECTION !! --}}
         </div>
         <!-- end.snap -->
 

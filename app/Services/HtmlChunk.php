@@ -101,7 +101,7 @@ class HtmlChunk
                 'content' => ($type == 'img') ? null : strip_tags($this->elmToHtml($item)),
                 'rawContent' => $this->elmToHtml($item),
                 'attributes' => $this->get_attributes($item),
-                'santences' => [
+                'sentences' => [
                     'count' => count($this->getSentences(strip_tags($this->elmToHtml($item)))),
                     'items' => $this->getSentences(strip_tags($this->elmToHtml($item)))
                 ],
@@ -120,7 +120,7 @@ class HtmlChunk
             //skip no value on paragraph
             if ($return['chars'] > 5 || $return['type'] == 'img') {
                 return $return;
-            }
+            }  
         });
 
         //Add template information
@@ -175,12 +175,14 @@ class HtmlChunk
 
                             //change the type to heading
                             $row['type'] = 'text-heading';
+                            $template_name = $this->getTemplate($row['type']);
 
                             //skip for next itteration
                             $skip_next = true;
                         }
                     }
                     break;
+              
                 default:
             }
 
@@ -303,6 +305,27 @@ class HtmlChunk
                 return $template_output;
 
                 break;
+
+
+            case 'text-heading': 
+                $text_template = $template['text-heading'];
+
+                // if((session('last_text_template_key') + 1) >= count($text_template)) {
+                //     session()->put('last_text_template_key', 0);
+                // }
+
+                $template_output = $text_template[0];
+
+                // session()->increment('last_text_template_key');
+
+                // if ((session('last_text_template_key') + 1) > count($text_template)) {
+                //     session()->put('last_text_template_key', 0);
+                // }
+
+                return $template_output;
+
+                break;
+
 
             default:
         }

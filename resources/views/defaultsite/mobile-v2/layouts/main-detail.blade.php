@@ -32,13 +32,12 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link href="{{ Src::mix('detail/css/main.css') }}" rel="stylesheet">
     <link href="{{ Src::mix('detail/css/color.css') }}" rel="stylesheet">
 
-    <link rel="preload" href="{{ Src::mix('css/styles-maverick.css') }}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="{{ Src::mix('css/detail-maverick.css') }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    @include('object_js')
+
+    @include('object_js', ['isMaverick' => true])
 </head>
 
 <body class="vh-text-md leading-normal bg-stone-100 font-primary-1 maverick-info">
@@ -93,7 +92,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         <!-- snap -->
         <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth"
             data-scroller>
-            @include('defaultsite.mobile-v2.components.navbar-maverick')
+            @include('defaultsite.mobile-v2.components.navbar-new')
 
             @yield('content')
 
@@ -110,25 +109,36 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <script>
-        const mainNav = document.querySelector('.nav-main');
-        const closeNav = document.querySelector('.nav-close');
-        const openNav = document.querySelector('.nav-open');
-        const headerNavbar = document.querySelector('header');
+        const toggleOpen = document.querySelectorAll("[data-toggle]");
+        const toggleClose = document.querySelectorAll("[data-toggle-close]");
 
-        openNav.addEventListener('click', show);
-        closeNav.addEventListener('click', close);
-
-        function show() {
-            cseSearch();
-            mainNav.style.transition = 'transform 0.4s ease';
-            mainNav.style.transform = 'translateX(0)';
-        }
-
-        function close() {
-            mainNav.style.transform = 'translateX(-450%)';
-            var s = document.getElementsByTagName('script')[0];
-            s.remove();
-        }
+        toggleOpen.forEach(function (t, i) {
+            t.addEventListener('click', function(e) {
+                const attr = this.getAttribute('data-toggle');
+                this.classList.toggle('is-active');
+                if(this.classList.contains('is-active')){
+                    cseSearch();
+                    document.body.classList.add('overflow-hidden');
+                    document.querySelector('[data-toggle-open="'+ attr +'"]').classList.add('open');
+                }else{
+                    document.body.classList.remove('overflow-hidden');
+                    document.querySelector('[data-toggle-open="'+ attr +'"]').classList.remove('open');
+                    var s = document.getElementsByTagName('script')[0];
+                    s.remove();
+                }
+                e.preventDefault();
+            });
+        });
+        toggleClose.forEach(function (t, i) {
+            t.addEventListener('click', function(e) {
+                document.body.classList.remove('overflow-hidden');
+                document.querySelector('[data-toggle]').classList.remove('is-active');
+                document.querySelector('[data-toggle-open]').classList.remove('open');
+                var s = document.getElementsByTagName('script')[0];
+                s.remove();
+                e.preventDefault();
+            });
+        });
     </script>
 
     <script>
@@ -146,9 +156,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             callback: function cseSearch() {
                 document.getElementsByClassName("gsc-input")[2].setAttribute("placeholder",
                     "Search...");
-                // if (focus) {
-                //     document.getElementsByClassName("gsc-input")[2].focus()
-                // }
             }
         };
 
@@ -158,6 +165,24 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     </script>
 
     <script>
+        //switchtheme
+        const checkbox = document.querySelector(".switchTheme-control");
+        const hour = new Date().getHours();
+        checkbox.addEventListener("change", (e) => {
+            document.documentElement.classList.toggle("dark");
+            let date = new Date();
+            date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+            if (document.querySelector(".dark")) {
+                document.cookie = "darkmode=on;expires=" + date.toUTCString() + ";path=/";
+            } else {
+                document.cookie = "darkmode=off;expires=" + date.toUTCString() + ";path=/";
+            }
+        });
+
+        if (hour >= 18) {
+            checkbox.click();
+            document.cookie = "darkmode=on;path=/";
+        }
         //snapscroll
         const header = document.querySelector("[data-header]");
         const sections = document.querySelectorAll("[data-section]");
@@ -297,18 +322,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             // });
         }
 
-        //switchtheme
-        const checkbox = document.querySelector('.switchTheme-control');
-        const hour = (new Date).getHours();
-        checkbox.addEventListener("change", (e) => {
-            document.documentElement.classList.toggle('dark')
-        });
-
-        if (hour >= 20) {
-            checkbox.click();
-        }
-
-
         //lineclamp
         const lineclamp = document.querySelectorAll('.line-clamp-str p');
         for (var i = 0; i < lineclamp.length; i++) {
@@ -337,6 +350,18 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                     target.closest('p').querySelector('.more-text').classList.add('hidden')
                 }
             });
+        }
+    </script>
+
+    <script>
+        function copyToClipboard() {
+            var dummy = document.createElement('input'),
+                text = window.location.href;
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
         }
     </script>
 </body>

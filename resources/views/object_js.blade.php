@@ -123,8 +123,9 @@
 
 @if (config('app.enabled_tracking'))
 
-    @if (in_array(config('app.env'), ['development', 'staging']))
-        <!-- Google Tag Manager -->
+
+
+    @if (in_array(config('app.env'), ['production', 'staging']))
         <script>
             (function(w, d, s, l, i) {
                 w[l] = w[l] || [];
@@ -139,34 +140,12 @@
                 j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
                 f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', '{{ config('site.attributes.reldomain.gtm_id') ?? 'GTM-WVGDCD4' }}');
+            })(window, document, 'script', 'dataLayer', {{ $isMaverick ?? null ? 'GTM-KH4RTMT' : 'GTM-W4BFXJK' }});
         </script>
-        <!-- End Google Tag Manager -->
-    @endif
-
-
-    @if (in_array(config('app.env'), ['production']))
-        <!-- Google Tag Manager -->
+    @else
         <script>
-            var liputan6_id_site_id = "3";
-            var liputan6_id_client_id = "5";
-            var liputan6_id_client_token = "5365159bc14a80257ed6006f77a89ecb";
-            (function(w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                    'gtm.start': new Date().getTime(),
-                    event: 'gtm.js'
-                });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
-                j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', '{{ config('site.attributes.reldomain.gtm_id') ?? 'GTM-K5DTWRM' }}');
+            window.dataLayer = window.dataLayer || [];
         </script>
-        <!-- End Google Tag Manager -->
     @endif
 
 @endif
