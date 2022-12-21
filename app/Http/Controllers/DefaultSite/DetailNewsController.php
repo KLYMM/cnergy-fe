@@ -4,7 +4,7 @@ namespace App\Http\Controllers\DefaultSite;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\Html;
+use App\Services\HtmlChunk;
 
 use Site, Data, Util, Str;
 
@@ -108,9 +108,9 @@ class DetailNewsController extends Controller
         // $debug = (request()->query('new_exp') == 'maverick') ?? $debug;
         // dd($debug);
         if($debug == 'true') {
-            $rowHtml = new Html();
+            $rowHtml = new HtmlChunk($row);
             $content = $rowHtml->parseNews($row);
-
+            // dd($content);
             return Site::view('pages.detail.index', compact('content', 'row'));
         }
 

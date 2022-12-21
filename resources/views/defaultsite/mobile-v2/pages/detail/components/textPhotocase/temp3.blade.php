@@ -1,5 +1,30 @@
-<section data-section="section3"
-    class="section snap-always snap-start w-full h-full flex flex-col shrink-0 transition  dark:bg-dark-3 dark:text-white pt-16"
+<section data-section="sectionDua" class="section px-6 snap-always snap-start w-full h-full shrink-0 transition bg-light-4 text-white dark:bg-dark-0" data-theme="dt-text-2">
+    <div class="section-body relative flex flex-col h-full">
+       
+        <div class="dt relative overflow-hidden ">
+            <div class="dt-paras relative z-10  leading-relaxed pt-20 font-karla font-normal px-6 animate animate--fadeInUp" style="--delay: 100ms">
+                <p>{!! $chunk['attributes']['title'] !!} </p>
+            </div>
+        </div>
+        <div class="article-desc relative flex-1 pr-8 z-20">
+            <div class="article-asset relative -mx-4 mt-24 animate animate--fadeInUp" style="--delay: 200ms">
+                <figure
+                    class="article-asset mx-4 w-full aspect-375 bg-cover bg-no-repeat bg-center overflow-hidden">
+                    {!! $chunk['rawContent'] !!} 
+                </figure>
+
+            </div>
+        </div>
+        <div class="article-footer flex justify-center items-center py-6">
+            <span class="article-swipeup font-primary-2 vh-text-md animate-swipe animate-swipe-up">
+               
+                SWIPE UP
+            </span>
+        </div>
+    </div>
+</section>
+{{-- <section data-section="section3"
+    class="section snap-always snap-start bg-light-4 w-full h-full flex flex-col shrink-0 transition  dark:bg-dark-3 dark:text-white pt-16"
     data-theme="highlight2">
     <div class="section-body mt-5 relative overflow-hidden flex-1 container max-w-full">
         <article class="article relative overflow-hidden flex flex-col h-full px-6">
@@ -26,9 +51,9 @@
                 </div>
             </div>
             <input type="checkbox" checked id="btn-read">
-            {{-- button-share --}}
+          
             @include('defaultsite.mobile-v2.pages.detail.components.buttonShare.buttonShare')
-            {{-- end button-share --}}
+           
 
             <div class="article-footer flex justify-center items-center py-6">
                 <span
@@ -37,4 +62,4 @@
             </div>
         </article>
     </div>
-</section>
+</section> --}}
