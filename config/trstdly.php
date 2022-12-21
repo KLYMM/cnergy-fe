@@ -7,12 +7,10 @@ return [
             'textCase.textCase1',
             'textCase.textCase2',
             'textCase.textCase3',
-            // 'textPhotocase.temp2',
-            'textPhotocase.temp3',
-            // 'textPhotocase.temp4'
         ],
         'image' => [
-            'textCase.textCase1'
+            'dua',
+            'dua',
         ]
     ]
 ];
