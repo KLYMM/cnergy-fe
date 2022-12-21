@@ -1,19 +1,16 @@
 <section data-section="sectionDua" class="section px-6 snap-always snap-start w-full h-full shrink-0 transition bg-light-4 text-white dark:bg-dark-0" data-theme="dt-text-2">
     <div class="section-body relative flex flex-col h-full">
        
-        <div class="dt relative overflow-hidden flex-1">
-            <div class="dt-para relative z-10 vh-text-lg leading-relaxed pt-20 px-6 animate animate--fadeInUp" style="--delay: 100ms">
-                {!! $chunk['content'] !!} 
+        <div class="dt relative overflow-hidden ">
+            <div class="dt-paras relative z-10  leading-relaxed pt-20 font-karla font-normal px-6 animate animate--fadeInUp" style="--delay: 100ms">
+                <p>{!! $chunk['attributes']['title'] !!} </p>
             </div>
         </div>
-        <div class="article-desc relative pr-8 z-20">
-            <div class="article-asset relative -mx-4 mb-6 animate animate--fadeInUp" style="--delay: 200ms">
+        <div class="article-desc relative flex-1 pr-8 z-20">
+            <div class="article-asset relative -mx-4 mt-24 animate animate--fadeInUp" style="--delay: 200ms">
                 <figure
-                    class="article-asset mx-4 w-full aspect-375 bg-cover bg-no-repeat bg-center overflow-hidden"
-                    style="background-image: url('{{ $row['news_image']['real'] }}');">
-                    <span class="bg-primary  w-full absolute opacity-70 bottom-0">
-                        <p class="my-1 ml-2.5 text-xs">Copyright © 2022 trstdly</p>
-                    </span>
+                    class="article-asset mx-4 w-full aspect-375 bg-cover bg-no-repeat bg-center overflow-hidden">
+                    {!! $chunk['rawContent'] !!} 
                 </figure>
 
             </div>
