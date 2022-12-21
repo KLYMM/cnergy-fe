@@ -1,4 +1,3 @@
-@dump($chunk['attributes']['subcontent']['content'])
 <section data-section="sectionHeading" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-8 text-black dark:bg-dark-0 dark:text-white" data-theme="dt-text-3">
     <div class="section-body relative flex flex-col h-full">
         <div class="dt relative overflow-hidden flex-1">
