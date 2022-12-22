@@ -1,36 +1,49 @@
-<header class="header fixed bottom-6 right-2 z-40 text-white transition dark:text-white" data-header="">
+<header class="header fixed bottom-16 right-4 z-40 text-white transition dark:text-white" data-header="">
     <div class="flex flex-col items-center space-y-2">
-        <a href="#" class="flex items-center justify-center rounded-full h-10 w-10 bg-black/40 dark:bg-white/40" onclick="copyToClipboard()">
+        <a href="#" class="flex items-center justify-center rounded-full h-12 w-12 bg-dark-40 dark:bg-white-40" onclick="copyToClipboard()" >
             <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.8 16.2458V12.3038C6.796 12.3038 3.502 13.8338 1 17.1998C2.008 12.3938 4.798 7.60581 11.8 6.63381V2.7998L19 9.5138L11.8 16.2458Z" stroke="white" stroke-width="2" />
+                <path d="M11.8 16.2458V12.3038C6.796 12.3038 3.502 13.8338 1 17.1998C2.008 12.3938 4.798 7.60581 11.8 6.63381V2.7998L19 9.5138L11.8 16.2458Z" stroke="currentColor" stroke-width="2"></path>
             </svg>
         </a>
-        <a href="#" data-toggle="menu" class="flex items-center justify-center rounded-full h-10 w-10 bg-black/40 dark:bg-white/40">
-            <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M18 0.586914H0V2.83691H18V0.586914ZM18 13.1631H0V15.4131H18V13.1631ZM4.5 6.875H18V9.125H4.5V6.875Z" fill="white" fill-opacity="0.9" />
+        <a href="#" data-toggle="menu" class="flex items-center  justify-center rounded-full h-12 w-12 bg-dark-40 dark:bg-white-40">
+            <svg width="18" height="16" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H18V2.25H0V0ZM0 6.25H18V8.5H0V6.25ZM18 12.5H3.5V14.75H18V12.5Z" fill="white"></path>
             </svg>
         </a>
     </div>
 
 
 
-    <div data-toggle-open="menu" class="header-menu fixed inset-0 bg-light-1 text-white pointer-events-none transform translate-x-full dark:bg-dark-0">
+    <div data-toggle-open="menu"
+        class="header-menu fixed inset-0 bg-light-1 text-white pointer-events-none transform translate-x-full dark:bg-dark-0">
         <div class="header-menu-inner w-full h-full flex flex-col justify-between">
             <div class="header-menu-top flex items-center justify-between h-16">
-                <div class="header-menu-top-switch switchTheme relative h-full px-6 flex items-center justify-center animate animate--fadeIn">
-                    <input class="switchTheme-control" type="checkbox" name="checkbox" id="switchTheme" autocomplete="off">
+                <div
+                    class="header-menu-top-switch switchTheme relative h-full px-6 flex items-center justify-center animate animate--fadeIn">
+                    <input class="switchTheme-control" type="checkbox" name="checkbox" id="switchTheme"
+                        autocomplete="off">
                     <label class="switchTheme-icon" for="switchTheme">
-                        <svg class="switchTheme-icon-dark" width="21" height="21" viewBox="0 0 21S 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.96726 2.5C5.93378 4.15761 6.23356 5.80515 6.84896 7.34568C7.46437 8.88621 8.38297 10.2886 9.55072 11.4704C10.7185 12.6522 12.1118 13.5895 13.6487 14.2271C15.1856 14.8648 16.835 15.1899 18.5 15.1833C17.8468 16.2246 16.9901 17.1246 15.9808 17.8298C14.9716 18.535 13.8304 19.0312 12.6249 19.2888C12.5131 19.3125 12.4005 19.3406 12.2862 19.3606C10.1711 19.7325 7.99194 19.3547 6.12739 18.293C4.26284 17.2313 2.83071 15.5527 2.07982 13.5488C1.32892 11.545 1.3067 9.34249 2.01702 7.32402C2.72734 5.30554 4.12451 3.59881 5.96726 2.5Z" stroke="currentColor" stroke-width="2"></path>
+                        <svg class="switchTheme-icon-dark" width="21" height="21" viewBox="0 0 21S 21"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5.96726 2.5C5.93378 4.15761 6.23356 5.80515 6.84896 7.34568C7.46437 8.88621 8.38297 10.2886 9.55072 11.4704C10.7185 12.6522 12.1118 13.5895 13.6487 14.2271C15.1856 14.8648 16.835 15.1899 18.5 15.1833C17.8468 16.2246 16.9901 17.1246 15.9808 17.8298C14.9716 18.535 13.8304 19.0312 12.6249 19.2888C12.5131 19.3125 12.4005 19.3406 12.2862 19.3606C10.1711 19.7325 7.99194 19.3547 6.12739 18.293C4.26284 17.2313 2.83071 15.5527 2.07982 13.5488C1.32892 11.545 1.3067 9.34249 2.01702 7.32402C2.72734 5.30554 4.12451 3.59881 5.96726 2.5Z"
+                                stroke="currentColor" stroke-width="2"></path>
                         </svg>
-                        <svg class="switchTheme-icon-light" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.75 3H11.25V0H8.75V3ZM17 11.25L20 11.25V8.75L17 8.75V11.25ZM8.75 20L8.75 17H11.25L11.25 20H8.75ZM3 8.75V11.25H0V8.75H3ZM15.8336 5.93414L17.9549 3.81282L16.1872 2.04505L14.0658 4.16637L15.8336 5.93414ZM16.1872 17.955L14.0658 15.8336L15.8336 14.0659L17.9549 16.1872L16.1872 17.955ZM4.16635 14.0659L5.93412 15.8336L3.8128 17.955L2.04503 16.1872L4.16635 14.0659ZM4.16635 5.93414L5.93412 4.16637L3.8128 2.04505L2.04503 3.81282L4.16635 5.93414ZM12.5 10C12.5 11.3807 11.3807 12.5 10 12.5C8.61929 12.5 7.5 11.3807 7.5 10C7.5 8.61929 8.61929 7.5 10 7.5C11.3807 7.5 12.5 8.61929 12.5 10ZM15 10C15 12.7614 12.7614 15 10 15C7.23858 15 5 12.7614 5 10C5 7.23858 7.23858 5 10 5C12.7614 5 15 7.23858 15 10Z" fill="currentColor"></path>
+                        <svg class="switchTheme-icon-light" width="20" height="20" viewBox="0 0 20 20"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M8.75 3H11.25V0H8.75V3ZM17 11.25L20 11.25V8.75L17 8.75V11.25ZM8.75 20L8.75 17H11.25L11.25 20H8.75ZM3 8.75V11.25H0V8.75H3ZM15.8336 5.93414L17.9549 3.81282L16.1872 2.04505L14.0658 4.16637L15.8336 5.93414ZM16.1872 17.955L14.0658 15.8336L15.8336 14.0659L17.9549 16.1872L16.1872 17.955ZM4.16635 14.0659L5.93412 15.8336L3.8128 17.955L2.04503 16.1872L4.16635 14.0659ZM4.16635 5.93414L5.93412 4.16637L3.8128 2.04505L2.04503 3.81282L4.16635 5.93414ZM12.5 10C12.5 11.3807 11.3807 12.5 10 12.5C8.61929 12.5 7.5 11.3807 7.5 10C7.5 8.61929 8.61929 7.5 10 7.5C11.3807 7.5 12.5 8.61929 12.5 10ZM15 10C15 12.7614 12.7614 15 10 15C7.23858 15 5 12.7614 5 10C5 7.23858 7.23858 5 10 5C12.7614 5 15 7.23858 15 10Z"
+                                fill="currentColor"></path>
                         </svg>
                     </label>
                 </div>
-                <a href="#" data-toggle-close="menu" class="header-menu-top-close h-full px-6 flex items-center justify-center">
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 3.69174L8.69082 -1.94964e-08L10 1.30918L6.30826 5L10 8.69082L8.69082 10L5 6.30826L1.30918 10L-1.94964e-08 8.69082L3.69174 5L0 1.30918L1.30918 0L5 3.69174Z" fill="currentColor"></path>
+                <a href="#" data-toggle-close="menu"
+                    class="header-menu-top-close h-full px-6 flex items-center justify-center">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5 3.69174L8.69082 -1.94964e-08L10 1.30918L6.30826 5L10 8.69082L8.69082 10L5 6.30826L1.30918 10L-1.94964e-08 8.69082L3.69174 5L0 1.30918L1.30918 0L5 3.69174Z"
+                            fill="currentColor"></path>
                     </svg>
                 </a>
             </div>
@@ -124,31 +137,33 @@
                     @include('defaultsite.mobile-v2.components-ui.trending-menu')
                 </ul>
 
-                @if (count($category_tree) > 0)
-                @if ($subdomain)
-                @if (count($subdomain['children']) > 0)
-                <div class="header-submenu">
-                    <ul class="header-submenu-item">
-                        <li class="header-submenu-item-title">{{ strtoupper($subdomain['title']) }}</li>
-                        {{-- list subdomain level 1 or check list subdomain 2 level > 0 --}}
-                        @if (count($category_tree) > 0 || count($second_subdomain['children'] ?? []) > 0)
-                        @foreach ($subdomain['children'] as $m)
-                        @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
-                        <li class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
-                            <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
-                        </li>
-                        @else
-                        <li class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
-                            <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
-                        </li>
+                    @if (count($category_tree) > 0)
+                        @if ($subdomain)
+                            @if (count($subdomain['children']) > 0)
+                                <div class="header-submenu">
+                                    <ul class="header-submenu-item">
+                                        <li class="header-submenu-item-title">{{ strtoupper($subdomain['title']) }}</li>
+                                        {{-- list subdomain level 1 or check list subdomain 2 level > 0 --}}
+                                        @if (count($category_tree) > 0 || count($second_subdomain['children'] ?? []) > 0)
+                                            @foreach ($subdomain['children'] as $m)
+                                                @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
+                                                    <li
+                                                        class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
+                                                        <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
+                                                    </li>
+                                                @else
+                                                    <li
+                                                        class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
+                                                        <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                            @endif
                         @endif
-                        @endforeach
-                        @endif
-                    </ul>
-                </div>
-                @endif
-                @endif
-                @endif
+                    @endif
                 </ul>
             </div>
             <div class="search-container">
@@ -346,3 +361,21 @@
         </div>
     </div>
 </header>
+
+<script>
+    const shareData = {
+        title: <?= $title ?>,
+        text: <?= $synopsis ?>,
+        url: window.location.href
+    }
+
+    const btn = document.querySelector('#shareMenu');
+
+    btn.addEventListener('click', async () => {
+        try {
+            await navigator.share(shareData);
+        } catch (err) {
+            console.log(err);
+        }
+    });
+</script>
