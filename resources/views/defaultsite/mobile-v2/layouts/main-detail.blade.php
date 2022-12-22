@@ -14,8 +14,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <meta name="keywords" content="Maverick" />
     <meta http-equiv="cache-control" content="public, no-transform" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport"
-        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <link rel="shortcut icon" href="" />
@@ -24,23 +23,21 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link rel="preconnect" href="https://via.placeholder.com/" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="{{ Src::mix('detail/css/main.css') }}" rel="stylesheet">
     <link href="{{ Src::mix('detail/css/color.css') }}" rel="stylesheet">
+    <link href="{{ Src::mix('detail/css/trstdly.css') }}" rel="stylesheet">
 
-    <link rel="preload" href="{{ Src::mix('css/detail-maverick.css') }}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="{{ Src::mix('css/detail-maverick.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
     @include('object_js', ['isMaverick' => true])
 </head>
 
-<body class="vh-text-md leading-normal bg-stone-100 font-primary-1 maverick-info">
+<body class="vh-text-md leading-normal font-primary-1 bg-stone-100 maverick-info">
 
     {{-- <header class="header fixed top-32 right-0 z-20 transition" data-header>
         <div
@@ -90,8 +87,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <main class="main relative max-w-screen-md mx-auto h-full overflow-hidden">
 
         <!-- snap -->
-        <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth"
-            data-scroller>
+        <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth" data-scroller>
             @include('defaultsite.mobile-v2.components.navbar-new')
 
             @yield('content')
@@ -100,8 +96,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         <!-- end.snap -->
 
         <!--snap.indicator-->
-        <div class="indicator absolute right-2 bottom-24 flex flex-col snap-y snap-mandatory scroll-smooth overflow-hidden dark:indicator-white hidden"
-            data-indicator></div>
+        <div class="indicator absolute right-2 bottom-24 flex flex-col snap-y snap-mandatory scroll-smooth overflow-hidden dark:indicator-white hidden" data-indicator></div>
 
     </main>
 
@@ -112,24 +107,24 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         const toggleOpen = document.querySelectorAll("[data-toggle]");
         const toggleClose = document.querySelectorAll("[data-toggle-close]");
 
-        toggleOpen.forEach(function (t, i) {
+        toggleOpen.forEach(function(t, i) {
             t.addEventListener('click', function(e) {
                 const attr = this.getAttribute('data-toggle');
                 this.classList.toggle('is-active');
-                if(this.classList.contains('is-active')){
+                if (this.classList.contains('is-active')) {
                     cseSearch();
                     document.body.classList.add('overflow-hidden');
-                    document.querySelector('[data-toggle-open="'+ attr +'"]').classList.add('open');
-                }else{
+                    document.querySelector('[data-toggle-open="' + attr + '"]').classList.add('open');
+                } else {
                     document.body.classList.remove('overflow-hidden');
-                    document.querySelector('[data-toggle-open="'+ attr +'"]').classList.remove('open');
+                    document.querySelector('[data-toggle-open="' + attr + '"]').classList.remove('open');
                     var s = document.getElementsByTagName('script')[0];
                     s.remove();
                 }
                 e.preventDefault();
             });
         });
-        toggleClose.forEach(function (t, i) {
+        toggleClose.forEach(function(t, i) {
             t.addEventListener('click', function(e) {
                 document.body.classList.remove('overflow-hidden');
                 document.querySelector('[data-toggle]').classList.remove('is-active');

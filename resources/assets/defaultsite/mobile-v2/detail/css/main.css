@@ -1,36 +1,36 @@
 :root {
-    --color-primary: #8b02fd;
+    --color-primary: #8B02FD;
     --color-primary-60: #310057;
-    --color-primary-40: #f7ecff;
-    --color-yellow: #ffa952;
-    --color-yellow-40: #ffc485;
-    --color-black: #000000;
+    --color-primary-40: #F7ECFF;
+    --color-yellow: #FFA952;
+    --color-yellow-40: #FFC485;
+    --color-black: #000;
     --color-black-60: #171717;
-    --color-black-40: #2e2d2e;
-    --color-white: #ffffff;
+    --color-black-40: #2E2D2E;
+    --color-white: #fff;
     --color-white-20: #dcdcdc;
-    --color-gray: #514f4f;
-    --font-inter: "Inter", sans-serif;
-    --font-nunito: "Nunito Sans", sans-serif;
-    --font-redhat: "Red Hat Display", sans-serif;
+    --color-gray: #514F4F;
+    --font-inter: 'Inter', sans-serif;
+    --font-nunito: 'Nunito Sans', sans-serif;
+    --font-redhat: 'Red Hat Display', sans-serif
 }
 
 @-ms-viewport {
-    width: device-width;
+    width: device-width
 }
 
 html,
 body {
-    height: 100%;
+    height: 100%
 }
 
 img {
     color: transparent;
-    vertical-align: middle;
+    vertical-align: middle
 }
 
 article {
-    margin: 0;
+    margin: 0
 }
 
 .line-clamp-3 {
@@ -39,7 +39,7 @@ article {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    -webkit-box-pack: end;
+    -webkit-box-pack: end
 }
 
 .line-clamp-4 {
@@ -48,7 +48,7 @@ article {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-    -webkit-box-pack: end;
+    -webkit-box-pack: end
 }
 
 .line-clamp-5 {
@@ -57,7 +57,7 @@ article {
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-    -webkit-box-pack: end;
+    -webkit-box-pack: end
 }
 
 .line-clamp-6 {
@@ -66,7 +66,7 @@ article {
     display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
-    -webkit-box-pack: end;
+    -webkit-box-pack: end
 }
 
 .line-clamp-7 {
@@ -75,7 +75,7 @@ article {
     display: -webkit-box;
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
-    -webkit-box-pack: end;
+    -webkit-box-pack: end
 }
 
 .line-clamp-8 {
@@ -84,7 +84,7 @@ article {
     display: -webkit-box;
     -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
-    -webkit-box-pack: end;
+    -webkit-box-pack: end
 }
 
 .line-clamp-9 {
@@ -93,524 +93,526 @@ article {
     display: -webkit-box;
     -webkit-line-clamp: 9;
     -webkit-box-orient: vertical;
-    -webkit-box-pack: end;
+    -webkit-box-pack: end
 }
 
 .animate {
     --delay: 0ms;
     opacity: 0;
-    -webkit-transition: opacity 800ms var(--delay),
-        transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99) var(--delay);
-    transition: opacity 800ms var(--delay),
-        transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99) var(--delay);
+    -webkit-transition: opacity 800ms var(--delay), transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99) var(--delay);
+    transition: opacity 800ms var(--delay), transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99) var(--delay)
 }
 
 .animate--fadeIn {
     -webkit-transform: scale(1, 0.1);
-    transform: scale(1, 1);
+    transform: scale(1, 1)
 }
 
 .animate--fadeInUp {
     -webkit-transform: translate3d(0, 1rem, 0);
-    transform: translate3d(0, 1rem, 0);
+    transform: translate3d(0, 1rem, 0)
 }
 
 .animate--fadeInLeft {
     -webkit-transform: translate3d(-1rem, 0, 0);
-    transform: translate3d(-1rem, 0, 0);
+    transform: translate3d(-1rem, 0, 0)
 }
 
 .animate--fadeInRight {
     -webkit-transform: translate3d(1rem, 0, 0);
-    transform: translate3d(1rem, 0, 0);
+    transform: translate3d(1rem, 0, 0)
 }
 
 .animate--fadeInDown {
     -webkit-transform: translate3d(0, -1rem, 0);
-    transform: translate3d(0, -1rem, 0);
+    transform: translate3d(0, -1rem, 0)
 }
 
-.is-visible .animate {
+.is-visible>.section-body .animate {
     opacity: 1;
     -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
-    transform: scale(1, 1) translate3d(0, 0, 0);
+    transform: scale(1, 1) translate3d(0, 0, 0)
 }
 
 [data-theme="yellow"] .header .dark\:img-white {
-    filter: invert(1) grayscale(2) brightness(100);
+    filter: invert(1) grayscale(2) brightness(100)
 }
 
 [data-theme="yellow"] .header .dark\:svg-stroke-white path {
-    stroke: var(--color-white);
+    stroke: var(--color-white)
 }
 
 [data-theme="yellow"] .header .dark\:svg-stroke-black path {
-    stroke: var(--color-black);
+    stroke: var(--color-black)
 }
 
 [data-theme="yellow"] .header .dark\:svg-fill-white path {
-    fill: var(--color-white);
+    fill: var(--color-white)
 }
 
 [data-theme="yellow"] .header .dark\:svg-fill-black path {
-    fill: var(--color-black);
+    fill: var(--color-black)
 }
 
 [data-theme="yellow"] .header .dark\:svg-both-white path {
     stroke: var(--color-white);
-    fill: var(--color-white);
+    fill: var(--color-white)
 }
 
 [data-theme="yellow"] .header .dark\:svg-both-black path {
     stroke: var(--color-black);
-    fill: var(--color-black);
+    fill: var(--color-black)
 }
 
 [data-theme="yellow"] .indicator .indicator-bullet {
-    border-color: var(--color-black);
+    border-color: var(--color-black)
 }
 
 [data-theme="yellow"] .indicator .indicator-bullet-active {
-    background-color: var(--color-black);
+    background-color: var(--color-black)
 }
 
 .dark .dark\:bg-black {
-    background-color: var(--color-black);
+    background-color: var(--color-black)
 }
 
 .dark .dark\:bg-black-60 {
-    background-color: var(--color-black-60);
+    background-color: var(--color-black-60)
 }
 
 .dark .dark\:bg-black-40 {
-    background-color: var(--color-black-40);
+    background-color: var(--color-black-40)
 }
 
 .dark .dark\:bg-white {
-    background-color: var(--color-white);
+    background-color: var(--color-white)
 }
 
 .dark .dark\:bg-white-20 {
-    background-color: var(--color-white-20);
+    background-color: var(--color-white-20)
 }
 
 .dark .dark\:bg-primary {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary)
 }
 
 .dark .dark\:bg-primary-60 {
-    background-color: var(--color-primary-60);
+    background-color: var(--color-primary-60)
 }
 
 .dark .dark\:bg-primary-40 {
-    background-color: var(--color-primary-40);
+    background-color: var(--color-primary-40)
 }
 
 .dark .dark\:bg-yellow {
-    background-color: var(--color-yellow);
+    background-color: var(--color-yellow)
 }
 
 .dark .dark\:bg-yellow-40 {
-    background-color: var(--color-yellow-40);
+    background-color: var(--color-yellow-40)
 }
 
 .dark .dark\:bg-gray {
-    background-color: var(--color-gray);
+    background-color: var(--color-gray)
 }
 
 .dark .dark\:border-black {
-    border-color: var(--color-black);
+    border-color: var(--color-black)
 }
 
 .dark .dark\:border-black-60 {
-    border-color: var(--color-black-60);
+    border-color: var(--color-black-60)
 }
 
 .dark .dark\:border-black-40 {
-    border-color: var(--color-black-40);
+    border-color: var(--color-black-40)
 }
 
 .dark .dark\:border-white {
-    border-color: var(--color-white);
+    border-color: var(--color-white)
 }
 
 .dark .dark\:border-white-20 {
-    border-color: var(--color-white-20);
+    border-color: var(--color-white-20)
 }
 
 .dark .dark\:border-primary {
-    border-color: var(--color-primary);
+    border-color: var(--color-primary)
 }
 
 .dark .dark\:border-primary-60 {
-    border-color: var(--color-primary-40);
+    border-color: var(--color-primary-40)
 }
 
 .dark .dark\:border-primary-40 {
-    border-color: var(--color-primary-40);
+    border-color: var(--color-primary-40)
 }
 
 .dark .dark\:border-yellow {
-    border-color: var(--color-yellow);
+    border-color: var(--color-yellow)
 }
 
 .dark .dark\:border-yellow-40 {
-    border-color: var(--color-yellow-40);
+    border-color: var(--color-yellow-40)
 }
 
 .dark .dark\:text-black {
-    color: var(--color-black);
+    color: var(--color-black)
 }
 
 .dark .dark\:text-black-60 {
-    color: var(--color-black-60);
+    color: var(--color-black-60)
 }
 
 .dark .dark\:text-black-40 {
-    color: var(--color-black-40);
+    color: var(--color-black-40)
 }
 
 .dark .dark\:text-white {
-    color: var(--color-white);
+    color: var(--color-white)
 }
 
 .dark .dark\:text-white-20 {
-    color: var(--color-white-20);
+    color: var(--color-white-20)
 }
 
 .dark .dark\:text-primary {
-    color: var(--color-primary);
+    color: var(--color-primary)
 }
 
 .dark .dark\:text-primary-60 {
-    color: var(--color-primary-60);
+    color: var(--color-primary-60)
 }
 
 .dark .dark\:text-primary-40 {
-    color: var(--color-primary-40);
+    color: var(--color-primary-40)
 }
 
 .dark .dark\:text-yellow {
-    color: var(--color-yellow);
+    color: var(--color-yellow)
 }
 
 .dark .dark\:text-yellow-40 {
-    color: var(--color-yellow-40);
+    color: var(--color-yellow-40)
 }
 
 .dark .dark\:text-gray {
-    color: var(--color-gray);
+    color: var(--color-gray)
 }
 
 .dark .dark\:img-white {
-    filter: invert(1) grayscale(2) brightness(100);
+    filter: invert(1) grayscale(2) brightness(100)
 }
 
 .dark .dark\:svg-stroke-white path {
-    stroke: var(--color-white);
+    stroke: var(--color-white)
 }
 
 .dark .dark\:svg-stroke-black path {
-    stroke: var(--color-black);
+    stroke: var(--color-black)
 }
 
 .dark .dark\:svg-fill-white path {
-    fill: var(--color-white);
+    fill: var(--color-white)
 }
 
 .dark .dark\:svg-fill-black path {
-    fill: var(--color-black);
+    fill: var(--color-black)
 }
 
 .dark .dark\:svg-both-white path {
     stroke: var(--color-white);
-    fill: var(--color-white);
+    fill: var(--color-white)
 }
 
 .dark .dark\:svg-both-black path {
     stroke: var(--color-black);
-    fill: var(--color-black);
+    fill: var(--color-black)
 }
 
 .dark .dark\:indicator-white .indicator-bullet {
-    border-color: var(--color-white);
+    border-color: var(--color-white)
 }
 
 .dark .dark\:indicator-white .indicator-bullet-active {
-    background-color: var(--color-white);
+    background-color: var(--color-white)
 }
 
 .dark .dark\:indicator-black .indicator-bullet {
-    border-color: var(--color-black);
+    border-color: var(--color-black)
 }
 
 .dark .dark\:indicator-black .indicator-bullet-active {
-    background-color: var(--color-black);
+    background-color: var(--color-black)
+}
+
+.vh-h-potrait {
+    height: 40vh
 }
 
 .vh-h-landscape {
-    height: 28vh;
+    height: 28vh
 }
 
 .vh-h-btn {
-    height: 6.4vh;
+    height: 6.4vh
 }
 
 .vh-text-xs {
-    font-size: 1.4vh;
+    font-size: 1.8vh
 }
 
 .vh-text-sm {
-    font-size: 1.8vh;
+    font-size: 2vh
 }
 
 .vh-text-md {
-    font-size: 2.2vh;
+    font-size: 2.2vh
 }
 
 .vh-text-lg {
-    font-size: 2.6vh;
+    font-size: 2.6vh
 }
 
 .vh-text-xl {
-    font-size: 3vh;
+    font-size: 3vh
 }
 
 .vh-text-2xl {
-    font-size: 3.4vh;
+    font-size: 3.4vh
 }
 
 .vh-text-3xl {
-    font-size: 3.8vh;
+    font-size: 3.8vh
 }
 
 .vh-text-4xl {
-    font-size: 4.2vh;
+    font-size: 4.2vh
 }
 
 .font-inter {
-    font-family: var(--font-inter);
+    font-family: var(--font-inter)
 }
 
 .font-redhat {
-    font-family: var(--font-redhat);
+    font-family: var(--font-redhat)
 }
 
 .font-nunito {
-    font-family: var(--font-nunito);
+    font-family: var(--font-nunito)
 }
 
 .bg-black {
-    background-color: var(--color-black);
+    background-color: var(--color-black)
 }
 
 .bg-black-60 {
-    background-color: var(--color-black-60);
+    background-color: var(--color-black-60)
 }
 
 .bg-black-40 {
-    background-color: var(--color-black-40);
+    background-color: var(--color-black-40)
 }
 
 .bg-white {
-    background-color: var(--color-white);
+    background-color: var(--color-white)
 }
 
 .bg-white-20 {
-    background-color: var(--color-white-20);
+    background-color: var(--color-white-20)
 }
 
 .bg-primary {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary)
 }
 
 .bg-primary-60 {
-    background-color: var(--color-primary-60);
+    background-color: var(--color-primary-60)
 }
 
 .bg-primary-40 {
-    background-color: var(--color-primary-40);
+    background-color: var(--color-primary-40)
 }
 
 .bg-yellow {
-    background-color: var(--color-yellow);
+    background-color: var(--color-yellow)
 }
 
 .bg-yellow-40 {
-    background-color: var(--color-yellow-40);
+    background-color: var(--color-yellow-40)
 }
 
 .bg-gray {
-    background-color: var(--color-gray);
+    background-color: var(--color-gray)
 }
 
 .border-black {
-    border-color: var(--color-black);
+    border-color: var(--color-black)
 }
 
 .border-black-60 {
-    border-color: var(--color-black-60);
+    border-color: var(--color-black-60)
 }
 
 .border-black-40 {
-    border-color: var(--color-black-40);
+    border-color: var(--color-black-40)
 }
 
 .border-white {
-    border-color: var(--color-white);
+    border-color: var(--color-white)
 }
 
 .border-white-20 {
-    border-color: var(--color-white-20);
+    border-color: var(--color-white-20)
 }
 
 .border-primary {
-    border-color: var(--color-primary);
+    border-color: var(--color-primary)
 }
 
 .border-primary-60 {
-    border-color: var(--color-primary-60);
+    border-color: var(--color-primary-60)
 }
 
 .border-primary-40 {
-    border-color: var(--color-primary-40);
+    border-color: var(--color-primary-40)
 }
 
 .border-yellow {
-    border-color: var(--color-yellow);
+    border-color: var(--color-yellow)
 }
 
 .border-yellow-40 {
-    border-color: var(--color-yellow-40);
+    border-color: var(--color-yellow-40)
 }
 
 .border-t-12 {
-    border-top-width: 0.75rem;
+    border-top-width: .75rem
 }
 
 .text-black {
-    color: var(--color-black);
+    color: var(--color-black)
 }
 
 .text-black-60 {
-    color: var(--color-black-60);
+    color: var(--color-black-60)
 }
 
 .text-black-40 {
-    color: var(--color-black-40);
+    color: var(--color-black-40)
 }
 
 .text-white {
-    color: var(--color-white);
+    color: var(--color-white)
 }
 
 .text-white-20 {
-    color: var(--color-white-20);
+    color: var(--color-white-20)
 }
 
 .text-primary {
-    color: var(--color-primary);
+    color: var(--color-primary)
 }
 
 .text-primary-60 {
-    color: var(--color-primary-60);
+    color: var(--color-primary-60)
 }
 
 .text-primary-40 {
-    color: var(--color-primary-40);
+    color: var(--color-primary-40)
 }
 
 .text-yellow {
-    color: var(--color-yellow);
+    color: var(--color-yellow)
 }
 
 .text-yellow-40 {
-    color: var(--color-yellow-40);
+    color: var(--color-yellow-40)
 }
 
 .text-gray {
-    color: var(--color-gray);
+    color: var(--color-gray)
 }
 
 .scroll-smooth {
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch
 }
 
 .shrink {
-    flex-shrink: 1;
+    flex-shrink: 1
 }
 
 .shrink-0 {
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .rounded-xl {
-    -webkit-border-radius: 0.75rem;
-    border-radius: 0.75rem;
+    -webkit-border-radius: .75rem;
+    border-radius: .75rem
 }
 
 .snap-mandatory {
-    --tw-scroll-snap-strictness: mandatory;
+    --tw-scroll-snap-strictness: mandatory
 }
 
 .snap-proximity {
-    --tw-scroll-snap-strictness: proximity;
+    --tw-scroll-snap-strictness: proximity
 }
 
 .snap-none {
-    scroll-snap-type: none;
+    scroll-snap-type: none
 }
 
 .snap-y {
-    scroll-snap-type: y var(--tw-scroll-snap-strictness);
+    scroll-snap-type: y var(--tw-scroll-snap-strictness)
 }
 
 .snap-x {
-    scroll-snap-type: x var(--tw-scroll-snap-strictness);
+    scroll-snap-type: x var(--tw-scroll-snap-strictness)
 }
 
 .snap-both {
-    scroll-snap-type: both var(--tw-scroll-snap-strictness);
+    scroll-snap-type: both var(--tw-scroll-snap-strictness)
 }
 
 .snap-y,
 .snap-x {
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    scrollbar-width: none
 }
 
 .snap-y::-webkit-scrollbar,
 .snap-x::-webkit-scrollbar {
-    display: none;
+    display: none
 }
 
 .snap-always {
-    scroll-snap-stop: always;
+    scroll-snap-stop: always
 }
 
 .snap-normal {
-    scroll-snap-stop: normal;
+    scroll-snap-stop: normal
 }
 
 .snap-start {
-    scroll-snap-align: start;
+    scroll-snap-align: start
 }
 
 .snap-center {
-    scroll-snap-align: center;
+    scroll-snap-align: center
 }
 
 .snap-end {
-    scroll-snap-align: end;
+    scroll-snap-align: end
 }
 
 .snap-align-none {
-    scroll-snap-align: none;
+    scroll-snap-align: none
 }
 
 .aspect-375 {
-    aspect-ratio: 375 / 225;
+    aspect-ratio: 375 / 225
 }
 
 .switchTheme-control {
@@ -621,21 +623,22 @@ article {
     width: 100%;
     height: 100%;
     z-index: 1;
-    cursor: pointer;
+    cursor: pointer
 }
 
-.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-light {
-    opacity: 0;
+.switchTheme-control:checked~.switchTheme-icon .switchTheme-icon-light {
+    opacity: 0
 }
 
-.switchTheme-control:checked ~ .switchTheme-icon .switchTheme-icon-dark {
-    opacity: 1;
+.switchTheme-control:checked~.switchTheme-icon .switchTheme-icon-dark {
+    opacity: 1
 }
 
 .switchTheme-icon {
     position: relative;
     width: 24px;
     height: 24px;
+    display: block
 }
 
 .switchTheme-icon-light,
@@ -645,49 +648,49 @@ article {
     left: 0;
     right: 0;
     bottom: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity .5s ease
 }
 
 .switchTheme-icon-dark {
-    opacity: 0;
+    opacity: 0
 }
 
 .header .icon-sm {
-    display: none;
+    display: none
 }
 
 .indicator {
-    height: 5rem;
+    height: 5rem
 }
 
 .indicator-bullet {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: .5rem;
+    height: .5rem;
     border: 1px solid var(--color-yellow);
     border-radius: 100%;
     transition: transform 800ms ease;
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem
 }
 
 .indicator-bullet-active {
     background-color: var(--color-yellow);
-    transform: scale(1);
+    transform: scale(1)
 }
 
 .indicator-white .indicator-bullet {
-    border-color: var(--color-white-20);
+    border-color: var(--color-white-20)
 }
 
 .indicator-white .indicator-bullet-active {
-    background-color: var(--color-white-20);
+    background-color: var(--color-white-20)
 }
 
 .indicator-black .indicator-bullet {
-    border-color: var(--color-black);
+    border-color: var(--color-black)
 }
 
 .indicator-black .indicator-bullet-active {
-    background-color: var(--color-black);
+    background-color: var(--color-black)
 }
 
 .video-vertical {
@@ -695,7 +698,7 @@ article {
     height: 0;
     overflow: hidden;
     aspect-ratio: 2 / 3;
-    padding-bottom: 150%;
+    padding-bottom: 150%
 }
 
 .video-vertical-embed {
@@ -705,19 +708,5 @@ article {
     width: 100%;
     height: 100%;
     outline: none;
-    border: 0;
-}
-
-.article-asset figure img {
-    width: 100%;
-    color: transparent;
-    vertical-align: middle;
-    object-fit: cover;
-    height: 100%;
-}
-.article-paragraph p {
-    text-align: left;
-}
-.ml-63 {
-    margin-left: 63px;
+    border: 0
 }

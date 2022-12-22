@@ -164,7 +164,7 @@ class HtmlChunk
                     //CASE : -- if current text is really short
                     if ($row['chars'] <= 60) {
                         //combine with next row data (as long it also text)
-                        if ($rows[$index + 1]['type'] == 'text') {
+                        if (isset($rows[$index + 1]) && $rows[$index + 1]['type'] == 'text') {
                             $row['attributes']['subcontent'] = $rows[$index + 1];
 
                             //populate template configuration for subcontent
