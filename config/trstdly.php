@@ -9,8 +9,8 @@ return [
             
         ],
         'image' => [
-            'textPhotocase.temp3',
             'textPhotocase.temp2',
+            'textPhotocase.temp3',
         ],
         'text-heading' => [
             'textCase.textHeading',

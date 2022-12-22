@@ -32,7 +32,13 @@
 @include('defaultsite.mobile-v2.components-ui.read-too-list', ['news' => $popular])
 @endif --}}
 
-@if ($latest = collect($row['latest'])->slice(0,2)??null)
+@if ($popular = collect(Data::popular())->slice(0, 2)??null)
+@include('defaultsite.mobile-v2.pages.detail.components.content.detail-topics', [
+    'news' => $popular
+    ])
+@endif
+
+@if ($latest = collect(Data::recommendation())->slice(0,2)??null)
 @include('defaultsite.mobile-v2.pages.detail.components.content.detail-related-news', [
     'news' =>  $latest,
 ])
