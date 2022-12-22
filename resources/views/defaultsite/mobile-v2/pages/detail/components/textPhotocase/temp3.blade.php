@@ -1,4 +1,4 @@
-<section data-section="sectionImg2" class="section px-6 snap-always snap-start w-full h-full shrink-0 transition bg-light-4 text-black dark:bg-dark-0" data-theme="dt-text-2">
+<section data-section="sectionImg2" class="section px-6 snap-always snap-start w-full h-full shrink-0 transition bg-light-4 text-black dark:text-white dark:bg-dark-0" data-theme="dt-text-2">
     <div class="section-body relative flex flex-col h-full">
        
         <div class="dt relative overflow-hidden ">

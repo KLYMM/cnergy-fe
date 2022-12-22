@@ -1,14 +1,14 @@
 
 <header class="header fixed bottom-16 right-4 z-40 text-white transition dark:text-white" data-header="">
     <div class="flex flex-col items-center space-y-2">
-        <a href="#" class="flex items-center justify-center rounded-full h-12 w-12 bg-dark-40 dark:bg-white-40" onclick="copyToClipboard()" >
+        <a href="#" class="flex items-center justify-center rounded-full h-10 w-10 bg-black/40 dark:bg-white/40" onclick="copyToClipboard()" >
             <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.8 16.2458V12.3038C6.796 12.3038 3.502 13.8338 1 17.1998C2.008 12.3938 4.798 7.60581 11.8 6.63381V2.7998L19 9.5138L11.8 16.2458Z" stroke="currentColor" stroke-width="2"></path>
             </svg>
         </a>
-        <a href="#" data-toggle="menu" class="flex items-center  justify-center rounded-full h-12 w-12 bg-dark-40 dark:bg-white-40">
+        <a href="#" data-toggle="menu" class="flex items-center justify-center rounded-full h-10 w-10 bg-black/40 dark:bg-white/40">
             <svg width="18" height="16" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H18V2.25H0V0ZM0 6.25H18V8.5H0V6.25ZM18 12.5H3.5V14.75H18V12.5Z" fill="white"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M18 0.586914H0V2.83691H18V0.586914ZM18 13.1631H0V15.4131H18V13.1631ZM4.5 6.875H18V9.125H4.5V6.875Z" fill="white" fill-opacity="0.9"></path>
             </svg>
         </a>
     </div>

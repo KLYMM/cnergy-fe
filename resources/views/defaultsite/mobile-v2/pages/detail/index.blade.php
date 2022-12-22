@@ -31,6 +31,13 @@
 @include('defaultsite.mobile-v2.components-ui.read-too-list', ['news' => $popular])
 @endif --}}
 
+        
+    @if ($trendingTag = collect(Data::trendingTag())->slice(0,5) ?? null)
+    @include('defaultsite.mobile-v2.pages.detail.components.content.detail-trending-tag', [
+        'news' => $trendingTag,
+    ])
+    @endif
+
     @if ($popular = collect(Data::headline())->slice(0, 2) ?? null)
         @include('defaultsite.mobile-v2.pages.detail.components.content.detail-topics', [
             'news' => $popular,
