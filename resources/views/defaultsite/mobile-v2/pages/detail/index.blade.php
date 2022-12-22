@@ -28,11 +28,21 @@
     @endif --}}
 @endforeach
 {{-- content --}}
+{{-- @if ($popular = \Data::popular() ?? null)
+@include('defaultsite.mobile-v2.components-ui.read-too-list', ['news' => $popular])
+@endif --}}
 
-@if ($popular = collect(Data::popular())->slice(0, 4)??null)
-@if (count($popular)>0)
-@include('defaultsite.mobile-v2.components-ui.content-read-also-detail', ['news' => $popular])
+@if ($latest = collect($row['latest'])->slice(0,2)??null)
+@include('defaultsite.mobile-v2.pages.detail.components.content.detail-related-news', [
+    'news' =>  $latest,
+])
 @endif
+
+
+@if ($latest = collect(Data::latest())->slice(0,2)??null)
+@include('defaultsite.mobile-v2.pages.detail.components.content.detail-latest-news', [
+    'news' => $latest,
+])
 @endif
 
 
