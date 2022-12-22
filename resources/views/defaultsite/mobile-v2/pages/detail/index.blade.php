@@ -27,6 +27,10 @@
         ])
     @endif --}}
 @endforeach
+{{-- content --}}
+@if ($popular = \Data::popular() ?? null)
+@include('defaultsite.mobile-v2.components-ui.read-too-list', ['news' => $popular])
+@endif
 {{-- list-case-sample --}}
 {{-- @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase1', ['row' => $row])
     @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase2', ['row' => $row])
