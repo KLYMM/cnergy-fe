@@ -28,9 +28,14 @@
     @endif --}}
 @endforeach
 {{-- content --}}
-@if ($popular = \Data::popular() ?? null)
-@include('defaultsite.mobile-v2.components-ui.read-too-list', ['news' => $popular])
+
+@if ($popular = collect(Data::popular())->slice(0, 4)??null)
+@if (count($popular)>0)
+@include('defaultsite.mobile-v2.components-ui.content-read-also-detail', ['news' => $popular])
 @endif
+@endif
+
+
 {{-- list-case-sample --}}
 {{-- @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase1', ['row' => $row])
     @include('defaultsite.mobile-v2.pages.detail.components.listCase.listCase2', ['row' => $row])

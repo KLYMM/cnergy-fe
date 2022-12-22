@@ -66,6 +66,17 @@ figure .image-news img {
 .dt-paras p {
     position: relative;
 }
+.box-list--topic li a {
+    padding-left: 1.25rem;
+}
+.box-list--topic li a::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    font-size: 150%;
+    line-height: 0;
+}
 
 .fa-facebook-f,
 .fa-twitter,
