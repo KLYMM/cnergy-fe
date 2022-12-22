@@ -1,3 +1,4 @@
+
 <header class="header fixed bottom-16 right-4 z-40 text-white transition dark:text-white" data-header="">
     <div class="flex flex-col items-center space-y-2">
         <a href="#" class="flex items-center justify-center rounded-full h-12 w-12 bg-dark-40 dark:bg-white-40" onclick="copyToClipboard()" >
@@ -94,7 +95,7 @@
                     return strpos(end($arr_slug), end($arr_curent_slug)) > '' ? 1 : 0;
                     })
                     ->first();
-                    //check list subdomain 2 level > 0
+                   
                     if (count($second_subdomain['children'] ?? []) > 0) {
                     $subdomain = $second_subdomain;
                     }
@@ -362,7 +363,7 @@
     </div>
 </header>
 
-<script>
+{{-- <script>
     const shareData = {
         title: <?= $title ?>,
         text: <?= $synopsis ?>,
@@ -378,4 +379,4 @@
             console.log(err);
         }
     });
-</script>
+</script> --}}
