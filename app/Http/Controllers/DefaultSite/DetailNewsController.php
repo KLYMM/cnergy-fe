@@ -109,6 +109,7 @@ class DetailNewsController extends Controller
         // dd($debug);
         $rowHtml = new HtmlChunk($row);
         $content = $rowHtml->parseNews($row);
+        // dd($content);
 
         return Site::view('pages.detail.index', compact('content', 'row'));
 
