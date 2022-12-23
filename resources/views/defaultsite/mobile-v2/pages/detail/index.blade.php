@@ -27,11 +27,6 @@
         ])
     @endif --}}
     @endforeach
-    {{-- content --}}
-    {{-- @if ($popular = \Data::popular() ?? null)
-@include('defaultsite.mobile-v2.components-ui.read-too-list', ['news' => $popular])
-@endif --}}
-
         
      
     @include('defaultsite.mobile-v2.pages.detail.components.content.detail-trending-tag', [
