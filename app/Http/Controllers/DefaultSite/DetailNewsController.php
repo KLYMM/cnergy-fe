@@ -110,7 +110,6 @@ class DetailNewsController extends Controller
         $rowHtml = new HtmlChunk($row);
         $content = $rowHtml->parseNews($row);
         // dd($content);
-
         return Site::view('pages.detail.index', compact('content', 'row'));
 
         /* if( ($row['news_type']??null) == 'photonews' )
