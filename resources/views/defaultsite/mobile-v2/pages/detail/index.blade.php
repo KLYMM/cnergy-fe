@@ -39,10 +39,10 @@
     ])
     
 
-    @if ($popular = collect(Data::trendingTag())->slice(0, 5) ?? null)
-        @include('defaultsite.mobile-v2.pages.detail.components.content.detail-topics', [
-            'news' => $popular,
-        ])
+    @if ($trendingTag = collect(\Data::trendingTag())->slice(0,6 ) ?? null)
+    @if (count($trendingTag) !== 0) 
+        @include('defaultsite.mobile-v2.pages.detail.components.content.detail-topics')
+    @endif
     @endif
 
     @if ($latest = collect(Data::recommendation())->slice(3, 2) ?? null)
