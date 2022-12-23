@@ -1,18 +1,26 @@
-
 <header class="header fixed bottom-16 right-4 z-40 text-white transition dark:text-white" data-header="">
     <div class="flex flex-col items-center space-y-2">
-        <a href="#" class="flex items-center justify-center rounded-full h-10 w-10 bg-black/40 dark:bg-white/40" onclick="copyToClipboard()" >
+        <a href="#" class="flex items-center justify-center rounded-full h-10 w-10 bg-black/40 dark:bg-white/40"
+            id="btnShareNews">
             <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.8 16.2458V12.3038C6.796 12.3038 3.502 13.8338 1 17.1998C2.008 12.3938 4.798 7.60581 11.8 6.63381V2.7998L19 9.5138L11.8 16.2458Z" stroke="currentColor" stroke-width="2"></path>
+                <path
+                    d="M11.8 16.2458V12.3038C6.796 12.3038 3.502 13.8338 1 17.1998C2.008 12.3938 4.798 7.60581 11.8 6.63381V2.7998L19 9.5138L11.8 16.2458Z"
+                    stroke="currentColor" stroke-width="2"></path>
             </svg>
         </a>
-        <a href="#" data-toggle="menu" class="flex items-center justify-center rounded-full h-10 w-10 bg-black/40 dark:bg-white/40">
+        <a href="#" data-toggle="menu"
+            class="flex items-center justify-center rounded-full h-10 w-10 bg-black/40 dark:bg-white/40">
             <svg width="18" height="16" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M18 0.586914H0V2.83691H18V0.586914ZM18 13.1631H0V15.4131H18V13.1631ZM4.5 6.875H18V9.125H4.5V6.875Z" fill="white" fill-opacity="0.9"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M18 0.586914H0V2.83691H18V0.586914ZM18 13.1631H0V15.4131H18V13.1631ZM4.5 6.875H18V9.125H4.5V6.875Z"
+                    fill="white" fill-opacity="0.9"></path>
             </svg>
         </a>
     </div>
 
+    {{-- Input ini bersifat hidden untuk menerima value title dan sinopsis berita agar dapat dipassing ke dalam script javascript --}}
+    <input type="hidden" id="titleNews" value="{{ $row['news_title'] }}">
+    <input type="hidden" id="synopsisNews" value="{{ $row['news_synopsis'] }}">
 
 
     <div data-toggle-open="menu"
@@ -53,118 +61,123 @@
             <div class="header-menu-body overflow-x-hidden overflow-y-auto flex-1">
                 <ul class="nav flex flex-col font-primary-3 font-bold vh-text-xl">
                     @if ($menu = Data::menu())
-                    @php
-                    //get category tree
-                    $category_tree = \Src::menu_tree(config('site.attributes.object.category.slug'));
-                    if ($row['news_category'] ?? null) {
-                    if (count($row['news_category']) > 0) {
-                    $category_tree = \Src::menu_tree(end($row['news_category'])['url']);
-                    }
-                    }
-                    if (count($category_tree) == 1) {
-                    //list subdomain 1 level
-                    $parent_slug = trim(end($category_tree)['url'], '/');
-                    $subdomain = collect($menu)
-                    ->filter(function ($row) use ($parent_slug) {
-                    $arr_slug = explode('/', trim($row['url'], '/'));
-                    $arr_parent_slug = explode('/', $parent_slug);
-                    return strpos(end($arr_slug), end($arr_parent_slug)) > '' ? 1 : 0;
-                    })
-                    ->first();
-                    } elseif (count($category_tree) >= 2) {
-                    $parent_slug = trim(end($category_tree)['url'], '/');
-                    //get curent slug base on tree level
-                    if (count($category_tree) == 2) {
-                    $curent_slug = trim($category_tree[0]['url'], '/');
-                    } elseif (count($category_tree) == 3) {
-                    $curent_slug = trim($category_tree[1]['url'], '/');
-                    }
-                    //list subdomain 1 level
-                    $subdomain = collect($menu)
-                    ->filter(function ($row) use ($parent_slug) {
-                    $arr_slug = explode('/', trim($row['url'], '/'));
-                    $arr_parent_slug = explode('/', $parent_slug);
-                    return strpos(end($arr_slug), end($arr_parent_slug)) > '' ? 1 : 0;
-                    })
-                    ->first();
-                    //list subdomain 2 level
-                    $second_subdomain = collect($subdomain['children'])
-                    ->filter(function ($row) use ($curent_slug) {
-                    $arr_slug = explode('/', trim($row['url'], '/'));
-                    $arr_curent_slug = explode('/', $curent_slug);
-                    return strpos(end($arr_slug), end($arr_curent_slug)) > '' ? 1 : 0;
-                    })
-                    ->first();
-                   
-                    if (count($second_subdomain['children'] ?? []) > 0) {
-                    $subdomain = $second_subdomain;
-                    }
-                    }
-                    @endphp
+                        @php
+                            //get category tree
+                            $category_tree = \Src::menu_tree(config('site.attributes.object.category.slug'));
+                            if ($row['news_category'] ?? null) {
+                                if (count($row['news_category']) > 0) {
+                                    $category_tree = \Src::menu_tree(end($row['news_category'])['url']);
+                                }
+                            }
+                            if (count($category_tree) == 1) {
+                                //list subdomain 1 level
+                                $parent_slug = trim(end($category_tree)['url'], '/');
+                                $subdomain = collect($menu)
+                                    ->filter(function ($row) use ($parent_slug) {
+                                        $arr_slug = explode('/', trim($row['url'], '/'));
+                                        $arr_parent_slug = explode('/', $parent_slug);
+                                        return strpos(end($arr_slug), end($arr_parent_slug)) > '' ? 1 : 0;
+                                    })
+                                    ->first();
+                            } elseif (count($category_tree) >= 2) {
+                                $parent_slug = trim(end($category_tree)['url'], '/');
+                                //get curent slug base on tree level
+                                if (count($category_tree) == 2) {
+                                    $curent_slug = trim($category_tree[0]['url'], '/');
+                                } elseif (count($category_tree) == 3) {
+                                    $curent_slug = trim($category_tree[1]['url'], '/');
+                                }
+                                //list subdomain 1 level
+                                $subdomain = collect($menu)
+                                    ->filter(function ($row) use ($parent_slug) {
+                                        $arr_slug = explode('/', trim($row['url'], '/'));
+                                        $arr_parent_slug = explode('/', $parent_slug);
+                                        return strpos(end($arr_slug), end($arr_parent_slug)) > '' ? 1 : 0;
+                                    })
+                                    ->first();
+                                //list subdomain 2 level
+                                $second_subdomain = collect($subdomain['children'])
+                                    ->filter(function ($row) use ($curent_slug) {
+                                        $arr_slug = explode('/', trim($row['url'], '/'));
+                                        $arr_curent_slug = explode('/', $curent_slug);
+                                        return strpos(end($arr_slug), end($arr_curent_slug)) > '' ? 1 : 0;
+                                    })
+                                    ->first();
+                            
+                                if (count($second_subdomain['children'] ?? []) > 0) {
+                                    $subdomain = $second_subdomain;
+                                }
+                            }
+                        @endphp
 
-                    @foreach (array_slice($menu, 0, 9) as $m)
-                    @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
-                    <li class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }} block py-2 px-6">
-                        <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
-                    </li>
-                    @else
-                    <li class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }} block py-2 px-6">
-                        <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
-                    </li>
-                    @endif
-                    @endforeach
-                    @if (count($menu) > 9)
-                    <li class="header-nav-item-mobile" style="padding:0">
-                        <div class="header-nav-item-menu" style="padding-right:0">
-                            <ul class="header-nav-item-menu-list">
-                                @foreach (array_slice($menu, 9) as $m)
-                                @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
-                                <li class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }} block py-2 px-6">
+                        @foreach (array_slice($menu, 0, 9) as $m)
+                            @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
+                                <li
+                                    class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }} block py-2 px-6">
                                     <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
                                 </li>
-                                @else
-                                <li class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }} block py-2 px-6 ">
+                            @else
+                                <li
+                                    class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }} block py-2 px-6">
                                     <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
                                 </li>
-                                @endif
-                                @endforeach
-                            </ul>
-                            <span class="header-extra-nav header-nav-item-menu-back"><i class="icon icon--arrowright rotate-180"></i></span>
-                        </div>
-                    </li>
-                    @endif
+                            @endif
+                        @endforeach
+                        @if (count($menu) > 9)
+                            <li class="header-nav-item-mobile" style="padding:0">
+                                <div class="header-nav-item-menu" style="padding-right:0">
+                                    <ul class="header-nav-item-menu-list">
+                                        @foreach (array_slice($menu, 9) as $m)
+                                            @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
+                                                <li
+                                                    class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }} block py-2 px-6">
+                                                    <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
+                                                </li>
+                                            @else
+                                                <li
+                                                    class="header-nav-item {{ trim(end($category_tree)['url'] ?? null, '/') == trim($m['url'], '/') || config('site.attributes.object.category.slug') == trim($m['url'], '/') ? 'active' : '' }} block py-2 px-6 ">
+                                                    <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                    <span class="header-extra-nav header-nav-item-menu-back"><i
+                                            class="icon icon--arrowright rotate-180"></i></span>
+                                </div>
+                            </li>
+                        @endif
                     @endif
 
                     @include('defaultsite.mobile-v2.components-ui.trending-menu')
                 </ul>
 
-                    @if (count($category_tree) > 0)
-                        @if ($subdomain)
-                            @if (count($subdomain['children']) > 0)
-                                <div class="header-submenu">
-                                    <ul class="header-submenu-item">
-                                        <li class="header-submenu-item-title">{{ strtoupper($subdomain['title']) }}</li>
-                                        {{-- list subdomain level 1 or check list subdomain 2 level > 0 --}}
-                                        @if (count($category_tree) > 0 || count($second_subdomain['children'] ?? []) > 0)
-                                            @foreach ($subdomain['children'] as $m)
-                                                @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
-                                                    <li
-                                                        class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
-                                                        <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
-                                                    </li>
-                                                @else
-                                                    <li
-                                                        class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
-                                                        <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
-                                                    </li>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    </ul>
-                                </div>
-                            @endif
+                @if (count($category_tree) > 0)
+                    @if ($subdomain)
+                        @if (count($subdomain['children']) > 0)
+                            <div class="header-submenu">
+                                <ul class="header-submenu-item">
+                                    <li class="header-submenu-item-title">{{ strtoupper($subdomain['title']) }}</li>
+                                    {{-- list subdomain level 1 or check list subdomain 2 level > 0 --}}
+                                    @if (count($category_tree) > 0 || count($second_subdomain['children'] ?? []) > 0)
+                                        @foreach ($subdomain['children'] as $m)
+                                            @if (!filter_var($m['url'], FILTER_VALIDATE_URL))
+                                                <li
+                                                    class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
+                                                    <a href="{{ '/' . trim($m['url'], '/') }}">{{ $m['title'] }}</a>
+                                                </li>
+                                            @else
+                                                <li
+                                                    class="subkanal__list_item {{ trim($category_tree[0]['url'], '/') == trim($m['url'], '/') ? 'active' : '' }}">
+                                                    <a href="{{ $m['url'] }}">{{ $m['title'] }}</a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
                         @endif
                     @endif
+                @endif
                 </ul>
             </div>
             <div class="search-container">
@@ -363,20 +376,30 @@
     </div>
 </header>
 
-{{-- <script>
-    const shareData = {
-        title: <?= $title ?>,
-        text: <?= $synopsis ?>,
-        url: window.location.href
+<script>
+    // script untuk share berita
+    var titleNews = document.getElementById("titleNews").value;
+    var synopsisNews = document.getElementById("synopsisNews").value;
+    var urlLink = window.location.href;
+
+    const btnShareNews = document.getElementById("btnShareNews");
+
+    function menuShare(header, description, link) {
+        navigator
+            .share({
+                title: header,
+                text: description,
+                url: link,
+            })
+            .then(() => console.log("Success to share news"))
+            .catch((error) => console.log("Error share news", error));
     }
 
-    const btn = document.querySelector('#shareMenu');
-
-    btn.addEventListener('click', async () => {
-        try {
-            await navigator.share(shareData);
-        } catch (err) {
-            console.log(err);
-        }
-    });
-</script> --}}
+    if (navigator.share) {
+        btnShareNews.addEventListener("click", () =>
+            menuShare(titleNews, synopsisNews, urlLink)
+        );
+    } else {
+        console.error("Your Browser doesn't support Web Share API");
+    }
+</script>

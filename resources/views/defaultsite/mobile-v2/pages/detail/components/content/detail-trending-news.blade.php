@@ -7,7 +7,7 @@
                     class="absolute border-b border-current bottom-0 left-0 w-10"></span></h1>
             <ul class="box-list box-list--trending flex flex-col vh-text-lg font-bold leading-normal space-y-10">
                 @foreach ($news as $item)
-                    <li class="box-list-item"><a href="#"
+                    <li class="box-list-item"><a href="{{ Src::detail($item) }}"
                             class="relative block animate animate--fadeInUp">{{ $item['news_title'] }}</a></li>
                 @endforeach
             </ul>

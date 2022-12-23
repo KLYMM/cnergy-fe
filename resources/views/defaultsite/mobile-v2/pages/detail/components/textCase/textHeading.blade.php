@@ -1,9 +1,9 @@
 <section data-section="sectionHeading" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-8 text-black dark:bg-dark-0 dark:text-white" data-theme="dt-text-3">
     <div class="section-body relative flex flex-col h-full">
-        <div class="dt relative overflow-hidden flex-1">
+        <div class="dt relative  overflow-hidden flex-1">
             <div class="dt-para  relative z-10 leading-relaxed pt-12 px-6 animate animate--fadeInUp" style="--delay: 0ms">
                 <strong class="vh-text-3xl">{!! $chunk['content'] !!}</strong> 
-                <p class="mt-2 {{ $chunk['template']['fontSize_class'] }}">{!! $chunk['attributes']['subcontent']['content']?? null !!}</p>
+                <p class="mt-2 {{ $chunk['attributes']['subcontent']['template']['fontSize_class'] }}">{!! $chunk['attributes']['subcontent']['content']?? null !!}</p>
             </div>
             <span class="absolute bottom-0 left-0 animate animate--fadeIn" style="--delay: 100ms">
                 <svg class="dark:svg-logo-black"  width="235" height="234" viewBox="0 0 235 234" fill="none" xmlns="http://www.w3.org/2000/svg">
