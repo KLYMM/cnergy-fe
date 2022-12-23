@@ -1,4 +1,4 @@
-<section data-section="section3"
+<section data-section="sectionImg1"
     class="section snap-always snap-start w-full h-full flex flex-col shrink-0 transition  dark:bg-dark-3 dark:text-white "
     data-theme="highlight2">
     <div class="section-body  relative overflow-hidden flex-1 container max-w-full">
@@ -15,7 +15,7 @@
                 </div>
             </div>
             
-            <div class="dt-paras flex-1 mt-10 relative z-10 text-lg leading-relaxed font-karla font-normal px-6 animate animate--fadeInUp" style="--delay: 0ms">
+            <div class="dt-paras flex-1 mt-10 relative z-10 text-lg leading-relaxed font-karla  font-normal px-6 animate animate--fadeInUp" style="--delay: 0ms">
                 <p>{!! $chunk['attributes']['title'] !!} </p>
            </div>
          

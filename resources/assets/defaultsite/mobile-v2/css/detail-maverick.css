@@ -50,22 +50,31 @@ figure .image-news img {
     height: 40vh;
 }
 
-.dt-paras p:not(.image-news):first-of-type::before {
-    content: "";
+.image-news img {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+}
+
+
+.related-img-news img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.box-list--topic li a {
+    padding-left: 1.25rem;
+}
+.box-list--topic li a::before {
+    content: "•";
     position: absolute;
-    top: 0.75rem;
     left: 0;
-    width: 10%;
-    border-top: 1px solid;
+    top: 0.75rem;
+    font-size: 150%;
+    line-height: 0;
 }
 
-.dt-paras p:not(.image-news) {
-    padding-left: 15%;
-}
 
-.dt-paras p {
-    position: relative;
-}
 
 .fa-facebook-f,
 .fa-twitter,
@@ -101,11 +110,7 @@ figure .image-news img {
     color: #333333;
 }
 
-.image-news img {
-    width: 100%;
-    height: 40vh;
-    object-fit: cover;
-}
+
 
 /* Navbar */
 
