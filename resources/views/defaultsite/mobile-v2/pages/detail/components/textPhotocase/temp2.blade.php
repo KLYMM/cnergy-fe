@@ -6,7 +6,7 @@
             <div class="article-main relative  " style="z-index:-1">
                 <div class="article-desc relative z-20">
                     <div class="article-asset relative   animate animate--fadeInUp" style="--delay: 200ms">
-                        <figure class="article-asset  w-full bg-cover bg-no-repeat bg-center overflow-hidden"
+                        <figure class="image-news article-asset  w-full bg-cover bg-no-repeat bg-center overflow-hidden"
                            style=" height: 313px;">
                            {!! $chunk['rawContent'] !!} 
                         </figure>
