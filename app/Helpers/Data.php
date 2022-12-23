@@ -192,6 +192,7 @@ class Data {
             ttl  : '6minutes',
             tags : ['tag', 'trending', 'global'],
         );
+        // dd($rows);
 
         return $rows['data'] ?? [];
     }

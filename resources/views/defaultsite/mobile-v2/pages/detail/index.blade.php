@@ -2,6 +2,7 @@
 
 
 @section('content')
+{{-- @dd($row) --}}
     {{-- @include('defaultsite.mobile-v2.pages.detail.components.imageCase.imageCase1', ['row' => $row])
     @foreach ($content as $chunk)
 
@@ -26,25 +27,20 @@
         ])
     @endif --}}
     @endforeach
-    {{-- content --}}
-    {{-- @if ($popular = \Data::popular() ?? null)
-@include('defaultsite.mobile-v2.components-ui.read-too-list', ['news' => $popular])
-@endif --}}
-
         
-    @if ($trendingTag = collect(Data::trendingTag())->slice(0,5) ?? null)
+     
     @include('defaultsite.mobile-v2.pages.detail.components.content.detail-trending-tag', [
-        'news' => $trendingTag,
+        'news' => $row['news_tag'],
     ])
+    
+
+    @if ($trendingTag = collect(\Data::trendingTag())->slice(0,6 ) ?? null)
+    @if (count($trendingTag) !== 0) 
+        @include('defaultsite.mobile-v2.pages.detail.components.content.detail-topics')
+    @endif
     @endif
 
-    @if ($popular = collect(Data::headline())->slice(0, 2) ?? null)
-        @include('defaultsite.mobile-v2.pages.detail.components.content.detail-topics', [
-            'news' => $popular,
-        ])
-    @endif
-
-    @if ($latest = collect(Data::recommendation())->slice(0, 2) ?? null)
+    @if ($latest = collect(Data::recommendation())->slice(3, 2) ?? null)
         @include('defaultsite.mobile-v2.pages.detail.components.content.detail-related-news', [
             'news' => $latest,
         ])

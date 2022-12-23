@@ -9,15 +9,15 @@
         <div class="box relative overflow-hidden flex-1 pt-12 px-6">
             <h1 class="box-title font-bold vh-text-lg relative mb-6 pb-1 animate animate--fadeInUp">Topics <span class="absolute border-b border-current bottom-0 left-0 w-10"></span></h1>
             <ul class="box-list box-list--topic flex flex-col text-lg font-bold leading-normal space-y-6">
-                @foreach ($news as $item)
-                <li class="box-list-item"><a href="{{ Src::tag($item) }}"  aria-label="{{ $item['news_title'] ?? null }}" class="flex items-center justify-between animate animate--fadeInUp">{{ $item['news_title'] }}
+                @foreach ($trendingTag as $tag)
+                <li class="box-list-item"><a href="{{ Src::detailTag($tag) }}"  aria-label="{{ $tag['title'] }}" class="flex items-center justify-between animate animate--fadeInUp">{{ $tag['title'] }}
                     <svg class="ml-2" width="37" height="22" viewBox="0 0 37 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M36.8333 9.98031L0 9.98031L0 11.397L36.8333 11.397V9.98031Z" fill="white"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M28.036 13.3654C26.423 15.1563 25.7636 17.5312 25.3023 20.2806L26.6995 20.515C27.1541 17.8052 27.7646 15.7835 29.0886 14.3135C30.3969 12.861 32.505 11.8393 36.21 11.3919L36.0401 9.98541C32.1608 10.4539 29.6648 11.5571 28.036 13.3654Z" fill="white"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M28.1239 7.92461C26.5109 6.13375 25.8515 3.75881 25.3902 1.00943L26.7874 0.775049C27.242 3.48482 27.8525 5.50653 29.1765 6.9765C30.4848 8.42902 32.5929 9.45078 36.2978 9.89818L36.128 11.3046C32.2487 10.8362 29.7527 9.73293 28.1239 7.92461Z" fill="white"/>
                     </svg>    
                 </a></li>
-              @endforeach
+                @endforeach
             </ul>
         </div>
         <div class="article-footer flex justify-center items-center py-6">
@@ -31,14 +31,3 @@
         </div>
     </div>
 </section>
-{{-- <div class="baca-juga-list-container">
-    <h4 class="mb-3">ALSO READ</h4>
-    <ul>
-        @foreach ($news as $item)
-            <li class="mb-3"><a href="{{ Src::tag($item) }}"
-                    aria-label="{{ $item['news_title'] ?? null }}">{{ $item['news_title'] }}
-                </a>
-            </li>
-        @endforeach
-    </ul>
-</div> --}}
