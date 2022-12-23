@@ -7,9 +7,9 @@ use App\Services\Template;
 use DOMDocument;
 use DOMXPath;
 use DOMElement;
+
 class HtmlChunk
 {
-
     private $content;
     private $bg_color_order;
     private $bg_color_opt;
@@ -39,6 +39,9 @@ class HtmlChunk
             'vh-text-xl' => ['min' => 61, 'max' => 170],
             'vh-text-2xl' => ['min' => 1, 'max' => 60],
         ];
+
+        session()->put('last_text_template_key', 0);
+        session()->put('last_image_template_key', 0);
     }
 
     public function parseNews($row)
@@ -136,6 +139,7 @@ class HtmlChunk
         $next_index = 0;
         //print_r(array_values($rows));
         $rows = array_values($rows);
+        $p = 0;
         foreach ($rows as $index => $row) {
             //check if need to skip this itteration
             if ($skip_next > 0) {
@@ -151,7 +155,7 @@ class HtmlChunk
 
             switch ($row['type']) {
                 case 'img':
-                    $template_name = app(Template::class)->getTemplate($row['type']);
+                    $template_name = $this->getTemplate($row['type'], $p);
 
                     //CASE : -- if next row is part of image caption
                     if (isset($rows[$index + 1]) && $rows[$index + 1]['type'] == 'img-caption') {
@@ -163,7 +167,7 @@ class HtmlChunk
 
                     break;
                 case 'text':
-                    $template_name = app(Template::class)->getTemplate($row['type']);
+                    $template_name = $this->getTemplate($row['type']);
 
                     //CASE : -- if current text still not reaching max total char per screen
                     if ($row['chars'] < $this->max_char) {
@@ -269,5 +273,67 @@ class HtmlChunk
         }
 
         return $sentence_array;
+    }
+
+    public function getTemplate(string $type)
+    {
+        $template = config('trstdly.templates');
+
+        switch ($type) {
+            case 'img':
+                $img_template = $template['image'];
+
+                // if((session('last_image_template_key') + 1) >= count($img_template)) session()->put('last_image_template_key', 0);
+
+                $template_output = $img_template[session('last_image_template_key')];
+
+                session()->increment('last_image_template_key');
+
+                if ((session('last_image_template_key') + 1) > count($img_template)) {
+                    session()->put('last_image_template_key', 0);
+                }
+
+                return $template_output;
+
+                break;
+
+            case 'text':
+                $text_template = $template['text'];
+
+                if ((session('last_text_template_key') + 1) > count($text_template)) {
+                    session()->put('last_text_template_key', 0);
+                }
+
+                $template_output = $text_template[session('last_text_template_key')];
+
+                session()->increment('last_text_template_key');
+
+                return $template_output;
+
+                break;
+
+
+            case 'text-heading':
+                $text_template = $template['text-heading'];
+
+                // if((session('last_text_template_key') + 1) >= count($text_template)) {
+                //     session()->put('last_text_template_key', 0);
+                // }
+
+                $template_output = $text_template[0];
+
+                // session()->increment('last_text_template_key');
+
+                // if ((session('last_text_template_key') + 1) > count($text_template)) {
+                //     session()->put('last_text_template_key', 0);
+                // }
+
+                return $template_output;
+
+                break;
+
+
+            default:
+        }
     }
 }
