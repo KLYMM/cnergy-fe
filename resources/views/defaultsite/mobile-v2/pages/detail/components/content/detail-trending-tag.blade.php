@@ -2,15 +2,19 @@
     <div class="section-body relative flex flex-col h-full">
         <div class="box relative overflow-hidden flex-1 pt-12 px-6">
             <h1 class="box-title font-bold vh-text-lg relative mb-6 pb-1 animate animate--fadeInUp">Related Tags <span class="absolute border-b border-current bottom-0 left-0 w-10"></span></h1>
-            @foreach($news as $r)
             <ul class="box-list box-list--tag flex flex-col vh-text-2xl font-semibold leading-loose space-y-4">
-                <li class="box-list-item"><a href="{{ Src::detailTag($r) }}" class="border-b border-light-1 dark:border-white block animate animate--fadeInUp"># {{ $r['title'] ?? null }} 
-                    <svg class="relative transition inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.4 18L5 16.6L14.6 7H6V5H18V17H16V8.4L6.4 18Z" fill="var(--color-light1)"/>
-                    </svg>
-                </a></li>
-            @endforeach
-            </ul>
+                    @for ($i = 0; $i < 5; $i++)
+                      @if($news[$i]??null) 
+                    <li class="box-list-item"><a href="{{ Src::detailTag($news[$i]) }}" class="border-b border-light-1 dark:border-white block animate animate--fadeInUp"># {{ $news[$i]['tag_name'] ?? null }} 
+                        <svg class="relative transition inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.4 18L5 16.6L14.6 7H6V5H18V17H16V8.4L6.4 18Z" fill="var(--color-light1)"/>
+                        </svg>
+                    </a>
+                    </li>
+                        @endif
+                    @endfor
+                </ul>
+              
         </div>
         <div class="article-footer flex justify-center items-center py-6">
             <span class="article-swipeup font-primary-2 vh-text-md animate-swipe animate-swipe-up">

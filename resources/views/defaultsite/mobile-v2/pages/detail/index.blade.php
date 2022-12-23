@@ -2,6 +2,7 @@
 
 
 @section('content')
+{{-- @dd($row) --}}
     {{-- @include('defaultsite.mobile-v2.pages.detail.components.imageCase.imageCase1', ['row' => $row])
     @foreach ($content as $chunk)
 
@@ -32,19 +33,19 @@
 @endif --}}
 
         
-    @if ($trendingTag = collect(Data::trendingTag())->slice(0,5) ?? null)
+     
     @include('defaultsite.mobile-v2.pages.detail.components.content.detail-trending-tag', [
-        'news' => $trendingTag,
+        'news' => $row['news_tag'],
     ])
-    @endif
+    
 
-    @if ($popular = collect(Data::headline())->slice(0, 2) ?? null)
+    @if ($popular = collect(Data::trendingTag())->slice(0, 5) ?? null)
         @include('defaultsite.mobile-v2.pages.detail.components.content.detail-topics', [
             'news' => $popular,
         ])
     @endif
 
-    @if ($latest = collect(Data::recommendation())->slice(0, 2) ?? null)
+    @if ($latest = collect(Data::recommendation())->slice(3, 2) ?? null)
         @include('defaultsite.mobile-v2.pages.detail.components.content.detail-related-news', [
             'news' => $latest,
         ])

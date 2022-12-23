@@ -1,4 +1,4 @@
-<section data-section="sectionDua" class="section snap-always snap-start w-full h-full shrink-0 transition {{ $chunk['template']['bg_theme'] }} text-black dark:bg-dark-0" data-theme="dt-text-2">
+<section data-section="sectionDua" class="section snap-always snap-start w-full h-full shrink-0 transition {{ $chunk['template']['bg_theme'] }} text-white dark:bg-dark-0" data-theme="dt-text-2">
     <div class="section-body relative flex flex-col h-full">
         <span class="relative flex justify-end animate animate--fadeIn" style="--delay: 0ms">
             <svg class="dark:svg-logo-black" width="239" height="211" viewBox="0 0 239 211" fill="none" xmlns="http://www.w3.org/2000/svg">
