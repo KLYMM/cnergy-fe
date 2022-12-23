@@ -7,7 +7,7 @@ use DOMXPath;
 use DOMElement;
 use Illuminate\Support\Collection;
 
-class HtmlChunk
+class HtmlBackup
 {
 
     private $content;

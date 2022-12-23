@@ -6,8 +6,8 @@ class Template
 {
     public function __construct()
     {
-        session()->put('last_text_template_key', 0);
-        session()->put('last_image_template_key', 0);
+        // session()->put('last_text_template_key', 0);
+        // session()->put('last_image_template_key', 0);
     }
     public function getTemplate(string $type)
     {
@@ -34,17 +34,13 @@ class Template
             case 'text':
                 $text_template = $template['text'];
 
-                // if((session('last_text_template_key') + 1) >= count($text_template)) {
-                //     session()->put('last_text_template_key', 0);
-                // }
+                if ((session('last_text_template_key') + 1) > count($text_template)) {
+                    session()->put('last_text_template_key', 0);
+                }
 
                 $template_output = $text_template[session('last_text_template_key')];
 
                 session()->increment('last_text_template_key');
-
-                if ((session('last_text_template_key') + 1) > count($text_template)) {
-                    session()->put('last_text_template_key', 0);
-                }
 
                 return $template_output;
 

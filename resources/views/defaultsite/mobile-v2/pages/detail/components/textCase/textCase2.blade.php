@@ -1,4 +1,4 @@
-<section data-section="sectionDua" class="section snap-always snap-start w-full h-full shrink-0 transition {{ $chunk['template']['bg_theme'] }} {{ ($chunk['template']['bg_theme'] == 'bg-light-1') ? 'text-white' : 'text-black' }} dark:bg-dark-0 dark:text-white" data-theme="dt-text-1">
+<section data-section="sectionDua" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:bg-dark-0 dark:text-white" data-theme="dt-text-1">
     <div class="section-body relative flex flex-col h-full">
         <div class="dt relative overflow-hidden flex-1">
             <div class="dt-para {{ $chunk['template']['fontSize_class'] }} relative z-10  leading-relaxed pt-12 px-6 animate animate--fadeInUp" style="--delay: 0ms">
@@ -17,7 +17,7 @@
                     <path d="m12 15.586-4.293-4.293-1.414 1.414L12 18.414l5.707-5.707-1.414-1.414z"></path>
                     <path d="m17.707 7.707-1.414-1.414L12 10.586 7.707 6.293 6.293 7.707 12 13.414z"></path>
                 </svg>
-                SWIPE UP 
+                SWIPE UP
 
             </span>
         </div>
