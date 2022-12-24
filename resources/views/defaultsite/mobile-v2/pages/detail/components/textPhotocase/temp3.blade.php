@@ -1,6 +1,6 @@
-<section data-section="sectionImg2" class="section px-6 snap-always snap-start w-full h-full shrink-0 transition bg-light-4 text-black dark:text-white dark:bg-dark-0" data-theme="dt-text-2">
+<section data-section="sectionImg2" class="section section--dt px-6 snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:text-white dark:bg-dark-0" data-theme="dt-text-2">
     <div class="section-body relative flex flex-col h-full">
-       
+        <span class="dt-number absolute animate animate--fadeIn" style="--delay: 100ms"></span>
         <div class="dt relative overflow-hidden ">
             <div class="dt-para relative z-10  leading-relaxed pt-20 font-karla font-normal px-6 animate animate--fadeInUp" style="--delay: 100ms">
                 <p>{!! $chunk['attributes']['title'] !!} </p>
@@ -8,9 +8,8 @@
         </div>
         <div class="article-desc relative flex-1 pr-8 z-20">
             <div class="article-asset relative -mx-4 mt-24 animate animate--fadeInUp" style="--delay: 200ms">
-                <figure
-                    class="article-asset mx-4 w-full aspect-375 bg-cover bg-no-repeat bg-center overflow-hidden">
-                    {!! $chunk['rawContent'] !!} 
+                <figure class="article-asset mx-4 w-full aspect-375 bg-cover bg-no-repeat bg-center overflow-hidden">
+                    {!! $chunk['rawContent'] !!}
                 </figure>
 
             </div>
@@ -46,23 +45,22 @@
                     <div class="article-asset relative -mx-4 mb-6 animate animate--fadeInUp" style="--delay: 200ms">
                         <figure class="article-asset mx-4 w-full bg-cover bg-no-repeat bg-center overflow-hidden"
                             style="background-image: url('{{ $row['news_image']['real'] }}'); height: 380px; width:300px; margin:auto;">
-                            <span class="bg-white h-8 w-full absolute opacity-70 bottom-0">
-                                <p class="my-1 ml-2.5">Copyright © 2022 trstdly</p>
-                            </span>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-            <input type="checkbox" checked id="btn-read">
-          
-            @include('defaultsite.mobile-v2.pages.detail.components.buttonShare.buttonShare')
-           
+<span class="bg-white h-8 w-full absolute opacity-70 bottom-0">
+    <p class="my-1 ml-2.5">Copyright © 2022 trstdly</p>
+</span>
+</figure>
+</div>
+</div>
+</div>
+<input type="checkbox" checked id="btn-read">
 
-            <div class="article-footer flex justify-center items-center py-6">
-                <span
-                    class="article-swipeup font-bold vh-text-md animate-swipe animate-swipe-up text-base text-primary">
-                    SWIPE UP</span>
-            </div>
-        </article>
-    </div>
+@include('defaultsite.mobile-v2.pages.detail.components.buttonShare.buttonShare')
+
+
+<div class="article-footer flex justify-center items-center py-6">
+    <span class="article-swipeup font-bold vh-text-md animate-swipe animate-swipe-up text-base text-primary">
+        SWIPE UP</span>
+</div>
+</article>
+</div>
 </section> --}}

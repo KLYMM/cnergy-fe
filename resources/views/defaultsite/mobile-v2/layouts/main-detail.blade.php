@@ -35,6 +35,46 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
     @include('object_js', ['isMaverick' => true])
+    <style>
+        .section--dt {
+            counter-increment: counter;
+        }
+
+        .section--dt .dt-number {
+            bottom: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .section--dt:nth-child(odd) .dt-number {
+            left: auto;
+            right: 4px;
+        }
+
+        .section--dt .dt-number::before,
+        .section--dt .dt-number::after {
+            content: counter(counter);
+            font-family: var(--font-primary1);
+            font-weight: 700;
+            /* -webkit-text-fill-color: transparent;
+                                            -webkit-text-stroke-width: 1px;
+                                            -webkit-text-stroke-color: var(--color-light1); */
+            color: var(--color-light3);
+            font-size: 12rem;
+            line-height: 0;
+            opacity: .2;
+        }
+
+        .section--dt .dt-number::after {
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: var(--color-light1);
+            color: transparent;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+        }
+    </style>
 </head>
 
 <body class="vh-text-md leading-normal font-primary-1 bg-stone-100 maverick-info">
