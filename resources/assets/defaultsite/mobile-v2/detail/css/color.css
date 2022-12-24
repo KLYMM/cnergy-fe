@@ -748,11 +748,11 @@
     position: relative
 }
 
-.dt-para p:not(.image) {
+/* .dt-para p:not(.image) {
     padding-left: 15%
-}
+} */
 
-.dt-para p:not(.image):first-of-type::before,
+/* .dt-para p:not(.image):first-of-type::before,
 .dt-para p.image+p::before {
     content: "";
     position: absolute;
@@ -760,7 +760,7 @@
     left: 0;
     width: 10%;
     border-top: 1px solid
-}
+} */
 
 .dt-para p strong,
 .dt-para p b {
