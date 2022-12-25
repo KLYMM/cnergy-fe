@@ -1,4 +1,4 @@
-<section data-section="sectionImg2" class="section section--dt px-6 snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:text-white dark:bg-dark-0" data-theme="dt-text-2">
+<section data-section="sectionImg2" class="section section--dt px-6 snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:text-white dark:bg-dark-0" data-theme="dt-text-2" data-template="readpage-imageCase2">
     <div class="section-body relative flex flex-col h-full">
         <span class="dt-number absolute animate animate--fadeIn" style="--delay: 100ms"></span>
         <div class="dt relative overflow-hidden ">

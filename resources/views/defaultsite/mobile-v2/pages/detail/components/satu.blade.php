@@ -1,6 +1,6 @@
 <!-- story.1 -->
 
-<section data-section="section1" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-1 text-white dark:bg-dark-0" data-theme="dt-headline">
+<section data-section="section1" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-1 text-white dark:bg-dark-0" data-theme="dt-headline" data-id="{{ $row['news_id'] }}" data-author="{{ $row['news_editor'][0]['name'] ?? '' }}" data-date="{{ Util::date($row['news_date_publish'], 'default_date') }}" data-hour="{{ Util::date($row['news_date_publish'], 'default_hour') }}" data-template="readpage-satu">
     <div class="section-body relative flex flex-col h-full">
         <span class="absolute w-96 h-96 top-1/2 -left-48 transform -translate-y-1/2 rounded-full bg-light-2 dark:bg-dark-1 z-10" style="filter: blur(120px);"></span>
         <div class="dt relative overflow-hidden flex-1">

@@ -15,6 +15,7 @@
     @foreach ($content as $chunk)
         @include('defaultsite.mobile-v2.pages.detail.components.' . $chunk['template']['name'], [
             'chunk' => $chunk,
+            'row' => $row
         ])
 
         {{-- @if ($loop->even && !$loop->first)
@@ -27,15 +28,15 @@
         ])
     @endif --}}
     @endforeach
-        
-     
+
+
     @include('defaultsite.mobile-v2.pages.detail.components.content.detail-trending-tag', [
         'news' => $row['news_tag'],
     ])
-    
+
 
     @if ($trendingTag = collect(\Data::trendingTag())->slice(0,6 ) ?? null)
-    @if (count($trendingTag) !== 0) 
+    @if (count($trendingTag) !== 0)
         @include('defaultsite.mobile-v2.pages.detail.components.content.detail-topics')
     @endif
     @endif

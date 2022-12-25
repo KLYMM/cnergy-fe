@@ -9,14 +9,28 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 <head>
     <meta charset="utf-8">
-    <title>Maverick - Itaewon</title>
-    <meta name="description" content="Maverick" />
-    <meta name="keywords" content="Maverick" />
+    <title>{{ config('site.attributes.meta.title') }}</title>
+    <meta name="title" content="{!! config('site.attributes.meta.title') ?? null !!}">
+    <meta name="description" content="{!! config('site.attributes.meta.site_description') ?? null !!}">
+    <meta name="keywords" content="{{ config('site.attributes.meta.article_keyword') ?? null }}">
+    <meta property="og:site_name" content="{{ config('site.attributes.reldomain.domain_name') ?? null }}">
+    <meta property="og:url" content="{{ config('site.attributes.meta.article_url') ?? null }}">
+    <meta property="og:title" content="{!! config('site.attributes.meta.article_title') ?? null !!}">
+    <meta property="og:description" content="{!! config('site.attributes.meta.article_short_desc') ?? null !!}">
+    <meta property="article:modified_time" content="{{ config('site.attributes.meta.article_last_update') ?? null }}">
+    <meta property="og:updated_time" content="{{ config('site.attributes.meta.article_last_update') ?? null }}">
+    <meta property="fb:app_id" content="{{ config('site.attributes.fb_app_id') ?? null }}">
+    <meta property="og:type" content="{{ config('site.attributes.meta.type') ?? null }}">
+    <meta property="og:image" content="{{ config('site.attributes.meta.article_url_image') ?? null }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="{{ config('site.attributes.twitter_username') ?? null }}">
+    <meta name="twitter:creator" content="{{ config('site.attributes.twitter_username') ?? null }}">
     <meta http-equiv="cache-control" content="public, no-transform" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
+    <link rel="icon" type="image/png" href="{{ config('site.attributes.favicon') }}">
     <link rel="shortcut icon" href="" />
     <link rel="canonical" href="" />
 
@@ -302,6 +316,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                     setIndicator();
                     setScrollDirection();
 
+                    onItersecting(entry.target, elementIndices[section]); // screen view
+
                     const videos = entry.target.querySelectorAll('video')
                     Array.prototype.forEach.call(videos, function(video) {
                         video.play()
@@ -341,6 +357,133 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 }
             });
         }, options);
+
+        let subCategory = '';
+        if (window.location.pathname.split('/')[1] == 'photo' || window.location.pathname.split('/')[1] == 'video') {
+            subCategory = 'feed';
+        } else if (window.location.pathname.split('/')[1] == 'tag') {
+            subCategory = 'tag';
+        } else if (window.location.pathname.split('/')[1] == '') {
+            subCategory = 'home';
+        } else if (window.location.pathname.split('/')[1] == 'index-berita') {
+            subCategory = 'index-berita';
+        } else {
+            subCategory = window.location.pathname.split('/')[1];
+
+        }
+
+        function virtual_sv(data) {
+            dataLayer.push({
+                'event': 'screen_view',
+                'virtual_screenview_path': data
+                    .screenview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
+                'articleId': data.articleId,
+                'contentTitle': data.articleTitle,
+                'type': 'feed', //feed
+                'subCategory': subCategory, //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+                'authors': data.author,
+                'publicationDate': data.publicationDate, //2022-10-26
+                'publicationTime': data.publicationTime, //07:34:37
+                'templateId': data.template_id, //1|2|3|4
+                'templateName': data.template_name, //Headline 1|Headline 2|etc..
+                'position': data.position //1|2|3|etc...}
+            });
+        }
+
+
+        function virtual_pv(data) {
+            dataLayer.push({
+                'event': 'virtual_page_view',
+                'virtual_pageview_path': data.pageview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
+                'articleId': data.articleId,
+                'contentTitle': data.articleTitle,
+                'type': 'feed', //feed
+                'subCategory': subCategory, //sesuai nama category-nya (home=root, index tag=tag, index category= nama kategorinya
+                'authors': data.author,
+                'publicationDate': data.publicationDate, //2022-10-26
+                'publicationTime': data.publicationTime, //07:34:37
+                'templateId': data.template_id, //1|2|3|4
+                'templateName': data.template_name, //Headline 1|Headline 2|etc..
+                'position': data.position //1|2|3|etc...}
+            });
+        }
+
+        function onScreen(target, currentIndex) {
+            let date = target.querySelector('span.article-date').dataset.date.split(' ');
+            let positionPage = currentIndex + 1;
+            let authorName = target.querySelector('span.article-date').dataset.authors;
+            target.setAttribute('data-position', currentIndex + 1)
+
+
+            let data = {
+                pageview_path: window.location.href + "?page=" + currentPage,
+                articleId: target.dataset.id,
+                articleTitle: target.querySelector('h1.article-title').textContent.trim(),
+                articleType: target.dataset.type,
+                author: authorName == undefined ? "" : authorName,
+                publicationDate: target.querySelector('span.article-date').dataset.date,
+                publicationTime: target.querySelector('span.article-date').dataset.hour,
+                template_id: target.dataset.template,
+                template_name: 'Feed ' + target.dataset.template,
+                position: currentIndex + 1,
+                is_virtual: currentIndex == 0 ? 0 : 1,
+            }
+
+            window.kly.gtm.pageTitle = data.articleTitle;
+            window.kly.gtm.subCategory = subCategory;
+            window.kly.gtm.type = "feed";
+            window.kly.gtm.contentTitle = data.articleTitle;
+            window.kly.gtm.articleId = data.articleId;
+            window.kly.gtm.authors = data.author;
+            window.kly.gtm.publicationDate = data.publicationDate;
+            window.kly.gtm.publicationTime = data.publicationTime;
+            window.kly.gtm.templateId = data.template_id;
+            window.kly.gtm.position = currentIndex + 1;
+            window.kly.gtm.templateName = data.template_name;
+            window.kly.gtm.is_virtual = data.is_virtual;
+
+
+            virtual_pv(data);
+        }
+
+
+        function onItersecting(target, currentIndex) {
+            console.log(target.querySelector('section .section-body'));
+            // let date = target.querySelector('section .section-body').dataset.date.split(' ');
+            let positionPage = currentIndex + 1;
+            let authorName = document.querySelector('section[data-author]').dataset.author;
+            target.setAttribute('data-position', currentIndex + 1)
+
+            let data = {
+                screenview_path: window.location.href + "?screen=" + positionPage,
+                articleId: document.querySelector('section[data-id]').dataset.id,
+                articleTitle: document.querySelector('h1.dt-desc-title').textContent.trim(),
+                articleType: target.dataset.type,
+                author: authorName == undefined ? "" : authorName,
+                publicationDate: document.querySelector('section[data-id]').dataset.date,
+                publicationTime: document.querySelector('section[data-id]').dataset.hour,
+                template_id: target.dataset.template,
+                template_name: 'Feed ' + target.dataset.template,
+                position: currentIndex + 1,
+                is_virtual: currentIndex == 0 ? 0 : 1,
+            }
+
+            window.kly.gtm.pageTitle = data.articleTitle;
+            window.kly.gtm.subCategory = subCategory;
+            window.kly.gtm.type = "feed";
+            window.kly.gtm.contentTitle = data.articleTitle;
+            window.kly.gtm.articleId = data.articleId;
+            window.kly.gtm.authors = data.author;
+            window.kly.gtm.publicationDate = data.publicationDate;
+            window.kly.gtm.publicationTime = data.publicationTime;
+            window.kly.gtm.templateId = data.template_id;
+            window.kly.gtm.position = currentIndex + 1;
+            window.kly.gtm.templateName = data.template_name;
+            window.kly.gtm.is_virtual = data.is_virtual;
+
+            virtual_sv(data);
+
+        }
 
 
         var elementIndices = {};
