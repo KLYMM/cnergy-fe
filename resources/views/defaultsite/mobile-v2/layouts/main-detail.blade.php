@@ -448,7 +448,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 
         function onItersecting(target, currentIndex) {
-            console.log(target.querySelector('section .section-body'));
             // let date = target.querySelector('section .section-body').dataset.date.split(' ');
             let positionPage = currentIndex + 1;
             let authorName = document.querySelector('section[data-author]').dataset.author;
@@ -489,7 +488,6 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         var elementIndices = {};
         var backtop = document.querySelector('.backtop');
 
-        console.log(sections.length)
         for (var i = 0; i < sections.length; i++) {
             elementIndices[sections[i].dataset.section] = i;
             io.observe(sections[i]);
