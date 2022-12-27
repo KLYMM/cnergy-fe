@@ -40,7 +40,8 @@
                             'title' => $newsItem['news_title'],
                             'source' => $newsItem,
                             'size' => '375x208',
-                            $newsItem['news_title'] ?? null,
+                            'lazy' => !($loop->iteration == 1),
+                            $newsItem['news_title'] ?? null
                             ])
                         </div>
                     </figure>

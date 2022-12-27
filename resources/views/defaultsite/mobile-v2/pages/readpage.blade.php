@@ -26,6 +26,7 @@
                         'title' => $row['news_title'],
                         'source' => $row,
                         'size' => '380x214',
+                        'lazy' => false,
                         $row['news_title'] ?? null,
                     ])
                 </div>

@@ -105,7 +105,7 @@ class DetailNewsController extends Controller
             ],
         ]);
 
-        if($debug != true) {
+        if($debug != false) {
             $rowHtml = new HtmlChunk($row);
             $content = $rowHtml->parseNews($row);
             // dd($content);
