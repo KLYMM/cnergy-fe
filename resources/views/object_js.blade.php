@@ -54,10 +54,9 @@
         "photographers": "{{ implode(',',collect(config('site.attributes.object.article.news_photographer'))->pluck('name')->sort()->toArray()) }}", // Nama fotografer
         "brand": "",
         "is_virtual": 0,
+        "pageType": "{{ config('site.attributes.object.pageType') }}"
     };
     window.kly.platform = '{{ ucfirst(config('site.device')) }}'; // Desktop atau Mobile
-    window.kly.pageType =
-        '{{ config('site.attributes.object.pageType') }}'; // (Homepage, ChannelPage, TagPage, BrandPage, Readpage)
     window.kly.channel = {
         "id": "", // id category (level 1)
         "name": "trstd.ly", // nama category ie: 'Lifestyle'. channel, misal 'Hijab'

@@ -37,14 +37,17 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link rel="preconnect" href="https://via.placeholder.com/" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="{{ Src::mix('detail/css/main.css') }}" rel="stylesheet">
     <link href="{{ Src::mix('detail/css/color.css') }}" rel="stylesheet">
     <link href="{{ Src::mix('detail/css/trstdly.css') }}" rel="stylesheet">
 
-    <link rel="preload" href="{{ Src::mix('css/detail-maverick.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="{{ Src::mix('css/detail-maverick.css') }}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
@@ -141,7 +144,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <main class="main relative max-w-screen-md mx-auto h-full overflow-hidden">
 
         <!-- snap -->
-        <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth" data-scroller>
+        <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth"
+            data-scroller>
             @include('defaultsite.mobile-v2.components.navbar-new')
 
             @yield('content')
@@ -150,7 +154,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         <!-- end.snap -->
 
         <!--snap.indicator-->
-        <div class="indicator absolute right-2 bottom-24 flex flex-col snap-y snap-mandatory scroll-smooth overflow-hidden dark:indicator-white hidden" data-indicator></div>
+        <div class="indicator absolute right-2 bottom-24 flex flex-col snap-y snap-mandatory scroll-smooth overflow-hidden dark:indicator-white hidden"
+            data-indicator></div>
 
     </main>
 
@@ -431,7 +436,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
             window.kly.gtm.pageTitle = data.articleTitle;
             window.kly.gtm.subCategory = subCategory;
-            window.kly.gtm.type = "feed";
+            window.kly.gtm.type = "feedArticle";
             window.kly.gtm.contentTitle = data.articleTitle;
             window.kly.gtm.articleId = data.articleId;
             window.kly.gtm.authors = data.author;
@@ -441,6 +446,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             window.kly.gtm.position = currentIndex + 1;
             window.kly.gtm.templateName = data.template_name;
             window.kly.gtm.is_virtual = data.is_virtual;
+            window.kly.gtm.category = 'Article'
 
 
             virtual_pv(data);
@@ -469,7 +475,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
             window.kly.gtm.pageTitle = data.articleTitle;
             window.kly.gtm.subCategory = subCategory;
-            window.kly.gtm.type = "feed";
+            window.kly.gtm.type = "feedArticle";
             window.kly.gtm.contentTitle = data.articleTitle;
             window.kly.gtm.articleId = data.articleId;
             window.kly.gtm.authors = data.author;
@@ -479,6 +485,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             window.kly.gtm.position = currentIndex + 1;
             window.kly.gtm.templateName = data.template_name;
             window.kly.gtm.is_virtual = data.is_virtual;
+            window.kly.gtm.category = 'Article'
 
             virtual_sv(data);
 
