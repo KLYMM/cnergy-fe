@@ -39,7 +39,7 @@ class NewsController extends Controller
 
         //kly object
         config()->set('site.attributes.object', [
-            "pageType"=>'Homepage',
+            "pageType"=>'HomePage',
             "category"=>[
                 'name'=> config('site.attributes.title'),
             ],
