@@ -1,7 +1,9 @@
 :root {
     --color-primary: #8B02FD;
+    --color-primary-2: #ff3903;
     --color-primary-60: #310057;
     --color-primary-40: #F7ECFF;
+    --color-pink: #FFF0EC;
     --color-yellow: #FFA952;
     --color-yellow-40: #FFC485;
     --color-black: #000;
@@ -10,9 +12,11 @@
     --color-white: #fff;
     --color-white-20: #dcdcdc;
     --color-gray: #514F4F;
+    --color-red: #751900;
     --font-inter: 'Inter', sans-serif;
     --font-nunito: 'Nunito Sans', sans-serif;
     --font-redhat: 'Red Hat Display', sans-serif
+
 }
 
 @-ms-viewport {
@@ -514,6 +518,10 @@ article {
     color: var(--color-primary)
 }
 
+.text-primary-2 {
+    color: var(--color-primary-2)
+}
+
 .text-primary-60 {
     color: var(--color-primary-60)
 }
@@ -709,4 +717,12 @@ article {
     height: 100%;
     outline: none;
     border: 0
+}
+
+.bg-pink {
+    background-color: var(--color-pink);
+}
+
+.dark .bg-pink {
+    background-color: var(--color-red);
 }
