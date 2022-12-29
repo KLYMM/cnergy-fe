@@ -29,10 +29,11 @@
     @endif --}}
     @endforeach
 
-
+    @if (count($row['news_tag']) !== 0)
     @include('defaultsite.mobile-v2.pages.detail.components.content.detail-trending-tag', [
         'news' => $row['news_tag'],
     ])
+    @endif
 
 
     @if ($trendingTag = collect(\Data::trendingTag())->slice(0,6 ) ?? null)

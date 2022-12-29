@@ -147,7 +147,3 @@ figure .image-news img {
     color: var(--color-primary-41);
 }
 
-
-.header-body-logo-link-icon .dark\:img-white {
-    filter: invert(1) grayscale(2) brightness(100);
-}
