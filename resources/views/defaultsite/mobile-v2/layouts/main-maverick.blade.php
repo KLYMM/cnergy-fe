@@ -487,7 +487,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     }
 </script>
 
-<script>
+{{-- <script>
     const mainNav = document.querySelector('.nav-main');
     const closeNav = document.querySelector('.nav-close');
     const openNav = document.querySelector('.nav-open');
@@ -507,7 +507,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         var s = document.getElementsByTagName('script')[0];
         s.remove();
     }
-</script>
+</script> --}}
 
 <script>
     function cseSearch() {

@@ -19,8 +19,8 @@
     </div>
 
     {{-- Input ini bersifat hidden untuk menerima value title dan sinopsis berita agar dapat dipassing ke dalam script javascript --}}
-    {{-- <input type="hidden" id="titleNews" value="{{ $row['news_title'] }}"> --}}
-    {{-- <input type="hidden" id="synopsisNews" value="{{ $row['news_synopsis'] }}"> --}}
+    <input type="hidden" id="titleNews" value="{{ $headline['news_title'] ?? null }}">
+     <input type="hidden" id="synopsisNews" value="{{ $headline['news_synopsis'] ?? null }}"> 
 
 
     <div data-toggle-open="menu"
@@ -386,7 +386,7 @@
     const btnShareNews = document.getElementById("btnShareNews");
 
     function menuShare(header, description, link) {
-        navigator
+        navigator   
             .share({
                 title: header,
                 text: description,
@@ -402,5 +402,6 @@
         );
     } else {
         console.error("Your Browser doesn't support Web Share API");
+        console.log = function(){};
     }
 </script>
