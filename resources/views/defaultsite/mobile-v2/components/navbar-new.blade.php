@@ -32,12 +32,13 @@
                     <input class="switchTheme-control" type="checkbox" name="checkbox" id="switchTheme"
                         autocomplete="off">
                     <label class="switchTheme-icon" for="switchTheme">
-                        <svg class="switchTheme-icon-dark" width="21" height="21" viewBox="0 0 21S 21"
+                        <svg class="switchTheme-icon-dark" width="21" height="21" viewBox="0 0 20 20"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M5.96726 2.5C5.93378 4.15761 6.23356 5.80515 6.84896 7.34568C7.46437 8.88621 8.38297 10.2886 9.55072 11.4704C10.7185 12.6522 12.1118 13.5895 13.6487 14.2271C15.1856 14.8648 16.835 15.1899 18.5 15.1833C17.8468 16.2246 16.9901 17.1246 15.9808 17.8298C14.9716 18.535 13.8304 19.0312 12.6249 19.2888C12.5131 19.3125 12.4005 19.3406 12.2862 19.3606C10.1711 19.7325 7.99194 19.3547 6.12739 18.293C4.26284 17.2313 2.83071 15.5527 2.07982 13.5488C1.32892 11.545 1.3067 9.34249 2.01702 7.32402C2.72734 5.30554 4.12451 3.59881 5.96726 2.5Z"
+                                animationData=" animationData.default"
                                 stroke="currentColor" stroke-width="2"></path>
-                        </svg>
+                            </svg>
                         <svg class="switchTheme-icon-light" width="20" height="20" viewBox="0 0 20 20"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"

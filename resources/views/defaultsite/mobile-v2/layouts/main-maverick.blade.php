@@ -52,8 +52,17 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     {{-- <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}"> --}}
-    <link rel="preload" href="{{ Src::mix('css/styles-maverick.css') }}" as="style"
+    {{-- <link rel="preload" href="{{ Src::mix('css/styles-maverick.css') }}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'"> --}}
+
+    <link rel="preload" href="{{ Src::mix('css/detail-maverick.css') }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
+
+
+    <link href="{{ Src::mix('detail/css/main.css') }}" rel="stylesheet">
+    <link href="{{ Src::mix('detail/css/color.css') }}" rel="stylesheet">
+    <link href="{{ Src::mix('detail/css/trstdly.css') }}" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -62,6 +71,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
 
     <!--window kly object-->
     @include('object_js', ['isMaverick' => true])
@@ -69,11 +80,11 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 <body class="vh-text-sm font-inter leading-normal bg-stone-100" style="padding-bottom: env(safe-area-inset-bottom)">
     <!-- Google Tag Manager (noscript) -->
-    <noscript>
+    {{-- <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH4RTMT" height="0" width="0"
             style="display:none;visibility:hidden">
         </iframe>
-    </noscript>
+    </noscript> --}}
     <!-- End Google Tag Manager (noscript) -->
     @include('defaultsite.mobile-v2.components.navbar-maverick')
 
@@ -82,6 +93,41 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     {{-- @include('defaultsite.mobile-v2.components.footer-maverick') --}}
 
 </body>
+
+
+<script>
+    const toggleOpen = document.querySelectorAll("[data-toggle]");
+    const toggleClose = document.querySelectorAll("[data-toggle-close]");
+
+    toggleOpen.forEach(function(t, i) {
+        t.addEventListener('click', function(e) {
+            const attr = this.getAttribute('data-toggle');
+            this.classList.toggle('is-active');
+            if (this.classList.contains('is-active')) {
+                cseSearch();
+                document.body.classList.add('overflow-hidden');
+                document.querySelector('[data-toggle-open="' + attr + '"]').classList.add('open');
+            } else {
+                document.body.classList.remove('overflow-hidden');
+                document.querySelector('[data-toggle-open="' + attr + '"]').classList.remove('open');
+                var s = document.getElementsByTagName('script')[0];
+                s.remove();
+            }
+            e.preventDefault();
+        });
+    });
+    toggleClose.forEach(function(t, i) {
+        t.addEventListener('click', function(e) {
+            document.body.classList.remove('overflow-hidden');
+            document.querySelector('[data-toggle]').classList.remove('is-active');
+            document.querySelector('[data-toggle-open]').classList.remove('open');
+            var s = document.getElementsByTagName('script')[0];
+            s.remove();
+            e.preventDefault();
+        });
+    });
+</script>
+
 
 <script>
     //switchtheme
@@ -441,7 +487,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     }
 </script>
 
-<script>
+{{-- <script>
     const mainNav = document.querySelector('.nav-main');
     const closeNav = document.querySelector('.nav-close');
     const openNav = document.querySelector('.nav-open');
@@ -461,7 +507,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         var s = document.getElementsByTagName('script')[0];
         s.remove();
     }
-</script>
+</script> --}}
 
 <script>
     function cseSearch() {

@@ -103,12 +103,32 @@ figure .image-news img {
     background-color: white;
 }
 
-.article-title {
+.border-tag {
+    border-top: 2px solid #ff3903;
+}
+
+.dark .border-tag {
+    border-top: 2px solid white;
+}
+
+.article-footer-left {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    /* identical to box height, or 16px */
+
+    text-transform: uppercase;
+
+    color: #ff3903;
+}
+/* .article-title {
     background-color: white;
     font-family: var(--font-inter);
     font-size: 16px;
     color: #333333;
-}
+} */
 
 
 
@@ -148,6 +168,3 @@ figure .image-news img {
 }
 
 
-.header-body-logo-link-icon .dark\:img-white {
-    filter: invert(1) grayscale(2) brightness(100);
-}

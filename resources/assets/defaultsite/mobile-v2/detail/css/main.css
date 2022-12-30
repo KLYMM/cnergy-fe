@@ -1,7 +1,10 @@
 :root {
     --color-primary: #8B02FD;
+    --color-primary-2: #ff3903;
     --color-primary-60: #310057;
     --color-primary-40: #F7ECFF;
+    --color-krem: #FFCCBE;
+    --color-pink: #FFF0EC;
     --color-yellow: #FFA952;
     --color-yellow-40: #FFC485;
     --color-black: #000;
@@ -10,9 +13,11 @@
     --color-white: #fff;
     --color-white-20: #dcdcdc;
     --color-gray: #514F4F;
+    --color-red: #751900;
     --font-inter: 'Inter', sans-serif;
     --font-nunito: 'Nunito Sans', sans-serif;
     --font-redhat: 'Red Hat Display', sans-serif
+
 }
 
 @-ms-viewport {
@@ -132,6 +137,14 @@ article {
     opacity: 1;
     -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
     transform: scale(1, 1) translate3d(0, 0, 0)
+}
+
+[data-theme="default2"] .indicator .indicator-bullet-active  {
+    background-color: var(--color-red);
+}
+
+[data-theme="default2"] .indicator .indicator-bullet-active  {
+    border-color: var(--color-red);
 }
 
 [data-theme="yellow"] .header .dark\:img-white {
@@ -422,6 +435,10 @@ article {
     background-color: var(--color-white-20)
 }
 
+.bg-krem {
+    background-color: var(--color-krem);
+}
+
 .bg-primary {
     background-color: var(--color-primary)
 }
@@ -452,6 +469,10 @@ article {
 
 .border-black-60 {
     border-color: var(--color-black-60)
+}
+
+.border-primary-2 {
+    border-color: var(--color-primary-2);
 }
 
 .border-black-40 {
@@ -512,6 +533,17 @@ article {
 
 .text-primary {
     color: var(--color-primary)
+}
+
+.text-primary-2 {
+    color: var(--color-primary-2)
+}
+
+.bg-primary-2 {
+    background-color: var(--color-primary-2);
+}
+.dark .dark\:bg-primary-2 {
+    background-color: var(--color-red);
 }
 
 .text-primary-60 {
@@ -673,7 +705,7 @@ article {
 }
 
 .indicator-bullet-active {
-    background-color: var(--color-yellow);
+    background-color: var(--color-primary-2);
     transform: scale(1)
 }
 
@@ -709,4 +741,12 @@ article {
     height: 100%;
     outline: none;
     border: 0
+}
+
+.bg-pink {
+    background-color: var(--color-pink);
+}
+
+.dark .bg-pink {
+    background-color: var(--color-red);
 }
