@@ -1,12 +1,13 @@
 <div class="section-body flex-1 container max-w-full">
     <article class="article flex flex-col h-full px-6 mt-6">
-        <a class="header-body-logo-link" href="/">
-            <span class="header-body-logo-link-icon animate animate--fadeIn">
+        <span class="header-body-logo-link-icon -ml-2 animate animate--fadeIn">
+            <a class="header-body-logo-link contents" href="/">
                 @if ($logo = \Site::api('fe-setting') ?? null)
-                <img class="logo-section-3 icon-lg object-contain dark:img-white" alt="logo" width="140" height="48" src="{{ $logo['data']['site_logo'] ?? null }}" />
+                    <img class="logo-section-3 icon-lg object-contain dark:img-white" alt="logo" width="140"
+                        height="48" src="{{ $logo['data']['site_logo'] ?? null }}" />
                 @endif
-            </span>
-        </a>
+            </a>
+        </span>
         <div class="article-main relative flex-1">
             <div class="article-background border-tag mb-4">
                 @if (count($newsItem['news_tag']) > 0 ?? null)
@@ -17,8 +18,6 @@
                             {{ $tagPhoto }}
                         @elseif (Request::is('video'))
                             {{ $tagVideo }}
-                        @elseif(Request::is('/'))
-                            {{ '' }}
                         @elseif(Request::is('tag/*'))
                             <a href="{{ Src::detailTag($newsItem['news_tag'][0]) }}">
                                 #{{ $newsItem['news_tag'][0]['tag_name'] }}
