@@ -15,6 +15,7 @@
     --color-light4: #F34F34;
     --color-light5: #F8E569;
     --color-light6: #E0D0B7;
+    --color-red: #751900;
     --bgcolor-adsActive: #fff;
     --color-adsActive: #000;
     --font-primary1: 'Poppins', sans-serif;
@@ -181,7 +182,7 @@
 }
 
 .dark .dark\:bg-light-0 {
-    background-color: var(--color-light0)
+    background-color: var(--color-red)
 }
 
 .dark .dark\:bg-dark-0 {

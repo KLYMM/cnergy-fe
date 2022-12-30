@@ -542,6 +542,9 @@ article {
 .bg-primary-2 {
     background-color: var(--color-primary-2);
 }
+.dark .dark\:bg-primary-2 {
+    background-color: var(--color-red);
+}
 
 .text-primary-60 {
     color: var(--color-primary-60)

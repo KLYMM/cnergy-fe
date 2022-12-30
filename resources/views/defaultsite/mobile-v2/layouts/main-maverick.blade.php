@@ -51,7 +51,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}">
+    {{-- <link rel="stylesheet" href="{{ URL::asset('assets/css/styles-maverick.css') }}"> --}}
     {{-- <link rel="preload" href="{{ Src::mix('css/styles-maverick.css') }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'"> --}}
 

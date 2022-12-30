@@ -22,7 +22,7 @@
                 <div class="flex items-center gap-3 text-white mt-3">
                     @if (count($newsItem['news_tag']) ==! 0)
                         <span
-                            class="article-tag block capitalize bg-light-0 rounded p-2 text-primary-2 font-inter font-bold   border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white-20 dark:border-white-20"
+                            class="article-tag block capitalize bg-light-0 rounded p-2 text-primary-2 font-inter font-bold   border-primary pt-2 mb-2 animate animate--fadeInLeft dark:text-white dark:bg-primary-2"
                             style="--delay: 0ms">
                             @if (Request::is('photo'))
                                 {{ $tagPhoto }}
