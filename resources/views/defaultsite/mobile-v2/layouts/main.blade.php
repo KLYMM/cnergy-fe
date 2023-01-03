@@ -121,7 +121,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 </body>
 
 <script>
-    //switchtheme
+    switchtheme
     const checkbox = document.querySelector(".switchTheme-control");
     const hour = new Date().getHours();
     checkbox.addEventListener("change", (e) => {
@@ -137,6 +137,8 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         checkbox.click();
         document.cookie = "darkmode=on;path=/";
     }
+
+    
 
     //snapscroll
     const header = document.querySelector("[data-header]");
