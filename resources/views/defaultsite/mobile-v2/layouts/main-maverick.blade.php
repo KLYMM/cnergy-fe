@@ -131,21 +131,49 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 <script>
     //switchtheme
-    const checkbox = document.querySelector(".switchTheme-control");
-    const hour = new Date().getHours();
-    checkbox.addEventListener("change", (e) => {
-        document.documentElement.classList.toggle("dark");
-        if (document.querySelector(".dark")) {
-            document.cookie = "darkmode=on;path=/";
-        } else {
-            document.cookie = "darkmode=off;path=/";
-        }
-    });
 
-    if (hour >= 18) {
-        checkbox.click();
-        document.cookie = "darkmode=on;path=/";
-    }
+    let selectSwitch = document.querySelector('.switchTheme-click');
+        let selectOption = document.querySelectorAll(".switchTheme-option li a");
+        let hour = (new Date).getHours();
+        let date = new Date();
+        date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+
+        selectSwitch.addEventListener("click", (e) => {
+            e.currentTarget.classList.toggle('is-active');
+            if(e.currentTarget.classList.contains('is-active')){
+                document.querySelector('.switchTheme-option').classList.add('open');
+                for (var i = 0; i < selectOption.length; i++) {
+                    selectOption[i].addEventListener('click', function() {
+
+                        let value = this.dataset.value;
+                        let valueHtml = this.querySelector('.icon-theme').innerHTML
+
+                        document.querySelector(".switchTheme-option li.active").classList.remove("active");
+                        this.parentNode.classList.add('active');
+                        selectSwitch.innerHTML = valueHtml;
+
+                        if(value === 'darkmode'){
+                            document.documentElement.classList.add('dark')
+                            document.cookie = "darkmode=on;expires=" + date.toUTCString() + ";path=/";
+                        } else if (value = 'lightmode'){
+                            document.documentElement.classList.remove('dark')
+                            document.cookie = "darkmode=off;expires=" + date.toUTCString() + ";path=/";
+                        }else{
+                            document.documentElement.classList.remove('dark')
+                            document.cookie = "darkmode=off;expires=" + date.toUTCString() + ";path=/";
+                            if (hour >= 20) {
+                                document.documentElement.classList.add('dark')
+                                document.cookie = "darkmode=on;expires=" + date.toUTCString() + ";path=/";
+                            }
+                        }
+
+                    });
+                }
+            }else{
+                document.querySelector('.switchTheme-option').classList.remove('open');
+            }
+            e.preventDefault();
+        });
 
     //snapscroll
     const header = document.querySelector("[data-header]");

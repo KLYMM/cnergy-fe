@@ -27,33 +27,44 @@
         class="header-menu fixed inset-0 bg-light-1 text-white pointer-events-none transform translate-x-full dark:bg-dark-0">
         <div class="header-menu-inner w-full h-full flex flex-col justify-between">
             <div class="header-menu-top flex items-center justify-between h-16">
-                <div
-                    class="header-menu-top-switch switchTheme relative h-full px-6 flex items-center justify-center animate animate--fadeIn">
-                    <input class="switchTheme-control" type="checkbox" name="checkbox" id="switchTheme"
-                        autocomplete="off">
-                    <label class="switchTheme-icon" for="switchTheme">
-                        <svg class="switchTheme-icon-dark" width="21" height="21" viewBox="0 0 20 20"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M5.96726 2.5C5.93378 4.15761 6.23356 5.80515 6.84896 7.34568C7.46437 8.88621 8.38297 10.2886 9.55072 11.4704C10.7185 12.6522 12.1118 13.5895 13.6487 14.2271C15.1856 14.8648 16.835 15.1899 18.5 15.1833C17.8468 16.2246 16.9901 17.1246 15.9808 17.8298C14.9716 18.535 13.8304 19.0312 12.6249 19.2888C12.5131 19.3125 12.4005 19.3406 12.2862 19.3606C10.1711 19.7325 7.99194 19.3547 6.12739 18.293C4.26284 17.2313 2.83071 15.5527 2.07982 13.5488C1.32892 11.545 1.3067 9.34249 2.01702 7.32402C2.72734 5.30554 4.12451 3.59881 5.96726 2.5Z"
-                                animationData=" animationData.default"
-                                stroke="currentColor" stroke-width="2"></path>
-                            </svg>
-                        <svg class="switchTheme-icon-light" width="20" height="20" viewBox="0 0 20 20"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M8.75 3H11.25V0H8.75V3ZM17 11.25L20 11.25V8.75L17 8.75V11.25ZM8.75 20L8.75 17H11.25L11.25 20H8.75ZM3 8.75V11.25H0V8.75H3ZM15.8336 5.93414L17.9549 3.81282L16.1872 2.04505L14.0658 4.16637L15.8336 5.93414ZM16.1872 17.955L14.0658 15.8336L15.8336 14.0659L17.9549 16.1872L16.1872 17.955ZM4.16635 14.0659L5.93412 15.8336L3.8128 17.955L2.04503 16.1872L4.16635 14.0659ZM4.16635 5.93414L5.93412 4.16637L3.8128 2.04505L2.04503 3.81282L4.16635 5.93414ZM12.5 10C12.5 11.3807 11.3807 12.5 10 12.5C8.61929 12.5 7.5 11.3807 7.5 10C7.5 8.61929 8.61929 7.5 10 7.5C11.3807 7.5 12.5 8.61929 12.5 10ZM15 10C15 12.7614 12.7614 15 10 15C7.23858 15 5 12.7614 5 10C5 7.23858 7.23858 5 10 5C12.7614 5 15 7.23858 15 10Z"
-                                fill="currentColor"></path>
-                        </svg>
-                    </label>
+                <div class="header-menu-top-switch switchTheme relative h-full px-6 flex items-center justify-center animate animate--fadeIn z-10">
+                    <a href="#" class="switchTheme-click -mx-3">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M22.25 13H19.75V10H22.25V13ZM31 21.25L28 21.25V18.75L31 18.75V21.25ZM19.75 27L19.75 30H22.25L22.25 27H19.75ZM14 21.25V18.75H11V21.25H14ZM26.8336 15.9341L28.9549 13.8128L27.1872 12.045L25.0658 14.1664L26.8336 15.9341ZM27.1872 27.955L25.0658 25.8336L26.8336 24.0659L28.9549 26.1872L27.1872 27.955ZM16.9341 14.1664L15.1664 15.9341L13.045 13.8128L14.8128 12.045L16.9341 14.1664ZM21 22.5C22.3807 22.5 23.5 21.3807 23.5 20C23.5 18.6193 22.3807 17.5 21 17.5V22.5ZM21 25C23.7614 25 26 22.7614 26 20C26 17.2386 23.7614 15 21 15C18.2386 15 16 17.2386 16 20C16 22.7614 18.2386 25 21 25ZM12.1912 28.7635H14.789L15.2054 30H17L14.4816 23H12.5184L10 30H11.7748L12.1912 28.7635ZM13.4901 24.8846L14.3527 27.4473H12.6374L13.4901 24.8846Z" fill="currentColor"></path>
+                                    </svg>
+                                </a><ul class="switchTheme-option absolute top-14 left-2 w-44 bg-white rounded-xl py-2 text-black dark:bg-dark-1 dark:text-white z-10">
+                        <li class="switchTheme-option-item active">
+                            <a href="#" data-value="automode" class="flex items-center px-2">
+                                <i class="icon-theme">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M22.25 13H19.75V10H22.25V13ZM31 21.25L28 21.25V18.75L31 18.75V21.25ZM19.75 27L19.75 30H22.25L22.25 27H19.75ZM14 21.25V18.75H11V21.25H14ZM26.8336 15.9341L28.9549 13.8128L27.1872 12.045L25.0658 14.1664L26.8336 15.9341ZM27.1872 27.955L25.0658 25.8336L26.8336 24.0659L28.9549 26.1872L27.1872 27.955ZM16.9341 14.1664L15.1664 15.9341L13.045 13.8128L14.8128 12.045L16.9341 14.1664ZM21 22.5C22.3807 22.5 23.5 21.3807 23.5 20C23.5 18.6193 22.3807 17.5 21 17.5V22.5ZM21 25C23.7614 25 26 22.7614 26 20C26 17.2386 23.7614 15 21 15C18.2386 15 16 17.2386 16 20C16 22.7614 18.2386 25 21 25ZM12.1912 28.7635H14.789L15.2054 30H17L14.4816 23H12.5184L10 30H11.7748L12.1912 28.7635ZM13.4901 24.8846L14.3527 27.4473H12.6374L13.4901 24.8846Z" fill="currentColor"></path>
+                                    </svg>
+                                </i> Auto
+                            </a>
+                        </li>
+                        <li class="switchTheme-option-item">
+                            <a href="#" data-value="darkmode" class="flex items-center px-2">
+                                <i class="icon-theme">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.9673 11.5C15.9338 13.1576 16.2336 14.8051 16.849 16.3457C17.4644 17.8862 18.383 19.2886 19.5507 20.4704C20.7185 21.6522 22.1118 22.5895 23.6487 23.2271C25.1856 23.8648 26.835 24.1899 28.5 24.1833C27.8468 25.2246 26.9901 26.1246 25.9808 26.8298C24.9716 27.535 23.8304 28.0312 22.6249 28.2888C22.5131 28.3125 22.4005 28.3406 22.2862 28.3606C20.1711 28.7325 17.9919 28.3547 16.1274 27.293C14.2628 26.2313 12.8307 24.5527 12.0798 22.5488C11.3289 20.545 11.3067 18.3425 12.017 16.324C12.7273 14.3055 14.1245 12.5988 15.9673 11.5Z" stroke="currentColor" stroke-width="2"></path>
+                                    </svg>
+                                </i> Dark Mode
+                            </a>
+                        </li>
+                        <li class="switchTheme-option-item">
+                            <a href="#" data-value="lightmode" class="flex items-center px-2">
+                                <i class="icon-theme">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.75 13H21.25V10H18.75V13ZM27 21.25L30 21.25V18.75L27 18.75V21.25ZM18.75 30L18.75 27H21.25L21.25 30H18.75ZM13 18.75V21.25H10V18.75H13ZM25.8336 15.9341L27.9549 13.8128L26.1872 12.045L24.0658 14.1664L25.8336 15.9341ZM26.1872 27.955L24.0658 25.8336L25.8336 24.0659L27.9549 26.1872L26.1872 27.955ZM14.1664 24.0659L15.9341 25.8336L13.8128 27.955L12.045 26.1872L14.1664 24.0659ZM14.1664 15.9341L15.9341 14.1664L13.8128 12.045L12.045 13.8128L14.1664 15.9341ZM22.5 20C22.5 21.3807 21.3807 22.5 20 22.5C18.6193 22.5 17.5 21.3807 17.5 20C17.5 18.6193 18.6193 17.5 20 17.5C21.3807 17.5 22.5 18.6193 22.5 20ZM25 20C25 22.7614 22.7614 25 20 25C17.2386 25 15 22.7614 15 20C15 17.2386 17.2386 15 20 15C22.7614 15 25 17.2386 25 20Z" fill="currentColor"></path>
+                                    </svg>
+                                </i> Light Mode
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <a href="#" data-toggle-close="menu"
-                    class="header-menu-top-close h-full px-6 flex items-center justify-center">
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M5 3.69174L8.69082 -1.94964e-08L10 1.30918L6.30826 5L10 8.69082L8.69082 10L5 6.30826L1.30918 10L-1.94964e-08 8.69082L3.69174 5L0 1.30918L1.30918 0L5 3.69174Z"
-                            fill="currentColor"></path>
+                <a href="#" data-toggle-close="menu" class="header-menu-top-close h-full px-6 flex items-center justify-center">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 3.69174L8.69082 -1.94964e-08L10 1.30918L6.30826 5L10 8.69082L8.69082 10L5 6.30826L1.30918 10L-1.94964e-08 8.69082L3.69174 5L0 1.30918L1.30918 0L5 3.69174Z" fill="currentColor"></path>
                     </svg>
                 </a>
             </div>
