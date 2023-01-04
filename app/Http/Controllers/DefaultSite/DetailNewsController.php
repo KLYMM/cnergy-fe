@@ -4,7 +4,7 @@ namespace App\Http\Controllers\DefaultSite;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\HtmlChunk;
+use App\Services\NewsChunkService;
 
 use Site, Data, Util, Str;
 
@@ -106,9 +106,8 @@ class DetailNewsController extends Controller
         ]);
 
         if($debug != true) {
-            $rowHtml = new HtmlChunk($row);
-            $content = $rowHtml->parseNews($row);
-            // dd($content);
+            $content = app(NewsChunkService::class)->retrieve_news($row);
+
             return Site::view('pages.detail.index', compact('content', 'row'));
         }
 
