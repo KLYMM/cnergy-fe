@@ -37,17 +37,14 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <link rel="preconnect" href="https://via.placeholder.com/" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="{{ Src::mix('detail/css/main.css') }}" rel="stylesheet">
     <link href="{{ Src::mix('detail/css/color.css') }}" rel="stylesheet">
     <link href="{{ Src::mix('detail/css/trstdly.css') }}" rel="stylesheet">
 
-    <link rel="preload" href="{{ Src::mix('css/detail-maverick.css') }}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="{{ Src::mix('css/detail-maverick.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
@@ -144,8 +141,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
     <main class="main relative max-w-screen-md mx-auto h-full overflow-hidden">
 
         <!-- snap -->
-        <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth"
-            data-scroller>
+        <div class="main-body relative overflow-y-auto flex flex-col w-full h-full snap-y snap-mandatory scroll-smooth" data-scroller>
             @include('defaultsite.mobile-v2.components.navbar-new')
 
             @yield('content')
@@ -154,8 +150,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         <!-- end.snap -->
 
         <!--snap.indicator-->
-        <div class="indicator absolute right-2 bottom-24 flex flex-col snap-y snap-mandatory scroll-smooth overflow-hidden dark:indicator-white hidden"
-            data-indicator></div>
+        <div class="indicator absolute right-2 bottom-24 flex flex-col snap-y snap-mandatory scroll-smooth overflow-hidden dark:indicator-white hidden" data-indicator></div>
 
     </main>
 
@@ -229,7 +224,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
         selectSwitch.addEventListener("click", (e) => {
             e.currentTarget.classList.toggle('is-active');
-            if(e.currentTarget.classList.contains('is-active')){
+            if (e.currentTarget.classList.contains('is-active')) {
                 document.querySelector('.switchTheme-option').classList.add('open');
                 for (var i = 0; i < selectOption.length; i++) {
                     selectOption[i].addEventListener('click', function() {
@@ -241,13 +236,13 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                         this.parentNode.classList.add('active');
                         selectSwitch.innerHTML = valueHtml;
 
-                        if(value === 'darkmode'){
+                        if (value === 'darkmode') {
                             document.documentElement.classList.add('dark')
                             document.cookie = "darkmode=on;expires=" + date.toUTCString() + ";path=/";
-                        } else if (value = 'lightmode'){
+                        } else if (value = 'lightmode') {
                             document.documentElement.classList.remove('dark')
                             document.cookie = "darkmode=off;expires=" + date.toUTCString() + ";path=/";
-                        }else{
+                        } else {
                             document.documentElement.classList.remove('dark')
                             document.cookie = "darkmode=off;expires=" + date.toUTCString() + ";path=/";
                             if (hour >= 20) {
@@ -258,17 +253,17 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
                     });
                 }
-            }else{
+            } else {
                 document.querySelector('.switchTheme-option').classList.remove('open');
             }
             e.preventDefault();
         });
 
-        window.addEventListener('click', function(e){   
-            if (!selectSwitch.contains(e.target)){
+        window.addEventListener('click', function(e) {
+            if (!selectSwitch.contains(e.target)) {
                 selectSwitch.classList.remove('is-active');
                 document.querySelector('.switchTheme-option').classList.remove('open');
-            } 
+            }
         });
 
         //snapscroll
@@ -414,8 +409,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
         function virtual_sv(data) {
             dataLayer.push({
                 'event': 'screen_view',
-                'virtual_screenview_path': data
-                    .screenview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
+                'virtual_screenview_path': data.screenview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
                 'articleId': data.articleId,
                 'contentTitle': data.articleTitle,
                 'type': 'feed', //feed
@@ -502,7 +496,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
                 publicationDate: document.querySelector('section[data-id]').dataset.date,
                 publicationTime: document.querySelector('section[data-id]').dataset.hour,
                 template_id: target.dataset.template,
-                template_name: 'Feed ' + target.dataset.template,
+                template_name: target.dataset.template,
                 position: currentIndex + 1,
                 is_virtual: currentIndex == 0 ? 0 : 1,
             }
