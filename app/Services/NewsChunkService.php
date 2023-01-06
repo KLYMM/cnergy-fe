@@ -18,11 +18,11 @@ class NewsChunkService
     {
         $data = $this->parseNews($row);
 
-        $newsResponse = Http::asForm()->post('https://asia-southeast2-kly-microservices-373603.cloudfunctions.net/Maverick-Chunker', [
+        $newsResponse = Http::asForm()->post(config('trstdly.chunkCloudUrl'), [
             'content' => $data
         ]);
 
-        if($newsResponse->ok()) {
+        if ($newsResponse->ok()) {
             return $this->parseResponse($newsResponse->json()['data']);
         }
 
@@ -48,7 +48,7 @@ class NewsChunkService
     {
         $data = [];
 
-        foreach($response as $key => $rp) {
+        foreach ($response as $key => $rp) {
             $data[$key] = $rp;
             $data[$key]['template']['name'] = $this->templateSelector($rp['type']);
         }
@@ -110,9 +110,28 @@ class NewsChunkService
                 return $template_output;
 
                 break;
+            case 'title-img':
+                $text_template = $template['title-img'];
+
+                $template_output = $text_template[0];
+
+                return $template_output;
+
+                break;
+            case 'list':
+                $text_template = $template['list'];
+
+                $template_output = $text_template[0];
+
+                return $template_output;
+
+                break;
 
 
             default:
+                return $type;
+
+                break;
         }
     }
 }
