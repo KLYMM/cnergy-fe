@@ -1,12 +1,12 @@
 <div class="section-body flex-1 container max-w-full">
     <article class="article flex flex-col h-full px-6 mt-5">
-        <a class="header-body-logo-link " href="/">
+        <!-- <a class="header-body-logo-link " href="/">
             <span class="header-body-logo-link-icon animate animate--fadeIn">
                 @if ($logo = \Site::api('fe-setting') ?? null)
                 <img class="logo-section-3 icon-lg object-contain dark:img-white" alt="logo" width="140" height="48" src="{{ $logo['data']['site_logo'] ?? null }}" />
                 @endif
             </span>
-        </a>
+        </a> -->
         <div class="article-main relative flex-1">
             <div class="article-asset mb-4">
                 <a href="{{ Src::detail($newsItem) }}" title="{{ $newsItem['news_title'] }}">
@@ -58,7 +58,7 @@
 
         <div class="article-footer flex justify-between items-center animate animate--fadeInUp mb-6 " style="--delay: 400ms" id="btn-up-id">
             <div class="article-footer-left flex-1 ">
-                <a rel="nofollow" class="btn-baca up-btn btn-readmore btn btn--outline flex items-center justify-center vh-h-btn rounded-full  font-outfit font-medium bg-pink  dark:bg-primary-41 dark:text-white" href="{{ Src::detail($newsItem) }}">
+                <a rel="nofollow" class="btn-baca up-btn btn-readmore btn btn--outline flex items-center justify-center vh-h-btn rounded-full  font-outfit font-medium bg-primary-40 dark:bg-primary-41 dark:text-white" href="{{ Src::detail($newsItem) }}">
                     <span>READ MORE</span>
                     <svg class="dark:svg-stroke-white ml-3" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 12H22" stroke="var(--color-primary-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
