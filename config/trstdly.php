@@ -2,7 +2,7 @@
 
 return [
     'prefix_description' => "News with simple English. ",
-    'chunkCloudUrl' => 'https://asia-southeast2-kly-microservices-373603.cloudfunctions.net/Maverick-Chunker',
+    'chunkCloudUrl' => 'https://maverick-chunker-v2-zrwerla26a-et.a.run.app',
     'templates' => [
         'text' => [
             'textCase.textCase1',
