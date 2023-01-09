@@ -1,11 +1,5 @@
-<?php
-$themeClass = '';
-if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
-    $themeClass = 'dark';
-}
-?>
 <!DOCTYPE html>
-<html lang="en" class="<?php echo $themeClass; ?>">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
