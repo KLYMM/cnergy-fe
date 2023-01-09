@@ -21,6 +21,9 @@ return [
         ],
         'list' => [
             'listCase.listCase1'
+        ],
+        'embed' => [
+            'embed-twitter'
         ]
     ]
 ];
