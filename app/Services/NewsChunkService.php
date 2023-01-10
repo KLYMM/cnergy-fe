@@ -134,10 +134,26 @@ class NewsChunkService
                 return $template_output;
 
                 break;
+            case 'embed-youtube':
+                $text_template = $template['embed'];
+
+                $template_output = $text_template[1];
+
+                return $template_output;
+
+                break;
+            case 'embed-instagram':
+                $text_template = $template['embed'];
+
+                $template_output = $text_template[0];
+
+                return $template_output;
+
+                break;
 
 
             default:
-                return $type;
+                return $template['text'][0];
 
                 break;
         }

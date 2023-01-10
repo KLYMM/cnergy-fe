@@ -23,7 +23,8 @@ return [
             'listCase.listCase1'
         ],
         'embed' => [
-            'embed-twitter'
+            'embed.embed',
+            'embed.youtube'
         ]
     ]
 ];
