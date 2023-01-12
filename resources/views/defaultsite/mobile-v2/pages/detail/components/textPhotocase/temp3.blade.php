@@ -3,7 +3,7 @@
         <span class="dt-number absolute animate animate--fadeIn" style="--delay: 100ms"></span>
         <div class="dt relative overflow-hidden ">
             <div class="dt-para relative z-10  leading-relaxed pt-20 font-karla font-normal px-6 animate animate--fadeInUp" style="--delay: 100ms">
-                <p>{!! $chunk['attributes']['title'] !!} </p>
+                {!! $chunk['attributes']['caption']['rawContent'] ?? '' !!}
             </div>
         </div>
         <div class="article-desc relative flex-1 pr-8 z-20">
