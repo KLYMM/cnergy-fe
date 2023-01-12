@@ -1,4 +1,4 @@
-<section data-section="section17" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:bg-dark-0 dark:text-white is-visible" data-theme="dt-box-trending" data-template="Info-Reco-Trending-Plain-V1">
+<section data-section="sectionViewTrending" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:bg-dark-0 dark:text-white is-visible" data-theme="dt-box-trending" data-template="Info-Reco-Trending-Plain-V1">
     <div class="section-body relative flex flex-col h-full">
         <div class="box relative overflow-hidden flex-1 pt-12 px-6">
             <h1 class="box-title font-bold vh-text-lg relative mb-6 pb-1 animate animate--fadeInUp">Trending <span class="absolute border-b border-current bottom-0 left-0 w-10"></span></h1>

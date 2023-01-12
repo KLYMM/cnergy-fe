@@ -156,6 +156,7 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
 
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ Src::mix('detail/js/tracker.js') }}"></script>
 
     <script>
         const toggleOpen = document.querySelectorAll("[data-toggle]");
@@ -516,7 +517,27 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             window.kly.gtm.category = 'Article'
 
             virtual_sv(data);
+            completion_reading();
 
+            if (target.dataset.section == 'sectionTag') {
+                view_related_tag()
+            }
+
+            if (target.dataset.section == 'sectionViewTopic') {
+                view_topic()
+            }
+
+            if (target.dataset.section == 'sectionViewRelatedNews') {
+                view_related_news()
+            }
+
+            if (target.dataset.section == 'sectionViewTrending') {
+                view_trending()
+            }
+
+            if (target.dataset.section == 'sectionViewLatestNews') {
+                view_latest_news()
+            }
         }
 
 

@@ -2,7 +2,7 @@
     <div class="section-body relative flex flex-col h-full">
         <span class="dt-number absolute animate animate--fadeIn" style="--delay: 100ms"></span>
         <div class="dt relative overflow-hidden flex-1">
-            <div class="dt-para {{ $chunk['template']['fontSize_class'] }} relative z-10  leading-relaxed pt-12 px-6 animate animate--fadeInUp" style="--delay: 0ms">
+            <div class="dt-para {{ $chunk['template']['fontSize_class'] }} relative z-10  leading-relaxed pt-12 animate animate--fadeInUp" style="--delay: 0ms">
                 <iframe title="YouTube video player" src="{{ $chunk['attributes']['src'] }}" class="w-full" style="aspect-ratio: 16/9;" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
             </div>
         </div>

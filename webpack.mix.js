@@ -42,6 +42,9 @@ mix.postCss(
     sitePath + "detail/css"
 );
 
+// detail v2
+mix.copyDirectory([path + sitePath + "detail/js"], 'public/static/' + sitePath + 'detail/js');
+
 // //DEFAULTSITE - DESKTOP
 // var sitePath = "defaultsite/desktop/";
 // //css global

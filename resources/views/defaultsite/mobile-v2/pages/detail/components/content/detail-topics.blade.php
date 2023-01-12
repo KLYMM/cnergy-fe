@@ -1,4 +1,4 @@
-<section data-section="section15" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-1 text-white dark:bg-dark-0 " data-theme="dt-box-topic" data-template="Info-Reco-Topics-Orange-V1">
+<section data-section="sectionViewTopic" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-1 text-white dark:bg-dark-0 " data-theme="dt-box-topic" data-template="Info-Reco-Topics-Orange-V1">
     <div class="section-body relative flex flex-col h-full">
         <span class="relative flex justify-end animate animate--fadeIn -mb-20" style="--delay: 0ms">
             <svg class="dark:svg-logo-black" width="239" height="211" viewBox="0 0 239 211" fill="none" xmlns="http://www.w3.org/2000/svg">

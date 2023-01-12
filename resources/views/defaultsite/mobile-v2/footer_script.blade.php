@@ -193,8 +193,7 @@
     function virtual_sv(data) {
         dataLayer.push({
             'event': 'screen_view',
-            'virtual_screenview_path': data
-                .screenview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
+            'virtual_screenview_path': data.screenview_path, // contoh: merdeka.com/topik/$topikName?page=2 dst...
             'articleId': data.articleId,
             'contentTitle': data.articleTitle,
             'type': 'feed', //feed

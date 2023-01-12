@@ -2,14 +2,6 @@
 
 
 @section('content')
-{{-- @dd($row) --}}
-    {{-- @include('defaultsite.mobile-v2.pages.detail.components.imageCase.imageCase1', ['row' => $row])
-    @foreach ($content as $chunk)
-
-@include('defaultsite.mobile-v2.pages.detail.components.dua', ['row' => $row])
-@include('defaultsite.mobile-v2.pages.detail.components.textCase.textTemp1')
-@include('defaultsite.mobile-v2.pages.detail.components.textCase.textTemp2')
-@include('defaultsite.mobile-v2.pages.detail.components.textCase.textTemp3') --}}
 
     @include('defaultsite.mobile-v2.pages.detail.components.satu')
     @foreach ($content as $chunk)
@@ -17,16 +9,6 @@
             'chunk' => $chunk,
             'row' => $row
         ])
-
-        {{-- @if ($loop->even && !$loop->first)
-        @include('defaultsite.mobile-v2.pages.detail.components.textCase.textCase1', [
-            'chunk' => $chunk,
-        ])
-    @else
-        @include('defaultsite.mobile-v2.pages.detail.components.dua', [
-            'chunk' => $chunk,
-        ])
-    @endif --}}
     @endforeach
 
     @if (count($row['news_tag']) !== 0)

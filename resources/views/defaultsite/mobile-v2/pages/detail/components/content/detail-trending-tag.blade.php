@@ -13,7 +13,7 @@
     }
     }
     @endphp
-    <section data-section="section14" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:bg-dark-0 dark:text-white" data-theme="dt-box-tag" data-template="Info-Reco-Tags-Plain-V1">
+    <section data-section="sectionTag" class="section snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:bg-dark-0 dark:text-white" data-theme="dt-box-tag" data-template="Info-Reco-Tags-Plain-V1">
         <div class="section-body relative flex flex-col h-full">
             <div class="box relative overflow-hidden flex-1 pt-12 px-6">
                 <h1 class="box-title font-bold vh-text-lg relative mb-6 pb-1 animate animate--fadeInUp">Related Tags
