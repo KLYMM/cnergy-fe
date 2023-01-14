@@ -1,4 +1,4 @@
-<section data-section="sectionTitleImg1{{ $loop->iteration }}" class="section section--dt snap-always snap-start w-full h-full flex flex-col shrink-0 transition dark:bg-dark-3 dark:text-white " data-theme="highlight2" data-template="readpage-TitleImageCase1">
+<section data-section="sectionTitleImg1{{ $loop->iteration }}" class="section section--dt snap-always snap-start w-full h-full flex flex-col shrink-0 transition dark:bg-dark-3 dark:text-white {{ ($loop->last) ? 'last' : '' }}" data-theme="highlight2" data-template="readpage-TitleImageCase1">
     <div class="section-body section--dt relative overflow-hidden flex-1 container max-w-full">
         <span class="dt-number absolute animate animate--fadeIn" style="--delay: 100ms"></span>
         <article class="article relative overflow-hidden flex flex-col h-full ">

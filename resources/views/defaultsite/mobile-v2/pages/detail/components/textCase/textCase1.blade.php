@@ -1,4 +1,4 @@
-<section data-section="sectionSatu{{ $loop->iteration }}" class="section section--dt snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:bg-dark-0 dark:text-white" data-theme="dt-text-1" data-template="Info-Story-Text-Plain-V1">
+<section data-section="sectionSatu{{ $loop->iteration }}" class="section section--dt snap-always snap-start w-full h-full shrink-0 transition bg-light-0 text-black dark:bg-dark-0 dark:text-white {{ ($loop->last) ? 'last' : '' }}" data-theme="dt-text-1" data-template="Info-Story-Text-Plain-V1">
     <div class="section-body relative flex flex-col h-full">
         <span class="dt-number absolute animate animate--fadeIn" style="--delay: 100ms"></span>
         <div class="dt relative overflow-hidden flex-1">

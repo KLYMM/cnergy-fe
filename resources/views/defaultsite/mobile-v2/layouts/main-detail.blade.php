@@ -517,7 +517,10 @@ if (!empty($_COOKIE['darkmode']) && $_COOKIE['darkmode'] == 'on') {
             window.kly.gtm.category = 'Article'
 
             virtual_sv(data);
-            completion_reading();
+
+            if (target.classList.contains('last')) {
+                completion_reading();
+            }
 
             if (target.dataset.section == 'sectionTag') {
                 view_related_tag()
